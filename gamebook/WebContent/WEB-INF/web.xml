@@ -44,6 +44,10 @@
     <servlet-name>Propuestas</servlet-name>
     <servlet-class>com.gamebook.controllers.Propuestas</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>CerrarSesion</servlet-name>
+    <servlet-class>com.gamebook.controllers.CerrarSesion</servlet-class>
+  </servlet>
   <servlet-mapping>
     <servlet-name>Servlet Iniciar Sesion</servlet-name>
     <url-pattern>/iniciar-sesion</url-pattern>
@@ -90,6 +94,10 @@
   <servlet-mapping>
     <servlet-name>Servlet Cargar Datos</servlet-name>
     <url-pattern>/cargarDatos</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>CerrarSesion</servlet-name>
+    <url-pattern>/cerrar</url-pattern>
   </servlet-mapping>
   <session-config>
     <session-timeout>30</session-timeout>
