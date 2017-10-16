@@ -1,4 +1,4 @@
-package com.gamebook.controllers;
+package com.Culturarte.controllers;
 
 import java.io.IOException;
 import javax.servlet.ServletException;

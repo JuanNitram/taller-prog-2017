@@ -6,7 +6,7 @@
 <%@page import="dataTypes.DtUsuario"%>
 <%@page import="Logica.Fabrica"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="com.gamebook.controllers.Login"%>
+<%@page import="com.Culturarte.controllers.Login"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page errorPage="/WEB-INF/errorPages/500.jsp" %>
 

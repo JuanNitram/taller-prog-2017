@@ -1,4 +1,4 @@
-package com.gamebook.controllers;
+package com.Culturarte.controllers;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.gamebook.exceptions.UsuarioNoEncontrado;
-import com.gamebook.model.EstadoSesion;
+import com.Culturarte.model.EstadoSesion;
+
 import Logica.Fabrica;
 import dataTypes.DtUsuario;
 

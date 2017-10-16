@@ -1,48 +1,43 @@
-package com.gamebook.controllers;
+package com.Culturarte.controllers;
 
 import java.io.IOException;
-
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import Logica.Datos;
+import Logica.Fabrica;
+import dataTypes.DtColaborador;
+import dataTypes.DtUsuario;
 
 /**
- * Servlet implementation class CargarDatos
+ * Servlet implementation class ConsultaUsuario
  */
-@WebServlet("/CargarDatos")
-public class CargarDatos extends HttpServlet {
+@WebServlet("/ConsultaUsuario")
+public class ConsultaUsuario extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private Datos datos;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CargarDatos() {
-    	 super();
+    public ConsultaUsuario() {
+        super();
         // TODO Auto-generated constructor stub
     }
-    
-    public void cargaDeDatos(){
-    	if (datos == null)
-    		datos= new Datos();
-    }
 
-    protected void processRequest(HttpServletRequest request,
-    		HttpServletResponse response) throws ServletException, IOException {
-    	cargaDeDatos();
-    	request.getRequestDispatcher("/home").forward(request, response);
-    }
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		processRequest(request, response);
+		String usuario = request.getParameter("usuario");
+		request.setAttribute("nombre", usuario);
+		DtUsuario dtUsuario = null;
+		for (DtUsuario dtU: Fabrica.getInstance().getICtrlUsuario().listarUsuarios())
+			if (dtU.getNickName().equals(usuario)) dtUsuario = dtU;
+		
+		request.setAttribute("usr", dtUsuario);
+		request.getRequestDispatcher("/WEB-INF/usuarios/consultaUsuario.jsp").forward(request, response);
 	}
 
 	/**
@@ -50,7 +45,7 @@ public class CargarDatos extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		processRequest(request, response);
+		doGet(request, response);
 	}
 
 }

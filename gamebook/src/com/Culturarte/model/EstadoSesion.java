@@ -1,4 +1,4 @@
-package com.gamebook.model;
+package com.Culturarte.model;
 
 /**
 *

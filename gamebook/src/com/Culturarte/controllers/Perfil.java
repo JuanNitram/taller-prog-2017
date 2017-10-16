@@ -1,26 +1,29 @@
-package com.gamebook.controllers;
+package com.Culturarte.controllers;
 
 import java.io.IOException;
-import java.util.ArrayList;
-
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.Culturarte.model.EstadoSesion;
+
 import Logica.Fabrica;
+import dataTypes.DtColaborador;
+import dataTypes.DtProponente;
 import dataTypes.DtUsuario;
 
 /**
- * Servlet implementation class Usuarios
+ * Servlet implementation class Perfil
  */
-public class Usuarios extends HttpServlet {
+public class Perfil extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Usuarios() {
+    public Perfil() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,25 +35,22 @@ public class Usuarios extends HttpServlet {
 	 * @throws ServletException if a servlet-specific error occurs
 	 * @throws IOException if an I/O error occurs
 	 */
+  
 	protected void processRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String usuario = request.getParameter("usuario");
-			
-		if (usuario == null) {
-			
-			//Date d = new Date();
-			//Fabrica.getInstance().getICtrlUsuario().altaColaborador("Juan", "Juan", "Juan", "Juan", "Juan", "", d);
-			
-			// no se seteó el usuario (lista todos los usuarios)
-			ArrayList<DtUsuario> usrs = Fabrica.getInstance().getICtrlUsuario().listarUsuarios();
-			if (usrs != null){
-				request.setAttribute("usuarios", usrs);
-			
-				request.getRequestDispatcher("/WEB-INF/usuarios/listar.jsp").forward(request, response);
-			}
-			else {
-				request.getRequestDispatcher("/WEB-INF/index.html").forward(request, response);
-			}	
+		DtUsuario user;
+		try {
+			if (!Fabrica.getInstance().getICtrlUsuario().esProponente((String) request.getSession().getAttribute("usuario_logueado")))
+				user = (DtUsuario) Fabrica.getInstance().getICtrlUsuario().infoColaborador((String) request.getSession().getAttribute("usuario_logueado"));
+			else 
+				user = (DtUsuario) Fabrica.getInstance().getICtrlUsuario().infoProponente((String) request.getSession().getAttribute("usuario_logueado"));
+			request.setAttribute("usuario", user);
+			request.getRequestDispatcher("/WEB-INF/usuarios/perfil.jsp").forward(request, response);
+		} catch (Exception ex){
+			// no existe el usuario, se trata como deslogueado
+			System.out.println("Es porque estoy aca");
+			request.getSession().setAttribute("estado_sesion", EstadoSesion.NO_LOGIN);
+			request.getRequestDispatcher("/home").forward(request, response);
 		}
 	}
 	

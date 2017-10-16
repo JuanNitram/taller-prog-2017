@@ -1,46 +1,42 @@
-package com.gamebook.controllers;
+package com.Culturarte.controllers;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import Logica.Fabrica;
-import dataTypes.DtPropuesta;
-import dataTypes.DtUsuario;
+import Logica.Datos;
 
 /**
- * Servlet implementation class Propuestas
+ * Servlet implementation class CargarDatos
  */
-@WebServlet("/Propuestas")
-public class Propuestas extends HttpServlet {
+@WebServlet("/CargarDatos")
+public class CargarDatos extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private Datos datos;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Propuestas() {
-        super();
+    public CargarDatos() {
+    	 super();
         // TODO Auto-generated constructor stub
     }
     
-	protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+    public void cargaDeDatos(){
+    	if (datos == null)
+    		datos= new Datos();
+    }
 
-			ArrayList<DtPropuesta> props = Fabrica.getInstance().getICtrlPropuesta().listarPropuestas();
-			if (props != null){
-				request.setAttribute("propuestas", props);
-				request.getRequestDispatcher("/WEB-INF/propuestas/listar.jsp").forward(request, response);
-			}
-			else{
-				request.getRequestDispatcher("/WEB-INF/index.html").forward(request, response);
-			}
-	}
-    
+    protected void processRequest(HttpServletRequest request,
+    		HttpServletResponse response) throws ServletException, IOException {
+    	cargaDeDatos();
+    	request.getRequestDispatcher("/home").forward(request, response);
+    }
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
