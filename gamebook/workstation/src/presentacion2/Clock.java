@@ -20,10 +20,12 @@ import javax.swing.JPanel;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 public class Clock extends JFrame { 
 	static Calendar calendario; 
-	int dia, mes, año, hora, minutos, segundos; 
+	int dia, mes, anio, hora, minutos, segundos; 
 	private JPanel contentPane;
 	private JLabel label; 
 	private JButton btnCambiar;
@@ -38,7 +40,13 @@ public class Clock extends JFrame {
 	private JLabel label_3;
 	private Date fecha;
 	
-	public Clock() { 
+	public Clock() {
+		addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(WindowEvent arg0) {
+				setVisible(false);
+			}
+		}); 
 		setTitle("Reloj");
 		inicio(); 
 		reloj(); 
@@ -47,7 +55,6 @@ public class Clock extends JFrame {
 	private void inicio() {
 		verInputs = false;
 		fecha = new Date();
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 421, 325);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -206,7 +213,7 @@ public class Clock extends JFrame {
 		getContentPane().add(btnNewButton, gbc_btnNewButton);
 		setBounds(0, 0, 421, 277); 
 		setLocationRelativeTo(null); 
-		setDefaultCloseOperation(3);
+		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 	}
 	
 	private void reloj() { 
@@ -218,12 +225,12 @@ public class Clock extends JFrame {
 				calendario.setTimeInMillis(calendario.getTimeInMillis() + 1000);
 				dia = calendario.get(Calendar.DAY_OF_MONTH); 
 				mes = (calendario.get(Calendar.MONTH) + 1); 
-				año = calendario.get(Calendar.YEAR); 
+				anio = calendario.get(Calendar.YEAR); 
 				hora = calendario.get(Calendar.HOUR_OF_DAY); 
 				minutos = calendario.get(Calendar.MINUTE); 
 				segundos = calendario.get(Calendar.SECOND); 
 				String hour = String.format("%02d : %02d : %02d", hora, minutos, segundos); 
-				String date = String.format("%02d / %02d / %02d", dia, mes, año); 
+				String date = String.format("%02d / %02d / %02d", dia, mes, anio); 
 				label.setText("<html><center>" + hour + "<br>" + date);
 			} 
 		}); 

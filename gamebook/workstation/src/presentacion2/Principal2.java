@@ -445,6 +445,7 @@ public class Principal2 extends JFrame {
 		escritorio.add(modificarpropuesta);
 		
 		clock = new Clock();
+		clock.setVisible(false);
 	}
 	
 	public void datosDePrueba() {
