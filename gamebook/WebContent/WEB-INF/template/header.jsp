@@ -1,12 +1,11 @@
-<%@page contentType="text/html" pageEncoding="UTF-8" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="com.gamebook.controllers.Login"%>
 <%@page import="dataTypes.DtUsuario"%>
 <%@page import="Logica.Fabrica"%>
 <%@page import="dataTypes.DtUsuario"%>
+<!DOCTYPE html>
 <div id="header">
-    <div class="logo"><a href="/">CULTURARTE</a></div>
-    <div class="subtitulo"></div>
-	
+	<div class="subtitulo"></div>
 	<%
 		boolean esProponente = false;
 		DtUsuario usr;
@@ -15,39 +14,62 @@
 			esProponente = Fabrica.getInstance().getICtrlUsuario().esProponente(usr.getNickName());
 		} catch(Exception ex){
 			usr = null;
-		}
-		
- 		if(usr != null) {
- 			if (esProponente){
-			%>
-			<div class="usuario">
-				<a href="/usuarios">Usuarios</a> |
-				<a href="/altapropuesta">Alta Propuesta</a> |
-				<a href="/propuestas">Propuestas</a> |
-				<a href="/cerrar">Cerrar Sesion</a> 
-				<a href="/perfil"><%= usr.getNombre() %></a>
-				(<%= usr.getEmail() %>)
+		} %>
+	
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+		<div class="container">
+			<img href="/" src=""> </img>
+			<a class="navbar-brand" href="/">Culturarte</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse"
+				data-target="#navbarResponsive" aria-controls="navbarResponsive"
+				aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarResponsive">
+				
+					<% if(usr != null){
+						if (esProponente){ %>
+						<ul class="navbar-nav ml-auto">
+							<li class="nav-item active"><a class="nav-link" href="/">Inicio
+							<span class="sr-only">(current)</span>
+							</a></li>
+							<li class="nav-item"><a class="nav-link" href="/usuarios">Usuarios</a></li>
+							<li class="nav-item"><a class="nav-link" href="/propuestas">Propuestas</a></li>
+							<li class="nav-item"><a class="nav-link" href="/altapropuesta">Alta Propuesta</a></li>
+							<li class="nav-item"><a class="nav-link" href="/perfil"><%= usr.getNombre().concat(" - ").concat(usr.getEmail()) %></a></li>
+							<li id="divisor" class="nav-item"><a class="nav-link" href="/cerrar">Cerrar Sesion</a></li>
+						</ul>
+						<% }else{ 
+							%>
+							<ul class="navbar-nav ml-auto">
+							<li class="nav-item active"><a class="nav-link" href="/">Inicio
+							<span class="sr-only">(current)</span> 
+							</a></li>
+							<li class="nav-item"><a class="nav-link" href="/usuarios">Usuarios</a></li>
+							<li class="nav-item"><a class="nav-link" href="/propuestas">Propuestas</a></li>
+							<li class="nav-item"><a class="nav-link" href="/registrarColaboracion">Registrar Colaboracion</a></li>
+							<li class="nav-item"><a class="nav-link" href="/perfil"><%= usr.getNombre().concat(" - ").concat(usr.getEmail()) %></a></li>
+							<li class="nav-item"><a class="nav-link" href="/cerrar">Cerrar Sesion</a></li>
+						</ul>
+						<% } %>
+					<% }else{ %>
+					<ul class="navbar-nav ml-auto">	
+						<li id="space" class="nav-item active"><a class="nav-link" href="/">Inicio
+							<span class="sr-only">(current)</span>
+							</a></li>
+							<li class="nav-item"><a class="nav-link" href="/cargarDatos">Cargar Datos</a></li>
+							<li class="nav-item"><a class="nav-link" href="/usuarios">Usuarios</a></li>
+							<li class="nav-item"><a class="nav-link" href="/propuestas">Propuestas</a></li>
+							<li class="nav-item"><a class="nav-link" href="/registro">Registrarse</a></li>
+							<li  class="nav-item"><a href="#iniciarsesion" data-toggle="modal" class="nav-link" >Iniciar Sesion</a></li>
+					</ul>
+				<% } %>
 			</div>
-			<% }else{
-				%>
-				<div class="usuario">
-				<a href="/usuarios">Usuarios</a> |
-				<a href="/propuestas">Propuestas</a> |
-				<a href="/registrarColaboracion">Nueva Colaboracion</a> |
-				<a href="/cerrar">Cerrar Sesion</a> 
-				<a href="/perfil"><%= usr.getNombre() %></a>
-				(<%= usr.getEmail() %>)
-			</div>	
-			<%	
-			}
- 		}else { %>
-				<div class="usuario">
-				<a href="/registro">Registrarse</a> |
-				<a href="/cargarDatos">Cargar Datos</a> |
-				<a href="/usuarios">Usuarios</a> |
-				<a href="/propuestas">Propuestas</a>
-			</div>
-			<%} %>
+		</div>
+	</nav>
+
 </div>
 
-<div id="body-container">
+
+
+

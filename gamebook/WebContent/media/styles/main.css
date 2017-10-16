@@ -22,10 +22,13 @@
 }
 
 
-body{
-    background: none repeat scroll 0 0 #009900;
-    font-family: "lucida grande",tahoma,verdana,arial,sans-serif;
-    margin: 0;
+body {
+	background-image: url("../images/background.jpg");
+	/* max-width: 100%;
+	height:auto; */
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-position: center;
 }
 
 h1 {
@@ -34,14 +37,6 @@ h1 {
 
 /* Cabezal */
 
-#header {
-    background-color: #009900;
-    border-bottom: 5px solid #026502;
-    color: #FFFFFF;
-    overflow: hidden;
-    padding-bottom: 3px;
-    padding-top: 6px;
-}
 
 #header .logo
 {
@@ -86,44 +81,29 @@ h1 {
 	text-shadow: 0px 0px 2px white;
 }
 
-/* footer */
-
-#footer
-{
-    background: url("../images/day_hills_top.png") repeat-x scroll 0 0 #009900;
-    color: #FFFFFF;
-    font-size: 0.9em;
-    height: 69px;
-    padding-top: 66px;
-}
-
-#footer_copyright
-{
-    float:left;
-}
-
-#footer_derecha{
-    float:right;
-}
-
-#footer div
-{
-	margin: 3px 10px;
-}
-
 /* general */
 
 #body-container
 {
-  background: url("../images/day_background.png") repeat scroll 0 0 transparent;
+  background-color: #343a40;
   padding-top: 60px;
   padding-bottom: 80px;
 }
 
+/* footer */
+
+.footer {
+	  position: fixed;
+	  right: 0;
+	  bottom: 0;
+	  left: 0;
+	  
+	}
+
 .main
 {
-    background: none repeat scroll 0 0 rgba(255, 255, 255, 0.93);
-	  border: 1px solid #CCCCCC;
+	background-color: #343a40;
+	border: 1px solid #CCCCCC;
     margin: 0 auto;
     width: 80%;
 	border-radius: 30px 30px 30px 30px;

@@ -4,45 +4,52 @@
 <html>
    <head>
 	   <jsp:include page="/WEB-INF/template/head.jsp"/>
-	<title>Iniciar sesión :: gamebook</title>
+	<title>Iniciar sesión | Culturarte</title>
     </head>
-    <body>
+    <body >
         <jsp:include page="/WEB-INF/template/header.jsp"/>
 
-	<!-- ejemplo de estilo CSS enbebido en la página -->
-	<style type="text/css">
-	.input_blur {
-		font-style: italic;
-		color:#808080;
-	}
-	</style>
+	<!-- VENTANA MODAL -->
+	<div class="modal fade" id="iniciarsesion">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<!--  Header de la ventana -->
+				<div class="modal-header">
+					<h4 class="modal-title">Iniciar Sesion</h4>
+					<button type="button" class="close" data-dismiss="modal"
+						arial-hidden="true">&times;</button>
 
-	<script type="text/javascript">
-		/// saca el blur a un elemento y lo resetear
-		function sacarBlurReset(event)
-		{
-			event.target.setAttribute('class', "");
-			event.target.value = "";
-		}
-	</script>
+				</div>
+				<!--  Contenido de la ventana-->
+				<div class="modal-body">
+					<form action="iniciar-sesion" method="POST">
+						<div class="form-group">
+						<div class="input-group">
+							<div class="input-group-addon">Nickname: </div>
+							<input class="form-control" type="text" name="login"/>
+						</div>
+						<br/>
+						<div class="form-group">
+						<div class="input-group">
+							<div class="input-group-addon">Contraseña: </div>
+							<input class="form-control" type="password" name="password"/>
+						</div>
+				</div>
 
-	<div class="contenedor_principal main">
-		<div class="izquierda">
-			<h2>Ingresa tus datos para iniciar sesión</h2>
-		</div>
-		<div class="derecha">
-				<!-- formulario de login -->
-				<form action="iniciar-sesion" method="POST">
-			<input class="input_blur" type="text" name="login"
-						   value="NickName..."	onMouseDown="sacarBlurReset(event);"/>
-					<br/>
-			<input type="password" name="password"/>
-					<br/>
-			<input type="button" value="Entrar" onclick="submit()"/>
-			</form>
+				</div>
+				<!--  Fotter de la ventana-->
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+					<button type="button" class="btn btn-primary" onclick="submit()">Iniciar</button>
+				</div>
+			</div>
 		</div>
 	</div>
+	</div>
+
 
 	<jsp:include page="/WEB-INF/template/footer.jsp"/>
 </body>
+	
+
 </html>

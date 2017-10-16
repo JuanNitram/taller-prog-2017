@@ -54,7 +54,6 @@ public class Login extends HttpServlet {
        
 		// chequea contraseña
 		try {
-			
 			DtUsuario user;
 			ArrayList<DtUsuario> arregloProponentes = Fabrica.getInstance().getICtrlUsuario().listarUsuarios();	
 			int i =0;
