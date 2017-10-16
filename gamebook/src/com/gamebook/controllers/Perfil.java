@@ -41,13 +41,13 @@ public class Perfil extends HttpServlet {
 			throws ServletException, IOException {
 		DtUsuario user;
 		try {
-			if(!Fabrica.getInstance().getICtrlUsuario().esProponente((String) request.getSession().getAttribute("usuario_logueado")))
+			if (!Fabrica.getInstance().getICtrlUsuario().esProponente((String) request.getSession().getAttribute("usuario_logueado")))
 				user = (DtUsuario) Fabrica.getInstance().getICtrlUsuario().infoColaborador((String) request.getSession().getAttribute("usuario_logueado"));
 			else 
 				user = (DtUsuario) Fabrica.getInstance().getICtrlUsuario().infoProponente((String) request.getSession().getAttribute("usuario_logueado"));
 			request.setAttribute("usuario", user);
 			request.getRequestDispatcher("/WEB-INF/usuarios/perfil.jsp").forward(request, response);
-		} catch(Exception ex){
+		} catch (Exception ex){
 			// no existe el usuario, se trata como deslogueado
 			System.out.println("Es porque estoy aca");
 			request.getSession().setAttribute("estado_sesion", EstadoSesion.NO_LOGIN);

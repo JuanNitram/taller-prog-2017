@@ -11,14 +11,15 @@ public class DtPropuesta {
 	private String lugar;
 	private Date fechaRealizacion;
 	private Date fechaPublicacion;
-	private float montoReunir;
+	private float montoRequerido;
+	private float montoReunido;
 	private TRetorno tipoRetorno; 
 	private String rutaImg;
 	private float precioEntrada;
 	private TEstado estado; 
 		
 	public DtPropuesta(String nick, String titulo, String descripcion, DtCategoria categoria, String lugar, Date fechaRealizacion,
-			Date fechaPublicacion, float montoReunir, TRetorno tipoRetorno,float precioEntrada, String rutaImg, TEstado estado) {
+			Date fechaPublicacion, float montoRequerido, float montoReunido, TRetorno tipoRetorno,float precioEntrada, String rutaImg, TEstado estado) {
 		this.nickProponente = nick;
 		this.titulo = titulo;
 		this.descripcion = descripcion;
@@ -26,7 +27,8 @@ public class DtPropuesta {
 		this.lugar = lugar;
 		this.fechaRealizacion = fechaRealizacion;
 		this.fechaPublicacion = fechaPublicacion;
-		this.montoReunir = montoReunir;
+		this.montoRequerido = montoRequerido;
+		this.montoReunido = montoReunido;
 		this.tipoRetorno = tipoRetorno;
 		this.precioEntrada = precioEntrada;
 		this.rutaImg = rutaImg;
@@ -61,8 +63,12 @@ public class DtPropuesta {
 		return fechaPublicacion;
 	}
 	
-	public float getMontoReunir() {
-		return montoReunir;
+	public float getMontoRequerido() {
+		return montoRequerido;
+	}
+	
+	public float getMontoReunido() {
+		return montoReunido;
 	}
 	
 	public TRetorno getTipoRetorno() {

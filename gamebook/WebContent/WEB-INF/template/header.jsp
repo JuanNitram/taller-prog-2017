@@ -35,7 +35,7 @@
 							</a></li>
 							<li class="nav-item"><a class="nav-link" href="/usuarios">Usuarios</a></li>
 							<li class="nav-item"><a class="nav-link" href="/propuestas">Propuestas</a></li>
-							<li class="nav-item"><a class="nav-link" href="/altapropuesta">Alta Propuesta</a></li>
+							<li class="nav-item"><a class="nav-link" href="/altaPropuesta">Alta Propuesta</a></li>
 							<li class="nav-item"><a class="nav-link" href="/perfil"><%= usr.getNombre().concat(" - ").concat(usr.getEmail()) %></a></li>
 							<li id="divisor" class="nav-item"><a class="nav-link" href="/cerrar">Cerrar Sesion</a></li>
 						</ul>
@@ -47,7 +47,6 @@
 							</a></li>
 							<li class="nav-item"><a class="nav-link" href="/usuarios">Usuarios</a></li>
 							<li class="nav-item"><a class="nav-link" href="/propuestas">Propuestas</a></li>
-							<li class="nav-item"><a class="nav-link" href="/registrarColaboracion">Registrar Colaboracion</a></li>
 							<li class="nav-item"><a class="nav-link" href="/perfil"><%= usr.getNombre().concat(" - ").concat(usr.getEmail()) %></a></li>
 							<li class="nav-item"><a class="nav-link" href="/cerrar">Cerrar Sesion</a></li>
 						</ul>
@@ -60,14 +59,14 @@
 							<li class="nav-item"><a class="nav-link" href="/cargarDatos">Cargar Datos</a></li>
 							<li class="nav-item"><a class="nav-link" href="/usuarios">Usuarios</a></li>
 							<li class="nav-item"><a class="nav-link" href="/propuestas">Propuestas</a></li>
-							<li class="nav-item"><a class="nav-link" href="/registro">Registrarse</a></li>
+							<li class="nav-item"><a href="#registro" data-toggle="modal" class="nav-link">Registrarse</a></li>
 							<li  class="nav-item"><a href="#iniciarsesion" data-toggle="modal" class="nav-link" >Iniciar Sesion</a></li>
 					</ul>
 				<% } %>
 			</div>
 		</div>
 	</nav>
-
+	
 </div>
 
 

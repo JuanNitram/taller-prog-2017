@@ -33,8 +33,8 @@ public class ConsultaUsuario extends HttpServlet {
 		String usuario = request.getParameter("usuario");
 		request.setAttribute("nombre", usuario);
 		DtUsuario dtUsuario = null;
-		for(DtUsuario dtU: Fabrica.getInstance().getICtrlUsuario().listarUsuarios())
-			if(dtU.getNickName().equals(usuario)) dtUsuario = dtU;
+		for (DtUsuario dtU: Fabrica.getInstance().getICtrlUsuario().listarUsuarios())
+			if (dtU.getNickName().equals(usuario)) dtUsuario = dtU;
 		
 		request.setAttribute("usr", dtUsuario);
 		request.getRequestDispatcher("/WEB-INF/usuarios/consultaUsuario.jsp").forward(request, response);

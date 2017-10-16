@@ -213,7 +213,7 @@ public class RegistrarColaboracion2 extends JInternalFrame {
 						+ "Lugar: " + primeraProp.getLugar() + "\n"
 						+ "Fecha de Realizacion: " + dateFormat.format(primeraProp.getFechaRealizacion()) + "\n"
 						+ "Fecha de Publicacion: " + dateFormat.format(primeraProp.getFechaPublicacion()) + "\n"
-						+ "Monto a reunir: " + primeraProp.getMontoReunir() + "\n"
+						+ "Monto a reunir: " + primeraProp.getMontoRequerido() + "\n"
 						+ "Tipo de retorno: " + primeraProp.getTipoRetorno() + "\n"
         				+ "Estado de la Propuesta: " + primeraProp.getEstado().name());
     		
@@ -242,7 +242,7 @@ public class RegistrarColaboracion2 extends JInternalFrame {
         						+ "Lugar: " + dtP.getLugar() + "\n"
         						+ "Fecha de Realizacion: " + dateFormat.format(dtP.getFechaRealizacion()) + "\n"
         						+ "Fecha de Publicacion: " + dateFormat.format(dtP.getFechaPublicacion()) + "\n"
-        						+ "Monto a reunir: " + dtP.getMontoReunir() + "\n"
+        						+ "Monto a reunir: " + dtP.getMontoRequerido() + "\n"
         						+ "Tipo de retorno: " + dtP.getTipoRetorno() + "\n"
                 				+ "Estado de la Propuesta: " + dtP.getEstado().name());
             		

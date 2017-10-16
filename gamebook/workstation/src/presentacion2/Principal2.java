@@ -53,6 +53,7 @@ public class Principal2 extends JFrame {
 	private ConsultaSeguidor consultaseguidor;
 	private ConsultaPropuestaPorEstado consultapropuestaporestado;
 	private EvaluarPropuesta evaluarpropuesta;
+	private Clock clock;
 
 	private Datos d = null;
 	
@@ -94,6 +95,14 @@ public class Principal2 extends JFrame {
 			}
 		});
 		mnSistema.add(mntmCargarDatosDe);
+		
+		JMenuItem mntmClock = new JMenuItem("Reloj");
+		mntmClock.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				clock.setVisible(true);
+			}
+		});
+		mnSistema.add(mntmClock);
 		
 		JMenuItem mntmSalir = new JMenuItem("Salir");
 		mntmSalir.addActionListener(new ActionListener() {
@@ -379,10 +388,6 @@ public class Principal2 extends JFrame {
 		
 	
 		contentPane.add(escritorio, BorderLayout.CENTER);
-		
-		
-		
-		
 		initialize();
 	}
 	
@@ -438,6 +443,8 @@ public class Principal2 extends JFrame {
 
 		modificarpropuesta = new ModificarPropuesta(ICP,ICU);
 		escritorio.add(modificarpropuesta);
+		
+		clock = new Clock();
 	}
 	
 	public void datosDePrueba() {

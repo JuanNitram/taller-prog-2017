@@ -69,11 +69,11 @@ public class AltaPropuestaTest {
 				new Estado(TEstado.CANCELADA, new Date(2017,05,15,15,30))	
 		};
 	
-		Date fecha = new Date(20,07,1989);
+		Date fecha = new Date(1989,07,29);
 		
 		//Creo las propuestas
 		for(int i = 0; i<=2; i++) {
-			ICP.altaPropuesta(nicknames[i], titulos[i], null, descripciones[i], lugares[i], fecha, fecha, precios[i], 
+			ICP.altaPropuesta(nicknames[i], titulos[i], null, descripciones[i], lugares[i], fecha, precios[i], 
 				TRetorno.ENTRADA_GRATIS,  precios[i], imagenes[i]);
 			ICP.cambiarEstado(titulos[i], estados[i]);
 		}
@@ -85,16 +85,16 @@ public class AltaPropuestaTest {
 		assertEquals(ICP.existePropuesta("Flautarix",  titulos[2]),false);
 		assertEquals(ICP.existePropuesta("SebaPeace",  "Yo ordeño"),true);
 		
+
 		//Chequeo que la información devuelta por las propuestas sea la correcta
 		for(int i = 0; i<=2; i++) {
 			assertEquals(ICP.infoPropuesta(titulos[i]).getNickProponente(),nicknames[i]);
 			assertEquals(ICP.infoPropuesta(titulos[i]).getTitulo(),titulos[i]);
 			assertEquals(ICP.infoPropuesta(titulos[i]).getCategoria(),null);
 			assertEquals(ICP.infoPropuesta(titulos[i]).getDescripcion(),descripciones[i]); 
-			assertEquals(ICP.infoPropuesta(titulos[i]).getFechaPublicacion(),fecha);
 			assertEquals(ICP.infoPropuesta(titulos[i]).getFechaRealizacion(),fecha);
 			assertEquals(ICP.infoPropuesta(titulos[i]).getLugar(),lugares[i]);
-			assertEquals(ICP.infoPropuesta(titulos[i]).getMontoReunir(),precios[i],1.0);
+			assertEquals(ICP.infoPropuesta(titulos[i]).getMontoRequerido(),precios[i],1.0);
 			assertEquals(ICP.infoPropuesta(titulos[i]).getPrecioEntrada(),precios[i],1.0);
 			assertEquals(ICP.infoPropuesta(titulos[i]).getRutaImg(),imagenes[i]);
 			assertEquals(ICP.infoPropuesta(titulos[i]).getTipoRetorno(),TRetorno.ENTRADA_GRATIS);

@@ -2,6 +2,7 @@ package Tests;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 import org.junit.Test;
@@ -9,6 +10,7 @@ import org.junit.Test;
 import Logica.clases.Estado;
 import Logica.controladores.CtrlPropuesta;
 import Logica.controladores.CtrlUsuario;
+import dataTypes.DtPropuesta;
 import dataTypes.TEstado;
 import dataTypes.TRetorno;
 
@@ -57,17 +59,16 @@ public class ConsultaPropuestaColaboraciones {
 			Estado [] estados = {
 					new Estado(TEstado.EN_FINANCIACION, new Date(2017,05,15,15,30)),
 					new Estado(TEstado.PUBLICADA, new Date(2017,05,15,15,30)), 
-					new Estado(TEstado.CANCELADA, new Date(2017,05,15,15,30))	
+					new Estado(TEstado.INGRESADA, new Date(2017,05,15,15,30))	
 			};
 			
 			
 			Date fecha = new Date(20,07,1989);
 			for(int i = 0; i<=2; i++) {
-				ICP.altaPropuesta(nicknames[i], titulos[i], null, descripciones[i], lugares[i], fecha, fecha, precios[i], 
+				ICP.altaPropuesta(nicknames[i], titulos[i], null, descripciones[i], lugares[i], fecha, precios[i], 
 					TRetorno.ENTRADA_GRATIS,  precios[i], imagenes[i]);
 				ICP.cambiarEstado(titulos[i], estados[i]);
 			}
-		
 		
 			/*
 			 * Hasta acá se crean 3 proponentes y 3 propuestas.
@@ -131,8 +132,38 @@ public class ConsultaPropuestaColaboraciones {
 			//Solo debería quedar una colaboración en la lista.
 			assertEquals(ICP.listarColaboraciones().size(),1);
 	
-			//Finalizamos el testeo del caso de uso CANCELAR COLABORACIÓN
+			//Finalizamos el testeo del caso de uso cancelar colaboración
 			ICP.finalizarCancelarColaboracionPropuesta();
+			
+			
+			//TAREA 2:
+			//Listamos los estados de las propuestas
+			ArrayList<String> estadosPropuesta = ICP.listarEstados();
+			assertEquals(estadosPropuesta.size(),6);
+			
+			
+			/*
+			 * Evaluo una propuesta que está en estado INGRESADA, para cambiar su estado a "Publicada".
+			 * 
+			 */
+			ICP.infoPropuesta("Una chiva para mi pais");
+			ICP.evaluar("p");
+			
+			/* Listo las propuestas por estado PUBLICADA, dados los datos actuales
+			   debería encontrar una sola propuesta. */
+			boolean b = false;
+			ArrayList<DtPropuesta> propuestas = ICP.listarPropuestaPorEstado(TEstado.PUBLICADA);
+			for(DtPropuesta p : propuestas) {
+				if(p.getTitulo().contains("Una chiva para mi pais")) {
+					b = true;
+					break;
+				}
+			}
+			
+			//Comprueba que efectivamente "Una chiva para mi país" esté en estado 'PUBLICADA'.
+			assertEquals(b,true);
+			
+			
 	}
 
 }

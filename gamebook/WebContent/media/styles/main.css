@@ -8,8 +8,8 @@
          url('../fonts/facebolf-webfont.svg#FacebookLetterFacesRegular') format('svg');
     font-weight: normal;
     font-style: normal;
+    
 }
-
 @font-face {
     font-family: 'GameOverRegular';
     src: url('../fonts/game_over-webfont.eot');
@@ -24,17 +24,19 @@
 
 body {
 	background-image: url("../images/background.jpg");
-	/* max-width: 100%;
-	height:auto; */
 	background-repeat: no-repeat;
 	background-attachment: fixed;
 	background-position: center;
 }
 
 h1 {
-    font-size: 40px
+	color: white;
+    font-size: 40px;
 }
 
+.text-color {
+	color: #FFFFFF;
+}
 /* Cabezal */
 
 
@@ -269,13 +271,72 @@ h1 {
 
 #listar .usuario img
 {
-	height: 42px;
+	height: 80px;
 }
 
-#listar .usuario .email {
+#listar .usuario .registrarcolaboracion {
     display: block;
     font-size: 0.8em;
 }
 #listar .usuario .derecha {
     display: inline-block;
+}
+
+/* Perfil usuario mostrar */
+.panel {
+    border: 3px solid rgba(0, 0, 0, 0);
+    border-radius: 4px 4px 4px 4px;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.05);
+    margin-bottom: 20px;
+}   
+
+.panel-primary {
+    border-color: #FFFFFF;
+}   
+
+.panel-primary > .panel-heading {
+    border-color: #FFFFF;
+}   
+
+.panel-heading {
+    border-bottom: 1px solid rgba(0, 0, 0, 0);
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    padding: 10px 15px;
+}   
+
+.panel-title {
+    font-size: 25px;
+    margin-bottom: 0;
+    margin-top: 0;
+}   
+
+.panel-body:before, .panel-body:after {
+    content: " ";
+    display: table;
+}   
+
+.panel-body:before, .panel-body:after {
+    content: " ";
+    display: table;
+}   
+
+.panel-body:after {
+    clear: both;
+}   
+
+.panel-body {
+    padding: 15px;
+}   
+
+.panel-footer {
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    border-top: 1px solid #DDDDDD;
+    padding: 10px 15px;
+}
+.emailboton {
+    width: 22px;
+    height: 22px;
+    border: none;
 }

@@ -40,7 +40,7 @@ public class ConsultaPropuesta extends HttpServlet {
 			String lugar = Fabrica.getInstance().getICtrlPropuesta().infoPropuesta(propuesta).getLugar();
 			Date fechaPrevista = Fabrica.getInstance().getICtrlPropuesta().infoPropuesta(propuesta).getFechaRealizacion();
 			float precioEntrada = Fabrica.getInstance().getICtrlPropuesta().infoPropuesta(propuesta).getPrecioEntrada();
-			float montoNecesario = Fabrica.getInstance().getICtrlPropuesta().infoPropuesta(propuesta).getMontoReunir();
+			float montoNecesario = Fabrica.getInstance().getICtrlPropuesta().infoPropuesta(propuesta).getMontoRequerido();
 			TRetorno tRetorno = Fabrica.getInstance().getICtrlPropuesta().infoPropuesta(propuesta).getTipoRetorno();
 			
 			request.setAttribute("titulo", titulo);
@@ -50,8 +50,8 @@ public class ConsultaPropuesta extends HttpServlet {
 			request.setAttribute("precioEntrada", precioEntrada);
 			request.setAttribute("montoNecesario", montoNecesario);
 			request.setAttribute("tipoRetorno", tRetorno);
-		} catch (Exception e) {
-			e.printStackTrace();
+		} catch (Exception exception) {
+			exception.printStackTrace();
 		}
 		
 		request.getRequestDispatcher("/WEB-INF/propuestas/consultaPropuesta.jsp").forward(request, response);

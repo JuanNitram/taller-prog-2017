@@ -11,7 +11,5 @@ import Logica.Datos;
 @SuiteClasses({ RegistrarUsuarioTest.class, SeguirUsuarioTest.class, AltaPropuestaTest.class, 
 	ConsultaPropuestaColaboraciones.class, CategoriasTest.class, DatosTest.class })
 public class AllTests {
-	
-	
 
 }

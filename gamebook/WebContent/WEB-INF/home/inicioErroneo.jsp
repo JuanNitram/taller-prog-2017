@@ -13,10 +13,7 @@
 		<div class="error">
 		<b>La combinación de correo electrónico/contraseña es incorrecta.</b>
 			<p>
-				Asegurese que la entró correctamente y en el si de que estas seguro
-				de que sea correcta, entonces alguien hackeo tu cuenta.
-				En ese caso usa el login <code>tprog@tprog.com</code>
-				con contraseña <code>manda</code>.
+				Asegurese de ingresar su usuario y contraseña correctamente
 			</p>
 		</div>
 

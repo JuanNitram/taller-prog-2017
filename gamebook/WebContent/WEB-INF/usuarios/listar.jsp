@@ -22,18 +22,18 @@
 				for(DtUsuario usuario: usuarios){
 			%>
 			<div class="usuario">
-				<img src="/media/images/defecto.gif" alt="foto"/>
+				<img src="/media/images/defecto.png" alt="foto"/>
 				
 				<div class="derecha">
 					<a class="nombre" href="consultaUsuario?usuario=<%= usuario.getNickName()  %>">
 						<%= usuario.getNickName() %>
 					</a>
 
-					<span class="email">
+					<span class="registrarcolaboracion text-color">
 						<%= usuario.getNombre() %>
 					</span>
 					
-					<span class="email">
+					<span class="email text-color">
 						<%= usuario.getEmail() %>
 					</span>
 				</div>

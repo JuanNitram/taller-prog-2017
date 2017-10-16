@@ -32,9 +32,9 @@ public class RegistrarUsuarioTest {
 		String [] apellidos = {"Vargas", "Paz", "Cardozo", "Baz", "Hernandes"};
 		String [] direcciones = {"Cerca de la torre", "Cerca de la catolica", "La nus cafundao", "Recien se muda", "El Pinar"};
 		String [] emails = {"martin@gmail", "peace@gmail", "lautix@gmail", "juancho@gmail", "gonzo@gmail"};
-		String [] biografias = {"EL DEBUGGER", "EL TESTER", "EL JARDINERO", "Juancho", "Gonzo"};
+		String [] biografias = {"EL DEBUGGER", "EL TESTER", "EL JARDINERO", "EL JUANCHO", "EL GONZOHH"};
 		String [] urlSitios = {"facebook.com", "google.com", "instagram.com", "badoo.com", "netflix.com"};
-		String [] contrasenias = {"Contrasenia", "Contrasenia", "Contrasenia"};
+		String [] contrasenias = {"Contrasenia", "Contrasenia", "Contrasenia", "Contrasenia", "Contrasenia"};
 		String [] rutaImgs = {"C:/+.jpg", "C:/+.jpg", "C:/+.jpg", "C:/+.jpg", "C:/+.jpg"};
 		Date [] fechaNacimientos = {new Date(20,07,1989), new Date(25,05,1988), new Date(10,06,1985), new Date(10,07,1978), new Date(20,07,1988)};
 		
@@ -95,7 +95,7 @@ public class RegistrarUsuarioTest {
 		String [] emails = {"martin@gmail", "peace@gmail", "lautix@gmail", "juancho@gmail", "gonzo@gmail"};
 		String [] biografias = {"EL DEBUGGER", "EL TESTER", "EL JARDINERO", "Juancho", "Gonzo"};
 		String [] urlSitios = {"facebook.com", "google.com", "instagram.com", "badoo.com", "netflix.com"};
-		String [] contraseniasCol = {"Contrasenia", "Contrasenia", "Contrasenia"};
+		String [] contraseniasCol = {"Contrasenia", "Contrasenia", "Contrasenia","Contrasenia","Contrasenia"};
 		String [] rutaImgs = {"C:/+.jpg", "C:/+.jpg", "C:/+.jpg", "C:/+.jpg", "C:/+.jpg"};
 		Date [] fechaNacimientos = {new Date(20,07,1989), new Date(25,05,1988), new Date(10,06,1985), new Date(10,07,1978), new Date(20,07,1988)};
 		

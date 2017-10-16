@@ -375,11 +375,11 @@ public class VerPropuesta2 extends JInternalFrame {
 		txtLugar.setText(dtP.getLugar());
 		txtCategoria.setText(dtP.getCategoria().getNombre());
 		DateFormat df = new SimpleDateFormat("dd/MM/yyyy hh:mm");
-		String fechaPub = df.format(dtP.getFechaPublicacion()),
-				fechaRealiz = df.format(dtP.getFechaRealizacion());
+		String fechaPub = (dtP.getFechaPublicacion() != null)?df.format(dtP.getFechaPublicacion()):"No se ha publicado";
+		String fechaRealiz = df.format(dtP.getFechaRealizacion());
 		txtFechaPublicacion.setText(fechaPub);
 		txtFechaRealizacion.setText(fechaRealiz);
-		txtMonto.setText("" + dtP.getMontoReunir());
+		txtMonto.setText("" + dtP.getMontoRequerido());
 		txtPrecio.setText(String.valueOf(dtP.getPrecioEntrada()));
 		txtProponente.setText(dtP.getNickProponente());
 		biografia.setText(dtP.getDescripcion());
@@ -396,13 +396,7 @@ public class VerPropuesta2 extends JInternalFrame {
 		colaboraciones = ICP.listarColaboraciones();
 		float totalreunido=0;
 		DefaultListModel model = new DefaultListModel<String>();
-	    for(DtColaboracion d : colaboraciones) {
-	    	if(d.getTitulo().equals(dtP.getTitulo())) {
-	    		totalreunido += d.getMontoAporte();
-	    		model.addElement(d.getNickname());
-	    	}
-	    }
-	    montoreunidotxt.setText(String.valueOf(totalreunido));
+	    montoreunidotxt.setText("" + dtP.getMontoReunido());
 		colaboracionesList.setModel(model);
 		colaboracionesList.addMouseListener(new MouseAdapter() {
 			@Override

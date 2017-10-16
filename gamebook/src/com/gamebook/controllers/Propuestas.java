@@ -32,7 +32,7 @@ public class Propuestas extends HttpServlet {
 			throws ServletException, IOException {
 
 			ArrayList<DtPropuesta> props = Fabrica.getInstance().getICtrlPropuesta().listarPropuestas();
-			if(props != null){
+			if (props != null){
 				request.setAttribute("propuestas", props);
 				request.getRequestDispatcher("/WEB-INF/propuestas/listar.jsp").forward(request, response);
 			}
@@ -46,7 +46,7 @@ public class Propuestas extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		processRequest(request,response);
+		processRequest(request, response);
 	}
 
 	/**
@@ -54,7 +54,7 @@ public class Propuestas extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		processRequest(request,response);
+		processRequest(request, response);
 	}
 
 }

@@ -11,24 +11,55 @@
 </head>
 <body>
 <jsp:include page="/WEB-INF/template/header.jsp"/>
-
+<div class ="main">
+<div class="container">
+ <div class="well span8 offset2">
+        <div class="row-fluid user-row">
+        </div>
+        <div class="row-fluid text-color" >
+            <div class="span8 offset1">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title text-color"><%= request.getAttribute("titulo")%></h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row-fluid">
+                         
+                            <div class="span6" >
+                                <table class="table table-condensed table-responsive table-user-information">
+                                    <tbody>
+                                    <tr>
+                                        <td>Lugar: </td>
+                                        <td><%= request.getAttribute("lugar") %></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Fecha Prevista:</td>
+                                        <td><%= request.getAttribute("fechaPrevista") %></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Precio Entrada: </td>
+										<td><%= "$ " + request.getAttribute("precioEntrada") %></td>
+										</tr>
+                                    <tr>
+                                        <td>Monto necesario: </td>
+                                        <td><%="$ " + request.getAttribute("montoNecesario") %></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Tipo de retorno: </td>
+                                        <td><%= request.getAttribute("tipoRetorno") %></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
  
-<%= request.getAttribute("titulo")%>
-<br>
-<br>
-<%= request.getAttribute("desc") %>
-<br>
-<br>
-<%= request.getAttribute("lugar") %>
-<br>
-<%= request.getAttribute("fechaPrevista") %>
-<br>
-<%= request.getAttribute("precioEntrada") %>
-<br>
-<%= request.getAttribute("montoNecesario") %>
-<br>
-<%= request.getAttribute("tipoRetorno") %>
-<br>	
 
 
 <jsp:include page="/WEB-INF/template/footer.jsp"/>

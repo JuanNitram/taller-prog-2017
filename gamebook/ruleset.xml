@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<ruleset name=" ruleset"
+    xmlns="http://pmd.sf.net/ruleset/1.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://pmd.sf.net/ruleset/1.0.0 http://pmd.sf.net/ruleset_xml_schema.xsd"
+    xsi:noNamespaceSchemaLocation="http://pmd.sf.net/ruleset_xml_schema.xsd">
+
+  <description>
+  Archivo de reglas para la Tarea 2 de Taller de Programacion -- Culturarte Grupo 5 Taller de Programación
+  </description>
+ 
+ 
+  <!-- Here's some rules we'll specify one at a time -->
+  <rule ref="rulesets/design.xml/AbstractClassWithoutAbstractMethod"/>
+  <rule ref="rulesets/coupling.xml/LooseCoupling"/>
+  <rule ref="rulesets/naming.xml/PackageName"/>
+  <rule ref="rulesets/naming.xml/ShortVariable"/>
+  <rule ref="rulesets/unusedcode.xml/UnusedPrivateField"/>
+
+   
+</ruleset>

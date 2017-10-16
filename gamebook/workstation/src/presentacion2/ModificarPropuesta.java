@@ -101,7 +101,7 @@ public class ModificarPropuesta extends JInternalFrame {
 					DtPropuesta dtP = ICP.infoPropuesta(propuestaSelected);
 					txtTitulo.setText(dtP.getTitulo());
 					txtLugar.setText(dtP.getLugar());
-					txtMonto.setText(String.valueOf(dtP.getMontoReunir()));
+					txtMonto.setText(String.valueOf(dtP.getMontoRequerido()));
 					txtFechaRealizacion.setDate(dtP.getFechaRealizacion());
 					txtPrecioEntrada.setText(String.valueOf(dtP.getPrecioEntrada()));
 					txtDescripcion.setText(dtP.getDescripcion());

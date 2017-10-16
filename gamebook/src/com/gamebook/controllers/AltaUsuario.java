@@ -1,7 +1,6 @@
 package com.gamebook.controllers;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Date;
 
 import javax.servlet.ServletException;
@@ -9,12 +8,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import com.gamebook.model.EstadoSesion;
 
 import Logica.Fabrica;
-import dataTypes.DtUsuario;
 
 /**
  * Servlet implementation class AltaUsuario
@@ -42,23 +38,29 @@ public class AltaUsuario extends HttpServlet {
 		String confContrasenia = request.getParameter("txConfContrasenia");
 		String fechaNac = request.getParameter("date");    /*2017-10-25*/
 		String Tusuario = request.getParameter("TipoUsuario");
+		System.out.println(nombre);
+		System.out.println(apellido);
+		System.out.println(email);
+		System.out.println(contrasenia);
+		System.out.println(confContrasenia);
+		System.out.println(Tusuario);
+		System.out.println(nickName);
 		
-		String [] fechaSplit = fechaNac.split("-");
-		
+		String [] fechaSplit = fechaNac.split("/");
 		System.out.println(fechaNac);
 		
-		Date d = new Date(Integer.parseInt(fechaSplit[0]),Integer.parseInt(fechaSplit[1]),
+		Date variableFecha = new Date(Integer.parseInt(fechaSplit[0]), Integer.parseInt(fechaSplit[1]),
 				Integer.parseInt(fechaSplit[2]));
 		
-		if(contrasenia.equals(confContrasenia)){
-			if(Tusuario.equals("Proponente")){
+		if (contrasenia.equals(confContrasenia)){
+			if (Tusuario.equals("Proponente")){
 				String direccion = request.getParameter("txDireccion");
 				String biografia = request.getParameter("txBiografia");
 				String linkSitio = request.getParameter("txLinkSitio");
-				Fabrica.getInstance().getICtrlUsuario().altaProponente(nickName,contrasenia, nombre, apellido, direccion, email, biografia, linkSitio, "", d);
+				Fabrica.getInstance().getICtrlUsuario().altaProponente(nickName, contrasenia, nombre, apellido, direccion, email, biografia, linkSitio, "", variableFecha);
 			}
 			else{
-				Fabrica.getInstance().getICtrlUsuario().altaColaborador(nickName,contrasenia, nombre, apellido, email, "", d);
+				Fabrica.getInstance().getICtrlUsuario().altaColaborador(nickName, contrasenia, nombre, apellido, email, "", variableFecha);
 			}
 			
 			request.getRequestDispatcher("/WEB-INF/home/iniciar.jsp").forward(request, response);
@@ -73,7 +75,7 @@ public class AltaUsuario extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		processRequest(request,response);
+		processRequest(request, response);
 	}
 
 	/**
@@ -81,7 +83,7 @@ public class AltaUsuario extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		processRequest(request,response);
+		processRequest(request, response);
 	}
 
 }

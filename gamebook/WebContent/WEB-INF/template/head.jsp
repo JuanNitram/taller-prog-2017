@@ -6,6 +6,8 @@
 
 <!-- referencia al CSS maestro -->
 <link rel="stylesheet" type="text/css" href="media/styles/main.css">
+<link href="/recursos/bootstrap/css/bootstrap.icon-large.min.css" rel="stylesheet">
+
 
 <!-- Para evitar ver caracteres raros -->
 <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
@@ -29,5 +31,5 @@
 <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
 <meta http-equiv="Content-language" content="es" />
 
-<script src="recursos/js/jquery.js"></script>
-<script src="recursos/js/bootstrap.min.js"></script>
+<script src="/media/recursos/js/jquery.js"></script>
+<script src="/media/recursos/js/bootstrap.min.js"></script>

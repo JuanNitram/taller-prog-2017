@@ -27,14 +27,14 @@ public class CargarDatos extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
     
-    public void CargaDeDatos(){
+    public void cargaDeDatos(){
     	if (datos == null)
     		datos= new Datos();
     }
 
     protected void processRequest(HttpServletRequest request,
     		HttpServletResponse response) throws ServletException, IOException {
-    	CargaDeDatos();
+    	cargaDeDatos();
     	request.getRequestDispatcher("/home").forward(request, response);
     }
 	/**

@@ -414,7 +414,6 @@ public class RegistrarPropuesta2 extends JInternalFrame {
 				try {
 					String rutaImg ="";
 					DtCategoria categoria = new DtCategoria(fieldCategoria.getText());
-					Date fechaP = new Date();
 					TRetorno retorno = null;
 					
 					if(retPorcentaje.isSelected() && !retEntradas.isSelected())
@@ -449,7 +448,7 @@ public class RegistrarPropuesta2 extends JInternalFrame {
 						if(customImg) rutaImg = txtTitulo.getText().toString().hashCode() + "";
 						
 						ICP.altaPropuesta(cmbProponentes.getSelectedItem().toString(), txtTitulo.getText().trim(), categoria, txtDescripcion.getText().trim(), txtLugar.getText().trim(), txtFechaRealizacion.getDate(), 
-							fechaP, montoTrim, retorno, precioTrim, rutaImg);
+							montoTrim, retorno, precioTrim, rutaImg);
 							
 						if(customImg)
 							guardarImagen(rutaImg);

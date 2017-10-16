@@ -2,7 +2,6 @@ package com.gamebook.controllers;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Iterator;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -14,10 +13,7 @@ import javax.servlet.http.HttpSession;
 import com.gamebook.exceptions.UsuarioNoEncontrado;
 import com.gamebook.model.EstadoSesion;
 import Logica.Fabrica;
-import dataTypes.DtColaborador;
-import dataTypes.DtProponente;
 import dataTypes.DtUsuario;
-import sun.rmi.runtime.Log;
 
 /**
  * Servlet implementation class Login
@@ -56,12 +52,12 @@ public class Login extends HttpServlet {
 		try {
 			DtUsuario user;
 			ArrayList<DtUsuario> arregloProponentes = Fabrica.getInstance().getICtrlUsuario().listarUsuarios();	
-			int i =0;
-			while (i < arregloProponentes.size() && !arregloProponentes.get(i).getNickName().equals(login))
-				i++;
+			int index =0;
+			while (index < arregloProponentes.size() && !arregloProponentes.get(index).getNickName().equals(login))
+				index++;
 			if (Fabrica.getInstance().getICtrlUsuario().existeUsuario(login, null)){
-				user = arregloProponentes.get(i);
-				if(Fabrica.getInstance().getICtrlUsuario().checkPassword(login, password)){
+				user = arregloProponentes.get(index);
+				if (Fabrica.getInstance().getICtrlUsuario().checkPassword(login, password)){
 					nuevoEstado = EstadoSesion.LOGIN_CORRECTO;
 					request.getSession().setAttribute("usuario_logueado", user.getNickName());
 					System.out.println(user.getEmail());
@@ -94,17 +90,17 @@ public class Login extends HttpServlet {
 	 * @throws UsuarioNoEncontrado 
 	 */
 	static public DtUsuario getUsuarioLogueado(HttpServletRequest request){
-		DtUsuario user = null;
+		DtUsuario usuario = null;
 		try{
 			if (Fabrica.getInstance().getICtrlUsuario().esProponente((String) request.getSession().getAttribute("usuario_logueado")))
-				user = Fabrica.getInstance().getICtrlUsuario().infoProponente((String) request.getSession().getAttribute("usuario_logueado"));
+				usuario = Fabrica.getInstance().getICtrlUsuario().infoProponente((String) request.getSession().getAttribute("usuario_logueado"));
 			else 
-				user = Fabrica.getInstance().getICtrlUsuario().infoColaborador((String) request.getSession().getAttribute("usuario_logueado"));
+				usuario = Fabrica.getInstance().getICtrlUsuario().infoColaborador((String) request.getSession().getAttribute("usuario_logueado"));
 		
-		}catch(Exception e){
+		}catch (Exception excepcionRetornadaPorElPrograma){
 			System.out.println("No se pudo obtener el usuario logeado");
 		}
-		return user;
+		return usuario;
 	}
 	
 	/**

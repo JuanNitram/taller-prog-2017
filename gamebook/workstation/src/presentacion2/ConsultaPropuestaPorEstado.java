@@ -118,7 +118,6 @@ public class ConsultaPropuestaPorEstado extends JInternalFrame {
 				TEstado estado;
 				switch(comboBox.getSelectedItem().toString()) {
 				case "Ingresada":
-					System.out.println("ingresada");
 					estado = TEstado.INGRESADA;
 					break;
 				case "Publicada":

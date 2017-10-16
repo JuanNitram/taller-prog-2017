@@ -2,16 +2,11 @@ package com.gamebook.controllers;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Date;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import com.gamebook.exceptions.UsuarioNoEncontrado;
 
 import Logica.Fabrica;
 import dataTypes.DtUsuario;
@@ -41,19 +36,19 @@ public class Usuarios extends HttpServlet {
 			throws ServletException, IOException {
 		String usuario = request.getParameter("usuario");
 			
-		if(usuario == null) {
+		if (usuario == null) {
 			
 			//Date d = new Date();
 			//Fabrica.getInstance().getICtrlUsuario().altaColaborador("Juan", "Juan", "Juan", "Juan", "Juan", "", d);
 			
 			// no se seteó el usuario (lista todos los usuarios)
 			ArrayList<DtUsuario> usrs = Fabrica.getInstance().getICtrlUsuario().listarUsuarios();
-			if(usrs != null){
+			if (usrs != null){
 				request.setAttribute("usuarios", usrs);
 			
 				request.getRequestDispatcher("/WEB-INF/usuarios/listar.jsp").forward(request, response);
 			}
-			else{
+			else {
 				request.getRequestDispatcher("/WEB-INF/index.html").forward(request, response);
 			}	
 		}
