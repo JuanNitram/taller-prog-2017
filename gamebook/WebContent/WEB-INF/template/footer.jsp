@@ -1,7 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 
-<div class="footer" >
+
    
 
     <!-- Footer -->
@@ -13,4 +13,3 @@
     </footer>
 
 
-</div>

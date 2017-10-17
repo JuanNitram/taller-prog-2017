@@ -43,13 +43,13 @@ public class Usuarios extends HttpServlet {
 			
 			// no se seteó el usuario (lista todos los usuarios)
 			ArrayList<DtUsuario> usrs = Fabrica.getInstance().getICtrlUsuario().listarUsuarios();
-			if (usrs != null){
+			if (usrs.size() > 0){
 				request.setAttribute("usuarios", usrs);
 			
 				request.getRequestDispatcher("/WEB-INF/usuarios/listar.jsp").forward(request, response);
 			}
 			else {
-				request.getRequestDispatcher("/WEB-INF/index.html").forward(request, response);
+				request.getRequestDispatcher("/WEB-INF/errorPages/404.jsp").forward(request, response);
 			}	
 		}
 	}

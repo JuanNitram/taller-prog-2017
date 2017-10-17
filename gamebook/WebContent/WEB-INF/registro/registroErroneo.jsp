@@ -27,7 +27,9 @@
 		</div>
 	</form>
 
-	<jsp:include page="/WEB-INF/template/footer.jsp"/>
+	<div class="footer">
+		<jsp:include page="/WEB-INF/template/footer.jsp"/>
+		</div>
 	
 	<script>
 		function goBack() {

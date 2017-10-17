@@ -6,7 +6,6 @@
 
 <!-- referencia al CSS maestro -->
 <link rel="stylesheet" type="text/css" href="media/styles/main.css">
-<link href="/recursos/bootstrap/css/bootstrap.icon-large.min.css" rel="stylesheet">
 
 
 <!-- Para evitar ver caracteres raros -->
@@ -17,8 +16,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <!-- para el icono de la página -->
-<link href="media/images/favicon.ico" rel="icon" type="image/x-icon" />
-<link href="media/images/favicon.ico" rel="shortcut icon" />
+<link href="/media/images/logo_icon.png" rel="icon"  />
+<link href="/media/images/logo_icon.png" rel="shortcut icon" />
 <link href="recursos/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
 <script src="recursos/jquery/jquery.min.js"></script>
