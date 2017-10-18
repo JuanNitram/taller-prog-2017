@@ -4,7 +4,7 @@ import java.awt.EventQueue;
 
 
 import dataTypes.DtColaboracion;
-import Logica.ICtrlPropuesta;
+import logica.ICtrlPropuesta;
 
 import javax.swing.JInternalFrame;
 import javax.swing.JPanel;

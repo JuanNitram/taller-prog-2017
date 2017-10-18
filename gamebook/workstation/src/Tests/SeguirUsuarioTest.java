@@ -6,8 +6,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import org.junit.Test;
 
-import Logica.Fabrica;
-import Logica.ICtrlUsuario;
+import logica.Fabrica;
+import logica.ICtrlUsuario;
 import dataTypes.DtUsuario;
 
 public class SeguirUsuarioTest {

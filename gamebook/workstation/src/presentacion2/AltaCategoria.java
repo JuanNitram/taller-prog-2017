@@ -22,7 +22,7 @@ import javax.swing.event.InternalFrameEvent;
 import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.TreePath;
 
-import Logica.ICtrlPropuesta;
+import logica.ICtrlPropuesta;
 
 public class AltaCategoria extends JInternalFrame {
 

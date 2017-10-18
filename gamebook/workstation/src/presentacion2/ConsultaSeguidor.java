@@ -7,7 +7,7 @@ import java.awt.GridBagLayout;
 import javax.swing.JLabel;
 import javax.swing.border.EmptyBorder;
 
-import Logica.ICtrlUsuario;
+import logica.ICtrlUsuario;
 import dataTypes.DtUsuario;
 
 import java.awt.GridBagConstraints;

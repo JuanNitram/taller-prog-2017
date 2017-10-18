@@ -23,8 +23,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import Logica.ICtrlUsuario;
-import Logica.clases.Usuario;
+import logica.ICtrlUsuario;
+import logica.clases.Usuario;
 import dataTypes.DtUsuario;
 
 public class SeguirUsuario2 extends JInternalFrame {

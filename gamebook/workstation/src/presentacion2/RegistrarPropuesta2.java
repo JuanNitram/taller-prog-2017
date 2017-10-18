@@ -16,8 +16,8 @@ import javax.swing.border.EmptyBorder;
 import com.toedter.calendar.JCalendar;
 
 import dataTypes.DtCategoria;
-import Logica.ICtrlPropuesta;
-import Logica.ICtrlUsuario;
+import logica.ICtrlPropuesta;
+import logica.ICtrlUsuario;
 import dataTypes.TRetorno;
 
 import java.awt.GridBagLayout;

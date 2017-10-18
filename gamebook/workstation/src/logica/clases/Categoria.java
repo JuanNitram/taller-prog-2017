@@ -1,4 +1,4 @@
-package Logica.clases;
+package logica.clases;
 
 import java.util.HashMap;
 import java.util.Map;

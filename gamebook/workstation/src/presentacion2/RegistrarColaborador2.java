@@ -11,7 +11,7 @@ import java.awt.Cursor;
 
 import javax.swing.border.EmptyBorder;
 
-import Logica.ICtrlUsuario;
+import logica.ICtrlUsuario;
 import utils.ValidarEmail;
 
 import java.awt.GridBagLayout;

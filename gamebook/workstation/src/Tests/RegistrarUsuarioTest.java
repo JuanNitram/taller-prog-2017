@@ -4,8 +4,8 @@ import static org.junit.Assert.*;
 
 import java.util.Date;
 
-import Logica.Fabrica;
-import Logica.ICtrlUsuario;
+import logica.Fabrica;
+import logica.ICtrlUsuario;
 import dataTypes.DtColaborador;
 import dataTypes.DtProponente;
 

@@ -12,7 +12,7 @@ import javax.swing.JOptionPane;
 import javax.swing.Timer;
 import javax.swing.border.EmptyBorder;
 
-import Logica.controladores.CtrlPropuesta;
+import logica.controladores.CtrlPropuesta;
 
 import javax.swing.JTextField;
 import java.awt.BorderLayout;

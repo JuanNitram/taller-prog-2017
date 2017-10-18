@@ -2,7 +2,7 @@ package presentacion2;
 
 import java.awt.EventQueue;
 
-import Logica.ICtrlUsuario;
+import logica.ICtrlUsuario;
 import utils.ValidarEmail;
 
 import javax.swing.JInternalFrame;

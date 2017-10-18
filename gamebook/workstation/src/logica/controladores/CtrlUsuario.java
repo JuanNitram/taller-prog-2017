@@ -1,4 +1,4 @@
-package Logica.controladores;
+package logica.controladores;
 
 import java.util.Map;
 import java.util.Map.Entry;

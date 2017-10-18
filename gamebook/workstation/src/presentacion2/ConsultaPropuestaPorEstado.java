@@ -22,7 +22,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
 
-import Logica.ICtrlPropuesta;
+import logica.ICtrlPropuesta;
 import dataTypes.DtPropuesta;
 import dataTypes.TEstado;
 

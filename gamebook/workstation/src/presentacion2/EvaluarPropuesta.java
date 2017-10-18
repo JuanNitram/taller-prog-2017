@@ -12,7 +12,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import Logica.ICtrlPropuesta;
+import logica.ICtrlPropuesta;
 import dataTypes.DtPropuesta;
 import dataTypes.TEstado;
 import javax.swing.JComboBox;

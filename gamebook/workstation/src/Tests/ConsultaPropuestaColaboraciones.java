@@ -7,9 +7,9 @@ import java.util.Date;
 
 import org.junit.Test;
 
-import Logica.clases.Estado;
-import Logica.controladores.CtrlPropuesta;
-import Logica.controladores.CtrlUsuario;
+import logica.clases.Estado;
+import logica.controladores.CtrlPropuesta;
+import logica.controladores.CtrlUsuario;
 import dataTypes.DtPropuesta;
 import dataTypes.TEstado;
 import dataTypes.TRetorno;

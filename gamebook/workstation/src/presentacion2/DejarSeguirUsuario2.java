@@ -1,7 +1,7 @@
 package presentacion2;
 
 import java.awt.EventQueue;
-import Logica.ICtrlUsuario;
+import logica.ICtrlUsuario;
 
 import javax.swing.JInternalFrame;
 import javax.swing.JPanel;

@@ -1,5 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="com.Culturarte.controllers.Login"%>
+<%@page import="com.culturarte.controllers.Login"%>
 <%@page import="dataTypes.DtUsuario"%>
 <%@page import="Logica.Fabrica"%>
 <%@page import="dataTypes.DtUsuario"%>
