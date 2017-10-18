@@ -73,15 +73,17 @@
 				<div>Biografia:
 				<%=	dtP.getBiografia()%></div>
 			<div class="panel-footer">
-				<a type="submit"
-    				onclick="window.location='<%=dtP.getLinkSitio()%>';"> <button      
+				
+				
+				<a onclick="window.location='<%=dtP.getLinkSitio()%>';"><button      
 					class="btn btn-warning" type="button">
 						<img class="emailboton" src="/media/images/link.png"></button></a>
+						 
+						 
 						 <a href="<%="mailto:" + dtP.getEmail()%>"><button
 						class="btn btn-success meilito" type="button"
 						data-original-title="Send message to user">
-						<img class="emailboton" src="/media/images/email.png">
-					</button></a>
+						<img class="emailboton" src="/media/images/email.png"></button></a>
 				</div>
 			</div>
 		</div>

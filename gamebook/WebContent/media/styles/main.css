@@ -133,13 +133,13 @@ h1 {
 .izquierdauser{
 	float:left;
 	height: 100%;
-	margin-left: 50px;
+	margin: center;
 }
 
 .derechauser{
 	float:right;
 	height: 100%;
-	margin-right: 50px;
+	margin: center;
 }
 .izquierdaimg {
 	 float:left;
