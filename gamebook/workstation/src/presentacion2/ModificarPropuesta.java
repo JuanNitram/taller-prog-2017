@@ -29,8 +29,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.Button;
 
-import Logica.ICtrlPropuesta;
-import Logica.ICtrlUsuario;
+import logica.ICtrlPropuesta;
+import logica.ICtrlUsuario;
 import dataTypes.DtPropuesta;
 import dataTypes.TRetorno;
 import dataTypes.DtCategoria;

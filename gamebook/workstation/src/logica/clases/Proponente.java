@@ -1,4 +1,4 @@
-package Logica.clases;
+package logica.clases;
 
 import java.util.Date;
 import java.util.Map;

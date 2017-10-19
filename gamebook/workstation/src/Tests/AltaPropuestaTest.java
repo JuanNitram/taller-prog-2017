@@ -6,12 +6,12 @@ import java.util.Date;
 
 import org.junit.Test;
 
-import Logica.Fabrica;
-import Logica.ICtrlPropuesta;
-import Logica.ICtrlUsuario;
-import Logica.clases.Estado;
-import Logica.controladores.CtrlPropuesta;
-import Logica.controladores.CtrlUsuario;
+import logica.Fabrica;
+import logica.ICtrlPropuesta;
+import logica.ICtrlUsuario;
+import logica.clases.Estado;
+import logica.controladores.CtrlPropuesta;
+import logica.controladores.CtrlUsuario;
 import dataTypes.DtCategoria;
 import dataTypes.TEstado;
 import dataTypes.TRetorno;

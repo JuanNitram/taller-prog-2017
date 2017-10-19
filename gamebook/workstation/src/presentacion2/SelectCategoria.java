@@ -17,7 +17,7 @@ import javax.swing.JTree;
 import javax.swing.border.EmptyBorder;
 import javax.swing.tree.DefaultTreeModel;
 
-import Logica.ICtrlPropuesta;
+import logica.ICtrlPropuesta;
 import javax.swing.JFrame;
 import javax.swing.event.InternalFrameAdapter;
 import javax.swing.event.InternalFrameEvent;

@@ -24,7 +24,7 @@ import javax.swing.event.ListSelectionListener;
 import dataTypes.DtColaboracion;
 import dataTypes.DtColaborador;
 import dataTypes.DtPropuesta;
-import Logica.ICtrlPropuesta;
+import logica.ICtrlPropuesta;
 import java.awt.event.ItemListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;

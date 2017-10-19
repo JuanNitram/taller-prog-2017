@@ -1,60 +1,60 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
-  <display-name>Culturarte</display-name>
+  <display-name>culturarte</display-name>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
   </welcome-file-list>
   <servlet>
     <servlet-name>Servlet Iniciar Sesion</servlet-name>
-    <servlet-class>com.Culturarte.controllers.Login</servlet-class>
+    <servlet-class>com.culturarte.controllers.Login</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>RegistrarColaboracion</servlet-name>
-    <servlet-class>com.Culturarte.controllers.RegistrarColaboracion</servlet-class>
+    <servlet-class>com.culturarte.controllers.RegistrarColaboracion</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>AltaPropuesta</servlet-name>
-    <servlet-class>com.Culturarte.controllers.AltaPropuesta</servlet-class>
+    <servlet-class>com.culturarte.controllers.AltaPropuesta</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>Servlet Cargar Datos</servlet-name>
-    <servlet-class>com.Culturarte.controllers.CargarDatos</servlet-class>
+    <servlet-class>com.culturarte.controllers.CargarDatos</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>AltaUsuario</servlet-name>
-    <servlet-class>com.Culturarte.controllers.AltaUsuario</servlet-class>
+    <servlet-class>com.culturarte.controllers.AltaUsuario</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>NuevaColaboracion</servlet-name>
-    <servlet-class>com.Culturarte.controllers.NuevaColaboracion</servlet-class>
+    <servlet-class>com.culturarte.controllers.NuevaColaboracion</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>ConsultaUsuario</servlet-name>
-    <servlet-class>com.Culturarte.controllers.ConsultaUsuario</servlet-class>
+    <servlet-class>com.culturarte.controllers.ConsultaUsuario</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>ConsultaPropuesta</servlet-name>
-    <servlet-class>com.Culturarte.controllers.ConsultaPropuesta</servlet-class>
+    <servlet-class>com.culturarte.controllers.ConsultaPropuesta</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>Home</servlet-name>
-    <servlet-class>com.Culturarte.controllers.Home</servlet-class>
+    <servlet-class>com.culturarte.controllers.Home</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>Perfil</servlet-name>
-    <servlet-class>com.Culturarte.controllers.Perfil</servlet-class>
+    <servlet-class>com.culturarte.controllers.Perfil</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>Usuarios</servlet-name>
-    <servlet-class>com.Culturarte.controllers.Usuarios</servlet-class>
+    <servlet-class>com.culturarte.controllers.Usuarios</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>Propuestas</servlet-name>
-    <servlet-class>com.Culturarte.controllers.Propuestas</servlet-class>
+    <servlet-class>com.culturarte.controllers.Propuestas</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>CerrarSesion</servlet-name>
-    <servlet-class>com.Culturarte.controllers.CerrarSesion</servlet-class>
+    <servlet-class>com.culturarte.controllers.CerrarSesion</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>Servlet Iniciar Sesion</servlet-name>

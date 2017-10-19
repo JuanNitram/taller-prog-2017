@@ -1,7 +1,7 @@
-package Logica;
+package logica;
 
-import Logica.controladores.CtrlPropuesta;
-import Logica.controladores.CtrlUsuario;
+import logica.controladores.CtrlPropuesta;
+import logica.controladores.CtrlUsuario;
 
 public class Fabrica {
 	private static final Fabrica instance = new Fabrica();

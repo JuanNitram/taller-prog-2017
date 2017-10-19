@@ -6,7 +6,7 @@ import javax.swing.tree.TreePath;
 
 import org.junit.Test;
 
-import Logica.controladores.CtrlPropuesta;
+import logica.controladores.CtrlPropuesta;
 
 public class CategoriasTest {
 

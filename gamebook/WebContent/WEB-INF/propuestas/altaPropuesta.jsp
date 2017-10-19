@@ -6,7 +6,7 @@
 <%@ page import="javax.swing.tree.DefaultMutableTreeNode"%>
 <%@ page import="javax.swing.tree.TreeModel"%>
 <%@ page import="javax.swing.JTree"%>
-<%@page import="com.Culturarte.controllers.AltaPropuesta"%>
+<%@page import="com.culturarte.controllers.AltaPropuesta"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -93,6 +93,8 @@
 
 
 
-<jsp:include page="/WEB-INF/template/footer.jsp" />
+<div class="footer">
+		<jsp:include page="/WEB-INF/template/footer.jsp"/>
+		</div>
 </body>
 </html>

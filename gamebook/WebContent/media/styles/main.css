@@ -27,6 +27,8 @@ body {
 	background-repeat: no-repeat;
 	background-attachment: fixed;
 	background-position: center;
+	height: 100%;
+    padding-top: 50px;
 }
 
 h1 {
@@ -42,13 +44,8 @@ h1 {
 
 #header .logo
 {
-    float: left;
     font-family: "FacebookLetterFacesRegular";
     font-size: 52px;
-	  letter-spacing: 1px;
-    margin-bottom: 3px;
-    margin-left: 80px;
-    margin-top: 27px;
 }
 
 #header .logo a:hover {
@@ -59,16 +56,12 @@ h1 {
 {
     font-size: 14px;
     font-weight: normal;
-    margin-left: 360px;
     margin-top: 62px;
 }
 
 #header .usuario {
-    bottom: 18px;
     float: right;
     font-size: 14px;
-    margin-right: 16px;
-    position: relative;
 }
 
 #header a
@@ -93,23 +86,29 @@ h1 {
 }
 
 /* footer */
-
-.footer {
-	  position: fixed;
+.iniciofooter{
+	 position: absolute;
 	  right: 0;
 	  bottom: 0;
 	  left: 0;
+}
+.footer {
+	  position: static;
+	  right: 0;
+	  bottom: 0;
+	  left: 0;
+	  margin-top: 50px
 	  
 	}
 
 .main
 {
 	background-color: #343a40;
-	border: 1px solid #CCCCCC;
-    margin: 0 auto;
+	border: 2px solid #CCCCCC;
+  	margin: 0 auto;
     width: 80%;
 	border-radius: 30px 30px 30px 30px;
-    box-shadow: 0 0 8px #FFFFFF;
+    box-shadow: 0 0 10px #000000;
     padding: 30px;
 }
 
@@ -124,9 +123,30 @@ h1 {
 .contenedor_principal .izquierda
 {
     float:left;
-    border-right: 2px solid #DDDDDD;
     padding: 25px;
     margin: 25px;
+    border-right: 2px solid #DDDDDD;
+}
+
+
+
+.izquierdauser{
+	float:left;
+	height: 100%;
+	margin: center;
+}
+
+.derechauser{
+	float:right;
+	height: 100%;
+	margin: center;
+}
+.izquierdaimg {
+	 float:left;
+	 height: 100%;
+	 align-items: center;
+    justify-content: center;
+    
 }
 
 .contenedor_principal .derecha
@@ -156,6 +176,11 @@ h1 {
     margin: 25px;
 }
 
+.derecha {
+	
+	padding: 10px;
+}
+
 /* Pagina de error */
 
 .error
@@ -163,7 +188,6 @@ h1 {
     background-color:#FFEBE8;
     border: 2px solid #DD3C10;
     padding: 6px;
-    margin-bottom: 15px;
 }
 
 
@@ -179,14 +203,7 @@ h1 {
     font-weight: bold;
 }
 
-.fila_input label
-{
-    display: block;
-    float: left;
-    width: 120px;
-    font-size: 12px;
-    font-weight: bold;
-}
+
 
 .fila_input .con_margen
 {
@@ -216,15 +233,19 @@ h1 {
 
 #error_page
 {
-    color: white;
+    position: fixed;
+	  right: 0;
+	  bottom: 50px;
+	  left: 0;
+	  color: #FFFFFF;
+    
 }
 
-#error_page .gameover
+#error_page .error
 {
 	font-family: "GameOverRegular";
     font-size: 14em;
     margin-left: 25px;
-    margin-top: 20px;
     text-align: center;
 }
 
@@ -233,45 +254,41 @@ h1 {
 	color: #000000;
 }
 
-#error_page .main
-{
-	margin-bottom: 30px;
-}
 
 #error_page p
 {
 	text-align: center;
+	
 }
 
-#error_page #dead_mario
-{
-    background: url("../images/dead_mario.png") no-repeat scroll 0 0 transparent;
-    height: 40px;
-    position: absolute;
-    right: 15%;
-    top: 364px;
-    width: 38px;
-}
 
 /** Listar **/
 
-#listar {
-}
+
 
 #listar .usuario {
-	border-bottom: 1px solid #CCCCCC;
-    margin-top: 10px;
-    padding-bottom: 15px;
-    width: 50%;
+	display: flex;
+    align-items: center;
+	border-bottom: 2px solid #CCCCCC;
 }
 
 #listar .usuario:last-child {
 	border-bottom: none;
 }
 
+#listaimage img{
+	width:150px; /* you can use % */
+    height: auto;
+}
+
+#userimage img {
+	width:300px; /* you can use % */
+    height: auto;
+}
 #listar .usuario img
 {
-	height: 80px;
+	height: 100px;
+	margin: 10px 25px 10px 10px 
 }
 
 #listar .usuario .registrarcolaboracion {
@@ -280,6 +297,7 @@ h1 {
 }
 #listar .usuario .derecha {
     display: inline-block;
+    
 }
 
 /* Perfil usuario mostrar */
@@ -288,6 +306,8 @@ h1 {
     border-radius: 4px 4px 4px 4px;
     box-shadow: 0 2px 2px rgba(0, 0, 0, 0.05);
     margin-bottom: 20px;
+    text-align: center;
+
 }   
 
 .panel-primary {
@@ -295,7 +315,7 @@ h1 {
 }   
 
 .panel-primary > .panel-heading {
-    border-color: #FFFFF;
+    border-color: #FFFFFF;
 }   
 
 .panel-heading {
@@ -327,7 +347,9 @@ h1 {
 
 .panel-body {
     padding: 15px;
-}   
+}  
+
+ 
 
 .panel-footer {
     border-bottom-left-radius: 3px;

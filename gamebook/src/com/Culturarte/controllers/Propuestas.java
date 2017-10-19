@@ -32,12 +32,12 @@ public class Propuestas extends HttpServlet {
 			throws ServletException, IOException {
 
 			ArrayList<DtPropuesta> props = Fabrica.getInstance().getICtrlPropuesta().listarPropuestas();
-			if (props != null){
+			if (props.size() > 0){
 				request.setAttribute("propuestas", props);
 				request.getRequestDispatcher("/WEB-INF/propuestas/listar.jsp").forward(request, response);
 			}
 			else{
-				request.getRequestDispatcher("/WEB-INF/index.html").forward(request, response);
+				request.getRequestDispatcher("/WEB-INF/errorPages/404.jsp").forward(request, response);
 			}
 	}
     

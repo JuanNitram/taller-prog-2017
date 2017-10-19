@@ -1,10 +1,10 @@
 package presentacion2;
 
-import Logica.ICtrlUsuario;
+import logica.ICtrlUsuario;
 import dataTypes.TEstado;
-import Logica.ICtrlPropuesta;
-import Logica.Datos;
-import Logica.Fabrica;
+import logica.ICtrlPropuesta;
+import logica.Datos;
+import logica.Fabrica;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;

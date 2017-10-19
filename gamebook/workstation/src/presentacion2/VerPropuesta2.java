@@ -30,7 +30,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
-import Logica.ICtrlPropuesta;
+import logica.ICtrlPropuesta;
 import dataTypes.DtColaboracion;
 import dataTypes.DtPropuesta;
 import dataTypes.TRetorno;

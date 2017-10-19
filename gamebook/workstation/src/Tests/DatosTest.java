@@ -4,9 +4,9 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import Logica.Datos;
-import Logica.controladores.CtrlPropuesta;
-import Logica.controladores.CtrlUsuario;
+import logica.Datos;
+import logica.controladores.CtrlPropuesta;
+import logica.controladores.CtrlUsuario;
 
 public class DatosTest {
 

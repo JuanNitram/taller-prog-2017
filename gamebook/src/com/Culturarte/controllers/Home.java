@@ -64,6 +64,7 @@ public class Home extends HttpServlet {
 				// hace que se ejecute el jsp sin cambiar la url
 				req.getRequestDispatcher("/WEB-INF/home/inicioErroneo.jsp").
 						forward(req, resp);
+				req.getSession().setAttribute("estado_sesion", EstadoSesion.NO_LOGIN);
 				System.out.println("Estoy en login_incorrecto en home");
 				break;
 			case LOGIN_CORRECTO:

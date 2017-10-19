@@ -7,7 +7,7 @@
 
 <title>Iniciar sesión | Culturarte</title>
 </head>
-<body>
+<body class="iniciofooter">
 	<jsp:include page="/WEB-INF/template/header.jsp" />
 
 	<!-- VENTANA MODAL -->
@@ -171,8 +171,10 @@
 
 
 
-
-	<jsp:include page="/WEB-INF/template/footer.jsp" />
+	<div class="iniciofooter">
+	<jsp:include page="/WEB-INF/template/footer.jsp"/>
+	</div>
+	
 </body>
 <script src="/media/Data-picker/js/bootstrap-datepicker.min.js"></script>
 <link rel="stylesheet" href="/media/Data-picker/css/bootstrap-datepicker.css" />

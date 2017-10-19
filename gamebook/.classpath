@@ -9,11 +9,11 @@
 	<classpathentry exported="true" kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry exported="true" kind="lib" path="C:/Program Files (x86)/Apache Software Foundation/Tomcat 8.0/lib/servlet-api.jar"/>
-	<classpathentry exported="true" kind="lib" path="C:/Users/Juancho/git/tpgr05/gamebook/Culturarte.jar">
+	<classpathentry kind="lib" path="C:/Users/Juancho/git/tpgr05/gamebook/Culturarte.jar">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="C:/Program Files (x86)/Apache Software Foundation/Tomcat 8.0/lib/servlet-api.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

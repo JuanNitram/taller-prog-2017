@@ -2,7 +2,7 @@ package presentacion2;
 
 import dataTypes.DtColaborador;
 import dataTypes.DtPropuesta;
-import Logica.ICtrlPropuesta;
+import logica.ICtrlPropuesta;
 import dataTypes.TRetorno;
 
 import java.awt.EventQueue;

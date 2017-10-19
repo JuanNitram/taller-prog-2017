@@ -9,13 +9,13 @@ import java.util.Map;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.TreePath;
 
-import Logica.ICtrlPropuesta;
-import Logica.clases.Categoria;
-import Logica.clases.Colaboracion;
-import Logica.clases.Colaborador;
-import Logica.clases.Estado;
-import Logica.clases.Proponente;
-import Logica.clases.Propuesta;
+import logica.ICtrlPropuesta;
+import logica.clases.Categoria;
+import logica.clases.Colaboracion;
+import logica.clases.Colaborador;
+import logica.clases.Estado;
+import logica.clases.Proponente;
+import logica.clases.Propuesta;
 import dataTypes.DtCategoria;
 import dataTypes.DtColaboracion;
 import dataTypes.DtColaborador;
@@ -170,7 +170,7 @@ public class CtrlPropuesta implements ICtrlPropuesta {
 	}
 	
 	private void recursivo(Categoria categoria, DefaultMutableTreeNode raiz) {
-		if(c.hijos().size() != 0) {
+		if(categoria.hijos().size() != 0) {
 			DefaultMutableTreeNode nodo;
 			Collection<Categoria> categorias = categoria.hijos().values();
             Object[] objs = categorias.toArray();

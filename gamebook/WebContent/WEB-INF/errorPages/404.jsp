@@ -1,26 +1,17 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <HTML>
 <HEAD>
-    <!-- referencia al CSS maestro -->
-    <link rel="stylesheet" type="text/css" href="media/styles/main.css">
-
-    <!-- Para evitar ver caracteres raros -->
-    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-    <meta http-equiv="Content-language" content="es" />
-
-    <!-- para el icono de la página -->
-    <link href="media/images/favicon.ico" rel="icon" type="image/x-icon" />
-    <link href="media/images/favicon.ico" rel="shortcut icon" />
-
-    <TITLE>Página no encontrada :: gamebook</TITLE>
+  <jsp:include page="/WEB-INF/template/head.jsp" />
+    <TITLE>Página no encontrada | Culturarte</TITLE>
 </HEAD>
 <body id="error_page">
-	<div class="gameover">404: GAME OVER</div>
+	<div class="main">
+	<div><h2><p>Error: 404 :(</p></h2> </div>
 		
 	<p>
-	Intentaste entrar a una página que no existe.
-	Por suerte esto los servidores no mueren por esto. Puedes
-	<a href="/">volver</a> al inicio.
+	Ha ocurrido un error, procura cargar datos antes de listar los usuarios y/o propuestas. Lamentamos los inconvenientes. CulturarteWeb!
+	</p><p>Presiona <a href="/">aqui</a> para volver al inicio.
 	</p>
+	</div>
 </BODY>
 </HTML>

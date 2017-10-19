@@ -1,13 +1,15 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="com.Culturarte.controllers.Login"%>
+<%@page import="com.culturarte.controllers.Login"%>
 <%@page import="dataTypes.DtUsuario"%>
 <%@page import="Logica.Fabrica"%>
 <%@page import="dataTypes.DtUsuario"%>
 <!DOCTYPE html>
+
+
 <div id="header">
 	<div class="subtitulo"></div>
-	<%
-		boolean esProponente = false;
+	
+	<% boolean esProponente = false;
 		DtUsuario usr;
 		try {
 			usr = Login.getUsuarioLogueado(request);
@@ -18,8 +20,9 @@
 	
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
 		<div class="container">
-			<img href="/" src=""> </img>
-			<a class="navbar-brand" href="/">Culturarte</a>
+			<img style="width:40px; height: 40px;" src="/media/images/logo_icon.png"></img>
+				<a class="navbar-brand" href="/">Culturarte</a>
+			
 			<button class="navbar-toggler" type="button" data-toggle="collapse"
 				data-target="#navbarResponsive" aria-controls="navbarResponsive"
 				aria-expanded="false" aria-label="Toggle navigation">
@@ -68,7 +71,3 @@
 	</nav>
 	
 </div>
-
-
-
-

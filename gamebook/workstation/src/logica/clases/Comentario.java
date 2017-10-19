@@ -1,4 +1,4 @@
-package Logica.clases;
+package logica.clases;
 
 public class Comentario {
 	

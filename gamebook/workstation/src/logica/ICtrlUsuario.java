@@ -1,10 +1,10 @@
-package Logica;
+package logica;
 
 import java.util.ArrayList;
 import java.util.Date;
 
-import Logica.clases.Propuesta;
-import Logica.clases.Usuario;
+import logica.clases.Propuesta;
+import logica.clases.Usuario;
 import dataTypes.DtColaborador;
 import dataTypes.DtProponente;
 import dataTypes.DtUsuario;
