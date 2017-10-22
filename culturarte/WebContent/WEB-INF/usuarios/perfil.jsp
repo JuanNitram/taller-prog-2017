@@ -281,8 +281,8 @@
     <%	} %>
     	<script src="/media/styles/userProfile.css"></script>
 		<div class="footer">
-		<jsp:include page="/WEB-INF/template/footer.jsp" />
-	</div>
+			<jsp:include page="/WEB-INF/template/footer.jsp" />
+		</div>
 </body>
 <style>
 .left {

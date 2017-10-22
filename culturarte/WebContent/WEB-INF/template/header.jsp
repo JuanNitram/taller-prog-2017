@@ -8,7 +8,7 @@
 
 <div id="header">
 	<div class="subtitulo"></div>
-	
+
 	<% boolean esProponente = false;
 		DtUsuario usr;
 		try {
@@ -20,7 +20,7 @@
 
 		if(request.getAttribute("excepcion") != null) {
 	%>
-		<script type="text/javascript">
+	<script type="text/javascript">
 		$(document).ready(function(){
 		    $("#excepcion").modal();
 		});
@@ -29,61 +29,68 @@
 			request.setAttribute("excepcion", false);
 		} 
 	%>
-	
+
 	<jsp:include page="/WEB-INF/errorPages/excepcion.jsp" />
-	
+
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
 		<div class="container">
-			<img style="width:40px; height: 40px;" src="/media/images/logo_icon.png"></img>
-				<a class="navbar-brand" href="/">Culturarte</a>
-			
+			<img style="width: 40px; height: 40px;"
+				src="/media/images/logo_icon.png"></img> <a class="navbar-brand"
+				href="/">Culturarte</a>
+
 			<button class="navbar-toggler" type="button" data-toggle="collapse"
 				data-target="#navbarResponsive" aria-controls="navbarResponsive"
 				aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
 			<div class="collapse navbar-collapse" id="navbarResponsive">
-				
-					<% if(usr != null){
+
+				<% if(usr != null){
 						if (esProponente){ %>
-						<ul class="navbar-nav ml-auto">
-							<li class="nav-item active"><a class="nav-link" href="/">Inicio
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item active"><a class="nav-link" href="/">Inicio
 							<span class="sr-only">(current)</span>
-							</a></li>
-							<li class="nav-item"><a class="nav-link" href="/usuarios">Usuarios</a></li>
-							<li class="nav-item"><a class="nav-link" href="/propuestas">Propuestas</a></li>
-							<li class="nav-item"><a class="nav-link" href="/altaPropuesta">Registrar propuesta</a></li>
-							<li class="nav-item"><a class="nav-link" href="/perfil"><%= usr.getNombre().concat(" - ").concat(usr.getEmail()) %></a></li>
-							<li id="divisor" class="nav-item"><a class="nav-link" href="/cerrar">Cerrar sesión</a></li>
-						</ul>
-						<% }else{ 
+					</a></li>
+					<li class="nav-item"><a class="nav-link" href="/usuarios">Usuarios</a></li>
+					<li class="nav-item"><a class="nav-link" href="/propuestas">Propuestas</a></li>
+					<li class="nav-item"><a class="nav-link" href="/altaPropuesta">Registrar
+							propuesta</a></li>
+					<li class="nav-item"><a class="nav-link" href="/perfil"><%= usr.getNombre().concat(" - ").concat(usr.getEmail()) %></a></li>
+					<li id="divisor" class="nav-item"><a class="nav-link"
+						href="/cerrar">Cerrar sesión</a></li>
+				</ul>
+				<% }else{ 
 							%>
-							<ul class="navbar-nav ml-auto">
-							<li class="nav-item active"><a class="nav-link" href="/">Inicio
-							<span class="sr-only">(current)</span> 
-							</a></li>
-							<li class="nav-item"><a class="nav-link" href="/usuarios">Usuarios</a></li>
-							<li class="nav-item"><a class="nav-link" href="/propuestas">Propuestas</a></li>
-							<li class="nav-item"><a class="nav-link" href="/perfil"><%= usr.getNombre().concat(" - ").concat(usr.getEmail()) %></a></li>
-							<li class="nav-item"><a class="nav-link" href="/cerrar">Cerrar sesión</a></li>
-						</ul>
-						<% } %>
-					<% }else{ %>
-					<ul class="navbar-nav ml-auto">	
-						<li id="space" class="nav-item active"><a class="nav-link" href="/">Inicio
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item active"><a class="nav-link" href="/">Inicio
 							<span class="sr-only">(current)</span>
-							</a></li>
-							<li class="nav-item"><a class="nav-link" href="/cargarDatos">Cargar datos</a></li>
-							<li class="nav-item"><a class="nav-link" href="/usuarios">Usuarios</a></li>
-							<li class="nav-item"><a class="nav-link" href="/propuestas">Propuestas</a></li>
-							<li class="nav-item"><a href="#registro" data-toggle="modal" class="nav-link">Registrarse</a></li>
-							<li  class="nav-item"><a href="#iniciarsesion" data-toggle="modal" class="nav-link" >Iniciar sesión</a></li>
-					</ul>
+					</a></li>
+					<li class="nav-item"><a class="nav-link" href="/usuarios">Usuarios</a></li>
+					<li class="nav-item"><a class="nav-link" href="/propuestas">Propuestas</a></li>
+					<li class="nav-item"><a class="nav-link" href="/perfil"><%= usr.getNombre().concat(" - ").concat(usr.getEmail()) %></a></li>
+					<li class="nav-item"><a class="nav-link" href="/cerrar">Cerrar
+							sesión</a></li>
+				</ul>
+				<% } %>
+				<% }else{ %>
+				<ul class="navbar-nav ml-auto">
+					<li id="space" class="nav-item active"><a class="nav-link"
+						href="/">Inicio <span class="sr-only">(current)</span>
+					</a></li>
+					<li class="nav-item"><a class="nav-link" href="/cargarDatos">Cargar
+							datos</a></li>
+					<li class="nav-item"><a class="nav-link" href="/usuarios">Usuarios</a></li>
+					<li class="nav-item"><a class="nav-link" href="/propuestas">Propuestas</a></li>
+					<li class="nav-item"><a href="#registro" data-toggle="modal"
+						class="nav-link">Registrarse</a></li>
+					<li class="nav-item"><a href="#iniciarsesion"
+						data-toggle="modal" class="nav-link">Iniciar sesión</a></li>
+				</ul>
 				<% } %>
 			</div>
 		</div>
 	</nav>
-	
+
 	<!-- VENTANA MODAL Iniciar sesion-->
 	<div class="modal fade" id="iniciarsesion"
 		aria-labelledby="iniciarsesion">
@@ -180,13 +187,14 @@
 															class="form-control input-sm" placeholder="Nickname">
 													</div>
 												</div>
-											
-														<div class="col-xs-6 col-sm-6 col-md-6">
-															<div class="form-group">
-																<input class="input-group date fj-date" id="datetimepicker1" name="date" /> 
-															</div>
-														</div>
-														
+
+												<div class="col-xs-6 col-sm-6 col-md-6">
+													<div class="form-group">
+														<input class="input-group date fj-date"
+															id="datetimepicker1" name="date" />
+													</div>
+												</div>
+
 											</div>
 
 											<div class="form-group">
@@ -205,8 +213,8 @@
 													<div class="form-group">
 														<input type="password" name="confirm_password"
 															id="confirm_password" class="form-control input-sm"
-															placeholder="Conf. Contraseña">
-															<span style="float: right;" id='message'></span>
+															placeholder="Conf. Contraseña"> <span
+															style="float: right;" id='message'></span>
 													</div>
 												</div>
 											</div>
@@ -242,5 +250,25 @@
 			</div>
 		</div>
 	</div>
-	
+	<script src="/media/Data-picker/js/bootstrap-datepicker.min.js"></script>
+	<link rel="stylesheet" href="/media/Data-picker/css/bootstrap-datepicker.css" />
+
+	<script src="/media/app.js"></script>
+	<script>
+	function mostrarinformacion() {
+		document.getElementById('panelProponente').style.display = "block";
+	}
+	function ocultarinformacion() {
+		document.getElementById('panelProponente').style.display = "none";
+	}
+</script>
+
+	<script type="text/javascript">
+$('#password, #confirm_password').on('keyup', function () {
+	  if ($('#password').val() == $('#confirm_password').val()) {
+	    $('#message').html('Correcto').css('color', 'green');
+	  } else 
+	    $('#message').html('No coinciden').css('color', 'red');
+	});
+</script>
 </div>

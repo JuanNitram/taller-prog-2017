@@ -1,3 +1,4 @@
+<%@page import="dataTypes.TEstado"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@page import="java.util.Date"%>
@@ -100,78 +101,116 @@
 												</tr>
 											</tbody>
 										</table>
+										<%
+											if (propuesta.getEstado() == TEstado.PUBLICADA || propuesta.getEstado() == TEstado.EN_FINANCIACION) {
+										%>
 										<div class="panel-footer group">
 											<div class="span left">
 												<span style="text-align: center"><h3>Colaboradores</h3></span>
 												<%
 													ArrayList<DtColaboracion> colaboraciones = (ArrayList<DtColaboracion>) Fabrica.getInstance()
-															.getICtrlPropuesta().listarColaboraciones();
-													for (int i = 0; i < colaboraciones.size(); i++) {
-														DtColaboracion dtColab = colaboraciones.get(i);
-														if (dtColab.getTitulo().equals(propuesta.getTitulo())) {
-															DtColaborador colaborador = Fabrica.getInstance().getICtrlUsuario()
-																	.infoColaborador(dtColab.getNickname());
+																.getICtrlPropuesta().listarColaboraciones();
+														for (int i = 0; i < colaboraciones.size(); i++) {
+															DtColaboracion dtColab = colaboraciones.get(i);
+															if (dtColab.getTitulo().equals(propuesta.getTitulo())) {
+																DtColaborador colaborador = Fabrica.getInstance().getICtrlUsuario()
+																		.infoColaborador(dtColab.getNickname());
 												%>
-															<a href="consultaUsuario?usuario=<%=colaborador.getNickName()%>">
-																<%=colaborador.getNombre() + " " + colaborador.getApellido() + " (" + colaborador.getNickName() + ")"%>
-															</a><br>
+												<a
+													href="consultaUsuario?usuario=<%=colaborador.getNickName()%>">
+													<%=colaborador.getNombre() + " " + colaborador.getApellido() + " (" + colaborador.getNickName() + ")"%>
+												</a><br>
 												<%
-														}
 													}
+														}
 												%>
 											</div>
 											<div class="span right">
 												<span style="text-align: center"><h3>
-														<font color="white">REGISTRAR COLABORACION</font>
+														<font color="white">Registra una colaboración</font>
 													</h3></span>
-												<form action="RegistrarColaboracion" method="post">
-													<%
-														request.setAttribute("propuesta", propuesta);
-														if (request.getSession().getAttribute("usuario_logueado") != null && !Fabrica.getInstance()
-																.getICtrlUsuario().esProponente((String) request.getSession().getAttribute("usuario_logueado"))) {
-													%>
-													<div class="form-group col-lg-4" align="left">
-														<label for="titulo"><font color="white">Monto</font></label>
-														<input name="txtMonto" type="number" id="txtMonto"
-															class="form-control" required>
-													</div>
+												<div class="container">
+													<form
+														action="RegistrarColaboracion?tPropuesta=<%=propuesta.getTitulo()%>"
+														method="post">
+														<%
+															if (request.getSession().getAttribute("usuario_logueado") != null
+																		&& !Fabrica.getInstance().getICtrlUsuario()
+																				.esProponente((String) request.getSession().getAttribute("usuario_logueado"))) {
+														%>
+														<div class="form-group" align="left">
+															<label for="titulo"><font color="white">Monto</font></label><input
+																name="txtMonto" type="number" id="txtMonto"
+																class="form-control" required>
+														</div>
 
-													<div class="form-group col-lg-4" align="center">
-														<label for="select"><font color="white">Tipo
-																de retorno</font></label> <select class="form-control"
-															id="selectRetorno" name="selectRetorno">
-															<%
-																if (propuesta.getTipoRetorno() == TRetorno.PORCENTAJE_GANANCIA) {
-															%>
-															<option value="PORCENTAJE_GANANCIA" selected>Porcentaje
-																de ganancia</option>
-															<%
-																} else if (propuesta.getTipoRetorno() == TRetorno.ENTRADA_GRATIS) {
-															%>
-															<option value="ENTRADA_GRATIS" selected>Entradas
-																gratis</option>
-															<%
-																} else {
-															%>
-															<option value="PORCENTAJE_GANANCIA" selected>Porcentaje
-																de ganancia</option>
-															<option value="ENTRADA_GRATIS">Entradas gratis</option>
-															<%
-																}
-															%>
-														</select>
-													</div>
+														<div class="form-group" align="left">
+															<label for="select"><font color="white">Tipo
+																	de retorno</font></label> <select class="form-control"
+																id="selectRetorno" name="selectRetorno">
+																<%
+																	if (propuesta.getTipoRetorno() == TRetorno.PORCENTAJE_GANANCIA) {
+																%>
+																<option value="PORCENTAJE_GANANCIA" selected>Porcentaje
+																	de ganancia</option>
+																<%
+																	} else if (propuesta.getTipoRetorno() == TRetorno.ENTRADA_GRATIS) {
+																%>
+																<option value="ENTRADA_GRATIS" selected>Entradas
+																	gratis</option>
+																<%
+																	} else {
+																%>
+																<option value="PORCENTAJE_GANANCIA" selected>Porcentaje
+																	de ganancia</option>
+																<option value="ENTRADA_GRATIS">Entradas gratis</option>
+																<%
+																	}
+																%>
+															</select>
+														</div>
 
-													<div class="form-group col-lg-4 " align="center">
-														<button type="submit" name="submit" id="submit"
-															class="btn btn-default">Registrar colaboracion</button>
-														<button type="reset" class="btn btn-default"
-															onClick="goBack()">Volver</button>
-													</div>
-													<%} %>
-												</form>
+														<div class="form-group" align="center">
+															<button type="submit" name="submit" id="submit"
+																class="btn btn-default">Registrar colaboracion</button>
+															<button type="reset" class="btn btn-default"
+																onClick="goBack()">Volver</button>
+														</div>
+														<%
+															}
+														%>
+													</form>
+												</div>
 											</div>
 										</div>
+										<%
+											} else {
+										%>
+										<div class="panel-footer group">
+											<div class="span center">
+												<span style="text-align: center"><h3>Colaboradores</h3></span>
+												<%
+													ArrayList<DtColaboracion> colaboraciones = (ArrayList<DtColaboracion>) Fabrica.getInstance()
+																.getICtrlPropuesta().listarColaboraciones();
+														for (int i = 0; i < colaboraciones.size(); i++) {
+															DtColaboracion dtColab = colaboraciones.get(i);
+															if (dtColab.getTitulo().equals(propuesta.getTitulo())) {
+																DtColaborador colaborador = Fabrica.getInstance().getICtrlUsuario()
+																		.infoColaborador(dtColab.getNickname());
+												%>
+												<a
+													href="consultaUsuario?usuario=<%=colaborador.getNickName()%>">
+													<%=colaborador.getNombre() + " " + colaborador.getApellido() + " (" + colaborador.getNickName() + ")"%>
+												</a><br>
+												<%
+													}
+														}
+												%>
+											</div>
+										</div>
+										<%
+											}
+										%>
 									</div>
 								</div>
 							</div>
@@ -194,27 +233,32 @@
 </body>
 <style>
 .left {
-    float: left;
-    width: 50%;
+	float: left;
+	width: 50%;
 }
+
 .right {
-    float: right;
-    width: 50%;
+	float: right;
+	width: 50%;
 }
+
 .group:after {
-    content:"";
-    display: table;
-    clear: both;
+	content: "";
+	display: table;
+	clear: both;
 }
+
 img {
-    max-width: 100%;
-    height: auto;
+	max-width: 100%;
+	height: auto;
 }
+
 @media screen and (max-width: 480px) {
-    .left, 
-    .right {
-        float: none;
-        width: auto;
-    }
+	.left, .right {
+		float: none;
+		width: auto;
+	}
 }
-</html>
+</
+html
+>

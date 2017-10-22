@@ -16,6 +16,7 @@ import logica.Fabrica;
 import dataTypes.DtCategoria;
 import dataTypes.DtPropuesta;
 import dataTypes.DtUsuario;
+import dataTypes.TEstado;
 
 /**
  * Servlet implementation class Propuestas
@@ -76,7 +77,7 @@ public class Propuestas extends HttpServlet {
 				for(int i = 0; i< propsfil.size(); i++){
 					System.out.println(propsfil.get(i).getCategoria().getNombre() + " - " + filtro.toString());
 					
-					if(propsfil.get(i).getCategoria().getNombre().equals(filtro.toString())){
+					if(propsfil.get(i).getCategoria().getNombre().equals(filtro.toString()) && propsfil.get(i).getEstado() != TEstado.INGRESADA){
 						propsfilter.add(propsfil.get(i));
 						System.out.println(propsfil.get(i).getCategoria().getNombre());
 					}

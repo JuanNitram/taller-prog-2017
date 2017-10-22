@@ -23,8 +23,16 @@
 <html>
 <head>
 <link href="/media/styles/shop-homepage.css" rel="stylesheet">
-
-<jsp:include page="/WEB-INF/template/head.jsp" />
+<script src="/recursos/jquery/jquery.js"></script>
+<script src="/recursos/bootstrap/css/bootstrap.css"></script>
+<link href="recursos/bootstrap/css/bootstrap.css" rel="stylesheet">
+<style>
+.scrollable-menu {
+    height: auto;
+    max-height: 300px;
+    overflow-x: hidden;
+}
+</style>
 <title>Propuestas :: Culturarte</title>
 </head>
 <body id="listaimage">
@@ -70,7 +78,7 @@
 									Propuestas.vaciarCategoriasList();
 									Propuestas.recursivoTree(raiz);
 								%>
-								<li><a href="propuestas?filtro=<%=""%>"><%=todos.toString()%></a></li>
+								<li><a href=""><%=todos.toString()%></a></li>
 								<%
 									for (TreeNode s : Propuestas.getCategoriasList()) {
 								%>
@@ -79,12 +87,6 @@
 								<%
 									}
 								%>
-								<li>Eso</li>
-								<li>Eso</li>
-								<li>Eso</li>
-								<li>Eso</li>
-								<li>Eso</li>
-								
 							</ul>
 
 						</div>
@@ -175,13 +177,6 @@
 	<!-- Contenido -->
 	<!-- SCRIPT -->
 
-<style>
-.scrollable-menu {
-    height: auto;
-    max-height: 300px;
-    overflow-x: hidden;
-}
-</style>
 	<div class="footer">
 		<jsp:include page="/WEB-INF/template/footer.jsp" />
 	</div>
