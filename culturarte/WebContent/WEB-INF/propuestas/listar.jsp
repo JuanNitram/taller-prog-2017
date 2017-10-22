@@ -99,7 +99,7 @@
 									</a>
 								</h4>
 								<h5 Style="border-bottom: 1px solid #DDDDDD;">
-									Precio Entrada:
+									Precio de entrada:
 									<%= precio %>
 									<%= propuesta.getPrecioEntrada() %>
 								</h5>
@@ -114,7 +114,7 @@
 								</p>
 								<p class="card-text" Style="border-bottom: 1px solid #DDDDDD;">
 									Estado:
-									<%= propuesta.getEstado().toString() %>
+									<%= propuesta.getEstado().toString().substring(0,1).toUpperCase() +  propuesta.getEstado().toString().toLowerCase().substring(1).replace("_", " ") %>
 
 								</p>
 							</div>

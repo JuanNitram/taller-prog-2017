@@ -49,7 +49,6 @@ public class Usuarios extends HttpServlet {
 				request.getRequestDispatcher("/WEB-INF/usuarios/listar.jsp").forward(request, response);
 			}
 			else {
-				System.out.println("hola");
 				request.setAttribute("excepcion", true);
 				request.setAttribute("excepcionTitulo", "Usuarios");
 				request.setAttribute("excepcionMensaje", "No existen usuarios registrados en el servidor.");	

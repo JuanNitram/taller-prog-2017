@@ -35,9 +35,15 @@ public class ConsultaUsuario extends HttpServlet {
 		DtUsuario dtUsuario = null;
 		for (DtUsuario dtU: Fabrica.getInstance().getICtrlUsuario().listarUsuarios())
 			if (dtU.getNickName().equals(usuario)) dtUsuario = dtU;
-		
-		request.setAttribute("usr", dtUsuario);
-		request.getRequestDispatcher("/WEB-INF/usuarios/consultaUsuario.jsp").forward(request, response);
+		if(dtUsuario != null) {
+			request.setAttribute("usr", dtUsuario);
+			request.getRequestDispatcher("/WEB-INF/usuarios/consultaUsuario.jsp").forward(request, response);
+		} else {
+			request.setAttribute("excepcion", true);
+			request.setAttribute("excepcionTitulo", "Usuarios");
+			request.setAttribute("excepcionMensaje", "No existe el usuario " + usuario + " en el sistema.");
+			request.getRequestDispatcher("/home").forward(request, response);
+		}
 	}
 
 	/**
