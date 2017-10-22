@@ -52,17 +52,15 @@ public class Login extends HttpServlet {
 			DtUsuario user;
 			ArrayList<DtUsuario> arregloProponentes = (ArrayList<DtUsuario>) Fabrica.getInstance().getICtrlUsuario().listarUsuarios();	
 			int index =0;
-			while (index < arregloProponentes.size() && !arregloProponentes.get(index).getNickName().equals(login))
+			while (index < arregloProponentes.size()
+					&& !arregloProponentes.get(index).getNickName().equals(login)
+					&& !arregloProponentes.get(index).getEmail().equals(login))
 				index++;
-			System.out.println("antes de existeUsuario con mail");
-			if (Fabrica.getInstance().getICtrlUsuario().existeUsuario(login, null)
-					|| Fabrica.getInstance().getICtrlUsuario().existeUsuario(null, login)){
+			if (Fabrica.getInstance().getICtrlUsuario().existeUsuario(login, login)){
 				user = arregloProponentes.get(index);
-				System.out.println("existeUsuario con mail");
 				if (Fabrica.getInstance().getICtrlUsuario().checkPassword(login, password)){
 					nuevoEstado = EstadoSesion.LOGIN_CORRECTO;
 					request.getSession().setAttribute("usuario_logueado", user.getNickName());
-					System.out.println(user.getEmail());
 				}else nuevoEstado = EstadoSesion.LOGIN_INCORRECTO;
 
 			}else {

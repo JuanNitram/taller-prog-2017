@@ -33,10 +33,10 @@
 	<!-- Contenido -->
 	<% String actual = request.getParameter("filtro");
 	String todos = "Todos";%>
-	
-	
-	
-	
+
+
+
+
 	<div class="container text-color">
 
 		<div class="row ">
@@ -44,78 +44,111 @@
 			<div class="col-lg-3 ">
 				<div class="list-group">
 					<div class="main">
-					<h5> Categoria: </h5>
-					<div class="btn-group">
-						<% if (request.getParameter("filtro") == null || request.getParameter("filtro") == ""){ %>
-							
-						 	<button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown"><%= todos.toString() %> <span class="caret"></span></button>
-    					 <%}else{ %>
-    					 	<button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown"><%= request.getParameter("filtro")%> <span class="caret"></span></button>
-    					 <%} %>	
-       					 <ul class="dropdown-menu scrollable-menu" role="menu">
-      						<%
-							DefaultMutableTreeNode raiz = Fabrica.getInstance().getICtrlPropuesta().listarCategorias();
-      						Propuestas.vaciarCategoriasList();
-							Propuestas.recursivoTree(raiz);%>
-							<li><a href="propuestas?filtro=<%=""%>"><%=todos.toString() %></a></li>
-							<%for (TreeNode s :Propuestas.getCategoriasList()) {%>
-							
-      						<li><a href="propuestas?filtro=<%=s.toString() %>"><%=s.toString() %></a></li>
-							<%  } %>
-						</ul>
+						<h5>Categoria:</h5>
+						<div class="btn-group">
+							<%
+								if (request.getParameter("filtro") == null || request.getParameter("filtro") == "") {
+							%>
 
-					</div>
+							<button type="button" class="btn btn-info dropdown-toggle"
+								data-toggle="dropdown"><%=todos.toString()%>
+								<span class="caret"></span>
+							</button>
+							<%
+								} else {
+							%>
+							<button type="button" class="btn btn-info dropdown-toggle"
+								data-toggle="dropdown"><%=request.getParameter("filtro")%>
+								<span class="caret"></span>
+							</button>
+							<%
+								}
+							%>
+							<ul class="dropdown-menu scrollable-menu" role="menu">
+								<%
+									DefaultMutableTreeNode raiz = Fabrica.getInstance().getICtrlPropuesta().listarCategorias();
+									Propuestas.vaciarCategoriasList();
+									Propuestas.recursivoTree(raiz);
+								%>
+								<li><a href="propuestas?filtro=<%=""%>"><%=todos.toString()%></a></li>
+								<%
+									for (TreeNode s : Propuestas.getCategoriasList()) {
+								%>
+
+								<li><a href="propuestas?filtro=<%=s.toString()%>"><%=s.toString()%></a></li>
+								<%
+									}
+								%>
+								<li>Eso</li>
+								<li>Eso</li>
+								<li>Eso</li>
+								<li>Eso</li>
+								<li>Eso</li>
+								
+							</ul>
+
+						</div>
 					</div>
 				</div>
 
 			</div>
-			
+
 			<!-- /.col-lg-3 -->
 
 			<div class="col-lg-9 main" id="proponentes">
 
 				<div class="row">
-					<% 
-				String espacio = " ";
-				String precio = "$ ";
-				ArrayList<DtPropuesta> propuestas = (ArrayList<DtPropuesta>)request.getAttribute("propuestas");
+					<%
+						String espacio = " ";
+						String precio = "$ ";
+						ArrayList<DtPropuesta> propuestas = (ArrayList<DtPropuesta>) request.getAttribute("propuestas");
 
-				for(DtPropuesta propuesta: propuestas){
-			%>
+						for (DtPropuesta propuesta : propuestas) {
+							if (propuesta.getEstado() != TEstado.INGRESADA) {
+					%>
 					<div class="col-lg-4 col-md-6 mb-4">
 						<div class="card h-100">
-							<% if (propuesta.getRutaImg() == ""){ %>
+							<%
+								if (propuesta.getRutaImg() == "") {
+							%>
 							<img class="card-img-top" src="\media\images\no-image.png" />
-							<%}else { %>
+							<%
+								} else {
+							%>
 							<img class="card-img-top"
-								src="/media/images/imagenes/propuestas/<%=propuesta.getRutaImg() %>.jpg" />
-							<%}%>
+								src="/media/images/imagenes/propuestas/<%=propuesta.getRutaImg()%>.jpg" />
+							<%
+								}
+							%>
 
 							<div class="card-body">
 								<h4 class="card-title">
 									<a class="titulo"
-										href="consultaPropuesta?propuesta=<%= propuesta.getTitulo()  %>">
-										<h3><%= propuesta.getTitulo() %></h3>
+										href="consultaPropuesta?propuesta=<%=propuesta.getTitulo()%>">
+										<h3><%=propuesta.getTitulo()%></h3>
 									</a>
 								</h4>
 								<p class="card-text" Style="border-bottom: 1px solid #DDDDDD;">
 									Precio de entrada:
-									<%= precio %>
-									<%= propuesta.getPrecioEntrada() %>
+									<%=precio%>
+									<%=propuesta.getPrecioEntrada()%>
 								</p>
 								<p class="card-text" Style="border-bottom: 1px solid #DDDDDD;">
 									Proponente:
-									<%=Fabrica.getInstance().getICtrlUsuario().infoProponente(propuesta.getNickProponente()).getNombre()%>
+									<%=Fabrica.getInstance().getICtrlUsuario().infoProponente(propuesta.getNickProponente())
+							.getNombre()%>
 									<%=espacio%>
-									<%=Fabrica.getInstance().getICtrlUsuario().infoProponente(propuesta.getNickProponente()).getApellido()%>
+									<%=Fabrica.getInstance().getICtrlUsuario().infoProponente(propuesta.getNickProponente())
+							.getApellido()%>
 								</p>
 								<p class="card-text" Style="border-bottom: 1px solid #DDDDDD;">
 									Categoria:
-									<%= propuesta.getCategoria().getNombre() %>
+									<%=propuesta.getCategoria().getNombre()%>
 								</p>
 								<p class="card-text" Style="border-bottom: 1px solid #DDDDDD;">
 									Estado:
-									<%= propuesta.getEstado().toString().substring(0,1).toUpperCase() +  propuesta.getEstado().toString().toLowerCase().substring(1).replace("_", " ") %>
+									<%=propuesta.getEstado().toString().substring(0, 1).toUpperCase()
+							+ propuesta.getEstado().toString().toLowerCase().substring(1).replace("_", " ")%>
 
 								</p>
 							</div>
@@ -123,7 +156,10 @@
 
 					</div>
 
-					<% } %>
+					<%
+							}
+						}
+					%>
 				</div>
 
 				<!-- /.row -->

@@ -11,10 +11,8 @@ import java.awt.EventQueue;
 import java.awt.Graphics;
 import java.awt.Image;
 
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
+import javax.swing.JFrame; 
+import javax.swing.JPanel; 
 import javax.swing.ImageIcon;
 import javax.swing.JDesktopPane;
 import javax.swing.JMenuBar;
@@ -24,10 +22,7 @@ import javax.swing.JOptionPane;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import java.awt.Dimension;
-import java.awt.Color;
-import java.awt.event.ContainerAdapter;
-import java.awt.event.ContainerEvent;
+import java.awt.Dimension; 
 
 public class Principal2 extends JFrame {
 
@@ -53,7 +48,7 @@ public class Principal2 extends JFrame {
 	private ConsultaSeguidor consultaseguidor;
 	private ConsultaPropuestaPorEstado consultapropuestaporestado;
 	private EvaluarPropuesta evaluarpropuesta;
-	private Clock clock;
+	private Clock2 clock;
 
 	private Datos d = null;
 	
@@ -76,7 +71,7 @@ public class Principal2 extends JFrame {
 		setResizable(false);
 		setTitle("Culturarte Server");
 		setMinimumSize(new Dimension(990, 768));
-		ImageIcon icono = new ImageIcon("recursos/icon.png");
+		ImageIcon icono = new ImageIcon("src/recursos/icon.png");
 		this.setIconImage(icono.getImage());
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -370,7 +365,7 @@ public class Principal2 extends JFrame {
 		setContentPane(contentPane);
 		
 		
-	    ImageIcon icon = new ImageIcon("recursos/banner2.png");
+	    ImageIcon icon = new ImageIcon("src/recursos/banner2.png");
 	    Image image = icon.getImage();
 
 	    Image newimage = image.getScaledInstance(999, 715, Image.SCALE_SMOOTH);
@@ -444,8 +439,8 @@ public class Principal2 extends JFrame {
 		modificarpropuesta = new ModificarPropuesta(ICP,ICU);
 		escritorio.add(modificarpropuesta);
 		
-		clock = new Clock();
-		clock.setVisible(false);
+		clock = new Clock2();
+		escritorio.add(clock);
 	}
 	
 	public void datosDePrueba() {

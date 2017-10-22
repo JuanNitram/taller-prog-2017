@@ -132,7 +132,7 @@ public class ModificarPropuesta extends JInternalFrame {
 								  .getImage().getScaledInstance(140, 140, Image.SCALE_DEFAULT));
 						 lblimagen.setIcon(img);
 					} else {
-						 ImageIcon img = new ImageIcon(new ImageIcon("recursos/no_imagen_propuesta.png")
+						 ImageIcon img = new ImageIcon(new ImageIcon("src/recursos/no_imagen_propuesta.png")
 								  .getImage().getScaledInstance(140, 140, Image.SCALE_DEFAULT));
 						 lblimagen.setIcon(img);
 					}
@@ -249,20 +249,21 @@ public class ModificarPropuesta extends JInternalFrame {
 					float precioTrim = Float.parseFloat(String.valueOf(txtPrecioEntrada.getText()).replace(" ", ""));
 					
 					if(txtLugar.getText() == "")
-						JOptionPane.showMessageDialog(null, "Debe ingresar el lugar","Culturarte",JOptionPane.WARNING_MESSAGE);
+						JOptionPane.showMessageDialog(null, "Debe ingresar el lugar","Culturarte",JOptionPane.ERROR_MESSAGE);
 					else if(txtMonto.getText().trim().isEmpty())
-						JOptionPane.showMessageDialog(null, "Debe ingresar el monto","Culturarte",JOptionPane.WARNING_MESSAGE);
+						JOptionPane.showMessageDialog(null, "Debe ingresar el monto","Culturarte",JOptionPane.ERROR_MESSAGE);
 					else if(Float.parseFloat(txtMonto.getText())<0 )
-						JOptionPane.showMessageDialog(null, "El valor designado para 'monto' no puede ser negativo","Culturarte",JOptionPane.WARNING_MESSAGE);
+						JOptionPane.showMessageDialog(null, "El valor designado para 'monto' no puede ser negativo","Culturarte",JOptionPane.ERROR_MESSAGE);
 					else if(txtPrecioEntrada.getText().trim().isEmpty())
-						JOptionPane.showMessageDialog(null, "Debe ingresar el precio de la entrada","Culturarte",JOptionPane.WARNING_MESSAGE);
+						JOptionPane.showMessageDialog(null, "Debe ingresar el precio de la entrada","Culturarte",JOptionPane.ERROR_MESSAGE);
 					else if(Float.parseFloat(txtPrecioEntrada.getText())<0 )
-						JOptionPane.showMessageDialog(null, "El valor designado para 'precio' no puede ser negativo","Culturarte",JOptionPane.WARNING_MESSAGE);
+						JOptionPane.showMessageDialog(null, "El valor designado para 'precio' no puede ser negativo","Culturarte",JOptionPane.ERROR_MESSAGE);
 					else if(txtFechaRealizacion.getDate() == null)
-						JOptionPane.showMessageDialog(null, "Debe ingresar una fecha de realizaci�n valida","Culturarte",JOptionPane.WARNING_MESSAGE);
+						JOptionPane.showMessageDialog(null, "Debe ingresar una fecha de realizaci�n valida","Culturarte",JOptionPane.ERROR_MESSAGE);
 					else{
 						ICP.modificarPropuesta((String)cmbPropuestas.getSelectedItem(), txtDescripcion.getText().trim(), txtLugar.getText().trim(), 
 								txtFechaRealizacion.getDate(), montoTrim, precioTrim);
+						JOptionPane.showInternalMessageDialog(getParent(),"La propuesta fue evaluada correctamente","Culturarte",JOptionPane.INFORMATION_MESSAGE);
 						setVisible(false);
 					}
 					}catch(Exception e){}
@@ -314,6 +315,61 @@ public class ModificarPropuesta extends JInternalFrame {
 		ImageIcon img = new ImageIcon(new ImageIcon("recursos/addpicture.png")
 				  .getImage().getScaledInstance(90, 90, Image.SCALE_DEFAULT));
 		lblimagen.setIcon(img);
+		
+		try {
+		DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+		Date today = Calendar.getInstance().getTime();
+		String reportDate = df.format(today);
+		txtFechaPublicacion.setText(reportDate);
+		String propuestaSelected = (String)cmbPropuestas.getSelectedItem();
+		DtPropuesta dtP = ICP.infoPropuesta(datosCmb[0]);
+		txtTitulo.setText(dtP.getTitulo());
+		txtLugar.setText(dtP.getLugar());
+		txtMonto.setText(String.valueOf(dtP.getMontoRequerido()));
+		txtFechaRealizacion.setDate(dtP.getFechaRealizacion());
+		txtPrecioEntrada.setText(String.valueOf(dtP.getPrecioEntrada()));
+		txtDescripcion.setText(dtP.getDescripcion());
+		txtProponente.setText(dtP.getNickProponente());
+		
+		TRetorno ret = dtP.getTipoRetorno();
+		
+		chbEntrada.setSelected(false);
+		chbEntrada.setSelected(false);
+		if(ret == TRetorno.ENTRADA_GRATIS)
+			chbEntrada.setSelected(true);
+		else if(ret == TRetorno.PORCENTAJE_GANANCIA)
+			chbPorcentaje.setSelected(true);
+		else{
+			chbPorcentaje.setSelected(true);
+			chbEntrada.setSelected(true);
+		}
+		
+		String ruta = "imagenes/propuestas/"+dtP.getRutaImg();
+		File f1 = new File(ruta+".png");
+		File f2 = new File(ruta+".jpg");
+		if(f1.isFile()) {
+			  img = new ImageIcon(new ImageIcon(f1.getAbsolutePath())
+					  .getImage().getScaledInstance(140, 140, Image.SCALE_DEFAULT));
+			 lblimagen.setIcon(img);
+		} else if(f2.isFile()) {
+			  img = new ImageIcon(new ImageIcon(f2.getAbsolutePath())
+					  .getImage().getScaledInstance(140, 140, Image.SCALE_DEFAULT));
+			 lblimagen.setIcon(img);
+		} else {
+			  img = new ImageIcon(new ImageIcon("src/recursos/no_imagen_propuesta.png")
+					  .getImage().getScaledInstance(140, 140, Image.SCALE_DEFAULT));
+			 lblimagen.setIcon(img);
+		}
+		} catch (NullPointerException npe) {
+			npe.getMessage();
+		}
+	
+		txtLugar.setEditable(true);
+		txtMonto.setEditable(true);
+		txtFechaRealizacion.setEnabled(true);
+		txtPrecioEntrada.setEditable(true);
+		txtDescripcion.setEditable(true);
+	
 	}
 	
 	private void limpiarCampos() {

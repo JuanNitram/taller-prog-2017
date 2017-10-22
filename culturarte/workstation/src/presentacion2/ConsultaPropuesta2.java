@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -85,7 +86,7 @@ public class ConsultaPropuesta2 extends JInternalFrame {
 	}
 	
 	public void cargarPropuestas() {
-		ArrayList<DtPropuesta> array = ICP.listarPropuestas();
+		List<DtPropuesta> array = ICP.listarPropuestas();
 		objs = array.toArray();
 		props = new String[objs.length];
 		DtPropuesta dtP;

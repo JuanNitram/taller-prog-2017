@@ -7,6 +7,7 @@ import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -94,7 +95,7 @@ public class ConsultaProponente2 extends JInternalFrame {
 	}
 	
 	public void cargarProponentes() {
-		ArrayList<DtProponente> proponentes = ICU.listarProponentes();
+		List<DtProponente> proponentes = ICU.listarProponentes();
 		DtProponente dtP;
 		String[] model = new String[proponentes.size()];
 		for(int i = 0; i < proponentes.size(); i++) {

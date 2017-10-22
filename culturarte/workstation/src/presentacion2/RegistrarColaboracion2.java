@@ -22,6 +22,7 @@ import java.awt.event.ActionListener;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.List;
 import java.awt.Font;
 import javax.swing.JComboBox;
 import javax.swing.JTextPane;
@@ -155,7 +156,7 @@ public class RegistrarColaboracion2 extends JInternalFrame {
 		} else if(montoTrim < 0) {
 			JOptionPane.showMessageDialog(this, "El monto de la colaboración debe ser positivo", "Registrar Colaboracion a Propuesta", JOptionPane.ERROR_MESSAGE);
 		} else {
-			ArrayList<DtColaborador> colaboradores = ICP.listarColaboradores();
+			List<DtColaborador> colaboradores = ICP.listarColaboradores();
 			String nickColaborador = colaboradores.get(listaColaboradores.getSelectedIndex()).getNickName();
 			TRetorno retorno;
 			try {
@@ -183,7 +184,7 @@ public class RegistrarColaboracion2 extends JInternalFrame {
 	}
 	
 	public boolean cargarDatos() {
-		ArrayList<DtColaborador> colaboradores = ICP.listarColaboradores();
+		List<DtColaborador> colaboradores = ICP.listarColaboradores();
 		DtColaborador dtC;
 		listaColaboradores.removeAllItems();
 		for(int i = 0; i < colaboradores.size(); i++) {
@@ -192,7 +193,7 @@ public class RegistrarColaboracion2 extends JInternalFrame {
 			listaColaboradores.addItem(s);
 		};
 		
-		ArrayList<DtPropuesta> propuestas = ICP.listarPropuestas();
+		List<DtPropuesta> propuestas = ICP.listarPropuestas();
 		DtPropuesta dtP;
 		DefaultComboBoxModel model = new DefaultComboBoxModel();
 		model.removeAllElements();

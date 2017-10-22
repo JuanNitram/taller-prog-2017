@@ -40,7 +40,7 @@ public class AltaCategoria extends JInternalFrame {
 		
 		this.ICP = iCP;
 		
-		setTitle("Crear Categoría");
+		setTitle("Crear Categorï¿½a");
 		setClosable(true);
 		setResizable(true);
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
@@ -98,10 +98,11 @@ public class AltaCategoria extends JInternalFrame {
 		JButton btnAceptar = new JButton("Aceptar");
 		btnAceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(fieldCategoria.getText().trim().isEmpty()) JOptionPane.showMessageDialog(null, "Ingrese un nombre para la categoría", "Culturarte - Crear categoría", JOptionPane.ERROR_MESSAGE);
+				if(fieldCategoria.getText().trim().isEmpty()) JOptionPane.showMessageDialog(null, "Ingrese un nombre para la categorï¿½a", "Culturarte - Crear categorï¿½a", JOptionPane.ERROR_MESSAGE);
 				else {
 					fieldCategoria.setText(fieldCategoria.getText().trim());
 					crearCategoria();
+					JOptionPane.showInternalMessageDialog(getParent(), "La categorÃ­a fue dada de alta correctamente","Culturarte",JOptionPane.INFORMATION_MESSAGE);
 					setVisible(false);
 					limpiarCampos();
 				}

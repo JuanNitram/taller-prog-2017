@@ -6,6 +6,10 @@ import java.awt.EventQueue;
 import javax.swing.JInternalFrame;
 
 import dataTypes.DtProponente;
+import dataTypes.DtUsuario;
+import logica.Fabrica;
+import logica.ICtrlUsuario;
+
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
@@ -27,8 +31,10 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.List;
 import java.awt.event.ActionEvent;
 import javax.swing.ScrollPaneConstants;
+import javax.swing.JList;
 
 public class VerProponente2 extends JInternalFrame {
 	private JTextField txtNick;
@@ -41,21 +47,23 @@ public class VerProponente2 extends JInternalFrame {
 	private JTextArea txtBiografia;
 	private JScrollPane panelscroll;
 	private JLabel imgLabel; 
+	private JScrollPane scrollPane;
+	private JList listSeguidores;
 
 	public VerProponente2() {
 		setTitle("Informacion Proponente");
 		setClosable(true);
-		setBounds(100, 100, 450, 449);
+		setBounds(100, 100, 450, 543);
 		
 		JPanel panel = new JPanel();
 		panel.setEnabled(false);
 		panel.setBorder(new EmptyBorder(5, 5, 5, 5));
-		getContentPane().add(panel, BorderLayout.NORTH);
+		getContentPane().add(panel, BorderLayout.WEST);
 		GridBagLayout gbl_panel = new GridBagLayout();
 		gbl_panel.columnWidths = new int[]{164, 95, 95, 79, 0};
 		gbl_panel.rowHeights = new int[]{31, 0, 0, 18, 0, 0, 0, 0, 73, 33, 0, 0, 0, 0};
 		gbl_panel.columnWeights = new double[]{1.0, 1.0, 1.0, 1.0, Double.MIN_VALUE};
-		gbl_panel.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 6.0, 0.0, 1.0, 0.0, 0.0, Double.MIN_VALUE};
+		gbl_panel.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 6.0, 1.0, 1.0, 0.0, 0.0, Double.MIN_VALUE};
 		panel.setLayout(gbl_panel);
 		
 		JPanel panel_1 = new JPanel();
@@ -243,11 +251,34 @@ public class VerProponente2 extends JInternalFrame {
 				dispose();
 			}
 		});
+		
+		JLabel lblSeguidores = new JLabel("Seguidores");
+		lblSeguidores.setHorizontalAlignment(SwingConstants.LEFT);
+		lblSeguidores.setFont(new Font("Tahoma", Font.BOLD, 11));
+		GridBagConstraints gbc_lblSeguidores = new GridBagConstraints();
+		gbc_lblSeguidores.anchor = GridBagConstraints.NORTHWEST;
+		gbc_lblSeguidores.gridheight = 3;
+		gbc_lblSeguidores.insets = new Insets(0, 0, 5, 5);
+		gbc_lblSeguidores.gridx = 0;
+		gbc_lblSeguidores.gridy = 9;
+		panel.add(lblSeguidores, gbc_lblSeguidores);
+		
+		scrollPane = new JScrollPane();
+		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
+		gbc_scrollPane.gridheight = 3;
+		gbc_scrollPane.gridwidth = 3;
+		gbc_scrollPane.insets = new Insets(0, 0, 5, 5);
+		gbc_scrollPane.fill = GridBagConstraints.BOTH;
+		gbc_scrollPane.gridx = 1;
+		gbc_scrollPane.gridy = 9;
+		panel.add(scrollPane, gbc_scrollPane);
+		
+		listSeguidores = new JList();
+		scrollPane.setViewportView(listSeguidores);
 		GridBagConstraints gbc_btnNewButton = new GridBagConstraints();
 		gbc_btnNewButton.anchor = GridBagConstraints.EAST;
-		gbc_btnNewButton.insets = new Insets(0, 0, 5, 5);
-		gbc_btnNewButton.gridx = 1;
-		gbc_btnNewButton.gridy = 10;
+		gbc_btnNewButton.gridx = 3;
+		gbc_btnNewButton.gridy = 12;
 		panel.add(btnNewButton, gbc_btnNewButton);
 
 	}
@@ -282,6 +313,23 @@ public class VerProponente2 extends JInternalFrame {
 						  .getImage().getScaledInstance(140, 140, Image.SCALE_DEFAULT));
 				 imgLabel.setIcon(img);
 			}
+			
+			
+			//Seguidores
+			ICtrlUsuario ICU = Fabrica.getInstance().getICtrlUsuario();
+			List<DtUsuario> array = ICU.listarSeguidores(dtP.getNickName());
+			Object[] objs;
+			String[] segs;
+			objs = array.toArray();
+			segs = new String[objs.length];
+			DtUsuario dtU;
+			for(int i = 0; i < array.size(); i++) {
+				dtU = (DtUsuario) objs[i];
+				segs[i] = dtU.getNickName();
+			}
+			listSeguidores = new JList(segs);
+			scrollPane.setViewportView(listSeguidores);
 		}
+
 	
 	}

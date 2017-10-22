@@ -10,11 +10,19 @@ public class Comentario {
 		this.comentario = comentario;
 	}
 	
-	public String getNickname() { return this.nickname; }
+	public String getNickname() {
+		return this.nickname; 
+		}
 	
-	public void setNickname(String nickname) { this.nickname = nickname; }
+	public void setNickname(String nickname) {
+		this.nickname = nickname; 
+		}
 	
-	public String getComentario() { return this.comentario; }
+	public String getComentario() { 
+		return this.comentario;
+		}
 	
-	public void setComentario(String comentario) { this.comentario = comentario; }
+	public void setComentario(String comentario) {
+		this.comentario = comentario; 
+		}
 }

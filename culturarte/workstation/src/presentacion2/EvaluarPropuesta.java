@@ -4,6 +4,7 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
@@ -81,6 +82,8 @@ public class EvaluarPropuesta extends JInternalFrame {
 		gbc_rdbtnPublicar.gridy = 1;
 		contentPane.add(rdbtnPublicar, gbc_rdbtnPublicar);
 		
+		rdbtnPublicar.setSelected(true);
+		
 		rdbtnCancelar = new JRadioButton("Cancelar");
 		GridBagConstraints gbc_rdbtnCancelar = new GridBagConstraints();
 		gbc_rdbtnCancelar.gridwidth = 2;
@@ -128,17 +131,15 @@ public class EvaluarPropuesta extends JInternalFrame {
 			String evaluacion = null;
 			if(rdbtnPublicar.isSelected()) evaluacion = new String("p");
 			if(rdbtnCancelar.isSelected()) evaluacion = new String("c");
-			if(evaluacion == null)
-				JOptionPane.showMessageDialog(this, "Debe elegir una opción", "Evaluar Propuesta", JOptionPane.ERROR_MESSAGE);
-			else
-				ICP.evaluar(evaluacion);
+			ICP.evaluar(evaluacion);
+			JOptionPane.showInternalMessageDialog(getParent(),"La propuesta fue evaluada correctamente", "Culturarte",JOptionPane.INFORMATION_MESSAGE);
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
 	}
 	
 	public void cargarPropuestas() {
-		ArrayList<DtPropuesta> propuestas = ICP.listarPropuestaPorEstado(TEstado.INGRESADA);
+		List<DtPropuesta> propuestas = ICP.listarPropuestaPorEstado(TEstado.INGRESADA);
 		
 		String[] datos = new String[propuestas.size()];
 		for(int i = 0; i < propuestas.size(); i++) {
@@ -147,5 +148,7 @@ public class EvaluarPropuesta extends JInternalFrame {
 		
 		ComboBoxModel<String> modelo = new DefaultComboBoxModel<String>(datos);
 		comboBox.setModel(modelo);
+		
+		
 	}
 }

@@ -7,8 +7,8 @@ public class Estado {
 	private Date fecha;
 	private TEstado estado;
 	
-	public Estado(TEstado est, Date f){
-		this.fecha = f;
+	public Estado(TEstado est, Date fecha){
+		this.fecha = fecha;
 		this.estado = est; 
 	}
 

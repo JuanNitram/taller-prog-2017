@@ -1,6 +1,7 @@
 package logica.clases;
 
 import java.util.Date;
+import java.util.List;
 import java.util.ArrayList;
 
 import dataTypes.DtCategoria;
@@ -19,9 +20,9 @@ public class Propuesta {
 	private TRetorno tipoRetorno;
 	private float precioEntrada;
 	private String rutaImg;
-	private ArrayList<Estado> estados; /*El primer elemento es el ultimo estado*/
+	private List<Estado> estados; /*El primer elemento es el ultimo estado*/
 	private String nickProponente;
-	private ArrayList<Comentario> comentarios;
+	private List<Comentario> comentarios;
 	
 	
 	public Propuesta(String titulo, String descripcion, DtCategoria categoria, String lugar, Date fechaRealizacion,
@@ -39,7 +40,7 @@ public class Propuesta {
 		this.rutaImg = rutaImg;
 		this.estados = new ArrayList<Estado>();
 		this.nickProponente = nick;
-		this.comentarios = new ArrayList();
+		this.comentarios = new ArrayList<Comentario>();
 	}
 
 	public String getTitulo() {
@@ -120,15 +121,15 @@ public class Propuesta {
 	}
 	
 	public DtPropuesta getInfoPropuesta() {
-		return new DtPropuesta(nickProponente,titulo,descripcion,categoria,lugar,
-				fechaRealizacion,fechaPublicacion,montoRequerido, montoReunido, tipoRetorno,precioEntrada,rutaImg,estados.get(0).getEstado());
+		return new DtPropuesta(nickProponente, titulo, descripcion, categoria, lugar,
+				fechaRealizacion, fechaPublicacion, montoRequerido, montoReunido, tipoRetorno, precioEntrada, rutaImg, estados.get(0).getEstado());
 	}
 	
 	public void setEstado(Estado est){
-		this.estados.add(0,est);
+		this.estados.add(0, est);
 	}
 	
-	public ArrayList<Estado> getEstados(){
+	public List<Estado> getEstados(){
 		return this.estados;
 	}
 
@@ -141,7 +142,7 @@ public class Propuesta {
 	}
 	
 	public void comentar(String nickname, String comentario) {
-		Comentario coment = new Comentario(nickname,comentario);
+		Comentario coment = new Comentario(nickname, comentario);
 		this.comentarios.add(coment);
 	}
 

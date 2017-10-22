@@ -33,30 +33,31 @@ public class RegistrarColaboracion extends HttpServlet {
     		
     		if(!Fabrica.getInstance().getICtrlUsuario().esProponente((String)(request.getSession().getAttribute("usuario_logueado")))){  
     		
-    			String propuesta = (String) (request.getParameter("tituloPropGrupo05"));
-    			String retorno = request.getParameter("TRetorno");
+    			String propuesta = (String) (request.getAttribute("propuesta"));
+    			String retorno = request.getParameter("selectRetorno");
     			String monto = request.getParameter("txtMonto");
     			String nickName = (String) request.getSession().getAttribute("usuario_logueado");
     	
- 
+    			System.out.println((request.getAttribute("propuesta") == null)?"Es re nullll":"Propuesta no es null");
     	
     			TRetorno ret;
-    			if (retorno.equals("PORCENTAJE_GANANCIA"))
+    			if (retorno.equals("Porcentaje de ganancia"))
     				ret = TRetorno.PORCENTAJE_GANANCIA;
-    			else if (retorno.equals("ENTRADA_GRATIS"))
+    			else if (retorno.equals("Entradas gratis"))
     				ret = TRetorno.ENTRADA_GRATIS;
     			else
     				ret = TRetorno.PORCENTAJE_Y_ENTRADAS;
  
-    	
-    			Fabrica.getInstance().getICtrlPropuesta().infoPropuesta(propuesta);
-    			Fabrica.getInstance().getICtrlPropuesta().agregarColaboracion(nickName, Float.parseFloat(monto), ret );
+    			if(propuesta != null) {
+	    			Fabrica.getInstance().getICtrlPropuesta().infoPropuesta(propuesta);
+	    			Fabrica.getInstance().getICtrlPropuesta().agregarColaboracion(nickName, Float.parseFloat(monto), ret );
+    			} else 
+    				System.out.println("NULLLLLLLLLLLLLLLL");
     		}
     	}catch (Exception e){
     		e.printStackTrace();
     	}
-    	
-    	request.getRequestDispatcher("/WEB-INF/home/iniciar.jsp").forward(request, response);;
+    	request.getRequestDispatcher("/propuestas").forward(request, response);
 	}
 
 	/**

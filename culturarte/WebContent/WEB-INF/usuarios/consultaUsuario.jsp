@@ -7,6 +7,7 @@
 <%@page import="dataTypes.DtColaborador"%>
 <%@page import="dataTypes.DtColaboracion"%>
 <%@page import="dataTypes.DtPropuesta"%>
+<%@page import="dataTypes.TEstado"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.ArrayList"%>
 <!DOCTYPE html>
@@ -76,11 +77,14 @@
 												ArrayList<DtPropuesta> propuestas = (ArrayList<DtPropuesta>)dtP.getPropuestas();
 												if(propuestas != null) {
 													for(int i = 0; i < propuestas.size(); i++) {
-														String titulo = propuestas.get(i).getTitulo();
+														if(dtP.getNickName().equals(request.getAttribute("usuario_logueado")) 
+															|| propuestas.get(i).getEstado() != TEstado.INGRESADA) {
+															String titulo = propuestas.get(i).getTitulo();
 											%>
-												<a href="consultaPropuesta?propuesta=<%= titulo %>"><%= titulo %></a>
-												<br>
+															<a href="consultaPropuesta?propuesta=<%= titulo %>"><%= titulo %></a>
+															<br>
 											<%	
+														}
 													}
 												} 
 											%>

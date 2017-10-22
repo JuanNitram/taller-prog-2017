@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import org.junit.Test;
 
@@ -138,7 +139,7 @@ public class ConsultaPropuestaColaboraciones {
 			
 			//TAREA 2:
 			//Listamos los estados de las propuestas
-			ArrayList<String> estadosPropuesta = ICP.listarEstados();
+			List<String> estadosPropuesta = ICP.listarEstados();
 			assertEquals(estadosPropuesta.size(),6);
 			
 			
@@ -152,7 +153,7 @@ public class ConsultaPropuestaColaboraciones {
 			/* Listo las propuestas por estado PUBLICADA, dados los datos actuales
 			   debería encontrar una sola propuesta. */
 			boolean b = false;
-			ArrayList<DtPropuesta> propuestas = ICP.listarPropuestaPorEstado(TEstado.PUBLICADA);
+			List<DtPropuesta> propuestas = ICP.listarPropuestaPorEstado(TEstado.PUBLICADA);
 			for(DtPropuesta p : propuestas) {
 				if(p.getTitulo().contains("Una chiva para mi pais")) {
 					b = true;

@@ -1,6 +1,7 @@
 package logica;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.TreePath;
@@ -18,20 +19,20 @@ public interface ICtrlPropuesta {
 
 	boolean existePropuesta(String nickName, String titulo);
 	
-	void altaPropuesta(String nickName, String titulo,DtCategoria categoria, String descripcion, String lugar, Date fechaRealizacion,
+	void altaPropuesta(String nickName, String titulo, DtCategoria categoria, String descripcion, String lugar, Date fechaRealizacion,
 			float montoReunir, TRetorno tipoRetorno, float precioEntrada, String rutaImg);
 
 	void modificarPropuesta(String titulo, String descripcion, String lugar, Date fechaRealizacion,
 			float montoReunir, float precioEntrada);
 	
-	ArrayList<DtPropuesta> listarPropuestas(); 
-	ArrayList<DtColaborador> listarColaboradores();
+	List<DtPropuesta> listarPropuestas(); 
+	List<DtColaborador> listarColaboradores();
 
-	ArrayList<DtColaboracion> listarColaboraciones();
+	List<DtColaboracion> listarColaboraciones();
 	
-	DtPropuesta infoPropuesta(String titulo) throws Exception;
+	DtPropuesta infoPropuesta(String titulo) throws NullPointerException;
 	
-	DtColaboracion infoColaboracion(int id) throws Exception;
+	DtColaboracion infoColaboracion(int idColaboracion) throws NullPointerException;
 	
 	void agregarColaboracion(String nickname, float monto, TRetorno retorno);
 	
@@ -45,9 +46,9 @@ public interface ICtrlPropuesta {
 
 	DefaultMutableTreeNode listarCategorias();
 	
-	ArrayList<String> listarEstados();
+	List<String> listarEstados();
 	
-	ArrayList<DtPropuesta> listarPropuestaPorEstado(TEstado estado);
+	List<DtPropuesta> listarPropuestaPorEstado(TEstado estado);
 
 	void evaluar(String evaluacion);
 	

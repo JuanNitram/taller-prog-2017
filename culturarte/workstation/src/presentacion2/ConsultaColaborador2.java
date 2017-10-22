@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
@@ -98,7 +99,7 @@ public class ConsultaColaborador2 extends JInternalFrame {
 	}
 	
 	public void cargarColaboradores() {
-		ArrayList<DtColaborador> colaboradores = ICU.listarColaboradores();
+		List<DtColaborador> colaboradores = ICU.listarColaboradores();
 		DtColaborador dtC;
 		String[] model = new String[colaboradores.size()];
 		for(int i = 0; i < colaboradores.size(); i++) {

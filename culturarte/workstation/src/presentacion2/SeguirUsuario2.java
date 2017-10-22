@@ -11,6 +11,7 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
@@ -81,9 +82,9 @@ public class SeguirUsuario2 extends JInternalFrame {
 					String nickseguidor = seguidortxt.substring(seguidortxt.indexOf("(")+1, seguidortxt.indexOf(")")); 
 					
 					
-					ArrayList<DtUsuario> usuarios = ICU.listarUsuarios();
-					ArrayList<DtUsuario> seguidos = ICU.listarSeguidos(nickseguidor);
-					ArrayList<String> datosCmb2 = new ArrayList<String>();
+					List<DtUsuario> usuarios = ICU.listarUsuarios();
+					List<DtUsuario> seguidos = ICU.listarSeguidos(nickseguidor);
+					List<String> datosCmb2 = new ArrayList<String>();
 					boolean esta = false;
 					for(int i = 0 ; i < usuarios.size() ; i++){
 						esta = false;
@@ -187,9 +188,9 @@ public class SeguirUsuario2 extends JInternalFrame {
 		seguidortxt = cmbSeguidor.getItemAt(0).toString();
 		String nickseguidor = seguidortxt.substring(seguidortxt.indexOf("(")+1, seguidortxt.indexOf(")")); 
 		
-		ArrayList<DtUsuario> usuarios = ICU.listarUsuarios();
-		ArrayList<DtUsuario> seguidos = ICU.listarSeguidos(nickseguidor);
-		ArrayList<String> datosCmb2 = new ArrayList<String>();
+		List<DtUsuario> usuarios = ICU.listarUsuarios();
+		List<DtUsuario> seguidos = ICU.listarSeguidos(nickseguidor);
+		List<String> datosCmb2 = new ArrayList<String>();
 		boolean esta = false;
 		for(int i = 0 ; i < usuarios.size() ; i++){
 			esta = false;

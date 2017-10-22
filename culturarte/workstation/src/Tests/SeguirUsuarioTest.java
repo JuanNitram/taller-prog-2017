@@ -4,6 +4,8 @@ import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+
 import org.junit.Test;
 
 import logica.Fabrica;
@@ -26,7 +28,7 @@ public class SeguirUsuarioTest {
 		ICU.seguir();
 		
 		// Verifica si se agrego correctamente el seguidor JuanNitram a EnriqueCMG
-		ArrayList<DtUsuario> seguidoresEnriqueCMG = ICU.listarSeguidores("EnriqueCMG");
+		List<DtUsuario> seguidoresEnriqueCMG = ICU.listarSeguidores("EnriqueCMG");
 		assertTrue(seguidoresEnriqueCMG.size() == 1);
 		
 		ICU.elegirSeguidor("peterAlfons");

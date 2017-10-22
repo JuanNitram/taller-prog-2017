@@ -74,8 +74,8 @@
 													for(int i = 0; i < propuestas.size(); i++) {
 														String titulo = propuestas.get(i).getTitulo();
 											%>
-												<a href="consultaPropuesta?propuesta=<%= titulo %>"><%= titulo %></a>
-												<br>
+														<a href="consultaPropuesta?propuesta=<%= titulo %>"><%= titulo %></a>
+														<br>
 											<%	
 													}
 												} 
@@ -194,23 +194,6 @@
 										<td><%=new SimpleDateFormat("dd/MM/yyyy").format(dtC.getFechaNacimiento().getTime())%></td>
 									</tr>
 									<tr>
-										<td>Colaboraciones:</td>
-										<td>
-										<%
-											ArrayList<DtColaboracion> colaboraciones = (ArrayList<DtColaboracion>)dtC.getColaboraciones();
-											if(colaboraciones != null) {
-												for(int i = 0; i < colaboraciones.size(); i++) {
-													String titulo = colaboraciones.get(i).getTitulo();
-										%>
-													<a href="consultaPropuesta?propuesta=<%= titulo %>"><%= titulo %></a>
-													<br>
-										<%
-												}
-											}
-										%>
-										</td>
-									</tr>
-									<tr>
 										<td></td>
 										<td></td>
 									</tr>
@@ -218,6 +201,32 @@
 								</tbody>
 							</table>
 						</div>
+					</div>
+				</div>
+				<div class="panel-footer">
+					<div class="span">
+						<table class="table">
+							<tr><span style="text-align: center"><h3>Colaboraciones</h3></span></tr>
+							<%
+								ArrayList<DtColaboracion> colaboraciones = (ArrayList<DtColaboracion>)dtC.getColaboraciones();
+								for(int i = 0; i < colaboraciones.size(); i++) {
+									DtColaboracion dtColab = colaboraciones.get(i);
+							%>
+									<tr>
+										<td>
+										<a href="consultaPropuesta?propuesta=<%= dtColab.getTitulo() %>"><%= dtColab.getTitulo() %>
+										</td>
+										<td>
+										$ <%= dtColab.getMontoAporte() %>
+										</td>
+										<td>
+										<%= new SimpleDateFormat("dd/MM/yyyy").format(dtColab.getFechaRealizacion().getTime()) %>
+										</td>
+									</tr>
+							<%
+								}
+							%>
+						</table>
 					</div>
 				</div>
 				<div class="panel-footer group">

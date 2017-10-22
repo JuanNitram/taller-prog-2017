@@ -1,21 +1,20 @@
 package logica;
-
-import java.util.ArrayList;
+ 
 import java.util.Date;
+import java.util.List;
 
-import logica.clases.Propuesta;
-import logica.clases.Usuario;
+import logica.clases.Propuesta; 
 import dataTypes.DtColaborador;
 import dataTypes.DtProponente;
 import dataTypes.DtUsuario;
 
 public interface ICtrlUsuario {
 	
-	ArrayList<DtUsuario> listarUsuarios();
+	List<DtUsuario> listarUsuarios();
 	
-	ArrayList<DtProponente>  listarProponentes();
+	List<DtProponente>  listarProponentes();
 	
-	ArrayList<DtColaborador> listarColaboradores();
+	List<DtColaborador> listarColaboradores();
 	
 	void elegirSeguidor(String nickName);
 	 
@@ -29,18 +28,18 @@ public interface ICtrlUsuario {
 	
 	boolean checkPassword(String nickname, String password);
 	
-	void altaProponente(String nickName,String password,String nombre, String apellido, String direccion, String email, String biografia, String urlSitio,
+	void altaProponente(String nickName, String password, String nombre, String apellido, String direccion, String email, String biografia, String urlSitio,
 			String rutaImg, Date fechaNacimiento);
 	
-	void altaColaborador(String nickName,String password, String nombre, String apellido,String email, String rutaImg, Date fechaNacimiento);
+	void altaColaborador(String nickName, String password, String nombre, String apellido, String email, String rutaImg, Date fechaNacimiento);
 	
 	DtProponente infoProponente(String nickName);
 	
 	DtColaborador infoColaborador(String nickName);
 	
-	ArrayList<DtUsuario> listarSeguidores(String nickName);
+	List<DtUsuario> listarSeguidores(String nickName);
 	
-	ArrayList<DtUsuario> listarSeguidos(String nickName);
+	List<DtUsuario> listarSeguidos(String nickName);
 	
 	boolean existeUsuario(String nickName, String email);
 	

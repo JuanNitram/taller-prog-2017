@@ -9,6 +9,10 @@ import java.awt.BorderLayout;
 import javax.swing.border.EmptyBorder;
 
 import dataTypes.DtColaborador;
+import dataTypes.DtPropuesta;
+import dataTypes.DtUsuario;
+import logica.Fabrica;
+import logica.ICtrlUsuario;
 
 import java.awt.GridBagLayout;
 import java.awt.Image;
@@ -19,6 +23,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 import javax.swing.JLabel;
 import javax.swing.Icon;
@@ -30,6 +35,8 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JScrollPane;
+import javax.swing.JList;
 
 public class VerColaborador2 extends JInternalFrame {
 	private JTextField txtNick;
@@ -38,11 +45,13 @@ public class VerColaborador2 extends JInternalFrame {
 	private JTextField txtEmail;
 	private JTextField txtFechaNac;
 	private JLabel imgLabel;
+	private JList listSeguidores;
+	private JScrollPane scrollPane;
 	
 	public VerColaborador2() {
 		setClosable(true);
 		setTitle("Informacion Colaborador");
-		setBounds(100, 100, 502, 330);
+		setBounds(100, 100, 502, 420);
 		
 		JPanel panel = new JPanel();
 		panel.setEnabled(false);
@@ -50,9 +59,9 @@ public class VerColaborador2 extends JInternalFrame {
 		getContentPane().add(panel, BorderLayout.CENTER);
 		GridBagLayout gbl_panel = new GridBagLayout();
 		gbl_panel.columnWidths = new int[]{159, 97, 95, 79, 0};
-		gbl_panel.rowHeights = new int[]{31, 0, 0, 18, 0, 0, 33, 0, 0, 0, 0};
+		gbl_panel.rowHeights = new int[]{31, 0, 0, 18, 0, 0, 33, 0, 0, 0, 0, 0, 0, 0};
 		gbl_panel.columnWeights = new double[]{1.0, 1.0, 1.0, 1.0, Double.MIN_VALUE};
-		gbl_panel.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gbl_panel.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		panel.setLayout(gbl_panel);
 		
 		JPanel imgPanel = new JPanel();
@@ -174,11 +183,32 @@ public class VerColaborador2 extends JInternalFrame {
 				dispose();
 			}
 		});
+		
+		JLabel lblSeguidores = new JLabel("Seguidores");
+		lblSeguidores.setFont(new Font("Dialog", Font.BOLD, 11));
+		GridBagConstraints gbc_lblSeguidores = new GridBagConstraints();
+		gbc_lblSeguidores.anchor = GridBagConstraints.WEST;
+		gbc_lblSeguidores.insets = new Insets(0, 0, 5, 5);
+		gbc_lblSeguidores.gridx = 0;
+		gbc_lblSeguidores.gridy = 9;
+		panel.add(lblSeguidores, gbc_lblSeguidores);
+		
+		scrollPane = new JScrollPane();
+		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
+		gbc_scrollPane.gridwidth = 3;
+		gbc_scrollPane.gridheight = 3;
+		gbc_scrollPane.insets = new Insets(0, 0, 5, 5);
+		gbc_scrollPane.fill = GridBagConstraints.BOTH;
+		gbc_scrollPane.gridx = 1;
+		gbc_scrollPane.gridy = 9;
+		panel.add(scrollPane, gbc_scrollPane);
+		
+		listSeguidores = new JList();
+		scrollPane.setViewportView(listSeguidores);
 		GridBagConstraints gbc_btnNewButton = new GridBagConstraints();
 		gbc_btnNewButton.fill = GridBagConstraints.BOTH;
-		gbc_btnNewButton.insets = new Insets(0, 0, 0, 5);
-		gbc_btnNewButton.gridx = 1;
-		gbc_btnNewButton.gridy = 9;
+		gbc_btnNewButton.gridx = 3;
+		gbc_btnNewButton.gridy = 12;
 		panel.add(btnNewButton, gbc_btnNewButton);
 
 	}
@@ -209,6 +239,22 @@ public class VerColaborador2 extends JInternalFrame {
 					  .getImage().getScaledInstance(140, 140, Image.SCALE_DEFAULT));
 			 imgLabel.setIcon(img);
 		}
+		
+		
+		//Seguidores
+		ICtrlUsuario ICU = Fabrica.getInstance().getICtrlUsuario();
+		List<DtUsuario> array = ICU.listarSeguidores(dtC.getNickName());
+		Object[] objs;
+		String[] segs;
+		objs = array.toArray();
+		segs = new String[objs.length];
+		DtUsuario dtU;
+		for(int i = 0; i < array.size(); i++) {
+			dtU = (DtUsuario) objs[i];
+			segs[i] = dtU.getNickName();
+		}
+		listSeguidores = new JList(segs);
+		scrollPane.setViewportView(listSeguidores);
 	}
 
 }

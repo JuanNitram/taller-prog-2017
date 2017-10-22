@@ -19,6 +19,7 @@ import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.List;
 import java.awt.Font;
 import javax.swing.JComboBox;
 import javax.swing.JTextPane;
@@ -110,7 +111,7 @@ public class CancelarColaboracion2 extends JInternalFrame {
 	}
 
 	public void cargarColaboraciones() {
-		ArrayList<DtColaboracion> colaboraciones = ICP.listarColaboraciones();
+		List<DtColaboracion> colaboraciones = ICP.listarColaboraciones();
 		DtColaboracion dtC;
 		DefaultComboBoxModel model = new DefaultComboBoxModel();
 		String s;

@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
@@ -106,12 +107,20 @@ public class ConsultaPropuestaPorEstado extends JInternalFrame {
 	}
 	
 	public void cargarDatos() {
-		ArrayList<String> estados = ICP.listarEstados();
+		List<String> estados = ICP.listarEstados();
 		comboBox.setModel(new DefaultComboBoxModel(new String[] { estados.get(0), estados.get(1), estados.get(2), estados.get(3), estados.get(4), estados.get(5)}));
+		List<DtPropuesta> array = ICP.listarPropuestaPorEstado(TEstado.INGRESADA);
+		objs = array.toArray();
+		props = new String[objs.length];
+		DtPropuesta dtP;
+		for(int i = 0; i < array.size(); i++) {
+			dtP = (DtPropuesta) objs[i];
+			props[i] = dtP.getTitulo();
+		}
+		list = new JList(props);
+		scrollPane.setViewportView(list);
 		
-		list = new JList();
 		comboBox.addActionListener(new ActionListener(){
-
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				list = new JList();
@@ -136,7 +145,7 @@ public class ConsultaPropuestaPorEstado extends JInternalFrame {
 					estado = TEstado.CANCELADA;
 					break;
 				}
-				ArrayList<DtPropuesta> array = ICP.listarPropuestaPorEstado(estado);
+				List<DtPropuesta> array = ICP.listarPropuestaPorEstado(estado);
 				objs = array.toArray();
 				props = new String[objs.length];
 				DtPropuesta dtP;

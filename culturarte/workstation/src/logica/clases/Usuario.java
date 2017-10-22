@@ -5,21 +5,22 @@ import java.util.Collection;
 import java.util.Date;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import dataTypes.DtUsuario;
 
 public abstract class Usuario {
-	protected String nickName; // Lo identifica
-	protected String password;
-	protected String nombre;
-	protected String apellido;
-	protected String email; // Lo identifica
-	protected Date fechaNacimiento;
-	protected String rutaImg;
-	protected Map<String,Usuario> seguidores;
-	protected Map<String,Usuario> seguidos;
-	protected ArrayList<Propuesta> favoritas;
+	private String nickName; // Lo identifica
+	private String password;
+	private String nombre;
+	private String apellido;
+	private String email; // Lo identifica
+	private Date fechaNacimiento;
+	private String rutaImg;
+	private Map<String, Usuario> seguidores;
+	private Map<String, Usuario> seguidos;
+	private List<Propuesta> favoritas;
 
 	public Usuario(){}
 	 
@@ -33,8 +34,8 @@ public abstract class Usuario {
 		this.email = email;
 		this.fechaNacimiento = fechaNacimiento;
 		this.rutaImg = rutaImg;
-		this.seguidores = new HashMap<String,Usuario>();
-		this.seguidos = new HashMap<String,Usuario>();
+		this.seguidores = new HashMap<String, Usuario>();
+		this.seguidos = new HashMap<String, Usuario>();
 		this.favoritas = new ArrayList<>();
 	}
 
@@ -67,20 +68,20 @@ public abstract class Usuario {
 		return rutaImg;
 	}
 
-	public void addSeguidor(Usuario us){
-		seguidores.put(us.getNickName(),us);
+	public void addSeguidor(Usuario usuario){
+		seguidores.put(usuario.getNickName(), usuario);
 	}
 	
-	public void eraseSeguidor(Usuario us){
-		seguidores.remove(us.getNickName());
+	public void eraseSeguidor(Usuario usuario){
+		seguidores.remove(usuario.getNickName());
 	}
 	
-	public void addSeguido(Usuario us){
-		seguidos.put(us.getNickName(),us);
+	public void addSeguido(Usuario usuario){
+		seguidos.put(usuario.getNickName(), usuario);
 	}
 	
-	public void eraseSeguido(Usuario us){
-		seguidos.remove(us.getNickName());
+	public void eraseSeguido(Usuario usuario){
+		seguidos.remove(usuario.getNickName());
 	}
 	
 	public Collection<Usuario> getSeguidores(){

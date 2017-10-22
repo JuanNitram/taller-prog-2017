@@ -8,7 +8,7 @@ import dataTypes.TRetorno;
 public class Colaboracion {
 	
 	private static int ultId = 1;
-	private int id;
+	private int idColaboracion;
 	private String nickNameColab;
 	private float montoAporte; 
 	private Date fechaRealizacion;
@@ -16,7 +16,7 @@ public class Colaboracion {
 	private Propuesta pColaborada;
 	
 	public Colaboracion(String nickName, float montoAporte, TRetorno retorno) {
-		this.id = Colaboracion.ultId++;
+		this.idColaboracion = Colaboracion.ultId++;
 		this.nickNameColab = nickName;
 		this.montoAporte = montoAporte;
 		this.fechaRealizacion = new Date();
@@ -24,7 +24,7 @@ public class Colaboracion {
 	}
 
 	public int getId() {
-		return id;
+		return idColaboracion;
 	}
 	
 	public String getNickNameColab() {
@@ -55,8 +55,8 @@ public class Colaboracion {
 		this.retorno = retorno;
 	}
 
-	public void agregarPropuesta(Propuesta p) {
-		pColaborada = p;
+	public void agregarPropuesta(Propuesta propuesta) {
+		pColaborada = propuesta;
 	}
 	
 	public Propuesta getPropuesta() {
@@ -64,7 +64,7 @@ public class Colaboracion {
 	}
 
 	public DtColaboracion getInfoColaboracion() {
-		return new DtColaboracion(id,nickNameColab,pColaborada.getTitulo(),montoAporte,fechaRealizacion,retorno);
+		return new DtColaboracion(idColaboracion, nickNameColab, pColaborada.getTitulo(), montoAporte, fechaRealizacion, retorno);
 	}
 
 	public static int getIdActual() {
