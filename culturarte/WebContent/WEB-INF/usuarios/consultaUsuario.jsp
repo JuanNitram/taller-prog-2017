@@ -103,9 +103,7 @@
 					</div>
 				</div>
 				<div class="panel-footer">
-					<div>
-						Biografia:
-						<%=dtP.getBiografia()%></div>
+					<div><%=dtP.getBiografia()%></div>
 					<div class="panel-footer">
 
 

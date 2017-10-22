@@ -118,16 +118,6 @@
 
 								</p>
 							</div>
-							<div class="card-footer">
-								<% DtUsuario user = (DtUsuario) (Login.getUsuarioLogueado(request));
-						if (user!=null && !Fabrica.getInstance().getICtrlUsuario().esProponente(user.getNickName())){
-					%>
-								<small class="registrarcolaboracion"> <a
-									href="nuevaColaboracion?propuesta=<%= propuesta.getTitulo() %>">Registrar
-										Colaboracion</a>
-								</small>
-								<% 	}%>
-							</div>
 						</div>
 
 					</div>
