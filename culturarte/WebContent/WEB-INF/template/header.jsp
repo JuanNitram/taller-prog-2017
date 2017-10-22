@@ -1,7 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="com.culturarte.controllers.Login"%>
 <%@page import="dataTypes.DtUsuario"%>
-<%@page import="Logica.Fabrica"%>
+<%@page import="logica.Fabrica"%>
 <%@page import="dataTypes.DtUsuario"%>
 <!DOCTYPE html>
 

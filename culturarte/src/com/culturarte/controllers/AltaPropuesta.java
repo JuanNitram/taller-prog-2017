@@ -13,8 +13,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.swing.tree.DefaultMutableTreeNode;
 
-import Logica.Fabrica;
-import Logica.ICtrlPropuesta;
+import logica.Fabrica;
+import logica.ICtrlPropuesta;
 import dataTypes.DtCategoria;
 import dataTypes.TRetorno;
 

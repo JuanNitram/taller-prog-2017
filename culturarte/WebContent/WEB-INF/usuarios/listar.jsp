@@ -4,7 +4,7 @@
 --%>
 <%@page import="dataTypes.DtUsuario"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="Logica.Fabrica"%>
+<%@page import="logica.Fabrica"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page errorPage="/WEB-INF/errorPages/500.jsp"%>
 <!doctype html>

@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<%@ page import="Logica.Fabrica"%>
+<%@ page import="logica.Fabrica"%>
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="dataTypes.DtCategoria"%>
 <%@ page import="dataTypes.DtUsuario"%>

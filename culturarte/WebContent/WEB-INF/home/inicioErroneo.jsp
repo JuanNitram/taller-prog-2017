@@ -10,12 +10,10 @@
 	<jsp:include page="/WEB-INF/template/header.jsp" />
 
 	<form class="formulario_centrar main" action="iniciar-sesion"
-		ACTION="POST">
+		method="POST">
 		<div>
-			<b style="color: #F00;">La combinación de correo
-				electrónico/contraseña es incorrecta.</b>
-			<p class="text-color">Asegurese de ingresar su usuario y
-				contraseña correctamente</p>
+			<b style="color: #F00;">La combinación de usuario/contraseña es incorrecta.</b>
+			<p class="text-color">Asegurese de ingresar su usuario y contraseña correctamente.</p>
 		</div>
 		<br>
 		<div class="fila_input text-color">

@@ -2,7 +2,7 @@
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <%@page import="dataTypes.DtPropuesta"%>
-<%@page import="Logica.Fabrica"%>
+<%@page import="logica.Fabrica"%>
 <%@page import="java.util.ArrayList"%>
 <html>
 <head>

@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.TreeNode;
 
-import Logica.Fabrica;
+import logica.Fabrica;
 import dataTypes.DtCategoria;
 import dataTypes.DtPropuesta;
 import dataTypes.DtUsuario;
@@ -58,7 +58,7 @@ public class Propuestas extends HttpServlet {
 			filtro = request.getParameter("filtro");
 			
 			if (filtro == "" || filtro == null){
-				ArrayList<DtPropuesta> props = Fabrica.getInstance().getICtrlPropuesta().listarPropuestas();
+				ArrayList<DtPropuesta> props = (ArrayList<DtPropuesta>) Fabrica.getInstance().getICtrlPropuesta().listarPropuestas();
 				if (props.size() > 0){
 					request.setAttribute("propuestas", props);
 					request.getRequestDispatcher("/WEB-INF/propuestas/listar.jsp").forward(request, response);
@@ -72,7 +72,7 @@ public class Propuestas extends HttpServlet {
 			}
 			else {
 				ArrayList<DtPropuesta> propsfilter = new ArrayList<DtPropuesta>();
-				ArrayList<DtPropuesta> propsfil = Fabrica.getInstance().getICtrlPropuesta().listarPropuestas();
+				ArrayList<DtPropuesta> propsfil = (ArrayList<DtPropuesta>) Fabrica.getInstance().getICtrlPropuesta().listarPropuestas();
 				for(int i = 0; i< propsfil.size(); i++){
 					System.out.println(propsfil.get(i).getCategoria().getNombre() + " - " + filtro.toString());
 					

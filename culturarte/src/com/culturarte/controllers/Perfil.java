@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.culturarte.model.EstadoSesion;
 
-import Logica.Fabrica;
+import logica.Fabrica;
 import dataTypes.DtColaborador;
 import dataTypes.DtProponente;
 import dataTypes.DtUsuario;
@@ -44,7 +44,7 @@ public class Perfil extends HttpServlet {
 				user = (DtUsuario) Fabrica.getInstance().getICtrlUsuario().infoColaborador((String) request.getSession().getAttribute("usuario_logueado"));
 			else 
 				user = (DtUsuario) Fabrica.getInstance().getICtrlUsuario().infoProponente((String) request.getSession().getAttribute("usuario_logueado"));
-			request.setAttribute("usuario", user);
+			request.setAttribute("usr", user);
 			request.getRequestDispatcher("/WEB-INF/usuarios/perfil.jsp").forward(request, response);
 		} catch (Exception ex){
 			// no existe el usuario, se trata como deslogueado

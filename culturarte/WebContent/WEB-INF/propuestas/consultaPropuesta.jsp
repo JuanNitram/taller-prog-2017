@@ -2,7 +2,7 @@
 	pageEncoding="ISO-8859-1"%>
 <%@page import="java.util.Date"%>
 <%@page import="java.text.SimpleDateFormat"%>
-<%@page import="Logica.Fabrica"%>
+<%@page import="logica.Fabrica"%>
 <%@page import="dataTypes.DtPropuesta"%>
 <%@page import="dataTypes.TRetorno"%>
 <%@page import="dataTypes.DtProponente"%>

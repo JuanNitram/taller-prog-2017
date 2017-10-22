@@ -2,17 +2,17 @@
     Document   : listar
     Author     : Igui
 --%>
-<%@page import="Logica.clases.Propuesta"%>
+<%@page import="logica.clases.Propuesta"%>
 <%@page import="javax.swing.tree.TreeNode"%>
 <%@page import="dataTypes.DtPropuesta"%>
 <%@page import="dataTypes.DtUsuario"%>
 <%@page import="dataTypes.DtCategoria"%>
 <%@page import="java.util.List"%>
 <%@page import="javax.swing.tree.TreeNode"%>
-<%@page import="Logica.clases.Categoria"%>
+<%@page import="logica.clases.Categoria"%>
 <%@page import="com.culturarte.controllers.Propuestas"%>
 <%@page import="dataTypes.TEstado"%>
-<%@page import="Logica.Fabrica"%>
+<%@page import="logica.Fabrica"%>
 <%@page import="javax.swing.tree.DefaultMutableTreeNode"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.culturarte.controllers.Login"%>
@@ -98,16 +98,17 @@
 										<h3><%= propuesta.getTitulo() %></h3>
 									</a>
 								</h4>
-								<h5 Style="border-bottom: 1px solid #DDDDDD;">
+								<p class="card-text" Style="border-bottom: 1px solid #DDDDDD;">
 									Precio de entrada:
 									<%= precio %>
 									<%= propuesta.getPrecioEntrada() %>
-								</h5>
-								<h5 Style="border-bottom: 1px solid #DDDDDD;">
+								</p>
+								<p class="card-text" Style="border-bottom: 1px solid #DDDDDD;">
 									Proponente:
 									<%=Fabrica.getInstance().getICtrlUsuario().infoProponente(propuesta.getNickProponente()).getNombre()%>
 									<%=espacio%>
-									<%=Fabrica.getInstance().getICtrlUsuario().infoProponente(propuesta.getNickProponente()).getApellido()%></h5>
+									<%=Fabrica.getInstance().getICtrlUsuario().infoProponente(propuesta.getNickProponente()).getApellido()%>
+								</p>
 								<p class="card-text" Style="border-bottom: 1px solid #DDDDDD;">
 									Categoria:
 									<%= propuesta.getCategoria().getNombre() %>

@@ -1,18 +1,21 @@
-<%@page import="Logica.Fabrica"%>
+<%@page import="logica.Fabrica"%>
 <%@page import="dataTypes.DtProponente"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@page import="dataTypes.DtProponente"%>
 <%@page import="dataTypes.DtUsuario"%>
-<%@page import="java.text.SimpleDateFormat"%>
 <%@page import="dataTypes.DtColaborador"%>
+<%@page import="dataTypes.DtColaboracion"%>
+<%@page import="dataTypes.DtPropuesta"%>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.util.ArrayList"%>
 <!DOCTYPE html>
 
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<jsp:include page="/WEB-INF/template/head.jsp" />
-<title>Usuario | Culturarte</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<jsp:include page="/WEB-INF/template/head.jsp" />
+	<title>Usuario | Culturarte</title>
 </head>
 <body>
 	<jsp:include page="/WEB-INF/template/header.jsp" />
@@ -67,6 +70,23 @@
 										<td><%=dtP.getDireccion()%></td>
 									</tr>
 									<tr>
+										<td>Propuestas:</td>
+										<td>
+											<%
+												ArrayList<DtPropuesta> propuestas = (ArrayList<DtPropuesta>)dtP.getPropuestas();
+												if(propuestas != null) {
+													for(int i = 0; i < propuestas.size(); i++) {
+														String titulo = propuestas.get(i).getTitulo();
+											%>
+												<a href="consultaPropuesta?propuesta=<%= titulo %>"><%= titulo %></a>
+												<br>
+											<%	
+													}
+												} 
+											%>
+										 </td>
+									</tr>
+									<tr>
 										<td></td>
 										<td></td>
 									</tr>
@@ -76,46 +96,56 @@
 					</div>
 				</div>
 				<div class="panel-footer">
-					<div class="span">
+					<div><%=dtP.getBiografia()%></div>
+				</div>
+				<div class="panel-footer group">
+					<div class="span left">
+						<span style="text-align: center"><h3>Seguidores</h3></span>
 						<%
-							if (Fabrica.getInstance().getICtrlUsuario().listarSeguidos(dtP.getNickName()).size() > 0) {
+							ArrayList<DtUsuario> listaSeguidores = (ArrayList<DtUsuario>)Fabrica.getInstance().getICtrlUsuario().listarSeguidores(dtP.getNickName());
+							if (listaSeguidores.size() > 0) {
+								for (int i = 0; i < listaSeguidores.size(); i++) {
+									DtUsuario seguidor = listaSeguidores.get(i);
 						%>
-						<span style="text-align: center"><h3>Seguidores</h3></span> <select
-							multiple class="form-control">
-							<%
-								for (int i = 0; i < Fabrica.getInstance().getICtrlUsuario().listarSeguidos(dtP.getNickName())
-												.size(); i++) {
-											DtUsuario seguidor = Fabrica.getInstance().getICtrlUsuario().listarSeguidos(dtP.getNickName())
-													.get(i);
-							%>
-
-							<option><%=seguidor.getNombre().concat(" ").concat(seguidor.getApellido()).concat(" (")
-								.concat(seguidor.getNickName()).concat(")")%></option>
-
-							<%
-								}
-							%>
-						</select>
+							<a href="consultaUsuario?usuario=<%= seguidor.getNickName() %>">
+								<%= seguidor.getNombre()+ " " + seguidor.getApellido() + " (" + seguidor.getNickName() + ")" %>
+							</a>
+							<%= (seguidor instanceof DtProponente)?" - Proponente":" - Colaborador" %>
+							<br>
 						<%
+								}
 							}
 						%>
+					</div>
+					<div class="span right">
+						<span style="text-align: center"><h3>Seguidos</h3></span>
+						<%
+							ArrayList<DtUsuario> listaSeguidos = (ArrayList<DtUsuario>)Fabrica.getInstance().getICtrlUsuario().listarSeguidos(dtP.getNickName());
+							if (listaSeguidos.size() > 0) {
+								for (int i = 0; i < listaSeguidos.size(); i++) {
+											DtUsuario seguido = listaSeguidos.get(i);
+						%>
 
+							<a href="consultaUsuario?usuario=<%= seguido.getNickName() %>">
+								<%= seguido.getNombre()+ " " + seguido.getApellido() + " (" + seguido.getNickName() + ")" %>
+							</a>
+							<%= (seguido instanceof DtProponente)?" - Proponente":" - Colaborador" %>
+							<br>
+						<%
+								}
+							}
+						%>
 					</div>
 				</div>
 				<div class="panel-footer">
-					<div><%=dtP.getBiografia()%></div>
-					<div class="panel-footer">
-
-
-						<a onclick="window.location='<%=dtP.getLinkSitio()%>';"><button
-								class="btn btn-warning" type="button">
-								<img class="emailboton" src="/media/images/link.png">
-							</button></a> <a href="<%="mailto:" + dtP.getEmail()%>"><button
-								class="btn btn-success meilito" type="button"
-								data-original-title="Send message to user">
-								<img class="emailboton" src="/media/images/email.png">
-							</button></a>
-					</div>
+					<a onclick="window.location='<%=dtP.getLinkSitio()%>';"><button
+							class="btn btn-warning" type="button">
+							<img class="emailboton" src="/media/images/link.png">
+						</button></a> <a href="<%="mailto:" + dtP.getEmail()%>"><button
+							class="btn btn-success meilito" type="button"
+							data-original-title="Send message to user">
+							<img class="emailboton" src="/media/images/email.png">
+						</button></a>
 				</div>
 			</div>
 		</div>
@@ -168,6 +198,23 @@
 										<td><%=new SimpleDateFormat("dd/MM/yyyy").format(dtC.getFechaNacimiento().getTime())%></td>
 									</tr>
 									<tr>
+										<td>Colaboraciones:</td>
+										<td>
+										<%
+											ArrayList<DtColaboracion> colaboraciones = (ArrayList<DtColaboracion>)dtC.getColaboraciones();
+											if(colaboraciones != null) {
+												for(int i = 0; i < colaboraciones.size(); i++) {
+													String titulo = colaboraciones.get(i).getTitulo();
+										%>
+													<a href="consultaPropuesta?propuesta=<%= titulo %>"><%= titulo %></a>
+													<br>
+										<%
+												}
+											}
+										%>
+										</td>
+									</tr>
+									<tr>
 										<td></td>
 										<td></td>
 									</tr>
@@ -177,31 +224,42 @@
 						</div>
 					</div>
 				</div>
-				<div class="panel-footer">
-					<div class="span">
+				<div class="panel-footer group">
+					<div class="span left">
+						<span style="text-align: center"><h3>Seguidores</h3></span>
 						<%
-							if (Fabrica.getInstance().getICtrlUsuario().listarSeguidos(dtC.getNickName()).size() > 0) {
+							ArrayList<DtUsuario> listaSeguidores = (ArrayList<DtUsuario>)Fabrica.getInstance().getICtrlUsuario().listarSeguidores(dtC.getNickName());
+							if (listaSeguidores.size() > 0) {
+								for (int i = 0; i < listaSeguidores.size(); i++) {
+									DtUsuario seguidor = listaSeguidores.get(i);
 						%>
-						<span style="text-align: center"><h3>Seguidores</h3></span> <select
-							multiple class="form-control">
-							<%
-								for (int i = 0; i < Fabrica.getInstance().getICtrlUsuario().listarSeguidos(dtC.getNickName())
-												.size(); i++) {
-											DtUsuario seguidor = Fabrica.getInstance().getICtrlUsuario().listarSeguidos(dtC.getNickName())
-													.get(i);
-							%>
-
-							<option><%=seguidor.getNombre().concat(" ").concat(seguidor.getApellido()).concat(" (")
-								.concat(seguidor.getNickName()).concat(")")%></option>
-
-							<%
-								}
-							%>
-						</select>
+							<a href="consultaUsuario?usuario=<%= seguidor.getNickName() %>">
+								<%= seguidor.getNombre()+ " " + seguidor.getApellido() + " (" + seguidor.getNickName() + ")" %>
+							</a>
+							<%= (seguidor instanceof DtProponente)?" - Proponente":" - Colaborador" %>
+							<br>
 						<%
+								}
 							}
 						%>
-
+					</div>
+					<div class="span right">
+						<span style="text-align: center"><h3>Seguidos</h3></span>
+						<%
+							ArrayList<DtUsuario> listaSeguidos = (ArrayList<DtUsuario>)Fabrica.getInstance().getICtrlUsuario().listarSeguidos(dtC.getNickName());
+							if (listaSeguidos.size() > 0) {
+								for (int i = 0; i < listaSeguidos.size(); i++) {
+									DtUsuario seguido = listaSeguidos.get(i);
+						%>
+							<a href="consultaUsuario?usuario=<%= seguido.getNickName() %>">
+								<%= seguido.getNombre()+ " " + seguido.getApellido() + " (" + seguido.getNickName() + ")" %>
+							</a>
+							<%= (seguido instanceof DtProponente)?" - Proponente":" - Colaborador" %>
+							<br>
+						<%
+								}
+							}
+						%>
 					</div>
 				</div>
 				<div class="panel-footer">
@@ -209,7 +267,7 @@
 							class="btn btn-success meilito" type="button"
 							data-original-title="Send message to user">
 							<img class="emailboton" src="/media/images/email.png">
-						</button></a>
+					</button></a>
 				</div>
 			</div>
 		</div>

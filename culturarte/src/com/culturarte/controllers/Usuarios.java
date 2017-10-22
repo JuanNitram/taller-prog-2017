@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import Logica.Fabrica;
+import logica.Fabrica;
 import dataTypes.DtUsuario;
 
 /**
@@ -42,7 +42,7 @@ public class Usuarios extends HttpServlet {
 			//Fabrica.getInstance().getICtrlUsuario().altaColaborador("Juan", "Juan", "Juan", "Juan", "Juan", "", d);
 			
 			// no se seteó el usuario (lista todos los usuarios)
-			ArrayList<DtUsuario> usrs = Fabrica.getInstance().getICtrlUsuario().listarUsuarios();
+			ArrayList<DtUsuario> usrs = (ArrayList<DtUsuario>) Fabrica.getInstance().getICtrlUsuario().listarUsuarios();
 			if (usrs.size() > 0){
 				request.setAttribute("usuarios", usrs);
 			

@@ -12,7 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import com.culturarte.model.EstadoSesion;
 
-import Logica.Fabrica;
+import logica.Fabrica;
 import dataTypes.DtUsuario;
 
 /**
@@ -47,15 +47,18 @@ public class Login extends HttpServlet {
         
         
        
-		// chequea contraseña
+		// chequea contraseï¿½a
 		try {
 			DtUsuario user;
-			ArrayList<DtUsuario> arregloProponentes = Fabrica.getInstance().getICtrlUsuario().listarUsuarios();	
+			ArrayList<DtUsuario> arregloProponentes = (ArrayList<DtUsuario>) Fabrica.getInstance().getICtrlUsuario().listarUsuarios();	
 			int index =0;
 			while (index < arregloProponentes.size() && !arregloProponentes.get(index).getNickName().equals(login))
 				index++;
-			if (Fabrica.getInstance().getICtrlUsuario().existeUsuario(login, null)){
+			System.out.println("antes de existeUsuario con mail");
+			if (Fabrica.getInstance().getICtrlUsuario().existeUsuario(login, null)
+					|| Fabrica.getInstance().getICtrlUsuario().existeUsuario(null, login)){
 				user = arregloProponentes.get(index);
+				System.out.println("existeUsuario con mail");
 				if (Fabrica.getInstance().getICtrlUsuario().checkPassword(login, password)){
 					nuevoEstado = EstadoSesion.LOGIN_CORRECTO;
 					request.getSession().setAttribute("usuario_logueado", user.getNickName());
@@ -76,7 +79,7 @@ public class Login extends HttpServlet {
         
         objSesion.setAttribute("estado_sesion", nuevoEstado);
 		
-		// redirige a la página principal para que luego rediriga a la página
+		// redirige a la pï¿½gina principal para que luego rediriga a la pï¿½gina
 		// que corresponde
         RequestDispatcher dispatcher = request.getRequestDispatcher("/home");
         dispatcher.forward(request, response);
