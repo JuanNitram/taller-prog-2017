@@ -12,6 +12,7 @@ import java.util.List;
 
 public class Proponente extends Usuario {
 
+	private String nombre;
 	private String direccion;
 	private String biografia;
 	private String linkSitio;
@@ -20,6 +21,7 @@ public class Proponente extends Usuario {
 	public Proponente(String nickName, String password, String nombre, String apellido, String email, Date fechaNacimiento,
 			String rutaImg, String direccion, String biografia, String linkSitio) {
 		super(nickName, password, nombre, apellido, email, fechaNacimiento, rutaImg);
+		this.nombre = nombre;
 		this.direccion = direccion;
 		this.biografia = biografia;
 		this.linkSitio = linkSitio;
@@ -58,7 +60,7 @@ public class Proponente extends Usuario {
 		List<DtPropuesta> propuestas = new ArrayList();
 		for (Propuesta prop : this.propuestas.values()) 
 			propuestas.add(prop.getInfoPropuesta());
-		return new DtProponente(super.getNickName(), super.getNombre(), super.getApellido(), super.getEmail(), super.getFechaNacimiento(),
+		return new DtProponente(super.getNickName(), getNombre(), super.getApellido(), super.getEmail(), super.getFechaNacimiento(),
 				super.getRutaImg(), direccion, biografia, linkSitio, propuestas);
 	}
 	
@@ -67,5 +69,10 @@ public class Proponente extends Usuario {
 		for (Propuesta prop : this.propuestas.values()) 
 			propuestas.add(prop.getInfoPropuesta());
 		return propuestas;
+	}
+
+	@Override
+	public String getNombre() {
+		return this.nombre;
 	}
 }

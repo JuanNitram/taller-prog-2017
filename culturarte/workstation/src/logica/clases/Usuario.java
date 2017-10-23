@@ -7,13 +7,10 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import dataTypes.DtUsuario;
-
+ 
 public abstract class Usuario {
 	private String nickName; // Lo identifica
-	private String password;
-	private String nombre;
+	private String password; 
 	private String apellido;
 	private String email; // Lo identifica
 	private Date fechaNacimiento;
@@ -28,8 +25,7 @@ public abstract class Usuario {
 			String rutaImg) {
 		super();
 		this.nickName = nickName;
-		this.password = password;
-		this.nombre = nombre;
+		this.password = password; 
 		this.apellido = apellido;
 		this.email = email;
 		this.fechaNacimiento = fechaNacimiento;
@@ -43,10 +39,7 @@ public abstract class Usuario {
 		return nickName;
 	}
 
-
-	public String getNombre() {
-		return nombre;
-	}
+	public abstract String getNombre();
 	
 	public String getPassword(){
 		return password;

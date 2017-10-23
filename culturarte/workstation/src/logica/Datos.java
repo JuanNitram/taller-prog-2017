@@ -410,7 +410,7 @@ public class Datos {
 		cPropuesta.cambiarEstado("Bardo en la FING",  est);
 		
 		int idActual = cPropuesta.getIdActualColab();
-		cPropuesta.infoPropuesta("Cine en el Botánico");
+		cPropuesta.infoPropuesta("Cine en el Bot�nico");
 		cPropuesta.agregarColaboracion("novick",  50000,  TRetorno.PORCENTAJE_GANANCIA);
 		fecha.set(2017, 04, 20, 14, 30);
 		cPropuesta.cambiarFechaColaboracion(idActual++,  fecha.getTime());
@@ -468,9 +468,9 @@ public class Datos {
 		fecha.set(2017, 9, 9, 15, 30);
 		cPropuesta.cambiarFechaColaboracion(idActual++,  fecha.getTime());
 		
-		cPropuesta.agregarComentario("novick", "Cine en el Botánico", "Muy buena propuesta.");
-		cPropuesta.agregarComentario("robinh", "Cine en el Botánico", "Realmente una pena que la propuesta haya sido cancelada.");
-		cPropuesta.agregarComentario("nicoJ", "Cine en el Botánico", "No se lo pueden perder!");
+		cPropuesta.agregarComentario("novick", "Cine en el Bot�nico", "Muy buena propuesta.");
+		cPropuesta.agregarComentario("robinh", "Cine en el Bot�nico", "Realmente una pena que la propuesta haya sido cancelada.");
+		cPropuesta.agregarComentario("nicoJ", "Cine en el Bot�nico", "No se lo pueden perder!");
 		cPropuesta.agregarComentario("marcelot", "Religiosamente", "Todos al teatro de verano este 7 de Octubre!");
 		cPropuesta.agregarComentario("Mengano", "Religiosamente", "Arriba Momosapiens!!!");
 		cPropuesta.agregarComentario("sergiop", "Religiosamente", "Los conmino a todos a ir!");

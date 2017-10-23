@@ -7,16 +7,17 @@ import java.util.List;
 import java.util.Map;
 
 import dataTypes.DtColaboracion;
-import dataTypes.DtColaborador;
-import dataTypes.DtPropuesta;
+import dataTypes.DtColaborador; 
 
 public class Colaborador extends Usuario {
 
+	private String nombre;
 	private Map<Integer, Colaboracion> colaboraciones;
 	
 	public Colaborador(String nickName, String password, String nombre, String apellido, String email,
 			String rutaImg, Date fechaNacimiento) {
 		super(nickName, password, nombre, apellido, email, fechaNacimiento, rutaImg);
+		this.nombre = nombre;
 		colaboraciones = new HashMap<Integer, Colaboracion>();
 	}
  
@@ -32,7 +33,7 @@ public class Colaborador extends Usuario {
 		List<DtColaboracion> colaboraciones = new ArrayList();
 		for (Colaboracion colab : this.colaboraciones.values()) 
 			colaboraciones.add(colab.getInfoColaboracion());
-		return new DtColaborador(super.getNickName(), super.getNombre(), super.getApellido(), super.getEmail(), super.getFechaNacimiento(), super.getRutaImg(), colaboraciones);
+		return new DtColaborador(super.getNickName(), getNombre(), super.getApellido(), super.getEmail(), super.getFechaNacimiento(), super.getRutaImg(), colaboraciones);
 	}
 
 	public List<DtColaboracion> getColaboraciones() {
@@ -40,6 +41,11 @@ public class Colaborador extends Usuario {
 		for (Colaboracion colab : this.colaboraciones.values()) 
 			colaboraciones.add(colab.getInfoColaboracion());
 		return colaboraciones;
+	}
+
+	@Override
+	public String getNombre() {
+		return this.nombre;
 	}
 	
 }
