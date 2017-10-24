@@ -159,24 +159,24 @@
 												<small>Tipo de usuario:</small>
 											</h3>
 											<p>
-												<input type="radio" name="TipoUsuario" value="Proponente"
-													onClick="mostrarinformacion()"> <label>Proponente</label>
+												<input id="radioProponente" type="radio" name="TipoUsuario" value="Proponente"
+													onChange="panelProponente()"> <label>Proponente</label>
 
-												<input type="radio" name="TipoUsuario" value="Colaborador"
-													onClick="ocultarinformacion()" checked> <label>Colaborador</label>
+												<input id="radioColaborador" type="radio" name="TipoUsuario" value="Colaborador"
+													onChange="panelProponente()" checked> <label>Colaborador</label>
 
 											</p>
 											<div class="row">
 												<div class="col-xs-6 col-sm-6 col-md-6">
 													<div class="form-group">
 														<input type="text" name="txNombre" id="txNombre"
-															class="form-control input-sm" placeholder="Nombre">
+															class="form-control input-sm" placeholder="Nombre" required>
 													</div>
 												</div>
 												<div class="col-xs-6 col-sm-6 col-md-6">
 													<div class="form-group">
 														<input type="text" name="txApellido" id="txApellido"
-															class="form-control input-sm" placeholder="Apellido">
+															class="form-control input-sm" placeholder="Apellido" required>
 													</div>
 												</div>
 											</div>
@@ -184,14 +184,14 @@
 												<div class="col-xs-6 col-sm-6 col-md-6">
 													<div class="form-group">
 														<input type="text" name="txNickname" id="txNickname"
-															class="form-control input-sm" placeholder="Nickname">
+															class="form-control input-sm" placeholder="Nickname" required>
 													</div>
 												</div>
 
 												<div class="col-xs-6 col-sm-6 col-md-6">
 													<div class="form-group">
 														<input class="input-group date fj-date"
-															id="datetimepicker1" name="date" />
+															id="datetimepicker1" name="date" placeholder="Fecha de nacimiento" required/>
 													</div>
 												</div>
 
@@ -199,42 +199,42 @@
 
 											<div class="form-group">
 												<input type="email" id="txEmail" name="txEmail"
-													class="form-control input-sm" placeholder="Email">
+													class="form-control input-sm" placeholder="Email" required>
 											</div>
 
 											<div class="row">
 												<div class="col-xs-6 col-sm-6 col-md-6">
 													<div class="form-group">
 														<input type="password" name="password" id="password"
-															class="form-control input-sm" placeholder="Contraseña">
+															class="form-control input-sm" placeholder="Contraseña" required>
 													</div>
 												</div>
 												<div class="col-xs-6 col-sm-6 col-md-6">
 													<div class="form-group">
 														<input type="password" name="confirm_password"
 															id="confirm_password" class="form-control input-sm"
-															placeholder="Conf. Contraseña"> <span
+															placeholder="Conf. Contraseña" required> <span
 															style="float: right;" id='message'></span>
 													</div>
 												</div>
 											</div>
-											<div id="panelProponente" style="display: none">
+											<div id="panelProponente" style="display:none;">
 												<div class="form-group">
-													<input type="text" id="txDireccion"
-														class="form-control input-sm" placeholder="Direccion">
+													<input type="text" id="txDireccion" name="txDireccion"
+														class="form-control input-sm" placeholder="Direccion" required>
 												</div>
 												<div class="form-group">
-													<input type="text" id="txLinkSitio"
-														class="form-control input-sm" placeholder="Link del sitio">
+													<input type="text" id="txLinkSitio" name="txLinkSitio"
+														class="form-control input-sm" placeholder="Link del sitio" required>
 												</div>
 												<div class="form-group">
-													<input type="text" id="txBiografia"
-														class="form-control input-sm" placeholder="Biografia">
+													<input type="text" id="txBiografia" name="txBiografia"
+														class="form-control input-sm" placeholder="Biografia" required>
 												</div>
 											</div>
 											<div class="modal-footer">
 												<input type="submit" onClick="submit()" name="submit"
-													value="Enviar" class="btn btn-info btn-block">
+													value="Registrarse" class="btn btn-info btn-block">
 											</div>
 										</form>
 
@@ -255,13 +255,23 @@
 
 	<script src="/media/app.js"></script>
 	<script>
-	function mostrarinformacion() {
+	function panelProponente() {
+		if(document.getElementById('radioProponente').checked)
+			document.getElementById('panelProponente').style.display = "block";
+		else if(document.getElementById('radioColaborador').checked) {
+			document.getElementById('txDireccion').required = false;
+			document.getElementById('txLinkSitio').required = false;
+			document.getElementById('txBiografia').required = false;
+			document.getElementById('panelProponente').style.display = "none";
+		}
+	}
+	/* function mostrarinformacion() {
 		document.getElementById('panelProponente').style.display = "block";
 	}
 	function ocultarinformacion() {
 		document.getElementById('panelProponente').style.display = "none";
-	}
-</script>
+	} */
+	</script>
 
 	<script type="text/javascript">
 $('#password, #confirm_password').on('keyup', function () {

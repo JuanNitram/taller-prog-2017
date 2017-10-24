@@ -49,14 +49,16 @@ public class AltaUsuario extends HttpServlet {
 		String [] fechaSplit = fechaNac.split("/");
 		System.out.println(fechaNac);
 		
-		Date variableFecha = new Date(Integer.parseInt(fechaSplit[0]), Integer.parseInt(fechaSplit[1]),
-				Integer.parseInt(fechaSplit[2]));
+		Date variableFecha = new Date(Integer.parseInt(fechaSplit[2]) - 1900, Integer.parseInt(fechaSplit[1]), Integer.parseInt(fechaSplit[0]));
 		
 		if (contrasenia.equals(confContrasenia)){
 			if (Tusuario.equals("Proponente")){
 				String direccion = request.getParameter("txDireccion");
 				String biografia = request.getParameter("txBiografia");
 				String linkSitio = request.getParameter("txLinkSitio");
+				System.out.println(direccion);
+				System.out.println(biografia);
+				System.out.println(linkSitio);
 				Fabrica.getInstance().getICtrlUsuario().altaProponente(nickName, contrasenia, nombre, apellido, direccion, email, biografia, linkSitio, "", variableFecha);
 			}
 			else{

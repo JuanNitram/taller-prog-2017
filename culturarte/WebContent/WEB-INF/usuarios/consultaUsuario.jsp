@@ -142,14 +142,23 @@
 					</div>
 				</div>
 				<div class="panel-footer">
-					<a onclick="window.location='<%=dtP.getLinkSitio()%>';"><button
-							class="btn btn-warning" type="button">
-							<img class="emailboton" src="/media/images/link.png">
-						</button></a> <a href="<%="mailto:" + dtP.getEmail()%>"><button
-							class="btn btn-success meilito" type="button"
-							data-original-title="Send message to user">
-							<img class="emailboton" src="/media/images/email.png">
-						</button></a>
+					<%
+						String link = dtP.getLinkSitio();
+						if(link != null && link != "") {
+					%>
+							<a href="<%=link%>" target="_blank">
+								<button class="btn btn-warning" type="button">
+									<img class="emailboton" src="/media/images/link.png">
+								</button>
+							</a>
+					<%
+						}
+					%>
+					<a href="<%="mailto:" + dtP.getEmail()%>"><button
+						class="btn btn-success meilito" type="button"
+						data-original-title="Send message to user">
+						<img class="emailboton" src="/media/images/email.png">
+					</button></a>
 				</div>
 			</div>
 		</div>
