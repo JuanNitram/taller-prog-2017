@@ -82,11 +82,16 @@ public class Propuestas extends HttpServlet {
 						System.out.println(propsfil.get(i).getCategoria().getNombre());
 					}
 						
-				}if (propsfilter.size() > 0){
+				}
+				
+				if (propsfilter.size() > 0){
 					request.setAttribute("propuestas", propsfilter);
 					request.getRequestDispatcher("/WEB-INF/propuestas/listar.jsp").forward(request, response);
 				}else{
-					response.sendRedirect("/propuestas");
+					request.setAttribute("excepcion", true);
+					request.setAttribute("excepcionTitulo", "Propuestas");
+					request.setAttribute("excepcionMensaje", "No existen propuestas en la categoría " + filtro);
+					request.getRequestDispatcher("/propuestas?filtro=").forward(request, response);
 				}
 				
 			}
