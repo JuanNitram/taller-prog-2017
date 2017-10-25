@@ -1,15 +1,16 @@
 package com.culturarte.controllers;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import logica.Fabrica;
-import dataTypes.DtColaborador;
 import dataTypes.DtUsuario;
+import logica.Fabrica;
 
 /**
  * Servlet implementation class ConsultaUsuario
@@ -36,6 +37,15 @@ public class ConsultaUsuario extends HttpServlet {
 		for (DtUsuario dtU: Fabrica.getInstance().getICtrlUsuario().listarUsuarios())
 			if (dtU.getNickName().equals(usuario)) dtUsuario = dtU;
 		if(dtUsuario != null) {
+			if(request.getSession().getAttribute("usuario_logueado") != null && !request.getSession().getAttribute("usuario_logueado").equals(usuario)) {
+				ArrayList<DtUsuario> seguidores = (ArrayList<DtUsuario>) Fabrica.getInstance().getICtrlUsuario().listarSeguidores(dtUsuario.getNickName());
+				request.setAttribute("siguiendo", false);
+				for(int i = 0; i < seguidores.size(); i++)
+					if(seguidores.get(i).getNickName().equals(request.getSession().getAttribute("usuario_logueado"))) {
+						request.setAttribute("siguiendo", true);
+						break;
+					}
+			}
 			request.setAttribute("usr", dtUsuario);
 			request.getRequestDispatcher("/WEB-INF/usuarios/consultaUsuario.jsp").forward(request, response);
 		} else {

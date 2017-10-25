@@ -14,9 +14,9 @@
 
 <html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-	<jsp:include page="/WEB-INF/template/head.jsp" />
-	<title>Usuario | Culturarte</title>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<jsp:include page="/WEB-INF/template/head.jsp" />
+<title>Usuario | Culturarte</title>
 </head>
 <body>
 	<jsp:include page="/WEB-INF/template/header.jsp" />
@@ -44,10 +44,16 @@
 
 						<img
 							src="/media/images/imagenes/usuarios/proponentes/<%=dtP.getRutaImg()%>.jpg" />
-						<%
-							}
+						<% }
+							
+							if(request.getAttribute("siguiendo") != null) {
 						%>
-
+							<br><br>
+							<form id="formSeguir" name="formSeguir" method="post"
+								action="/SeguimientoUsuario?seguido=<%= dtP.getNickName() %>">
+								<jsp:include page="toggleSeguimiento.jsp"/>
+							</form>
+						<% } %>
 					</div>
 					<div class="right">
 						<div>
@@ -56,7 +62,7 @@
 								<tbody>
 									<tr>
 										<td>Nickname:</td>
-										<td><%=dtP.getNickName()%></td>
+										<td id="nickname"><%=dtP.getNickName()%></td>
 									</tr>
 									<tr>
 										<td>Email:</td>
@@ -80,15 +86,13 @@
 														if(dtP.getNickName().equals(request.getAttribute("usuario_logueado")) 
 															|| propuestas.get(i).getEstado() != TEstado.INGRESADA) {
 															String titulo = propuestas.get(i).getTitulo();
-											%>
-															<a href="consultaPropuesta?propuesta=<%= titulo %>"><%= titulo %></a>
-															<br>
-											<%	
+											%> <a href="consultaPropuesta?propuesta=<%= titulo %>"><%= titulo %></a>
+											<br> <%	
 														}
 													}
 												} 
 											%>
-										 </td>
+										</td>
 									</tr>
 									<tr>
 										<td></td>
@@ -111,11 +115,11 @@
 								for (int i = 0; i < listaSeguidores.size(); i++) {
 									DtUsuario seguidor = listaSeguidores.get(i);
 						%>
-							<a href="consultaUsuario?usuario=<%= seguidor.getNickName() %>">
-								<%= seguidor.getNombre()+ " " + seguidor.getApellido() + " (" + seguidor.getNickName() + ")" %>
-							</a>
-							<%= (seguidor instanceof DtProponente)?" - Proponente":" - Colaborador" %>
-							<br>
+						<a href="consultaUsuario?usuario=<%= seguidor.getNickName() %>">
+							<%= seguidor.getNombre()+ " " + seguidor.getApellido() + " (" + seguidor.getNickName() + ")" %>
+						</a>
+						<%= (seguidor instanceof DtProponente)?" - Proponente":" - Colaborador" %>
+						<br>
 						<%
 								}
 							}
@@ -130,11 +134,11 @@
 											DtUsuario seguido = listaSeguidos.get(i);
 						%>
 
-							<a href="consultaUsuario?usuario=<%= seguido.getNickName() %>">
-								<%= seguido.getNombre()+ " " + seguido.getApellido() + " (" + seguido.getNickName() + ")" %>
-							</a>
-							<%= (seguido instanceof DtProponente)?" - Proponente":" - Colaborador" %>
-							<br>
+						<a href="consultaUsuario?usuario=<%= seguido.getNickName() %>">
+							<%= seguido.getNombre()+ " " + seguido.getApellido() + " (" + seguido.getNickName() + ")" %>
+						</a>
+						<%= (seguido instanceof DtProponente)?" - Proponente":" - Colaborador" %>
+						<br>
 						<%
 								}
 							}
@@ -146,19 +150,19 @@
 						String link = dtP.getLinkSitio();
 						if(link != null && link != "") {
 					%>
-							<a href="<%=link%>" target="_blank">
-								<button class="btn btn-warning" type="button">
-									<img class="emailboton" src="/media/images/link.png">
-								</button>
-							</a>
+					<a href="<%=link%>" target="_blank">
+						<button class="btn btn-warning" type="button">
+							<img class="emailboton" src="/media/images/link.png">
+						</button>
+					</a>
 					<%
 						}
 					%>
 					<a href="<%="mailto:" + dtP.getEmail()%>"><button
-						class="btn btn-success meilito" type="button"
-						data-original-title="Send message to user">
-						<img class="emailboton" src="/media/images/email.png">
-					</button></a>
+							class="btn btn-success meilito" type="button"
+							data-original-title="Send message to user">
+							<img class="emailboton" src="/media/images/email.png">
+						</button></a>
 				</div>
 			</div>
 		</div>
@@ -190,8 +194,22 @@
 							src="/media/images/imagenes/usuarios/colaboradores/<%=dtC.getRutaImg()%>.jpg" />
 						<%
 							}
+						
+							if(request.getAttribute("siguiendo") != null) {
 						%>
-
+							<br><br>
+							<form id ="formSeguir" name="formSeguir" method="post" action="/SeguimientoUsuario?seguido=<%= dtC.getNickName() %>">
+								<%
+									if((boolean)(request.getAttribute("siguiendo"))) {
+								%>
+									<input id="boton_seguir" name="boton_seguir" type="checkbox" data-toggle="toggle"
+										data-on="Seguir" data-off="<i class='fa fa-check'></i> Siguiendo">
+								<% } else { %>
+									<input checked id="boton_seguir" name="boton_seguir" type="checkbox" data-toggle="toggle"
+										data-on="Seguir" data-off="<i class='fa fa-check'></i> Siguiendo">
+								<% } %>
+							</form>
+						<% } %>
 					</div>
 					<div class="derechauser">
 						<div>
@@ -213,15 +231,13 @@
 									<tr>
 										<td>Colaboraciones:</td>
 										<td>
-										<%
+											<%
 											ArrayList<DtColaboracion> colaboraciones = (ArrayList<DtColaboracion>)dtC.getColaboraciones();
 											if(colaboraciones != null) {
 												for(int i = 0; i < colaboraciones.size(); i++) {
 													String titulo = colaboraciones.get(i).getTitulo();
-										%>
-													<a href="consultaPropuesta?propuesta=<%= titulo %>"><%= titulo %></a>
-													<br>
-										<%
+										%> <a href="consultaPropuesta?propuesta=<%= titulo %>"><%= titulo %></a>
+											<br> <%
 												}
 											}
 										%>
@@ -246,11 +262,11 @@
 								for (int i = 0; i < listaSeguidores.size(); i++) {
 									DtUsuario seguidor = listaSeguidores.get(i);
 						%>
-							<a href="consultaUsuario?usuario=<%= seguidor.getNickName() %>">
-								<%= seguidor.getNombre()+ " " + seguidor.getApellido() + " (" + seguidor.getNickName() + ")" %>
-							</a>
-							<%= (seguidor instanceof DtProponente)?" - Proponente":" - Colaborador" %>
-							<br>
+						<a href="consultaUsuario?usuario=<%= seguidor.getNickName() %>">
+							<%= seguidor.getNombre()+ " " + seguidor.getApellido() + " (" + seguidor.getNickName() + ")" %>
+						</a>
+						<%= (seguidor instanceof DtProponente)?" - Proponente":" - Colaborador" %>
+						<br>
 						<%
 								}
 							}
@@ -264,11 +280,11 @@
 								for (int i = 0; i < listaSeguidos.size(); i++) {
 									DtUsuario seguido = listaSeguidos.get(i);
 						%>
-							<a href="consultaUsuario?usuario=<%= seguido.getNickName() %>">
-								<%= seguido.getNombre()+ " " + seguido.getApellido() + " (" + seguido.getNickName() + ")" %>
-							</a>
-							<%= (seguido instanceof DtProponente)?" - Proponente":" - Colaborador" %>
-							<br>
+						<a href="consultaUsuario?usuario=<%= seguido.getNickName() %>">
+							<%= seguido.getNombre()+ " " + seguido.getApellido() + " (" + seguido.getNickName() + ")" %>
+						</a>
+						<%= (seguido instanceof DtProponente)?" - Proponente":" - Colaborador" %>
+						<br>
 						<%
 								}
 							}
@@ -280,7 +296,7 @@
 							class="btn btn-success meilito" type="button"
 							data-original-title="Send message to user">
 							<img class="emailboton" src="/media/images/email.png">
-					</button></a>
+						</button></a>
 				</div>
 			</div>
 		</div>
@@ -290,6 +306,16 @@
 	<%
 		}
 	%>
+
+	<script>
+		$(function() {
+			$('#boton_seguir').change(function() {
+				$(formSeguir).submit();
+			})
+		})
+	</script>
+	<script src="media/bootstrap-toggle/doc/script.js"></script>
+	<script src="../media/bootstrap-toggle/js/bootstrap-toggle.js"></script>
 	<script src="/media/styles/userProfile.css"></script>
 	<div class="footer">
 		<jsp:include page="/WEB-INF/template/footer.jsp" />
@@ -297,28 +323,31 @@
 </body>
 <style>
 .left {
-    float: left;
-    width: 50%;
+	float: left;
+	width: 50%;
 }
+
 .right {
-    float: right;
-    width: 50%;
+	float: right;
+	width: 50%;
 }
+
 .group:after {
-    content:"";
-    display: table;
-    clear: both;
+	content: "";
+	display: table;
+	clear: both;
 }
+
 img {
-    max-width: 100%;
-    height: auto;
+	max-width: 100%;
+	height: auto;
 }
+
 @media screen and (max-width: 480px) {
-    .left, 
-    .right {
-        float: none;
-        width: auto;
-    }
+	.left, .right {
+		float: none;
+		width: auto;
+	}
 }
 </style>
 
