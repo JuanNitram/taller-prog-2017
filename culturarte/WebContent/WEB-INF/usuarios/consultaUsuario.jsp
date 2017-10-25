@@ -198,16 +198,9 @@
 							if(request.getAttribute("siguiendo") != null) {
 						%>
 							<br><br>
-							<form id ="formSeguir" name="formSeguir" method="post" action="/SeguimientoUsuario?seguido=<%= dtC.getNickName() %>">
-								<%
-									if((boolean)(request.getAttribute("siguiendo"))) {
-								%>
-									<input id="boton_seguir" name="boton_seguir" type="checkbox" data-toggle="toggle"
-										data-on="Seguir" data-off="<i class='fa fa-check'></i> Siguiendo">
-								<% } else { %>
-									<input checked id="boton_seguir" name="boton_seguir" type="checkbox" data-toggle="toggle"
-										data-on="Seguir" data-off="<i class='fa fa-check'></i> Siguiendo">
-								<% } %>
+							<form id="formSeguir" name="formSeguir" method="post"
+								action="/SeguimientoUsuario?seguido=<%= dtC.getNickName() %>">
+								<jsp:include page="toggleSeguimiento.jsp"/>
 							</form>
 						<% } %>
 					</div>
