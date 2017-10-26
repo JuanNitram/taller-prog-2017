@@ -1,28 +1,27 @@
 package presentacion2;
 
-import logica.ICtrlUsuario;
-import dataTypes.TEstado;
-import logica.ICtrlPropuesta;
-import logica.Datos;
-import logica.Fabrica;
-
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-import javax.swing.JFrame; 
-import javax.swing.JPanel; 
 import javax.swing.ImageIcon;
 import javax.swing.JDesktopPane;
-import javax.swing.JMenuBar;
+import javax.swing.JFrame;
 import javax.swing.JMenu;
+import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import java.awt.Dimension; 
+import dataTypes.TEstado;
+import logica.Datos;
+import logica.Fabrica;
+import logica.ICtrlPropuesta;
+import logica.ICtrlUsuario; 
 
 public class Principal2 extends JFrame {
 
@@ -48,6 +47,7 @@ public class Principal2 extends JFrame {
 	private ConsultaSeguidor consultaseguidor;
 	private ConsultaPropuestaPorEstado consultapropuestaporestado;
 	private EvaluarPropuesta evaluarpropuesta;
+	private ControlAcceso controlacceso;
 	private Clock2 clock;
 
 	private Datos d = null;
@@ -98,6 +98,14 @@ public class Principal2 extends JFrame {
 			}
 		});
 		mnSistema.add(mntmClock);
+		
+		JMenuItem mntmRegistroDeAcceso = new JMenuItem("Registro de acceso");
+		mntmRegistroDeAcceso.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				controlacceso.setVisible(true);
+			}
+		});
+		mnSistema.add(mntmRegistroDeAcceso);
 		
 		JMenuItem mntmSalir = new JMenuItem("Salir");
 		mntmSalir.addActionListener(new ActionListener() {
@@ -438,6 +446,9 @@ public class Principal2 extends JFrame {
 
 		modificarpropuesta = new ModificarPropuesta(ICP,ICU);
 		escritorio.add(modificarpropuesta);
+		
+		controlacceso = new ControlAcceso(ICP);
+		escritorio.add(controlacceso);
 		
 		clock = new Clock2();
 		escritorio.add(clock);

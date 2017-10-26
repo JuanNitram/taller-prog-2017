@@ -1,6 +1,7 @@
 package logica.controladores;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
@@ -228,6 +229,18 @@ public class CtrlPropuesta implements ICtrlPropuesta {
 			propRecordada.setEstado(new Estado(TEstado.CANCELADA, new Date()));
 	}
 	
+	public boolean extenderFinanciacion(String titulo) {
+		if(propuestas.get(titulo) != null) {
+			if(propuestas.get(titulo).getEstados().get(0).getEstado() == TEstado.PUBLICADA ||
+					propuestas.get(titulo).getEstados().get(0).getEstado() == TEstado.EN_FINANCIACION)
+				if(propuestas.get(titulo).getFechaExtension() == null) {
+					propuestas.get(titulo).setFechaExtension(new Date());
+					return true;
+				}
+		}
+		return false;
+	}
+	
 	public void agregarComentario(String nickname, String titulo, String comentario) {
 		propuestas.get(titulo).comentar(nickname, comentario);
 	}
@@ -262,12 +275,22 @@ public class CtrlPropuesta implements ICtrlPropuesta {
 		Object[] objs = propuestas.values().toArray();
 		for (int i = 0; i < objs.length; i++) {
 			Propuesta prop = (Propuesta) objs[i];
-			if (prop.getEstados().get(0).getEstado() == TEstado.PUBLICADA
-				&& prop.getEstados().get(0).getFecha().getTime() + 2592000 <= Clock2.getFecha().getTime())
-				prop.setEstado(new Estado(TEstado.NO_FINANCIADA, Clock2.getFecha()));
-			else if (prop.getEstados().get(0).getEstado() == TEstado.EN_FINANCIACION
-					&& prop.getEstados().get(1).getFecha().getTime() + 2592000 <= Clock2.getFecha().getTime())
-				prop.setEstado(new Estado(TEstado.NO_FINANCIADA, Clock2.getFecha()));
+			Calendar calendar = Calendar.getInstance();
+			calendar.setTime(prop.getFechaPublicacion());
+			calendar.add(Calendar.DAY_OF_YEAR, 30);
+			if(prop.getFechaExtension() != null) {
+				calendar.setTime(prop.getFechaExtension());
+				calendar.add(Calendar.DAY_OF_YEAR, 30);
+				if((prop.getEstados().get(0).getEstado() == TEstado.PUBLICADA ||
+						prop.getEstados().get(0).getEstado() == TEstado.EN_FINANCIACION) &&
+						calendar.getTime().getTime() <= Clock2.getFecha().getTime())
+					prop.setEstado(new Estado(TEstado.NO_FINANCIADA, Clock2.getFecha()));
+			} else
+				if ((prop.getEstados().get(0).getEstado() == TEstado.PUBLICADA ||
+						prop.getEstados().get(0).getEstado() == TEstado.EN_FINANCIACION) &&
+						calendar.getTime().getTime() <= Clock2.getFecha().getTime())
+					prop.setEstado(new Estado(TEstado.NO_FINANCIADA, Clock2.getFecha()));
+			
 		}
 	}
 

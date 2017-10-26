@@ -23,6 +23,7 @@ public class Propuesta {
 	private List<Estado> estados; /*El primer elemento es el ultimo estado*/
 	private String nickProponente;
 	private List<Comentario> comentarios;
+	private Date fechaExtension;
 	
 	
 	public Propuesta(String titulo, String descripcion, DtCategoria categoria, String lugar, Date fechaRealizacion,
@@ -33,6 +34,7 @@ public class Propuesta {
 		this.lugar = lugar;
 		this.fechaRealizacion = fechaRealizacion;
 		this.fechaPublicacion = null;
+		this.fechaExtension = null;
 		this.montoRequerido = montoRequerido;
 		this.montoReunido = 0;
 		this.tipoRetorno = tipoRetorno;
@@ -87,6 +89,14 @@ public class Propuesta {
 	public void setFechaPublicacion(Date fechaPublicacion) {
 		this.fechaPublicacion = fechaPublicacion;
 	}
+	
+	public Date getFechaExtension() {
+		return this.fechaExtension;
+	}
+
+	public void setFechaExtension(Date fechaExtension) {
+		this.fechaExtension = fechaExtension;
+	}
 
 	public float getMontoRequerido() {
 		return this.montoRequerido;
@@ -122,7 +132,7 @@ public class Propuesta {
 	
 	public DtPropuesta getInfoPropuesta() {
 		return new DtPropuesta(nickProponente, titulo, descripcion, categoria, lugar,
-				fechaRealizacion, fechaPublicacion, montoRequerido, montoReunido, tipoRetorno, precioEntrada, rutaImg, estados.get(0).getEstado());
+				fechaRealizacion, fechaPublicacion, fechaExtension, montoRequerido, montoReunido, tipoRetorno, precioEntrada, rutaImg, estados.get(0).getEstado());
 	}
 	
 	public void setEstado(Estado est){

@@ -1,5 +1,5 @@
-<%@page contentType="text/html" pageEncoding="UTF-8" %>
-<%@page errorPage="/WEB-INF/errorPages/500.jsp" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page errorPage="/WEB-INF/errorPages/500.jsp"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="dataTypes.DtProponente"%>
@@ -7,17 +7,19 @@
 <%@page import="dataTypes.DtColaboracion"%>
 <%@page import="dataTypes.DtPropuesta"%>
 <%@page import="dataTypes.DtUsuario"%>
+<%@page import="dataTypes.TEstado"%>
 <%@page import="logica.Fabrica"%>
 <!doctype html>
 <html>
-   <head>
-	   <jsp:include page="/WEB-INF/template/head.jsp"/>
-	<title>Perfil | Culturarte</title>
-    </head>
-    <body>
-        <jsp:include page="/WEB-INF/template/header.jsp"/>
-		
-		<%
+<head>
+<jsp:include page="/WEB-INF/template/head.jsp" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<title>Perfil | Culturarte</title>
+</head>
+<body>
+	<jsp:include page="/WEB-INF/template/header.jsp" />
+
+	<%
 		if(request.getAttribute("usr") instanceof DtProponente){
 			DtProponente dtP = (DtProponente)(request.getAttribute("usr"));
 			%>
@@ -68,19 +70,43 @@
 									<tr>
 										<td>Propuestas:</td>
 										<td>
-											<%
-												ArrayList<DtPropuesta> propuestas = (ArrayList<DtPropuesta>)dtP.getPropuestas();
-												if(propuestas != null) {
-													for(int i = 0; i < propuestas.size(); i++) {
-														String titulo = propuestas.get(i).getTitulo();
-											%>
-														<a href="consultaPropuesta?propuesta=<%= titulo %>"><%= titulo %></a>
-														<br>
-											<%	
-													}
-												} 
-											%>
-										 </td>
+											<div>
+												<%
+													ArrayList<DtPropuesta> propuestas = (ArrayList<DtPropuesta>) dtP.getPropuestas();
+														if (propuestas != null) {
+															for (int i = 0; i < propuestas.size(); i++) {
+																String titulo = propuestas.get(i).getTitulo();
+												%>
+																<form action="/GestionPropuesta?extender=&propuesta=<%= titulo %>" method="post">
+																	<a href="consultaPropuesta?propuesta=<%=titulo%>"><%=titulo%></a>
+												<%
+																if(propuestas.get(i).getEstado() == TEstado.PUBLICADA ||
+																	propuestas.get(i).getEstado() == TEstado.EN_FINANCIACION) {
+																		if(propuestas.get(i).getFechaExtension() != null) {
+												%>
+																		<button style="margin-left:10px" type=submit class="btn btn-success"
+																			title="Ya has extendido esta financiación" disabled>
+																			<i class="fa fa-calendar-plus-o"></i>
+																		</button>
+												<%						
+																		} else {
+												%>
+																		<button style="margin-left:10px" type=submit class="btn btn-success"
+																			title="Extender financiación">
+																			<i class="fa fa-calendar-plus-o"></i>
+																		</button>
+												<%
+																		}
+																}
+												%>
+																</form>
+																<br>
+												<%
+															}
+														}
+												%>
+											</div>
+										</td>
 									</tr>
 									<tr>
 										<td></td>
@@ -103,11 +129,11 @@
 								for (int i = 0; i < listaSeguidores.size(); i++) {
 									DtUsuario seguidor = listaSeguidores.get(i);
 						%>
-							<a href="consultaUsuario?usuario=<%= seguidor.getNickName() %>">
-								<%= seguidor.getNombre()+ " " + seguidor.getApellido() + " (" + seguidor.getNickName() + ")" %>
-							</a>
-							<%= (seguidor instanceof DtProponente)?" - Proponente":" - Colaborador" %>
-							<br>
+						<a href="consultaUsuario?usuario=<%= seguidor.getNickName() %>">
+							<%= seguidor.getNombre()+ " " + seguidor.getApellido() + " (" + seguidor.getNickName() + ")" %>
+						</a>
+						<%= (seguidor instanceof DtProponente)?" - Proponente":" - Colaborador" %>
+						<br>
 						<%
 								}
 							}
@@ -122,11 +148,11 @@
 											DtUsuario seguido = listaSeguidos.get(i);
 						%>
 
-							<a href="consultaUsuario?usuario=<%= seguido.getNickName() %>">
-								<%= seguido.getNombre()+ " " + seguido.getApellido() + " (" + seguido.getNickName() + ")" %>
-							</a>
-							<%= (seguido instanceof DtProponente)?" - Proponente":" - Colaborador" %>
-							<br>
+						<a href="consultaUsuario?usuario=<%= seguido.getNickName() %>">
+							<%= seguido.getNombre()+ " " + seguido.getApellido() + " (" + seguido.getNickName() + ")" %>
+						</a>
+						<%= (seguido instanceof DtProponente)?" - Proponente":" - Colaborador" %>
+						<br>
 						<%
 								}
 							}
@@ -206,23 +232,22 @@
 				<div class="panel-footer">
 					<div class="span">
 						<table class="table">
-							<tr><span style="text-align: center"><h3>Colaboraciones</h3></span></tr>
+							<tr>
+								<span style="text-align: center"><h3>Colaboraciones</h3></span>
+							</tr>
 							<%
 								ArrayList<DtColaboracion> colaboraciones = (ArrayList<DtColaboracion>)dtC.getColaboraciones();
 								for(int i = 0; i < colaboraciones.size(); i++) {
 									DtColaboracion dtColab = colaboraciones.get(i);
 							%>
-									<tr>
-										<td>
-										<a href="consultaPropuesta?propuesta=<%= dtColab.getTitulo() %>"><%= dtColab.getTitulo() %>
-										</td>
-										<td>
-										$ <%= dtColab.getMontoAporte() %>
-										</td>
-										<td>
-										<%= new SimpleDateFormat("dd/MM/yyyy").format(dtColab.getFechaRealizacion().getTime()) %>
-										</td>
-									</tr>
+							<tr>
+								<td><a
+									href="consultaPropuesta?propuesta=<%= dtColab.getTitulo() %>"><%= dtColab.getTitulo() %></td>
+								<td>$ <%= dtColab.getMontoAporte() %>
+								</td>
+								<td><%= new SimpleDateFormat("dd/MM/yyyy").format(dtColab.getFechaRealizacion().getTime()) %>
+								</td>
+							</tr>
 							<%
 								}
 							%>
@@ -238,11 +263,11 @@
 								for (int i = 0; i < listaSeguidores.size(); i++) {
 									DtUsuario seguidor = listaSeguidores.get(i);
 						%>
-							<a href="consultaUsuario?usuario=<%= seguidor.getNickName() %>">
-								<%= seguidor.getNombre()+ " " + seguidor.getApellido() + " (" + seguidor.getNickName() + ")" %>
-							</a>
-							<%= (seguidor instanceof DtProponente)?" - Proponente":" - Colaborador" %>
-							<br>
+						<a href="consultaUsuario?usuario=<%= seguidor.getNickName() %>">
+							<%= seguidor.getNombre()+ " " + seguidor.getApellido() + " (" + seguidor.getNickName() + ")" %>
+						</a>
+						<%= (seguidor instanceof DtProponente)?" - Proponente":" - Colaborador" %>
+						<br>
 						<%
 								}
 							}
@@ -256,11 +281,11 @@
 								for (int i = 0; i < listaSeguidos.size(); i++) {
 									DtUsuario seguido = listaSeguidos.get(i);
 						%>
-							<a href="consultaUsuario?usuario=<%= seguido.getNickName() %>">
-								<%= seguido.getNombre()+ " " + seguido.getApellido() + " (" + seguido.getNickName() + ")" %>
-							</a>
-							<%= (seguido instanceof DtProponente)?" - Proponente":" - Colaborador" %>
-							<br>
+						<a href="consultaUsuario?usuario=<%= seguido.getNickName() %>">
+							<%= seguido.getNombre()+ " " + seguido.getApellido() + " (" + seguido.getNickName() + ")" %>
+						</a>
+						<%= (seguido instanceof DtProponente)?" - Proponente":" - Colaborador" %>
+						<br>
 						<%
 								}
 							}
@@ -272,42 +297,45 @@
 							class="btn btn-success meilito" type="button"
 							data-original-title="Send message to user">
 							<img class="emailboton" src="/media/images/email.png">
-					</button></a>
+						</button></a>
 				</div>
 			</div>
 		</div>
 	</div>
 
-    <%	} %>
-    	<script src="/media/styles/userProfile.css"></script>
-		<div class="footer">
-			<jsp:include page="/WEB-INF/template/footer.jsp" />
-		</div>
+	<%	} %>
+	<script src="/media/styles/userProfile.css"></script>
+	<div class="footer">
+		<jsp:include page="/WEB-INF/template/footer.jsp" />
+	</div>
 </body>
 <style>
 .left {
-    float: left;
-    width: 50%;
+	float: left;
+	width: 50%;
 }
+
 .right {
-    float: right;
-    width: 50%;
+	float: right;
+	width: 50%;
 }
+
 .group:after {
-    content:"";
-    display: table;
-    clear: both;
+	content: "";
+	display: table;
+	clear: both;
 }
+
 img {
-    max-width: 100%;
-    height: auto;
+	max-width: 100%;
+	height: auto;
 }
+
 @media screen and (max-width: 480px) {
-    .left, 
-    .right {
-        float: none;
-        width: auto;
-    }
+	.left, .right {
+		float: none;
+		width: auto;
+	}
 }
 </style>
 </html>

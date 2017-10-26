@@ -52,5 +52,7 @@ public interface ICtrlPropuesta {
 
 	void evaluar(String evaluacion);
 	
+	boolean extenderFinanciacion(String titulo);
+	
 	void agregarComentario(String nickname, String titulo, String comentario);	
 }

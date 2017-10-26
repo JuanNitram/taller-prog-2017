@@ -1,8 +1,10 @@
 package com.culturarte.controllers;
 
 import java.io.IOException;
+import java.util.Calendar;
+import java.util.Date;
+
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -25,7 +27,7 @@ public class Home extends HttpServlet {
     }
 
     /**
-	 * inicializa la sesión si no estaba creada 
+	 * inicializa la sesiï¿½n si no estaba creada 
 	 * @param request 
 	 */
 	public static void initSession(HttpServletRequest request) {
@@ -40,7 +42,7 @@ public class Home extends HttpServlet {
 	}
 	
 	/**
-	 * Devuelve el estado de la sesión
+	 * Devuelve el estado de la sesiï¿½n
 	 * @param request
 	 * @return 
 	 */
@@ -52,7 +54,7 @@ public class Home extends HttpServlet {
 	private void processRequest(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		initSession(req);
-		
+
 		switch(getEstado(req)){
 			case NO_LOGIN:
 				// hace que se ejecute el jsp sin cambiar la url
@@ -68,7 +70,7 @@ public class Home extends HttpServlet {
 				System.out.println("Estoy en login_incorrecto en home");
 				break;
 			case LOGIN_CORRECTO:
-				// manda una redirección a otra URL (cambia la URL)
+				// manda una redirecciï¿½n a otra URL (cambia la URL)
 				resp.sendRedirect("/perfil");
 				System.out.println("Estoy en login_correcto en home");
 				break;
