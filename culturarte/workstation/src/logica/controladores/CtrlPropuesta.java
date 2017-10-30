@@ -1,6 +1,7 @@
 package logica.controladores;
 
 import java.util.ArrayList;
+
 import java.util.Calendar;
 import java.util.Collection;
 import java.util.Date;
@@ -15,12 +16,14 @@ import logica.ICtrlPropuesta;
 import logica.clases.Categoria;
 import logica.clases.Colaboracion;
 import logica.clases.Colaborador;
+import logica.clases.Comentario;
 import logica.clases.Estado;
 import logica.clases.Proponente;
 import logica.clases.Propuesta;
 import dataTypes.DtCategoria;
 import dataTypes.DtColaboracion;
 import dataTypes.DtColaborador;
+import dataTypes.DtComentario;
 import dataTypes.DtPropuesta;
 import dataTypes.TEstado;
 import dataTypes.TRetorno;
@@ -240,9 +243,23 @@ public class CtrlPropuesta implements ICtrlPropuesta {
 		}
 		return false;
 	}
+
+	public void cancelarPropuesta(String titulo){
+		Estado est = new Estado(TEstado.CANCELADA,new Date());
+		propuestas.get(titulo).setEstado(est);
+	}
 	
 	public void agregarComentario(String nickname, String titulo, String comentario) {
 		propuestas.get(titulo).comentar(nickname, comentario);
+	}
+	
+	public List<DtComentario> listarComentarios(String titulo){
+		ArrayList<DtComentario> res = new ArrayList<>();
+		List<Comentario> comentarios = propuestas.get(titulo).getComentarios();
+		for(int i = 0; i < comentarios.size(); i++){
+			res.add(new DtComentario(comentarios.get(i).getNickname(),comentarios.get(i).getComentario()));
+		}
+		return res;
 	}
 	
 	public void agregarFavorita(String nickname, String titulo) {

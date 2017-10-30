@@ -17,12 +17,36 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <jsp:include page="/WEB-INF/template/head.jsp" />
 <title>Usuario | Culturarte</title>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('#divSeguimiento').click(function(){
+			$.ajax({
+				type : 'POST',
+				data : {
+					nickname : $('#nickname').html(),
+					nomApel : $('#nombre_apellido').html(),
+					valorBoton : $('#divSeguimiento').data("estado")
+				},
+				url : 'SeguimientoUsuario',
+				success : function(result) {
+					$('#panelSeguidores').html(result);
+					
+					if($('#divSeguimiento').data("estado") == 'Seguir')
+						$('#divSeguimiento').data("estado",'Siguiendo');
+					else
+						$('#divSeguimiento').data("estado",'Seguir');
+				}
+			});
+		});
+	});
+</script>
 </head>
 <body>
 	<jsp:include page="/WEB-INF/template/header.jsp" />
 	<br>
 	<br>
 	<%
+		session.setAttribute("usr", request.getAttribute("usr"));
 		if (request.getAttribute("usr") instanceof DtProponente) {
 			DtProponente dtP = (DtProponente) (request.getAttribute("usr"));
 	%>
@@ -30,7 +54,7 @@
 		<div class="panel">
 			<div class="main text-color">
 				<div class="panel-heading ">
-					<h3 class="panel-title text-color"><%=dtP.getNombre().concat(" ").concat(dtP.getApellido()).concat("  (Proponente)")%></h3>
+					<h3 id="nombre_apellido" class="panel-title text-color"><%=dtP.getNombre().concat(" ").concat(dtP.getApellido()).concat(" (Proponente)")%></h3>
 				</div>
 				<div class="panel-body group " id="userimage">
 					<div class="left">
@@ -44,15 +68,14 @@
 
 						<img
 							src="/media/images/imagenes/usuarios/proponentes/<%=dtP.getRutaImg()%>.jpg" />
-						<% }
+						<%	}
 							
 							if(request.getAttribute("siguiendo") != null) {
 						%>
 							<br><br>
-							<form id="formSeguir" name="formSeguir" method="post"
-								action="/SeguimientoUsuario?seguido=<%= dtP.getNickName() %>">
-								<jsp:include page="toggleSeguimiento.jsp"/>
-							</form>
+							<div id="divSeguimiento" data-estado="<%= ((boolean) (request.getAttribute("siguiendo")))?"Siguiendo":"Seguir" %>">
+								<jsp:include page="toggleSeguimiento.jsp" />
+							</div>
 						<% } %>
 					</div>
 					<div class="right">
@@ -107,7 +130,7 @@
 					<div><%=dtP.getBiografia()%></div>
 				</div>
 				<div class="panel-footer group">
-					<div class="span left">
+					<div id="panelSeguidores" class="span left">
 						<span style="text-align: center"><h3>Seguidores</h3></span>
 						<%
 							ArrayList<DtUsuario> listaSeguidores = (ArrayList<DtUsuario>)Fabrica.getInstance().getICtrlUsuario().listarSeguidores(dtP.getNickName());
@@ -198,10 +221,9 @@
 							if(request.getAttribute("siguiendo") != null) {
 						%>
 							<br><br>
-							<form id="formSeguir" name="formSeguir" method="post"
-								action="/SeguimientoUsuario?seguido=<%= dtC.getNickName() %>">
-								<jsp:include page="toggleSeguimiento.jsp"/>
-							</form>
+							<div id="divSeguimiento" data-estado="<%= ((boolean) (request.getAttribute("siguiendo")))?"Siguiendo":"Seguir" %>">
+								<jsp:include page="toggleSeguimiento.jsp" />
+							</div>
 						<% } %>
 					</div>
 					<div class="derechauser">
@@ -247,7 +269,7 @@
 					</div>
 				</div>
 				<div class="panel-footer group">
-					<div class="span left">
+					<div id="panelSeguidores" class="span left">
 						<span style="text-align: center"><h3>Seguidores</h3></span>
 						<%
 							ArrayList<DtUsuario> listaSeguidores = (ArrayList<DtUsuario>)Fabrica.getInstance().getICtrlUsuario().listarSeguidores(dtC.getNickName());
@@ -300,13 +322,13 @@
 		}
 	%>
 
-	<script>
+	<!-- <script>
 		$(function() {
 			$('#boton_seguir').change(function() {
 				$(formSeguir).submit();
 			})
 		})
-	</script>
+	</script> -->
 	<script src="media/bootstrap-toggle/doc/script.js"></script>
 	<script src="../media/bootstrap-toggle/js/bootstrap-toggle.js"></script>
 	<script src="/media/styles/userProfile.css"></script>

@@ -1,19 +1,21 @@
 package logica.controladores;
 
-import java.util.Map;
-import java.util.HashMap; 
-import java.util.List;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import dataTypes.DtColaborador;
+import dataTypes.DtProponente;
+import dataTypes.DtUsuario;
 import logica.ICtrlUsuario;
+import logica.clases.Acceso;
 import logica.clases.Colaborador;
 import logica.clases.Proponente;
 import logica.clases.Propuesta;
 import logica.clases.Usuario;
-import dataTypes.DtColaborador;
-import dataTypes.DtProponente;
-import dataTypes.DtUsuario;
 
 public class CtrlUsuario implements ICtrlUsuario {
 	
@@ -21,9 +23,11 @@ public class CtrlUsuario implements ICtrlUsuario {
 	private Map<String, Usuario> usuarios;
 	private Usuario usSeguidor;
 	private Usuario usSeguido;
+	private ArrayList<Acceso> accesos;
 	
 	private CtrlUsuario() { 
 		this.usuarios = new HashMap<String, Usuario>();
+		this.accesos = new ArrayList<Acceso>();
 	}
 	
 	public List<DtUsuario> listarUsuarios(){
@@ -195,4 +199,11 @@ public class CtrlUsuario implements ICtrlUsuario {
 		usuarios.get(nickname).marcarFavorita(propuesta);
 	}
 	
+	public void registrarAcceso(Acceso acceso) {
+		
+		if(accesos.size() == 10000) 
+			accesos.remove(accesos.size() - 1);
+
+		accesos.add(0, acceso);
+	}
 }

@@ -155,6 +155,10 @@ public class Propuesta {
 		Comentario coment = new Comentario(nickname, comentario);
 		this.comentarios.add(coment);
 	}
+	
+	public List<Comentario> getComentarios(){
+		return this.comentarios;
+	}
 
 	public void borrarPrimerEstado() {
 		this.estados.remove(this.estados.size() - 1);

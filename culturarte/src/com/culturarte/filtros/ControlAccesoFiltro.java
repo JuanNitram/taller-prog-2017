@@ -14,7 +14,9 @@ import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 
-import com.culturarte.model.Acceso;
+import logica.Fabrica;
+import logica.clases.Acceso;
+
 
 /**
  * Servlet Filter implementation class ControlAccesoFiltro
@@ -26,21 +28,20 @@ public class ControlAccesoFiltro implements Filter {
      * Default constructor. 
      */
     public ControlAccesoFiltro() {
-        // TODO Auto-generated constructor stub
+    	
     }
 
 	/**
 	 * @see Filter#destroy()
 	 */
 	public void destroy() {
-		// TODO Auto-generated method stub
+		
 	}
 
 	/**
 	 * @see Filter#doFilter(ServletRequest, ServletResponse, FilterChain)
 	 */
 	public void doFilter(ServletRequest req, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-		// TODO Auto-generated method stub
 		// place your code here
 		
 		HttpServletRequest request = (HttpServletRequest) req; 
@@ -48,7 +49,6 @@ public class ControlAccesoFiltro implements Filter {
 		//System.out.println(request.getRequestURL().toString());
 
 		
-		ArrayList<Acceso> accesos;
 		String userAgent = request.getHeader("User-Agent");
 		Acceso acc = new Acceso(
 				request.getRemoteHost(),
@@ -57,16 +57,9 @@ public class ControlAccesoFiltro implements Filter {
 				userAgent.substring(userAgent.indexOf("(")+1, userAgent.indexOf(";")),
 				new Date()
 			);
-
-		if(contexto.getAttribute("accesos") == null)
-			accesos = new ArrayList<Acceso>();
-		else accesos = (ArrayList<Acceso>) contexto.getAttribute("accesos");
 		
-		if(accesos.size() == 10000) 
-			accesos.remove(accesos.size() - 1);
-
-		accesos.add(0, acc);
-		contexto.setAttribute("accesos", accesos);
+		Fabrica.getInstance().getICtrlUsuario().registrarAcceso(acc);
+		
 		// pass the request along the filter chain
 		chain.doFilter(request, response);
 	}
@@ -75,7 +68,6 @@ public class ControlAccesoFiltro implements Filter {
 	 * @see Filter#init(FilterConfig)
 	 */
 	public void init(FilterConfig fConfig) throws ServletException {
-		// TODO Auto-generated method stub
 	}
 
 }

@@ -2,7 +2,6 @@ package com.culturarte.controllers;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -10,8 +9,6 @@ import javax.servlet.http.HttpServletResponse;
 import com.culturarte.model.EstadoSesion;
 
 import logica.Fabrica;
-import dataTypes.DtColaborador;
-import dataTypes.DtProponente;
 import dataTypes.DtUsuario;
 
 /**
@@ -25,7 +22,6 @@ public class Perfil extends HttpServlet {
      */
     public Perfil() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/** 
@@ -40,12 +36,21 @@ public class Perfil extends HttpServlet {
 			throws ServletException, IOException {
 		DtUsuario user;
 		try {
-			if (!Fabrica.getInstance().getICtrlUsuario().esProponente((String) request.getSession().getAttribute("usuario_logueado")))
-				user = (DtUsuario) Fabrica.getInstance().getICtrlUsuario().infoColaborador((String) request.getSession().getAttribute("usuario_logueado"));
-			else 
-				user = (DtUsuario) Fabrica.getInstance().getICtrlUsuario().infoProponente((String) request.getSession().getAttribute("usuario_logueado"));
-			request.setAttribute("usr", user);
-			request.getRequestDispatcher("/WEB-INF/usuarios/perfil.jsp").forward(request, response);
+			if(request.getSession().getAttribute("estado_sesion") != EstadoSesion.LOGIN_CORRECTO) {
+				request.setAttribute("excepcion", true);
+				request.setAttribute("excepcionTitulo", "Perfil");
+				request.setAttribute("excepcionMensaje", "Inicia sesión para acceder al perfil.");	
+				request.getRequestDispatcher("/home").forward(request, response);
+			} else {
+				System.out.println("entra por aca"
+						+ "");
+				if (!Fabrica.getInstance().getICtrlUsuario().esProponente((String) request.getSession().getAttribute("usuario_logueado")))
+					user = (DtUsuario) Fabrica.getInstance().getICtrlUsuario().infoColaborador((String) request.getSession().getAttribute("usuario_logueado"));
+				else 
+					user = (DtUsuario) Fabrica.getInstance().getICtrlUsuario().infoProponente((String) request.getSession().getAttribute("usuario_logueado"));
+				request.setAttribute("usr", user);
+				request.getRequestDispatcher("/WEB-INF/usuarios/perfil.jsp").forward(request, response);
+			}
 		} catch (Exception ex){
 			// no existe el usuario, se trata como deslogueado
 			System.out.println("Es porque estoy aca");

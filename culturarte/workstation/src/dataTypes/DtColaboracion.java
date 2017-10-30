@@ -11,6 +11,10 @@ public class DtColaboracion {
 	private Date fechaRealizacion;
 	private TRetorno retorno;
 	
+	public DtColaboracion() {
+		super();
+	}
+
 	public DtColaboracion(int id, String nickname, String titulo, float montoAporte, Date fechaRealizacion, TRetorno retorno) {
 		this.id = id;
 		this.nickname = nickname;

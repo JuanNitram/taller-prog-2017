@@ -102,7 +102,10 @@
 											</tbody>
 										</table>
 										<%
-											if (propuesta.getEstado() == TEstado.PUBLICADA || propuesta.getEstado() == TEstado.EN_FINANCIACION) {
+											if ((propuesta.getEstado() == TEstado.PUBLICADA || propuesta.getEstado() == TEstado.EN_FINANCIACION) &&
+												request.getSession().getAttribute("usuario_logueado") != null
+																&& !Fabrica.getInstance().getICtrlUsuario()
+																		.esProponente((String) request.getSession().getAttribute("usuario_logueado"))) {
 										%>
 										<div class="panel-footer group">
 											<div class="span left">
@@ -133,11 +136,7 @@
 													<form
 														action="RegistrarColaboracion?tPropuesta=<%=propuesta.getTitulo()%>"
 														method="post">
-														<%
-															if (request.getSession().getAttribute("usuario_logueado") != null
-																		&& !Fabrica.getInstance().getICtrlUsuario()
-																				.esProponente((String) request.getSession().getAttribute("usuario_logueado"))) {
-														%>
+													
 														<div class="form-group" align="left">
 															<label for="titulo"><font color="white">Monto</font></label><input
 																name="txtMonto" type="number" id="txtMonto"
@@ -176,9 +175,6 @@
 															<button type="reset" class="btn btn-default"
 																onClick="goBack()">Volver</button>
 														</div>
-														<%
-															}
-														%>
 													</form>
 												</div>
 											</div>
@@ -203,7 +199,7 @@
 													<%=colaborador.getNombre() + " " + colaborador.getApellido() + " (" + colaborador.getNickName() + ")"%>
 												</a><br>
 												<%
-													}
+															}
 														}
 												%>
 											</div>

@@ -221,15 +221,15 @@
 											<div id="panelProponente" style="display:none;">
 												<div class="form-group">
 													<input type="text" id="txDireccion" name="txDireccion"
-														class="form-control input-sm" placeholder="Direccion" required>
+														class="form-control input-sm" placeholder="Direccion">
 												</div>
 												<div class="form-group">
 													<input type="text" id="txLinkSitio" name="txLinkSitio"
-														class="form-control input-sm" placeholder="Link del sitio" required>
+														class="form-control input-sm" placeholder="Link del sitio">
 												</div>
 												<div class="form-group">
 													<input type="text" id="txBiografia" name="txBiografia"
-														class="form-control input-sm" placeholder="Biografia" required>
+														class="form-control input-sm" placeholder="Biografia">
 												</div>
 											</div>
 											<div class="modal-footer">
@@ -255,30 +255,33 @@
 
 	<script src="/media/app.js"></script>
 	<script>
-	function panelProponente() {
-		if(document.getElementById('radioProponente').checked)
-			document.getElementById('panelProponente').style.display = "block";
-		else if(document.getElementById('radioColaborador').checked) {
-			document.getElementById('txDireccion').required = false;
-			document.getElementById('txLinkSitio').required = false;
-			document.getElementById('txBiografia').required = false;
-			document.getElementById('panelProponente').style.display = "none";
+		function panelProponente() {
+			if (document.getElementById('radioProponente').checked) {
+				document.getElementById('panelProponente').style.display = "block";
+				document.getElementById('txDireccion').required = true;
+				document.getElementById('txLinkSitio').required = true;
+				document.getElementById('txBiografia').required = true;
+			} else if (document.getElementById('radioColaborador').checked) {
+				document.getElementById('txDireccion').required = false;
+				document.getElementById('txLinkSitio').required = false;
+				document.getElementById('txBiografia').required = false;
+				document.getElementById('panelProponente').style.display = "none";
+			}
 		}
-	}
-	/* function mostrarinformacion() {
-		document.getElementById('panelProponente').style.display = "block";
-	}
-	function ocultarinformacion() {
-		document.getElementById('panelProponente').style.display = "none";
-	} */
+		/* function mostrarinformacion() {
+			document.getElementById('panelProponente').style.display = "block";
+		}
+		function ocultarinformacion() {
+			document.getElementById('panelProponente').style.display = "none";
+		} */
 	</script>
 
 	<script type="text/javascript">
-$('#password, #confirm_password').on('keyup', function () {
-	  if ($('#password').val() == $('#confirm_password').val()) {
-	    $('#message').html('Correcto').css('color', 'green');
-	  } else 
-	    $('#message').html('No coinciden').css('color', 'red');
-	});
-</script>
+		$('#password, #confirm_password').on('keyup', function() {
+			if ($('#password').val() == $('#confirm_password').val()) {
+				$('#message').html('Correcto').css('color', 'green');
+			} else
+				$('#message').html('No coinciden').css('color', 'red');
+		});
+	</script>
 </div>

@@ -31,7 +31,6 @@ public class Propuestas extends HttpServlet {
      */
     public Propuestas() {
         super();
-        // TODO Auto-generated constructor stub
     }
     
     private static List<TreeNode> categoriasList = new ArrayList();
@@ -58,20 +57,18 @@ public class Propuestas extends HttpServlet {
 			throws ServletException, IOException {
 			filtro = request.getParameter("filtro");
 			
-			if (filtro == "" || filtro == null){
+			if (filtro == "" || filtro == null) {
 				ArrayList<DtPropuesta> props = (ArrayList<DtPropuesta>) Fabrica.getInstance().getICtrlPropuesta().listarPropuestas();
-				if (props.size() > 0){
+				if (props.size() > 0) {
 					request.setAttribute("propuestas", props);
 					request.getRequestDispatcher("/WEB-INF/propuestas/listar.jsp").forward(request, response);
-				}
-				else{
+				} else {
 					request.setAttribute("excepcion", true);
 					request.setAttribute("excepcionTitulo", "Propuestas");
 					request.setAttribute("excepcionMensaje", "No existen propuestas registradas en el servidor.");	
 					request.getRequestDispatcher("/home").forward(request, response);
 				}
-			}
-			else {
+			} else {
 				ArrayList<DtPropuesta> propsfilter = new ArrayList<DtPropuesta>();
 				ArrayList<DtPropuesta> propsfil = (ArrayList<DtPropuesta>) Fabrica.getInstance().getICtrlPropuesta().listarPropuestas();
 				for(int i = 0; i< propsfil.size(); i++){
@@ -84,10 +81,10 @@ public class Propuestas extends HttpServlet {
 						
 				}
 				
-				if (propsfilter.size() > 0){
+				if (propsfilter.size() > 0) {
 					request.setAttribute("propuestas", propsfilter);
 					request.getRequestDispatcher("/WEB-INF/propuestas/listar.jsp").forward(request, response);
-				}else{
+				} else {
 					request.setAttribute("excepcion", true);
 					request.setAttribute("excepcionTitulo", "Propuestas");
 					request.setAttribute("excepcionMensaje", "No existen propuestas en la categoría " + filtro);
@@ -102,7 +99,6 @@ public class Propuestas extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		processRequest(request, response);
 	}
 
@@ -110,7 +106,6 @@ public class Propuestas extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		processRequest(request, response);
 	}
 

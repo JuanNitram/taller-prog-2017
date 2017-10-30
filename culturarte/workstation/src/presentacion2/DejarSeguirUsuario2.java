@@ -80,7 +80,6 @@ public class DejarSeguirUsuario2 extends JInternalFrame {
 			
 			@Override
 			public void itemStateChanged(ItemEvent e) {
-				// TODO Auto-generated method stub
 				if(e.getStateChange() == ItemEvent.SELECTED) {
 					seguidortxt = (String) cmbUsuario.getSelectedItem();
 					String nickseguidor = seguidortxt.substring(seguidortxt.indexOf("(")+1, seguidortxt.indexOf(")")); 

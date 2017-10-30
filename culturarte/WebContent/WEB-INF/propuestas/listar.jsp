@@ -34,6 +34,24 @@
 }
 </style>
 <title>Propuestas :: Culturarte</title>
+<!-- <script type="text/javascript">
+	$(document).ready(function(){
+		$('li > a').click(function(){
+			console.log("click");
+			$.ajax({
+				type : 'GET',
+				data : {
+					filtro : $(this).html(),
+					action : "filtro"
+				},
+				url : 'propuestas',
+				success : function(result) {
+					$('#panelPropuestas').html(result);
+				}
+			});
+		});
+	});
+</script> -->
 </head>
 <body id="listaimage">
 	<jsp:include page="/WEB-INF/template/header.jsp" />
@@ -59,7 +77,7 @@
 							%>
 
 							<button type="button" class="btn btn-info dropdown-toggle"
-								data-toggle="dropdown"><%=todos.toString()%>
+								data-toggle="dropdown">Todos
 								<span class="caret"></span>
 							</button>
 							<%
@@ -78,7 +96,7 @@
 									Propuestas.vaciarCategoriasList();
 									Propuestas.recursivoTree(raiz);
 								%>
-								<li><a href=""><%=todos.toString()%></a></li>
+								<li><a href="propuestas">Todos</a></li>
 								<%
 									for (TreeNode s : Propuestas.getCategoriasList()) {
 								%>
@@ -101,8 +119,6 @@
 
 				<div class="row">
 					<%
-						String espacio = " ";
-						String precio = "$ ";
 						ArrayList<DtPropuesta> propuestas = (ArrayList<DtPropuesta>) request.getAttribute("propuestas");
 
 						for (DtPropuesta propuesta : propuestas) {
@@ -131,16 +147,12 @@
 									</a>
 								</h4>
 								<p class="card-text" Style="border-bottom: 1px solid #DDDDDD;">
-									Precio de entrada:
-									<%=precio%>
-									<%=propuesta.getPrecioEntrada()%>
+									Precio de entrada: $<%=propuesta.getPrecioEntrada()%>
 								</p>
 								<p class="card-text" Style="border-bottom: 1px solid #DDDDDD;">
 									Proponente:
 									<%=Fabrica.getInstance().getICtrlUsuario().infoProponente(propuesta.getNickProponente())
-							.getNombre()%>
-									<%=espacio%>
-									<%=Fabrica.getInstance().getICtrlUsuario().infoProponente(propuesta.getNickProponente())
+							.getNombre() + " " + Fabrica.getInstance().getICtrlUsuario().infoProponente(propuesta.getNickProponente())
 							.getApellido()%>
 								</p>
 								<p class="card-text" Style="border-bottom: 1px solid #DDDDDD;">

@@ -15,6 +15,24 @@
 <jsp:include page="/WEB-INF/template/head.jsp" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <title>Perfil | Culturarte</title>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('#extenderFinanciacion').click(function(){
+			$.ajax({
+				type : 'POST',
+				data : {
+					tituloProp : $('#extenderFinanciacion').data("titulo"),
+					action : "extender",
+				},
+				url : 'GestionPropuesta',
+				success : function() {
+					$('#extenderFinanciacion').attr('title',"Ya has extendido esta financiación");
+					$('#extenderFinanciacion').attr('disabled',true);
+				}
+			});
+		});
+	});
+</script>
 </head>
 <body>
 	<jsp:include page="/WEB-INF/template/header.jsp" />
@@ -22,7 +40,7 @@
 	<%
 		if(request.getAttribute("usr") instanceof DtProponente){
 			DtProponente dtP = (DtProponente)(request.getAttribute("usr"));
-			%>
+	%>
 	<div class="well span8 offset2">
 		<div class="panel">
 			<div class="main text-color">
@@ -77,29 +95,27 @@
 															for (int i = 0; i < propuestas.size(); i++) {
 																String titulo = propuestas.get(i).getTitulo();
 												%>
-																<form action="/GestionPropuesta?extender=&propuesta=<%= titulo %>" method="post">
-																	<a href="consultaPropuesta?propuesta=<%=titulo%>"><%=titulo%></a>
+																<a href="consultaPropuesta?propuesta=<%=titulo%>"><%=titulo%></a>
 												<%
 																if(propuestas.get(i).getEstado() == TEstado.PUBLICADA ||
 																	propuestas.get(i).getEstado() == TEstado.EN_FINANCIACION) {
 																		if(propuestas.get(i).getFechaExtension() != null) {
 												%>
-																		<button style="margin-left:10px" type=submit class="btn btn-success"
-																			title="Ya has extendido esta financiación" disabled>
+																		<button id="extenderFinanciacion" style="margin-left:10px" type=button class="btn btn-success"
+																			title="Ya has extendido esta financiación" data-titulo="<%= titulo %>" disabled>
 																			<i class="fa fa-calendar-plus-o"></i>
 																		</button>
 												<%						
 																		} else {
 												%>
-																		<button style="margin-left:10px" type=submit class="btn btn-success"
-																			title="Extender financiación">
+																		<button id="extenderFinanciacion" style="margin-left:10px" type=button class="btn btn-success"
+																			title="Extender financiación" data-titulo="<%= titulo %>">
 																			<i class="fa fa-calendar-plus-o"></i>
 																		</button>
 												<%
 																		}
 																}
 												%>
-																</form>
 																<br>
 												<%
 															}

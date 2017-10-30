@@ -9,6 +9,10 @@ public class DtProponente extends DtUsuario {
 	private String linkSitio;
 	private List<DtPropuesta> propuestas;
 	
+	public DtProponente() {
+		super();
+	}
+	
 	public DtProponente(String nickName, String nombre, String apellido, String email, Date fechaNacimiento,
 			String rutaImg, String direccion, String biografia, String linkSitio, List<DtPropuesta> propuestas) {
 		super(nickName, nombre, apellido, email, fechaNacimiento, rutaImg);

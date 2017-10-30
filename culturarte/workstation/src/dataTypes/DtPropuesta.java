@@ -17,7 +17,11 @@ public class DtPropuesta {
 	private TRetorno tipoRetorno; 
 	private String rutaImg;
 	private float precioEntrada;
-	private TEstado estado; 
+	private TEstado estado;
+	
+	public DtPropuesta() {
+		super();
+	}
 		
 	public DtPropuesta(String nick, String titulo, String descripcion, DtCategoria categoria, String lugar, Date fechaRealizacion,
 			Date fechaPublicacion, Date fechaExtension, float montoRequerido, float montoReunido, TRetorno tipoRetorno,float precioEntrada, String rutaImg, TEstado estado) {

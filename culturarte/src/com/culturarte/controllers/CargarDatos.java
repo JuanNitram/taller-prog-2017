@@ -24,7 +24,6 @@ public class CargarDatos extends HttpServlet {
      */
     public CargarDatos() {
     	 super();
-        // TODO Auto-generated constructor stub
     }
 
     protected void processRequest(HttpServletRequest request,
@@ -42,7 +41,6 @@ public class CargarDatos extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		processRequest(request, response);
 	}
 
@@ -50,7 +48,6 @@ public class CargarDatos extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		processRequest(request, response);
 	}
 

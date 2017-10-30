@@ -4,6 +4,10 @@ public class DtCategoria {
 	
 	private String nombre;
 	
+	public DtCategoria() {
+		super();
+	}
+
 	public DtCategoria(String nombre) {
 		this.nombre = nombre;
 	}

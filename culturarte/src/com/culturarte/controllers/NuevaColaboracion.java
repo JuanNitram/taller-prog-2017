@@ -22,7 +22,6 @@ public class NuevaColaboracion extends HttpServlet {
      */
     public NuevaColaboracion() {
         super();
-        // TODO Auto-generated constructor stub
     }
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -50,7 +49,6 @@ public class NuevaColaboracion extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		processRequest(request, response);
 	}
 
@@ -58,7 +56,6 @@ public class NuevaColaboracion extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		processRequest(request, response);
 	}
 

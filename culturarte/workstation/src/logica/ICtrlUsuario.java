@@ -3,10 +3,11 @@ package logica;
 import java.util.Date;
 import java.util.List;
 
-import logica.clases.Propuesta; 
 import dataTypes.DtColaborador;
 import dataTypes.DtProponente;
 import dataTypes.DtUsuario;
+import logica.clases.Acceso;
+import logica.clases.Propuesta;
 
 public interface ICtrlUsuario {
 	
@@ -44,4 +45,6 @@ public interface ICtrlUsuario {
 	boolean existeUsuario(String nickName, String email);
 	
 	void agregarFavorita(String nickname, Propuesta propFavorita);
+	
+	void registrarAcceso(Acceso acceso);
 }

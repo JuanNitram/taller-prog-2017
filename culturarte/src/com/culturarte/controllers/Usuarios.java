@@ -22,7 +22,6 @@ public class Usuarios extends HttpServlet {
      */
     public Usuarios() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/** 

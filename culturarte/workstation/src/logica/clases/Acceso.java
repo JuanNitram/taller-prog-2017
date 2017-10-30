@@ -1,4 +1,4 @@
-package com.culturarte.model;
+package logica.clases;
 
 import java.util.Date;
 

@@ -21,24 +21,22 @@ public class GestionPropuesta extends HttpServlet {
      */
     public GestionPropuesta() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-			String titulo = request.getParameter("propuesta");
+		if(request.getParameter("action").equals("extender")) {
+			String titulo = request.getParameter("tituloProp");
 			Fabrica.getInstance().getICtrlPropuesta().extenderFinanciacion(titulo);
-			response.sendRedirect("/perfil");
-		
+		}
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

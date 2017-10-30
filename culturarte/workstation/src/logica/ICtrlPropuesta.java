@@ -10,6 +10,7 @@ import dataTypes.DtCategoria;
 import dataTypes.DtColaboracion;
 import dataTypes.DtColaborador;
 import dataTypes.DtPropuesta;
+import dataTypes.DtComentario;
 import dataTypes.TEstado;
 import dataTypes.TRetorno;
 
@@ -26,6 +27,7 @@ public interface ICtrlPropuesta {
 			float montoReunir, float precioEntrada);
 	
 	List<DtPropuesta> listarPropuestas(); 
+
 	List<DtColaborador> listarColaboradores();
 
 	List<DtColaboracion> listarColaboraciones();
@@ -53,6 +55,10 @@ public interface ICtrlPropuesta {
 	void evaluar(String evaluacion);
 	
 	boolean extenderFinanciacion(String titulo);
+
+	void cancelarPropuesta(String titulo);
 	
-	void agregarComentario(String nickname, String titulo, String comentario);	
+	void agregarComentario(String nickname, String titulo, String comentario);
+	
+	List<DtComentario> listarComentarios(String titulo);
 }
