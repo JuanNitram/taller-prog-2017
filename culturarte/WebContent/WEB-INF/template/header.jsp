@@ -10,7 +10,16 @@
 <%@page import="com.culturarte.controllers.Propuestas"%>
 <!DOCTYPE html>
 <link rel="stylesheet" href="/media/Data-picker/css/bootstrap-datepicker.css" />
-<div id="header">
+<style>
+	input[type=number]::-webkit-inner-spin-button, 
+	input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0; 
+}
+</style>
+<div id="header sinflecha">
 	<div class="subtitulo"></div>
 
 	<% boolean esProponente = false;
@@ -228,7 +237,7 @@
 														class="form-control input-sm" placeholder="Direccion">
 												</div>
 												<div class="form-group">
-													<input type="text" id="txLinkSitio" name="txLinkSitio"
+													<input type="url" id="txLinkSitio" name="txLinkSitio"
 														class="form-control input-sm" placeholder="Link del sitio">
 												</div>
 												<div class="form-group">
@@ -315,19 +324,19 @@
 												</div>
 												<div class="form-group col-lg-6 " align="left">
 											    	<label for="txFechaPrevista">Fecha prevista:</label>
-											    	<input name="txFechaPrevista" type="date" required id="txFechaPrevista" class="form-control input-normal" placeholder="dd/mm/aaaa"></input>
+											    	<input name="txFechaPrevista" type="date" required id="txFechaPrevista" class="form-control input-normal input-group date fj-date" placeholder="dd/mm/aaaa"></input>
 											 	</div>
 											</div>
 											<div class="row">
 												<div class="col-xs-6 col-sm-6 col-md-6">
 													<div class="form-group">
-														<input type="number" name="precioEntrada" id="precioEntrada"
+														<input  type="text" pattern="[1-9][0-9]*"  name="precioEntrada" id="precioEntrada"
 															class="form-control input-sm" placeholder="Precio de entrada" required>
 													</div>
 												</div>
 												<div class="col-xs-6 col-sm-6 col-md-6">
 													<div class="form-group">
-														<input type="number" name="montoRequerido"
+														<input type="text" pattern="[1-9][0-9]*" name="montoRequerido"
 															id="montoRequerido" class="form-control input-sm"
 															placeholder="Monto requerido" required>
 													</div>
@@ -375,7 +384,6 @@
 		function validarProponer() {
 			var checkBox1 = document.getElementById('cbPorcentaje');
 			var checkBox2 = document.getElementById('cbEntradas');
-			console.log("valida");
 			if(!checkBox1.checked && !checkBox2.checked) {
 				$('#mensajeRetorno').html('Elige por lo menos un tipo de retorno').css('color', 'red');
 				return false;

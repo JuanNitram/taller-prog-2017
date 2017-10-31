@@ -13,39 +13,77 @@
 <html>
 <head>
 <jsp:include page="/WEB-INF/template/head.jsp" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <title>Perfil | Culturarte</title>
 <script type="text/javascript">
-	$(document).ready(function(){
-		$('#extenderFinanciacion').click(function(){
-			$.ajax({
-				type : 'POST',
-				data : {
-					tituloProp : $('#extenderFinanciacion').data("titulo"),
-					action : "extender",
-				},
-				url : 'GestionPropuesta',
-				success : function() {
-					$('#extenderFinanciacion').attr('title',"Ya has extendido esta financiación");
-					$('#extenderFinanciacion').attr('disabled',true);
-				}
-			});
-		});
-	});
+	$(document)
+			.ready(
+					function() {
+						$('#extenderFinanciacion')
+								.click(
+										function() {
+											$
+													.ajax({
+														type : 'POST',
+														data : {
+															tituloProp : $(
+																	'#extenderFinanciacion')
+																	.data(
+																			"titulo"),
+															action : "extender",
+														},
+														url : 'GestionPropuesta',
+														success : function() {
+															$(
+																	'#extenderFinanciacion')
+																	.attr(
+																			'title',
+																			"Ya has extendido esta financiación");
+															$(
+																	'#extenderFinanciacion')
+																	.attr(
+																			'disabled',
+																			true);
+														}
+													});
+										});
+					});
 </script>
 </head>
 <body>
+	<div class="modal fade" id="aviso" role="dialog">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<!--  Header de la ventana -->
+				<div class="modal-header">
+					<h4 class="modal-title">Extender financiación</h4>
+					<button type="button" class="close" data-dismiss="modal"
+						arial-hidden="true">&times;</button>
+
+				</div>
+				<!--  Contenido de la ventana-->
+				<div class="modal-body">
+					<p>La propuesta se ha extendido con éxito.</p>
+				</div>
+				<!--  Fotter de la ventana-->
+				<div class="modal-footer">
+					<button type="button" class="btn btn-success" data-dismiss="modal">Cerrar</button>
+				</div>
+			</div>
+		</div>
+	</div>
 	<jsp:include page="/WEB-INF/template/header.jsp" />
 
 	<%
-		if(request.getAttribute("usr") instanceof DtProponente){
-			DtProponente dtP = (DtProponente)(request.getAttribute("usr"));
+		if (request.getAttribute("usr") instanceof DtProponente) {
+			DtProponente dtP = (DtProponente) (request.getAttribute("usr"));
 	%>
 	<div class="well span8 offset2">
 		<div class="panel">
 			<div class="main text-color">
 				<div class="panel-heading ">
-					<h3 class="panel-title text-color"><%= "Bienvenido " + dtP.getNombre() + " " + dtP.getApellido() %></h3>
+					<h3 class="panel-title text-color"><%="Bienvenido " + dtP.getNombre() + " " + dtP.getApellido()%></h3>
 				</div>
 				<div class="panel-body group " id="userimage">
 					<div class="left">
@@ -95,30 +133,35 @@
 															for (int i = 0; i < propuestas.size(); i++) {
 																String titulo = propuestas.get(i).getTitulo();
 												%>
-																<a href="consultaPropuesta?propuesta=<%=titulo%>"><%=titulo%></a>
+												<a href="consultaPropuesta?propuesta=<%=titulo%>"><%=titulo%></a>
 												<%
-																if(propuestas.get(i).getEstado() == TEstado.PUBLICADA ||
-																	propuestas.get(i).getEstado() == TEstado.EN_FINANCIACION) {
-																		if(propuestas.get(i).getFechaExtension() != null) {
+													if (propuestas.get(i).getEstado() == TEstado.PUBLICADA
+																		|| propuestas.get(i).getEstado() == TEstado.EN_FINANCIACION) {
+																	if (propuestas.get(i).getFechaExtension() != null) {
 												%>
-																		<button id="extenderFinanciacion" style="margin-left:10px" type=button class="btn btn-success"
-																			title="Ya has extendido esta financiación" data-titulo="<%= titulo %>" disabled>
-																			<i class="fa fa-calendar-plus-o"></i>
-																		</button>
-												<%						
-																		} else {
-												%>
-																		<button id="extenderFinanciacion" style="margin-left:10px" type=button class="btn btn-success"
-																			title="Extender financiación" data-titulo="<%= titulo %>">
-																			<i class="fa fa-calendar-plus-o"></i>
-																		</button>
+												<button id="extenderFinanciacion" style="margin-left: 10px"
+													type=button class="btn btn-success"
+													title="Ya has extendido esta financiación"
+													data-titulo="<%=titulo%>" disabled>
+													<i class="fa fa-calendar-plus-o"></i>
+												</button>
 												<%
-																		}
+													} else {
+												%>
+												<button id="extenderFinanciacion" style="margin-left: 10px"
+													type=button class="btn btn-success"
+													title="Extender financiación" data-titulo="<%=titulo%>"
+													data-toggle="modal" data-target="#aviso">
+													<i class="fa fa-calendar-plus-o"></i>
+												</button>
+
+												<%
+													}
 																}
 												%>
-																<br>
+												<br>
 												<%
-															}
+													}
 														}
 												%>
 											</div>
@@ -140,38 +183,41 @@
 					<div class="span left">
 						<span style="text-align: center"><h3>Seguidores</h3></span>
 						<%
-							ArrayList<DtUsuario> listaSeguidores = (ArrayList<DtUsuario>)Fabrica.getInstance().getICtrlUsuario().listarSeguidores(dtP.getNickName());
-							if (listaSeguidores.size() > 0) {
-								for (int i = 0; i < listaSeguidores.size(); i++) {
-									DtUsuario seguidor = listaSeguidores.get(i);
+							ArrayList<DtUsuario> listaSeguidores = (ArrayList<DtUsuario>) Fabrica.getInstance().getICtrlUsuario()
+										.listarSeguidores(dtP.getNickName());
+								if (listaSeguidores.size() > 0) {
+									for (int i = 0; i < listaSeguidores.size(); i++) {
+										DtUsuario seguidor = listaSeguidores.get(i);
 						%>
-						<a href="consultaUsuario?usuario=<%= seguidor.getNickName() %>">
-							<%= seguidor.getNombre()+ " " + seguidor.getApellido() + " (" + seguidor.getNickName() + ")" %>
+						<a href="consultaUsuario?usuario=<%=seguidor.getNickName()%>">
+							<%=seguidor.getNombre() + " " + seguidor.getApellido() + " (" + seguidor.getNickName()
+								+ ")"%>
 						</a>
-						<%= (seguidor instanceof DtProponente)?" - Proponente":" - Colaborador" %>
+						<%=(seguidor instanceof DtProponente) ? " - Proponente" : " - Colaborador"%>
 						<br>
 						<%
-								}
 							}
+								}
 						%>
 					</div>
 					<div class="span right">
 						<span style="text-align: center"><h3>Seguidos</h3></span>
 						<%
-							ArrayList<DtUsuario> listaSeguidos = (ArrayList<DtUsuario>)Fabrica.getInstance().getICtrlUsuario().listarSeguidos(dtP.getNickName());
-							if (listaSeguidos.size() > 0) {
-								for (int i = 0; i < listaSeguidos.size(); i++) {
-											DtUsuario seguido = listaSeguidos.get(i);
+							ArrayList<DtUsuario> listaSeguidos = (ArrayList<DtUsuario>) Fabrica.getInstance().getICtrlUsuario()
+										.listarSeguidos(dtP.getNickName());
+								if (listaSeguidos.size() > 0) {
+									for (int i = 0; i < listaSeguidos.size(); i++) {
+										DtUsuario seguido = listaSeguidos.get(i);
 						%>
 
-						<a href="consultaUsuario?usuario=<%= seguido.getNickName() %>">
-							<%= seguido.getNombre()+ " " + seguido.getApellido() + " (" + seguido.getNickName() + ")" %>
+						<a href="consultaUsuario?usuario=<%=seguido.getNickName()%>">
+							<%=seguido.getNombre() + " " + seguido.getApellido() + " (" + seguido.getNickName() + ")"%>
 						</a>
-						<%= (seguido instanceof DtProponente)?" - Proponente":" - Colaborador" %>
+						<%=(seguido instanceof DtProponente) ? " - Proponente" : " - Colaborador"%>
 						<br>
 						<%
-								}
 							}
+								}
 						%>
 					</div>
 				</div>
@@ -252,16 +298,16 @@
 								<span style="text-align: center"><h3>Colaboraciones</h3></span>
 							</tr>
 							<%
-								ArrayList<DtColaboracion> colaboraciones = (ArrayList<DtColaboracion>)dtC.getColaboraciones();
-								for(int i = 0; i < colaboraciones.size(); i++) {
-									DtColaboracion dtColab = colaboraciones.get(i);
+								ArrayList<DtColaboracion> colaboraciones = (ArrayList<DtColaboracion>) dtC.getColaboraciones();
+									for (int i = 0; i < colaboraciones.size(); i++) {
+										DtColaboracion dtColab = colaboraciones.get(i);
 							%>
 							<tr>
 								<td><a
-									href="consultaPropuesta?propuesta=<%= dtColab.getTitulo() %>"><%= dtColab.getTitulo() %></td>
-								<td>$ <%= dtColab.getMontoAporte() %>
+									href="consultaPropuesta?propuesta=<%=dtColab.getTitulo()%>"><%=dtColab.getTitulo()%></td>
+								<td>$ <%=dtColab.getMontoAporte()%>
 								</td>
-								<td><%= new SimpleDateFormat("dd/MM/yyyy").format(dtColab.getFechaRealizacion().getTime()) %>
+								<td><%=new SimpleDateFormat("dd/MM/yyyy").format(dtColab.getFechaRealizacion().getTime())%>
 								</td>
 							</tr>
 							<%
@@ -274,37 +320,40 @@
 					<div class="span left">
 						<span style="text-align: center"><h3>Seguidores</h3></span>
 						<%
-							ArrayList<DtUsuario> listaSeguidores = (ArrayList<DtUsuario>)Fabrica.getInstance().getICtrlUsuario().listarSeguidores(dtC.getNickName());
-							if (listaSeguidores.size() > 0) {
-								for (int i = 0; i < listaSeguidores.size(); i++) {
-									DtUsuario seguidor = listaSeguidores.get(i);
+							ArrayList<DtUsuario> listaSeguidores = (ArrayList<DtUsuario>) Fabrica.getInstance().getICtrlUsuario()
+										.listarSeguidores(dtC.getNickName());
+								if (listaSeguidores.size() > 0) {
+									for (int i = 0; i < listaSeguidores.size(); i++) {
+										DtUsuario seguidor = listaSeguidores.get(i);
 						%>
-						<a href="consultaUsuario?usuario=<%= seguidor.getNickName() %>">
-							<%= seguidor.getNombre()+ " " + seguidor.getApellido() + " (" + seguidor.getNickName() + ")" %>
+						<a href="consultaUsuario?usuario=<%=seguidor.getNickName()%>">
+							<%=seguidor.getNombre() + " " + seguidor.getApellido() + " (" + seguidor.getNickName()
+								+ ")"%>
 						</a>
-						<%= (seguidor instanceof DtProponente)?" - Proponente":" - Colaborador" %>
+						<%=(seguidor instanceof DtProponente) ? " - Proponente" : " - Colaborador"%>
 						<br>
 						<%
-								}
 							}
+								}
 						%>
 					</div>
 					<div class="span right">
 						<span style="text-align: center"><h3>Seguidos</h3></span>
 						<%
-							ArrayList<DtUsuario> listaSeguidos = (ArrayList<DtUsuario>)Fabrica.getInstance().getICtrlUsuario().listarSeguidos(dtC.getNickName());
-							if (listaSeguidos.size() > 0) {
-								for (int i = 0; i < listaSeguidos.size(); i++) {
-									DtUsuario seguido = listaSeguidos.get(i);
+							ArrayList<DtUsuario> listaSeguidos = (ArrayList<DtUsuario>) Fabrica.getInstance().getICtrlUsuario()
+										.listarSeguidos(dtC.getNickName());
+								if (listaSeguidos.size() > 0) {
+									for (int i = 0; i < listaSeguidos.size(); i++) {
+										DtUsuario seguido = listaSeguidos.get(i);
 						%>
-						<a href="consultaUsuario?usuario=<%= seguido.getNickName() %>">
-							<%= seguido.getNombre()+ " " + seguido.getApellido() + " (" + seguido.getNickName() + ")" %>
+						<a href="consultaUsuario?usuario=<%=seguido.getNickName()%>">
+							<%=seguido.getNombre() + " " + seguido.getApellido() + " (" + seguido.getNickName() + ")"%>
 						</a>
-						<%= (seguido instanceof DtProponente)?" - Proponente":" - Colaborador" %>
+						<%=(seguido instanceof DtProponente) ? " - Proponente" : " - Colaborador"%>
 						<br>
 						<%
-								}
 							}
+								}
 						%>
 					</div>
 				</div>
@@ -319,7 +368,10 @@
 		</div>
 	</div>
 
-	<%	} %>
+
+	<%
+		}
+	%>
 	<script src="/media/styles/userProfile.css"></script>
 	<div class="footer">
 		<jsp:include page="/WEB-INF/template/footer.jsp" />
