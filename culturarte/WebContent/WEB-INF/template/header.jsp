@@ -3,9 +3,13 @@
 <%@page import="dataTypes.DtUsuario"%>
 <%@page import="logica.Fabrica"%>
 <%@page import="dataTypes.DtUsuario"%>
+<%@ page import="javax.swing.tree.DefaultMutableTreeNode"%>
+<%@ page import="javax.swing.tree.TreeNode"%>
+<%@ page import="javax.swing.tree.TreeModel"%>
+<%@ page import="javax.swing.JTree"%>
+<%@page import="com.culturarte.controllers.Propuestas"%>
 <!DOCTYPE html>
-
-
+<link rel="stylesheet" href="/media/Data-picker/css/bootstrap-datepicker.css" />
 <div id="header">
 	<div class="subtitulo"></div>
 
@@ -53,7 +57,7 @@
 					</a></li>
 					<li class="nav-item"><a class="nav-link" href="/usuarios">Usuarios</a></li>
 					<li class="nav-item"><a class="nav-link" href="/propuestas">Propuestas</a></li>
-					<li class="nav-item"><a class="nav-link" href="/altaPropuesta">Registrar
+					<li class="nav-item"><a class="nav-link" data-toggle="modal" href="#altaPropuesta">Registrar
 							propuesta</a></li>
 					<li class="nav-item"><a class="nav-link" href="/perfil"><%= usr.getNombre().concat(" - ").concat(usr.getEmail()) %></a></li>
 					<li id="divisor" class="nav-item"><a class="nav-link"
@@ -250,11 +254,134 @@
 			</div>
 		</div>
 	</div>
-	<script src="/media/Data-picker/js/bootstrap-datepicker.min.js"></script>
-	<link rel="stylesheet" href="/media/Data-picker/css/bootstrap-datepicker.css" />
+	
+	<!-- VENTANA MODAL Registrar Propuesta-->
+	<div class="modal fade" id="altaPropuesta">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<!--  Header de la ventana -->
+				<div class="modal-header">
+					<h4 class="modal-title">Registrar propuesta</h4>
+					<button type="button" class="close" data-dismiss="modal"
+						arial-hidden="true">&times;</button>
 
+				</div>
+				<div class="modal-body">
+					<div class="container">
+						<div class="row centered-form">
+							<div class="col-xs-12 col-sm-10 col-md-12 col-sm-offset-2 col-md-offset-6">
+								<div class="panel panel-default">
+									<div class="panel-heading"></div>
+									<div class="panel-body">
+										<form role="form" action="altaPropuesta" id="formPropuesta"
+											name="formPropuesta" method="post" onsubmit="return validarProponer();">
+											<div class="row">
+												<div class="col-xs-6 col-sm-6 col-md-6">
+													<div class="form-group">
+														<input type="text" name="txTitulo" id="txTitulo"
+															class="form-control input-sm" placeholder="Titulo" required>
+													</div>
+												</div>
+												<div class="col-xs-6 col-sm-6 col-md-6">
+													<div class="form-group">
+														<input type="text" name="txLugar" id="txLugar"
+															class="form-control input-sm" placeholder="Lugar" required>
+													</div>
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-xs-12 col-sm-12 col-md-12">
+													<div class="form-group">
+														<textarea type="text" name="txDescripcion" id="txDescripcion"
+															class="form-control input-sm" placeholder="Descripción" required></textarea>
+													</div>
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-xs-6 col-sm-6 col-md-6">
+													<div class="form-group" align="left">
+														<label for="selectCategoria">Categoría: </label>
+														<select class="form-control" id="selectCategoria" name="selectCategoria">
+														<%
+												    		DefaultMutableTreeNode raiz = Fabrica.getInstance().getICtrlPropuesta().listarCategorias();
+															Propuestas.vaciarCategoriasList();
+												     		Propuestas.recursivoTree(raiz);
+												     		for(TreeNode t : Propuestas.getCategoriasList()) {
+												    	%>
+															<option value="<%=t.toString()%>"><%= t.toString() %></option>
+														<%  } %>
+														</select>
+													</div>
+												</div>
+												<div class="form-group col-lg-6 " align="left">
+											    	<label for="txFechaPrevista">Fecha prevista:</label>
+											    	<input name="txFechaPrevista" type="date" required id="txFechaPrevista" class="form-control input-normal" placeholder="dd/mm/aaaa"></input>
+											 	</div>
+											</div>
+											<div class="row">
+												<div class="col-xs-6 col-sm-6 col-md-6">
+													<div class="form-group">
+														<input type="number" name="precioEntrada" id="precioEntrada"
+															class="form-control input-sm" placeholder="Precio de entrada" required>
+													</div>
+												</div>
+												<div class="col-xs-6 col-sm-6 col-md-6">
+													<div class="form-group">
+														<input type="number" name="montoRequerido"
+															id="montoRequerido" class="form-control input-sm"
+															placeholder="Monto requerido" required>
+													</div>
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-xs-6 col-sm-6 col-md-6">
+													<div id="formGroupRetorno" class="form-group form-control" align="left">
+														<label>Tipo de retorno:</label>
+														<div class="form-check">
+															<label class="form-check-label">
+																<input id="cbPorcentaje" name="cbPorcentaje" class="form-check-input" type="checkbox" value="Porcentaje de ganancia"> Porcentaje de ganancia
+															</label>
+														</div>
+														<div class="form-check">
+															<label class="form-check-label">
+																<input id="cbEntradas" name="cbEntradas" class="form-check-input" type="checkbox" value="Entradas gratis"> Entradas gratis
+															</label>
+														</div>
+														<label id='mensajeRetorno' align="left"></label>
+													</div>
+												</div>
+											</div>
+											<div class="modal-footer">
+												<input id="btn_proponer" type="submit" name="btn_proponer"
+													value="Proponer" class="btn btn-info btn-block">
+											</div>
+										</form>
+
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!--  Fotter de la ventana-->
+
+
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="/media/Data-picker/js/bootstrap-datepicker.min.js"></script>
 	<script src="/media/app.js"></script>
 	<script>
+		function validarProponer() {
+			var checkBox1 = document.getElementById('cbPorcentaje');
+			var checkBox2 = document.getElementById('cbEntradas');
+			console.log("valida");
+			if(!checkBox1.checked && !checkBox2.checked) {
+				$('#mensajeRetorno').html('Elige por lo menos un tipo de retorno').css('color', 'red');
+				return false;
+			} else
+				return true;
+		};
 		function panelProponente() {
 			if (document.getElementById('radioProponente').checked) {
 				document.getElementById('panelProponente').style.display = "block";
@@ -268,18 +395,12 @@
 				document.getElementById('panelProponente').style.display = "none";
 			}
 		}
-		/* function mostrarinformacion() {
-			document.getElementById('panelProponente').style.display = "block";
-		}
-		function ocultarinformacion() {
-			document.getElementById('panelProponente').style.display = "none";
-		} */
 	</script>
 
 	<script type="text/javascript">
 		$('#password, #confirm_password').on('keyup', function() {
 			if ($('#password').val() == $('#confirm_password').val()) {
-				$('#message').html('Correcto').css('color', 'green');
+				$('#message').html('Coinciden').css('color', 'green');
 			} else
 				$('#message').html('No coinciden').css('color', 'red');
 		});

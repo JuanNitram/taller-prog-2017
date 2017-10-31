@@ -48,29 +48,28 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 		String descripcion = request.getParameter("txDescripcion").trim();
 		String lugar = request.getParameter("txLugar").trim();
 		String fechaStr = request.getParameter("txFechaPrevista");
-		float montoEntrada = Integer.parseInt(request.getParameter("txMontoEntrada"));
-		float montoNecesario = Integer.parseInt(request.getParameter("txMontoNecesario"));
+		float montoEntrada = Integer.parseInt(request.getParameter("precioEntrada"));
+		float montoNecesario = Integer.parseInt(request.getParameter("montoRequerido"));
 		
 		
 		TRetorno retorno;
-		if (request.getParameter("rdTipoRetorno").equals("Entrada gratis"))
-			retorno = TRetorno.ENTRADA_GRATIS;
-		else if (request.getParameter("rdTipoRetorno").equals("Porcentaje de ganancia"))
+		if (request.getParameter("cbPorcentaje") != null && request.getParameter("cbEntradas") != null)
+			retorno = TRetorno.PORCENTAJE_Y_ENTRADAS;
+		else if (request.getParameter("cbPorcentaje") != null)
 			retorno = TRetorno.PORCENTAJE_GANANCIA;
 		else
-			retorno = TRetorno.PORCENTAJE_Y_ENTRADAS;
+			retorno = TRetorno.ENTRADA_GRATIS;
 		
 		Calendar calendar = Calendar.getInstance();
 		String [] fechaSplit = fechaStr.split("/");
-		calendar.set(Integer.parseInt(fechaSplit[0]), Integer.parseInt(fechaSplit[1]), Integer.parseInt(fechaSplit[2]));
+		calendar.set(Integer.parseInt(fechaSplit[2]), Integer.parseInt(fechaSplit[1]) - 1, Integer.parseInt(fechaSplit[0]));
 		Date dateTime = calendar.getTime();
 		DtCategoria dtCategoria = new DtCategoria(categoria);
-		Date dateNow = new Date();
 		
 		ICtrlPropuesta ICU = Fabrica.getInstance().getICtrlPropuesta();
 		ICU.altaPropuesta((String) (request.getSession().getAttribute("usuario_logueado")), 
-				titulo, dtCategoria, descripcion, lugar, dateNow, montoNecesario , retorno, montoEntrada, null);
-	
+				titulo, dtCategoria, descripcion, lugar, dateTime, montoNecesario , retorno, montoEntrada, null);
+		
 		//Vuelve al inicio de la pagina
 		response.sendRedirect("/perfil");
 	}
