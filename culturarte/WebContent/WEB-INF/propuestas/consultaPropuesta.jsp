@@ -68,7 +68,13 @@
 												</tr>
 												<tr>
 													<td>Fecha de publicación:</td>
-													<td><%=new SimpleDateFormat("dd/MM/yyyy").format(propuesta.getFechaPublicacion())%></td>
+													<td>
+														<%	if(propuesta.getFechaPublicacion()!=null) { %>
+															<%= new SimpleDateFormat("dd/MM/yyyy").format(propuesta.getFechaPublicacion()) %>
+														<%	} else { %>
+																<blackquote><cite>No se ha publicado</cite></blackquote>
+														<%	} %>
+													</td>
 												</tr>
 												<tr>
 													<td>Fecha prevista:</td>
