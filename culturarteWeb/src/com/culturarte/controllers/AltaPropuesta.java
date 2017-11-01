@@ -13,11 +13,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.swing.tree.DefaultMutableTreeNode;
 
-import logica.Fabrica;
-import logica.ICtrlPropuesta;
-import dataTypes.DtCategoria;
-import dataTypes.TRetorno;
-
 /**
  * Servlet implementation class AltaPropuesta
  */
