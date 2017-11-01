@@ -133,7 +133,7 @@ public class Publicador {
 	
     @WebMethod
 	public void registrarAcceso(Acceso acceso) {
-		Fabrica.getInstance().getICtrlUsuario().registrarAcceso(acceso);
+		Fabrica.getInstance().getICtrlUsuario().registrarAcceso(ip, url, browser, so);
 	}
     
     public boolean existePropuesta(String nickName, String titulo) {

@@ -7,7 +7,6 @@ import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import java.util.Date;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -16,6 +15,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
 
 import logica.ICtrlUsuario;
 import logica.clases.Acceso;
@@ -53,20 +53,8 @@ public class ControlAcceso extends JInternalFrame {
 		gbc_scrollPane.gridx = 1;
 		gbc_scrollPane.gridy = 1;
 		panel.add(scrollPane, gbc_scrollPane);
-		
-		ArrayList<Acceso> accesos = ICU.listarAccesos();
-		Object[][] data = new String[accesos.size()][5];
-		for(int i = 0; i < accesos.size(); i++) {
-			data[i][0] = Integer.toString(i+1);
-			data[i][1] = accesos.get(i).getIp();
-			data[i][2] = accesos.get(i).getUrl();
-			data[i][3] = accesos.get(i).getBrowser();
-			data[i][4] = accesos.get(i).getSo();
-		}
-		
-	    String[] columnNames = {"#", "IP", "URL", "Browser", "SO"};
-		
-		table = new JTable(data,columnNames);
+
+		table = new JTable();
 		table.setEnabled(false);
 		scrollPane.setViewportView(table);
 		
@@ -87,6 +75,19 @@ public class ControlAcceso extends JInternalFrame {
 
 
 	public void cargarTabla() {
+		ArrayList<Acceso> accesos = ICU.listarAccesos();
+		Object[][] data = new String[accesos.size()][5];
+		for(int i = 0; i < accesos.size(); i++) {
+			data[i][0] = Integer.toString(i+1);
+			data[i][1] = accesos.get(i).getIp();
+			data[i][2] = accesos.get(i).getUrl();
+			data[i][3] = accesos.get(i).getBrowser();
+			data[i][4] = accesos.get(i).getSo();
+		}
+		
+	    String[] columnNames = {"#", "IP", "URL", "Browser", "SO"};
+	    DefaultTableModel tableModel = new DefaultTableModel(data, columnNames);
+	    table.setModel(tableModel);
 		
 	}
 }

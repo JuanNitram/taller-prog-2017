@@ -102,6 +102,7 @@ public class Principal2 extends JFrame {
 		JMenuItem mntmRegistroDeAcceso = new JMenuItem("Registro de acceso");
 		mntmRegistroDeAcceso.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				controlacceso.cargarTabla();
 				controlacceso.setVisible(true);
 			}
 		});

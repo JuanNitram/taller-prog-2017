@@ -47,7 +47,7 @@ public interface ICtrlUsuario {
 	
 	void agregarFavorita(String nickname, Propuesta propFavorita);
 	
-	void registrarAcceso(Acceso acceso);
+	void registrarAcceso(String ip, String url, String browser, String so);
 
 	ArrayList<Acceso> listarAccesos();
 }

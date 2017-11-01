@@ -199,7 +199,9 @@ public class CtrlUsuario implements ICtrlUsuario {
 		usuarios.get(nickname).marcarFavorita(propuesta);
 	}
 	
-	public void registrarAcceso(Acceso acceso) {
+	public void registrarAcceso(String ip, String url, String browser, String so) {
+		
+		Acceso acceso = new Acceso(ip, url, browser, so, new Date());
 		
 		if(accesos.size() == 10000) 
 			accesos.remove(accesos.size() - 1);
