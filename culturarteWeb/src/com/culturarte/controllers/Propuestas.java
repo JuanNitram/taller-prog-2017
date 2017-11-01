@@ -70,17 +70,11 @@ public class Propuestas extends HttpServlet {
 				}
 			} else {
 				ArrayList<DtPropuesta> propsfilter = new ArrayList<DtPropuesta>();
-				ArrayList<DtPropuesta> propsfil = (ArrayList<DtPropuesta>) Fabrica.getInstance().getICtrlPropuesta().listarPropuestas();
-				for(int i = 0; i< propsfil.size(); i++){
-					System.out.println(propsfil.get(i).getCategoria().getNombre() + " - " + filtro.toString());
-					
-					if(propsfil.get(i).getCategoria().getNombre().equals(filtro.toString()) && propsfil.get(i).getEstado() != TEstado.INGRESADA){
+				ArrayList<DtPropuesta> propsfil = (ArrayList<DtPropuesta>) Fabrica.getInstance().getICtrlPropuesta().listarPropuestaPorCategoria(filtro);
+				for(int i = 0; i< propsfil.size(); i++)
+					if(propsfil.get(i).getEstado() != TEstado.INGRESADA)
 						propsfilter.add(propsfil.get(i));
-						System.out.println(propsfil.get(i).getCategoria().getNombre());
-					}
-						
-				}
-				
+
 				if (propsfilter.size() > 0) {
 					request.setAttribute("propuestas", propsfilter);
 					request.getRequestDispatcher("/WEB-INF/propuestas/listar.jsp").forward(request, response);

@@ -132,7 +132,7 @@ public class Publicador {
 	}
 	
     @WebMethod
-	public void registrarAcceso(Acceso acceso) {
+	public void registrarAcceso(String ip, String url, String browser, String so) {
 		Fabrica.getInstance().getICtrlUsuario().registrarAcceso(ip, url, browser, so);
 	}
     

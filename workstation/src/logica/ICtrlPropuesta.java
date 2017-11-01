@@ -52,6 +52,8 @@ public interface ICtrlPropuesta {
 	
 	List<DtPropuesta> listarPropuestaPorEstado(TEstado estado);
 
+	List<DtPropuesta> listarPropuestaPorCategoria(String categoria);
+
 	void evaluar(String evaluacion);
 	
 	boolean extenderFinanciacion(String titulo);

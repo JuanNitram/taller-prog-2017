@@ -223,6 +223,19 @@ public class CtrlPropuesta implements ICtrlPropuesta {
 		return res;
 	}
 	
+	public List<DtPropuesta> listarPropuestaPorCategoria(String categoria) {
+		ArrayList<DtPropuesta> res = new ArrayList<>();
+		if (!propuestas.isEmpty()) {
+            Collection<Propuesta> props = propuestas.values();
+            Object[] objs = props.toArray();
+            for (int i = 0; i < props.size(); i++) {
+            	if (((Propuesta) objs[i]).getCategoria().getNombre().equals(categoria))
+            		res.add(((Propuesta) objs[i]).getInfoPropuesta());
+            }
+		}
+		return res;
+	}
+	
 	public void evaluar(String evaluacion) {
 		if (evaluacion.equals("p")) {
 			propRecordada.setEstado(new Estado(TEstado.PUBLICADA, new Date()));

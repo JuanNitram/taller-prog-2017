@@ -50,15 +50,12 @@ public class ControlAccesoFiltro implements Filter {
 
 		
 		String userAgent = request.getHeader("User-Agent");
-		Acceso acc = new Acceso(
-				request.getRemoteHost(),
+		
+		Fabrica.getInstance().getICtrlUsuario().registrarAcceso(request.getRemoteHost(),
 				request.getRequestURL().toString(),
 				userAgent.substring(0, userAgent.indexOf("/")),
-				userAgent.substring(userAgent.indexOf("(")+1, userAgent.indexOf(";")),
-				new Date()
+				userAgent.substring(userAgent.indexOf("(")+1, userAgent.indexOf(";"))
 			);
-		
-		Fabrica.getInstance().getICtrlUsuario().registrarAcceso(acc);
 		
 		// pass the request along the filter chain
 		chain.doFilter(request, response);
