@@ -1,6 +1,7 @@
 package com.culturarte.controllers;
 
 import java.io.IOException;
+
 import java.util.Date;
 import java.util.List;
 import java.util.ArrayList;
@@ -12,6 +13,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.swing.tree.DefaultMutableTreeNode;
+
+import dataTypes.DtCategoria;
+import dataTypes.TRetorno;
+import logica.Fabrica;
+import logica.ICtrlPropuesta;
 
 /**
  * Servlet implementation class AltaPropuesta

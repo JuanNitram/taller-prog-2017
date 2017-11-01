@@ -16,6 +16,10 @@
     <servlet-name>Servlet Iniciar Sesion</servlet-name>
     <servlet-class>com.culturarte.controllers.Login</servlet-class>
   </servlet>
+    <servlet>
+    <servlet-name>AgregarComentario</servlet-name>
+    <servlet-class>com.culturarte.controllers.AgregarComentario</servlet-class>
+  </servlet>
   <servlet>
     <servlet-name>RegistrarColaboracion</servlet-name>
     <servlet-class>com.culturarte.controllers.RegistrarColaboracion</servlet-class>
@@ -106,6 +110,10 @@
   <servlet-mapping>
     <servlet-name>Servlet Cargar Datos</servlet-name>
     <url-pattern>/cargarDatos</url-pattern>
+  </servlet-mapping>
+    <servlet-mapping>
+    <servlet-name>AgregarComentario</servlet-name>
+    <url-pattern>/agregarComentario</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>AltaPropuesta</servlet-name>

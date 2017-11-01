@@ -4,12 +4,16 @@
 <%@page import="java.util.Date"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
 <%@page import="logica.Fabrica"%>
 <%@page import="dataTypes.DtPropuesta"%>
+<%@page import="dataTypes.DtComentario"%>
 <%@page import="dataTypes.TRetorno"%>
 <%@page import="dataTypes.DtProponente"%>
+<%@page import="dataTypes.DtUsuario"%>
 <%@page import="dataTypes.DtColaborador"%>
 <%@page import="dataTypes.DtColaboracion"%>
+<%@page import="com.culturarte.controllers.Login"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <%
@@ -22,6 +26,7 @@
 </head>
 <body>
 	<jsp:include page="/WEB-INF/template/header.jsp" />
+	
 	<div class="main" align="center">
 		<div class="container">
 			<div class="well span8 offset2">
@@ -68,13 +73,7 @@
 												</tr>
 												<tr>
 													<td>Fecha de publicación:</td>
-													<td>
-														<%	if(propuesta.getFechaPublicacion()!=null) { %>
-															<%= new SimpleDateFormat("dd/MM/yyyy").format(propuesta.getFechaPublicacion()) %>
-														<%	} else { %>
-																<blackquote><cite>No se ha publicado</cite></blackquote>
-														<%	} %>
-													</td>
+													<td><%=new SimpleDateFormat("dd/MM/yyyy").format(propuesta.getFechaPublicacion())%></td>
 												</tr>
 												<tr>
 													<td>Fecha prevista:</td>
@@ -177,9 +176,7 @@
 
 														<div class="form-group" align="center">
 															<button type="submit" name="submit" id="submit"
-																class="btn btn-default">Registrar colaboracion</button>
-															<button type="reset" class="btn btn-default"
-																onClick="goBack()">Volver</button>
+																class="btn btn-default">Aceptar</button>
 														</div>
 													</form>
 												</div>
@@ -216,6 +213,73 @@
 									</div>
 								</div>
 							</div>
+							<%	
+								DtUsuario usr = Login.getUsuarioLogueado(request); 
+							%>
+
+							<style>
+							.mypanel {
+							    margin-bottom: 20px;
+							    background-color: #fff;
+							    border: 1px solid transparent;
+							    border-radius: 4px;
+							    -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
+							    box-shadow: 0 1px 1px rgba(0,0,0,.05);
+							}
+							.mypanel-default {
+							    border-color: #ddd;
+							}
+							.mypanel-default>.mypanel-heading {
+							    color: #333;
+							    background-color: #f5f5f5;
+							    border-color: #ddd;
+							}
+							.mypanel-heading {
+							    padding: 10px 15px;
+							    border-bottom: 1px solid transparent;
+							    border-top-left-radius: 3px;
+							    border-top-right-radius: 3px;
+							}
+							
+							.mypanel-body {
+							    padding: 15px;
+							}
+							</style>
+							<% 
+								List<DtComentario> comentarios = Fabrica.getInstance().getICtrlPropuesta().listarComentarios(propuesta.getTitulo()); 
+								if(comentarios.size() > 0){
+							%>
+								<h3><font color="white">Comentarios</font></h3>	<br>
+							<% 
+									for(int i = 0; i < comentarios.size() ; i++){
+							%>
+										<div class="container" align="center">
+										  <div class="mypanel mypanel-default" style="width:800px;">
+										    <div class="mypanel-heading" align="left"><%= comentarios.get(i).getNickName() %></div>
+										    <div class="mypanel-body" align="left"><font color ="black" ><%= comentarios.get(i).getComentario() %></font></div>
+										  </div>
+										</div>									
+							<%
+									}
+								}else{
+							%>
+									<h3><font color="white">No hay comentarios!</font></h3>	<br>
+							<% } %>
+							
+							<% 
+								if(usr != null && !Fabrica.getInstance().getICtrlUsuario().esProponente(usr.getNickName())){
+							%>
+							<form action="AgregarComentario?tPropuesta=<%=propuesta.getTitulo()%>" method="post">
+
+								<div class="form-group" align="center">
+  									<textarea class="form-control" rows="3" id="comentario" name="comentario" style="width:800px;" placeholder="Ingrese un comentario . . ." ></textarea>
+								</div>
+								<div class="form-group" align="center">
+									<button type="submit" name="submit" id="submit" class="btn btn-default">Aceptar</button>
+									<button type="reset" class="btn btn-default" onClick="goBack()">Volver</button>
+								</div>
+							</form>
+							<% } %>
 						</div>
 					</div>
 				</div>
