@@ -6,27 +6,30 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.Date;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.border.EmptyBorder;
 
-import logica.ICtrlPropuesta;
-import javax.swing.JTable;
+import logica.ICtrlUsuario;
+import logica.clases.Acceso;
 
 public class ControlAcceso extends JInternalFrame {
 
-	private ICtrlPropuesta ICP;
+	private ICtrlUsuario ICU;
 	private JTable table;
 	
-	public ControlAcceso(ICtrlPropuesta iCP) {
+	public ControlAcceso(ICtrlUsuario iCU) {
 		
-		this.ICP = iCP;
+		this.ICU = iCU;
 		
-		setTitle("Control de Acceso de Usuarios");
+		setTitle("Registro de Acceso de Usuarios");
 		setClosable(true);
 		setResizable(true);
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
@@ -51,7 +54,15 @@ public class ControlAcceso extends JInternalFrame {
 		gbc_scrollPane.gridy = 1;
 		panel.add(scrollPane, gbc_scrollPane);
 		
-		Object[][] data = {};
+		ArrayList<Acceso> accesos = ICU.listarAccesos();
+		Object[][] data = new String[accesos.size()][5];
+		for(int i = 0; i < accesos.size(); i++) {
+			data[i][0] = Integer.toString(i+1);
+			data[i][1] = accesos.get(i).getIp();
+			data[i][2] = accesos.get(i).getUrl();
+			data[i][3] = accesos.get(i).getBrowser();
+			data[i][4] = accesos.get(i).getSo();
+		}
 		
 	    String[] columnNames = {"#", "IP", "URL", "Browser", "SO"};
 		

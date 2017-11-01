@@ -1,5 +1,6 @@
 package logica;
  
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -47,4 +48,6 @@ public interface ICtrlUsuario {
 	void agregarFavorita(String nickname, Propuesta propFavorita);
 	
 	void registrarAcceso(Acceso acceso);
+
+	ArrayList<Acceso> listarAccesos();
 }

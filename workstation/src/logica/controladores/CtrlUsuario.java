@@ -206,4 +206,9 @@ public class CtrlUsuario implements ICtrlUsuario {
 
 		accesos.add(0, acceso);
 	}
+
+	@Override
+	public ArrayList<Acceso> listarAccesos() {
+		return accesos;
+	}
 }

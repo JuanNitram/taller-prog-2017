@@ -447,7 +447,7 @@ public class Principal2 extends JFrame {
 		modificarpropuesta = new ModificarPropuesta(ICP,ICU);
 		escritorio.add(modificarpropuesta);
 		
-		controlacceso = new ControlAcceso(ICP);
+		controlacceso = new ControlAcceso(ICU);
 		escritorio.add(controlacceso);
 		
 		clock = new Clock2();
