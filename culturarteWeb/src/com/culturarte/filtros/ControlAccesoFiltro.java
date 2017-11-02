@@ -45,7 +45,6 @@ public class ControlAccesoFiltro implements Filter {
 		// place your code here
 		
 		HttpServletRequest request = (HttpServletRequest) req; 
-		ServletContext contexto = request.getServletContext();
 		//System.out.println(request.getRequestURL().toString());
 
 		

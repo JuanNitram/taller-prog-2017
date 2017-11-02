@@ -122,7 +122,7 @@
 																		.esProponente((String) request.getSession().getAttribute("usuario_logueado"))) {
 										%>
 										<div class="panel-footer group">
-											<div class="span left">
+											<div id="panelColaboradores" class="span left">
 												<span style="text-align: center"><h3>Colaboradores</h3></span>
 												<%
 													ArrayList<DtColaboracion> colaboraciones = (ArrayList<DtColaboracion>) Fabrica.getInstance()
@@ -147,13 +147,10 @@
 														<font color="white">Registra una colaboración</font>
 													</h3></span>
 												<div class="container">
-													<form
-														action="RegistrarColaboracion?tPropuesta=<%=propuesta.getTitulo()%>"
-														method="post">
-													
+													<form>
 														<div class="form-group" align="left">
 															<label for="titulo"><font color="white">Monto</font></label><input
-																name="txtMonto" type="number" id="txtMonto"
+																name="txtMonto" type="text" pattern="[1-9][0-9]*" id="txtMonto"
 																class="form-control" required>
 														</div>
 
@@ -184,8 +181,8 @@
 														</div>
 
 														<div class="form-group" align="center">
-															<button type="submit" name="submit" id="submit"
-																class="btn btn-default">Aceptar</button>
+															<button type="button" name="submit" id="btn_colaborar"
+																class="btn btn-default" data-titulo="<%=propuesta.getTitulo()%>">Aceptar</button>
 														</div>
 													</form>
 												</div>
@@ -254,13 +251,15 @@
 							    padding: 15px;
 							}
 							</style>
+							<div id="panelComentarios" class="panel-footer group">
+								<br>
 							<% 
 								List<DtComentario> comentarios = Fabrica.getInstance().getICtrlPropuesta().listarComentarios(propuesta.getTitulo()); 
-								if(comentarios.size() > 0){
+								if(comentarios.size() > 0) {
 							%>
 								<h3><font color="white">Comentarios</font></h3>	<br>
 							<% 
-									for(int i = 0; i < comentarios.size() ; i++){
+									for(int i = 0; i < comentarios.size() ; i++) {
 							%>
 										<div class="container" align="center">
 										  <div class="mypanel mypanel-default" style="width:800px;">
@@ -270,21 +269,21 @@
 										</div>									
 							<%
 									}
-								}else{
+								} else {
 							%>
 									<h3><font color="white">No hay comentarios!</font></h3>	<br>
-							<% } %>
+							<%	} %>
+							</div>
 							
 							<% 
 								if(usr != null && !Fabrica.getInstance().getICtrlUsuario().esProponente(usr.getNickName())){
 							%>
-							<form action="AgregarComentario?tPropuesta=<%=propuesta.getTitulo()%>" method="post">
-
+							<form>
 								<div class="form-group" align="center">
   									<textarea class="form-control" rows="3" id="comentario" name="comentario" style="width:800px;" placeholder="Ingrese un comentario . . ." ></textarea>
 								</div>
 								<div class="form-group" align="center">
-									<button type="submit" name="submit" id="submit" class="btn btn-default">Aceptar</button>
+									<button type="button" id="btn_comentar" class="btn btn-default" data-titulo="<%=propuesta.getTitulo()%>">Aceptar</button>
 									<button type="reset" class="btn btn-default" onClick="goBack()">Volver</button>
 								</div>
 							</form>
@@ -303,7 +302,40 @@
 	<script>
 		function goBack() {
 			window.history.back();
-		}
+		};
+		$('document').ready(function(){
+			$('#btn_comentar').click(function(){
+				$.ajax({
+					type : 'POST',
+					url : 'OperacionesPropuesta',
+					data : {
+						action : 'agregarComentario',
+						tituloProp : $('#btn_comentar').data("titulo"),
+						comentario : $('#comentario').val()
+					},
+					success : function(res) {
+						$('#comentario').val('');
+						$('#panelComentarios').html(res);
+					}
+				});
+			});
+			$('#btn_colaborar').click(function(){
+				$.ajax({
+					type : 'POST',
+					url : 'OperacionesPropuesta',
+					data : {
+						action : 'registrarColaboracion',
+						tituloProp : $('#btn_colaborar').data("titulo"),
+						selectRetorno : $('#selectRetorno').val(),
+						txtMonto : $('#txtMonto').val()
+					},
+					success : function(res) {
+						$('#txtMonto').val('');
+						$('#panelColaboradores').html(res);
+					}
+				});
+			});
+		});
 	</script>
 </body>
 <style>

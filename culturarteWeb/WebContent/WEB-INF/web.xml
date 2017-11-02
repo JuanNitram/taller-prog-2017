@@ -17,8 +17,8 @@
     <servlet-class>com.culturarte.controllers.Login</servlet-class>
   </servlet>
     <servlet>
-    <servlet-name>AgregarComentario</servlet-name>
-    <servlet-class>com.culturarte.controllers.AgregarComentario</servlet-class>
+    <servlet-name>OperacionesPropuesta</servlet-name>
+    <servlet-class>com.culturarte.controllers.OperacionesPropuesta</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>RegistrarColaboracion</servlet-name>
@@ -35,10 +35,6 @@
   <servlet>
     <servlet-name>AltaUsuario</servlet-name>
     <servlet-class>com.culturarte.controllers.AltaUsuario</servlet-class>
-  </servlet>
-  <servlet>
-    <servlet-name>NuevaColaboracion</servlet-name>
-    <servlet-class>com.culturarte.controllers.NuevaColaboracion</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>ConsultaUsuario</servlet-name>
@@ -112,8 +108,8 @@
     <url-pattern>/cargarDatos</url-pattern>
   </servlet-mapping>
     <servlet-mapping>
-    <servlet-name>AgregarComentario</servlet-name>
-    <url-pattern>/agregarComentario</url-pattern>
+    <servlet-name>OperacionesPropuesta</servlet-name>
+    <url-pattern>/operacionesPropuesta</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>AltaPropuesta</servlet-name>
@@ -122,10 +118,6 @@
   <servlet-mapping>
     <servlet-name>CerrarSesion</servlet-name>
     <url-pattern>/cerrar</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>NuevaColaboracion</servlet-name>
-    <url-pattern>/nuevaColaboracion</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>RegistrarColaboracion</servlet-name>
