@@ -17,16 +17,16 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <title>Perfil | Culturarte</title>
 <script type="text/javascript">
-	$(document).ready(function() {
-		$('#extenderFinanciacion').click(function() {
-			$.ajax({
-				type : 'POST',
-				data : {
+	$(document).ready(function() { //Define una funcion que se linkea a document cuando este se carga(ready)
+		$('#extenderFinanciacion').click(function() { //Define una funcion que se linkea cuando el boton se clickea
+			$.ajax({ //El .ajax hace una llamada al servlet sin que la pagina se recargue
+				type : 'POST', //type define el metodo
+				data : { // los datos que se acceden en el servlet por getParameter
 					tituloProp : $('#extenderFinanciacion').data("titulo"),
 					action : "extender",
 				},
-				url : 'GestionPropuesta',
-				success : function() {
+				url : 'GestionPropuesta', //este seria como el 'action' en el form (url del servlet)
+				success : function() { // aca se definen las acciones que se hacen despues que el codigo del servlet se ejecuta
 					$('#extenderFinanciacion').attr('title',"Ya has extendido esta financiación");
 					$('#extenderFinanciacion').attr('disabled',true);
 				}
