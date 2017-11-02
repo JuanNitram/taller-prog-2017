@@ -21,14 +21,6 @@
     <servlet-class>com.culturarte.controllers.OperacionesPropuesta</servlet-class>
   </servlet>
   <servlet>
-    <servlet-name>RegistrarColaboracion</servlet-name>
-    <servlet-class>com.culturarte.controllers.RegistrarColaboracion</servlet-class>
-  </servlet>
-  <servlet>
-    <servlet-name>AltaPropuesta</servlet-name>
-    <servlet-class>com.culturarte.controllers.AltaPropuesta</servlet-class>
-  </servlet>
-  <servlet>
     <servlet-name>Servlet Cargar Datos</servlet-name>
     <servlet-class>com.culturarte.controllers.CargarDatos</servlet-class>
   </servlet>
@@ -112,16 +104,8 @@
     <url-pattern>/operacionesPropuesta</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
-    <servlet-name>AltaPropuesta</servlet-name>
-    <url-pattern>/altaPropuesta</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
     <servlet-name>CerrarSesion</servlet-name>
     <url-pattern>/cerrar</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>RegistrarColaboracion</servlet-name>
-    <url-pattern>/registrarColaboracion</url-pattern>
   </servlet-mapping>
   <session-config>
     <session-timeout>30</session-timeout>

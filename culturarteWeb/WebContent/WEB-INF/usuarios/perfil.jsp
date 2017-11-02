@@ -32,6 +32,21 @@
 				}
 			});
 		});
+		$('#cancelarPropuesta').click(function() {
+			$.ajax({
+				type : 'POST',
+				data : {
+					tituloProp : $('#cancelarPropuesta').data("titulo"),
+					action : "cancelar",
+				},
+				url : 'GestionPropuesta',
+				success : function() {
+					$('#cancelarPropuesta').css("display","none");
+					$('#avisoTitulo').html('Cancelar propuesta');
+					$('#avisoMensaje').html('La propuesta ' + $('#cancelarPropuesta').data("titulo") + ' se ha cancelado con éxito.');
+				}
+			});
+		});
 	});
 </script>
 </head>
@@ -41,14 +56,14 @@
 			<div class="modal-content">
 				<!--  Header de la ventana -->
 				<div class="modal-header">
-					<h4 class="modal-title">Extender financiación</h4>
+					<h4 id="avisoTitulo" class="modal-title">Extender financiación</h4>
 					<button type="button" class="close" data-dismiss="modal"
 						arial-hidden="true">&times;</button>
 
 				</div>
 				<!--  Contenido de la ventana-->
 				<div class="modal-body">
-					<p>La propuesta se ha extendido con éxito.</p>
+					<p id="avisoMensaje">La financiación de la propuesta se ha extendido con éxito.</p>
 				</div>
 				<!--  Fotter de la ventana-->
 				<div class="modal-footer">
@@ -121,7 +136,7 @@
 												<%
 													if (propuestas.get(i).getEstado() == TEstado.PUBLICADA
 																		|| propuestas.get(i).getEstado() == TEstado.EN_FINANCIACION) {
-																	if (propuestas.get(i).getFechaExtension() != null) {
+														if (propuestas.get(i).getFechaExtension() != null) {
 												%>
 												<button id="extenderFinanciacion" style="margin-left: 10px"
 													type=button class="btn btn-success"
@@ -130,7 +145,7 @@
 													<i class="fa fa-calendar-plus-o"></i>
 												</button>
 												<%
-													} else {
+														} else {
 												%>
 												<button id="extenderFinanciacion" style="margin-left: 10px"
 													type=button class="btn btn-success"
@@ -140,12 +155,19 @@
 												</button>
 
 												<%
-													}
-																}
+														}
+													} else if(propuestas.get(i).getEstado() == TEstado.FINANCIADA) {
 												%>
+													<button id="cancelarPropuesta" style="margin-left: 10px"
+														type=button class="btn btn-danger"
+														title="Cancelar propuesta" data-titulo="<%=titulo%>"
+														data-toggle="modal" data-target="#aviso">
+														<i class="fa fa-times-circle"></i>
+													</button>
+												<% } %>
 												<br>
 												<%
-													}
+															}
 														}
 												%>
 											</div>

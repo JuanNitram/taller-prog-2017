@@ -74,7 +74,12 @@
 												</tr>
 												<tr>
 													<td>Fecha de publicación:</td>
-													<td><%=new SimpleDateFormat("dd/MM/yyyy").format(propuesta.getFechaPublicacion())%></td>
+													<td><%	if(propuesta.getFechaPublicacion()!=null) { %>
+															<%= new SimpleDateFormat("dd/MM/yyyy").format(propuesta.getFechaPublicacion()) %>
+														<%	} else { %>
+																<blackquote><cite>No se ha publicado</cite></blackquote>
+														<%	} %>
+													</td>
 												</tr>
 												<tr>
 													<td>Fecha prevista:</td>
@@ -105,14 +110,6 @@
 													%>
 													<td><%=retorno%></td>
 												</tr>
-												<% if(propuesta.getEstado() == TEstado.FINANCIADA && propuesta.getNickProponente() == request.getSession().getAttribute("usuario_logueado")){ %>
-												<tr>
-													<form action="AltaPropuesta?cancelar=true&tpropuesta=<%=propuesta.getTitulo()%>" method="POST">
-														<td>Cancelar Propuesta</td>
-														<td><button type="submit" id="cancelar" value="true" class="btn btn-danger">Cancelar</button></td>
-													</form>
-												</tr>
-												<% } %>
 											</tbody>
 										</table>
 										<%

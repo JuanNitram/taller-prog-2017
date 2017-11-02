@@ -321,7 +321,7 @@
 								<div class="panel panel-default">
 									<div class="panel-heading"></div>
 									<div class="panel-body">
-										<form role="form" action="altaPropuesta" id="formPropuesta"
+										<form role="form" action="GestionPropuesta?action=proponer" id="formPropuesta"
 											name="formPropuesta" method="post" onsubmit="return validarProponer();">
 											<div class="row">
 												<div class="col-xs-6 col-sm-6 col-md-6">
