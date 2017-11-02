@@ -69,8 +69,7 @@ public class Home extends HttpServlet {
 				System.out.println("Estoy en login_incorrecto en home");
 				break;
 			case LOGIN_CORRECTO:
-				// manda una redirecci�n a otra URL (cambia la URL)
-				resp.sendRedirect("/perfil");
+				req.getRequestDispatcher("/WEB-INF/home/iniciar.jsp").forward(req, resp);
 				System.out.println("Estoy en login_correcto en home");
 				break;
 		}
