@@ -13,7 +13,7 @@
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry exported="true" kind="lib" path="C:/Users/User/git/tpgr05/dispositivoMovil/Culturarte.jar">
+	<classpathentry kind="lib" path="C:/Users/JuanMartín/git/tpgr05/dispositivoMovil/Culturarte.jar">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
