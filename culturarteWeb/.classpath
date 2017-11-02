@@ -14,8 +14,12 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jst.server.core.container/org.eclipse.jst.server.tomcat.runtimeTarget/Apache Tomcat v8.0"/>
-	<classpathentry kind="lib" path="C:/Program Files (x86)/Apache Software Foundation/Tomcat 8.0/lib/servlet-api.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Juancho/git/tpgr05/culturarteWeb/Culturarte.jar">
+	<classpathentry exported="true" kind="lib" path="/home/lautaro/git/tpgr05/culturarteWeb/Culturarte.jar">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry exported="true" kind="lib" path="/usr/share/tomcat8/lib/servlet-api.jar">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>

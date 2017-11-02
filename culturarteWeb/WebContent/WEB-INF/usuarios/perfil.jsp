@@ -17,38 +17,22 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <title>Perfil | Culturarte</title>
 <script type="text/javascript">
-	$(document)
-			.ready(
-					function() {
-						$('#extenderFinanciacion')
-								.click(
-										function() {
-											$
-													.ajax({
-														type : 'POST',
-														data : {
-															tituloProp : $(
-																	'#extenderFinanciacion')
-																	.data(
-																			"titulo"),
-															action : "extender",
-														},
-														url : 'GestionPropuesta',
-														success : function() {
-															$(
-																	'#extenderFinanciacion')
-																	.attr(
-																			'title',
-																			"Ya has extendido esta financiación");
-															$(
-																	'#extenderFinanciacion')
-																	.attr(
-																			'disabled',
-																			true);
-														}
-													});
-										});
-					});
+	$(document).ready(function() {
+		$('#extenderFinanciacion').click(function() {
+			$.ajax({
+				type : 'POST',
+				data : {
+					tituloProp : $('#extenderFinanciacion').data("titulo"),
+					action : "extender",
+				},
+				url : 'GestionPropuesta',
+				success : function() {
+					$('#extenderFinanciacion').attr('title',"Ya has extendido esta financiación");
+					$('#extenderFinanciacion').attr('disabled',true);
+				}
+			});
+		});
+	});
 </script>
 </head>
 <body>
