@@ -38,6 +38,7 @@
 								<h3 class="panel-title text-color"><%=propuesta.getTitulo()%>
 									(<%=propuesta.getCategoria().getNombre()%>)
 								</h3>
+								
 							</div>
 							<div class="panel-body">
 								<div class="row-fluid">
@@ -104,6 +105,14 @@
 													%>
 													<td><%=retorno%></td>
 												</tr>
+												<% if(propuesta.getEstado() == TEstado.FINANCIADA && propuesta.getNickProponente() == request.getSession().getAttribute("usuario_logueado")){ %>
+												<tr>
+													<form action="AltaPropuesta?cancelar=true&tpropuesta=<%=propuesta.getTitulo()%>" method="POST">
+														<td>Cancelar Propuesta</td>
+														<td><button type="submit" id="cancelar" value="true" class="btn btn-danger">Cancelar</button></td>
+													</form>
+												</tr>
+												<% } %>
 											</tbody>
 										</table>
 										<%

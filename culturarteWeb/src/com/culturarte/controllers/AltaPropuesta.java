@@ -44,35 +44,42 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response) t
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String categoria = request.getParameter("selectCategoria");
-		String titulo = request.getParameter("txTitulo").trim();
-		String descripcion = request.getParameter("txDescripcion").trim();
-		String lugar = request.getParameter("txLugar").trim();
-		String fechaStr = request.getParameter("txFechaPrevista");
-		float montoEntrada = Integer.parseInt(request.getParameter("precioEntrada"));
-		float montoNecesario = Integer.parseInt(request.getParameter("montoRequerido"));
-		
-		
-		TRetorno retorno;
-		if (request.getParameter("cbPorcentaje") != null && request.getParameter("cbEntradas") != null)
-			retorno = TRetorno.PORCENTAJE_Y_ENTRADAS;
-		else if (request.getParameter("cbPorcentaje") != null)
-			retorno = TRetorno.PORCENTAJE_GANANCIA;
-		else
-			retorno = TRetorno.ENTRADA_GRATIS;
-		
-		Calendar calendar = Calendar.getInstance();
-		String [] fechaSplit = fechaStr.split("/");
-		calendar.set(Integer.parseInt(fechaSplit[2]), Integer.parseInt(fechaSplit[1]) - 1, Integer.parseInt(fechaSplit[0]));
-		Date dateTime = calendar.getTime();
-		DtCategoria dtCategoria = new DtCategoria(categoria);
-		
-		ICtrlPropuesta ICU = Fabrica.getInstance().getICtrlPropuesta();
-		ICU.altaPropuesta((String) (request.getSession().getAttribute("usuario_logueado")), 
-				titulo, dtCategoria, descripcion, lugar, dateTime, montoNecesario , retorno, montoEntrada, null);
-		
-		//Vuelve al inicio de la pagina
-		response.sendRedirect("/perfil");
+		if(request.getParameter("cancelar") != null && ((String)request.getParameter("cancelar")).equals("true")){
+			String prop = (String)request.getParameter("tpropuesta");
+			Fabrica.getInstance().getICtrlPropuesta().cancelarPropuesta(prop);
+			response.sendRedirect("/propuestas");
+		}
+		else{
+			String categoria = request.getParameter("selectCategoria");
+			String titulo = request.getParameter("txTitulo").trim();
+			String descripcion = request.getParameter("txDescripcion").trim();
+			String lugar = request.getParameter("txLugar").trim();
+			String fechaStr = request.getParameter("txFechaPrevista");
+			float montoEntrada = Integer.parseInt(request.getParameter("precioEntrada"));
+			float montoNecesario = Integer.parseInt(request.getParameter("montoRequerido"));
+			
+			
+			TRetorno retorno;
+			if (request.getParameter("cbPorcentaje") != null && request.getParameter("cbEntradas") != null)
+				retorno = TRetorno.PORCENTAJE_Y_ENTRADAS;
+			else if (request.getParameter("cbPorcentaje") != null)
+				retorno = TRetorno.PORCENTAJE_GANANCIA;
+			else
+				retorno = TRetorno.ENTRADA_GRATIS;
+			
+			Calendar calendar = Calendar.getInstance();
+			String [] fechaSplit = fechaStr.split("/");
+			calendar.set(Integer.parseInt(fechaSplit[2]), Integer.parseInt(fechaSplit[1]) - 1, Integer.parseInt(fechaSplit[0]));
+			Date dateTime = calendar.getTime();
+			DtCategoria dtCategoria = new DtCategoria(categoria);
+			
+			ICtrlPropuesta ICU = Fabrica.getInstance().getICtrlPropuesta();
+			ICU.altaPropuesta((String) (request.getSession().getAttribute("usuario_logueado")), 
+					titulo, dtCategoria, descripcion, lugar, dateTime, montoNecesario , retorno, montoEntrada, null);
+			
+			//Vuelve al inicio de la pagina
+			response.sendRedirect("/perfil");
+		}
 	}
 
 	private static List<String> categoriasList = new ArrayList();
