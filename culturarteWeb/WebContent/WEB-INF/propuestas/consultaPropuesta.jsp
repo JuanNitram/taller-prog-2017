@@ -1,6 +1,5 @@
 <%@page import="dataTypes.TEstado"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@page import="java.util.Date"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.ArrayList"%>
@@ -22,11 +21,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <jsp:include page="/WEB-INF/template/head.jsp" />
+<link href="/media/styles/favorito.css" rel="stylesheet">
 <title><%=propuesta.getTitulo()%> | Culturarte</title>
 </head>
 <body>
 	<jsp:include page="/WEB-INF/template/header.jsp" />
-	
+
 	<div class="main" align="center">
 		<div class="container">
 			<div class="well span8 offset2">
@@ -38,6 +38,10 @@
 								<h3 class="panel-title text-color"><%=propuesta.getTitulo()%>
 									(<%=propuesta.getCategoria().getNombre()%>)
 								</h3>
+								<span class="fa fa-star-o"></span>
+									<div class="ring"></div>
+									<div class="ring2"></div>
+									<p class="info">Agregado a favorito</p>
 								
 							</div>
 							<div class="panel-body">
@@ -296,7 +300,38 @@
 	<div class="footer">
 		<jsp:include page="/WEB-INF/template/footer.jsp" />
 	</div>
-	<script>
+	
+</body>
+<style>
+.left {
+	float: left;
+	width: 50%;
+}
+
+.right {
+	float: right;
+	width: 50%;
+}
+
+.group:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+}
+
+@media screen and (max-width: 480px) {
+	.left, .right {
+		float: none;
+		width: auto;
+	}
+}
+</style>
+<script>
 		function goBack() {
 			window.history.back();
 		};
@@ -334,35 +369,34 @@
 			});
 		});
 	</script>
-</body>
-<style>
-.left {
-	float: left;
-	width: 50%;
-}
-
-.right {
-	float: right;
-	width: 50%;
-}
-
-.group:after {
-	content: "";
-	display: table;
-	clear: both;
-}
-
-img {
-	max-width: 100%;
-	height: auto;
-}
-
-@media screen and (max-width: 480px) {
-	.left, .right {
-		float: none;
-		width: auto;
+<script>
+$('.click').click(function() {
+	if ($('span').hasClass("fa-star")) {
+			$('.click').removeClass('active')
+		setTimeout(function() {
+			$('.click').removeClass('active-2')
+		}, 30)
+			$('.click').removeClass('active-3')
+		setTimeout(function() {
+			$('span').removeClass('fa-star')
+			$('span').addClass('fa-star-o')
+		}, 15)
+	} else {
+		$('.click').addClass('active')
+		$('.click').addClass('active-2')
+		setTimeout(function() {
+			$('span').addClass('fa-star')
+			$('span').removeClass('fa-star-o')
+		}, 150)
+		setTimeout(function() {
+			$('.click').addClass('active-3')
+		}, 150)
+		$('.info').addClass('info-tog')
+		setTimeout(function(){
+			$('.info').removeClass('info-tog')
+		},1000)
 	}
-}
-</
-html
->
+})
+</script>
+
+</html>

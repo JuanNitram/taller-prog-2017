@@ -18,8 +18,8 @@ public class DtProponente extends DtUsuario {
 	}
 	
 	public DtProponente(String nickName, String nombre, String apellido, String email, Date fechaNacimiento,
-			String rutaImg, String direccion, String biografia, String linkSitio, List<DtPropuesta> propuestas) {
-		super(nickName, nombre, apellido, email, fechaNacimiento, rutaImg);
+			String rutaImg, String direccion, String biografia, String linkSitio, List<DtPropuesta> propuestas, List<String> favoritas) {
+		super(nickName, nombre, apellido, email, fechaNacimiento, rutaImg, favoritas);
 		this.direccion = direccion;
 		this.biografia = biografia;
 		this.linkSitio = linkSitio; 

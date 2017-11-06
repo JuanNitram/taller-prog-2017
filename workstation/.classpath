@@ -7,6 +7,6 @@
 	<classpathentry exported="true" kind="lib" path="imagenes"/>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="lib" path="/home/lautaro/git/tpgr05/workstation/src/recursos/jcalendar-1.4.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Juancho/git/tpgr05/workstation/src/recursos/jcalendar-1.4.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

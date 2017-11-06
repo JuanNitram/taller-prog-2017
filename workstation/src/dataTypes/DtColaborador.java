@@ -16,8 +16,8 @@ public class DtColaborador extends DtUsuario {
 	}
 
 	public DtColaborador(String nickName, String nombre, String apellido, String email, Date fechaNacimiento,
-			String rutaImg, List<DtColaboracion> colaboraciones) { 
-		super(nickName, nombre, apellido, email, fechaNacimiento, rutaImg);
+			String rutaImg, List<DtColaboracion> colaboraciones, List<String> favoritas) { 
+		super(nickName, nombre, apellido, email, fechaNacimiento, rutaImg, favoritas);
 		this.colaboraciones = colaboraciones;
 	}
 	

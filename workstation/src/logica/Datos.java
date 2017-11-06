@@ -369,20 +369,20 @@ public class Datos {
 		cPropuesta.cambiarEstado("Romeo y Julieta",  est);
 		
 		fecha.set(2017, 10, 16);
-		cPropuesta.altaPropuesta("tabarec",  "Un d�a de Julio",  new DtCategoria("Murga"),  "La Catalina presenta el espect�culo \"Un D�a de Julio\" en Landia. Un hombre misterioso "
+		cPropuesta.altaPropuesta("tabarec",  "Un día de Julio",  new DtCategoria("Murga"),  "La Catalina presenta el espect�culo \"Un D�a de Julio\" en Landia. Un hombre misterioso "
 		+ "y solitario vive encerrado entre las cuatro paredes de su casa. Intenta,  con sus teor�as extravagantes,  cambiar el mundo exterior que le "
 		+ "resulta inhabitable. Un d�a de Julio suceder� algo que cambiar� su vida y la de su entorno para siempre. ",  
 		"Landia",  fecha.getTime(),  300000,  TRetorno.PORCENTAJE_Y_ENTRADAS,  650,  "udj");
-		cPropuesta.borrarPrimerEstado("Un d�a de Julio");
+		cPropuesta.borrarPrimerEstado("Un día de Julio");
 		fecha.set(2017, 7, 06, 02, 00);
 		est = new Estado(TEstado.INGRESADA,  fecha.getTime());
-		cPropuesta.cambiarEstado("Un d�a de Julio",  est);
+		cPropuesta.cambiarEstado("Un día de Julio",  est);
 		fecha.set(2017, 7, 12, 04, 50);
 		est = new Estado(TEstado.PUBLICADA,  fecha.getTime());
-		cPropuesta.cambiarEstado("Un d�a de Julio",  est);
+		cPropuesta.cambiarEstado("Un día de Julio",  est);
 		fecha.set(2017, 7, 15, 04, 48);
 		est = new Estado(TEstado.EN_FINANCIACION,  fecha.getTime());
-		cPropuesta.cambiarEstado("Un d�a de Julio",  est);
+		cPropuesta.cambiarEstado("Un día de Julio",  est);
 		
 		fecha.set(2017, 11, 03);
 		cPropuesta.altaPropuesta("hectorg",  "El Lazarillo de Tormes",  new DtCategoria("Teatro Dram�tico"),  "Vuelve unas de las producciones de El Galp�n m�s aclamadas de los �ltimos tiempos. "
@@ -460,7 +460,7 @@ public class Datos {
 		cPropuesta.agregarColaboracion("marcelot",  200000,  TRetorno.PORCENTAJE_GANANCIA);
 		fecha.set(2017, 9, 9, 11, 25);
 		cPropuesta.cambiarFechaColaboracion(idActual++,  fecha.getTime());
-		cPropuesta.infoPropuesta("Un d�a de Julio");
+		cPropuesta.infoPropuesta("Un día de Julio");
 		cPropuesta.agregarColaboracion("tonyp",  30000,  TRetorno.ENTRADA_GRATIS);
 		fecha.set(2017, 9, 8, 04, 48);
 		cPropuesta.cambiarFechaColaboracion(idActual++,  fecha.getTime());
@@ -477,42 +477,42 @@ public class Datos {
 		cPropuesta.agregarComentario("novick", "Religiosamente", "Excelente propuesta. Ahí estaremos.");
 	 
 		
-		cPropuesta.agregarFavorita("hrubino", "Religiosamente");
-		cPropuesta.agregarFavorita("hrubino", "El Pimiento Indomable");
-		cPropuesta.agregarFavorita("hrubino", "Un día de Julio");
-		cPropuesta.agregarFavorita("mbusca", "Cine en el Botánico");
-		cPropuesta.agregarFavorita("mbusca", "El Pimiento Indomable");
-		cPropuesta.agregarFavorita("mbusca", "Pilsen Rock");
-		cPropuesta.agregarFavorita("hectorg", "Romeo y Julieta");
-		cPropuesta.agregarFavorita("hectorg", "El Lazarillo de Tormes");
-		cPropuesta.agregarFavorita("tabarec", "Religiosamente");
-		cPropuesta.agregarFavorita("tabarec", "Un día de Julio");
-		cPropuesta.agregarFavorita("cachilas", "Religiosamente");
-		cPropuesta.agregarFavorita("juliob", "Romeo y Julieta");
-		cPropuesta.agregarFavorita("juliob", "El Lazarillo de Tormes");
-		cPropuesta.agregarFavorita("diegop", "Cine en el Botánico");
-		cPropuesta.agregarFavorita("diegop", "El Lazarillo de Tormes");
-		cPropuesta.agregarFavorita("kairoh", "Religiosamente");
-		cPropuesta.agregarFavorita("kairoh", "Pilsen Rock");
-		cPropuesta.agregarFavorita("losBardo", "Bardo en la FING");
-		cPropuesta.agregarFavorita("robinh", "Cine en el Botánico");
-		cPropuesta.agregarFavorita("marcelot", "Religiosamente");
-		cPropuesta.agregarFavorita("marcelot", "El Pimiento Indomable");
-		cPropuesta.agregarFavorita("novick", "Religiosamente");
-		cPropuesta.agregarFavorita("novick", "Pilsen Rock");
-		cPropuesta.agregarFavorita("sergiop", "El Pimiento Indomable");
-		cPropuesta.agregarFavorita("sergiop", "Romeo y Julieta");
-		cPropuesta.agregarFavorita("chino", "Pilsen Rock");
-		cPropuesta.agregarFavorita("tonyp", "Pilsen Rock");
-		cPropuesta.agregarFavorita("tonyp", "Un día de Julio");
-		cPropuesta.agregarFavorita("nicoJ", "Cine en el Botánico");
-		cPropuesta.agregarFavorita("juanP", "Pilsen Rock");
-		cPropuesta.agregarFavorita("Mengano", "Religiosamente");
-		cPropuesta.agregarFavorita("Mengano", "Un día de Julio");
-		cPropuesta.agregarFavorita("Perengano", "Pilsen Rock");
-		cPropuesta.agregarFavorita("Perengano", "Un día de Julio");
-		cPropuesta.agregarFavorita("Tiajaci", "Religiosamente");
-		cPropuesta.agregarFavorita("Tiajaci", "El Lazarillo de Tormes");
+		cPropuesta.agregarUsuarioFavorito("hrubino", "Religiosamente");
+		cPropuesta.agregarUsuarioFavorito("hrubino", "El Pimiento Indomable");
+		cPropuesta.agregarUsuarioFavorito("hrubino", "Un día de Julio");
+		cPropuesta.agregarUsuarioFavorito("mbusca", "Cine en el Bot�nico");
+		cPropuesta.agregarUsuarioFavorito("mbusca", "El Pimiento Indomable");
+		cPropuesta.agregarUsuarioFavorito("mbusca", "Pilsen Rock");
+		cPropuesta.agregarUsuarioFavorito("hectorg", "Romeo y Julieta");
+		cPropuesta.agregarUsuarioFavorito("hectorg", "El Lazarillo de Tormes");
+		cPropuesta.agregarUsuarioFavorito("tabarec", "Religiosamente");
+		cPropuesta.agregarUsuarioFavorito("tabarec", "Un día de Julio");
+		cPropuesta.agregarUsuarioFavorito("cachilas", "Religiosamente");
+		cPropuesta.agregarUsuarioFavorito("juliob", "Romeo y Julieta");
+		cPropuesta.agregarUsuarioFavorito("juliob", "El Lazarillo de Tormes");
+		cPropuesta.agregarUsuarioFavorito("diegop", "Cine en el Bot�nico");
+		cPropuesta.agregarUsuarioFavorito("diegop", "El Lazarillo de Tormes");
+		cPropuesta.agregarUsuarioFavorito("kairoh", "Religiosamente");
+		cPropuesta.agregarUsuarioFavorito("kairoh", "Pilsen Rock");
+		cPropuesta.agregarUsuarioFavorito("losBardo", "Bardo en la FING");
+		cPropuesta.agregarUsuarioFavorito("robinh", "Cine en el Bot�nico");
+		cPropuesta.agregarUsuarioFavorito("marcelot", "Religiosamente");
+		cPropuesta.agregarUsuarioFavorito("marcelot", "El Pimiento Indomable");
+		cPropuesta.agregarUsuarioFavorito("novick", "Religiosamente");
+		cPropuesta.agregarUsuarioFavorito("novick", "Pilsen Rock");
+		cPropuesta.agregarUsuarioFavorito("sergiop", "El Pimiento Indomable");
+		cPropuesta.agregarUsuarioFavorito("sergiop", "Romeo y Julieta");
+		cPropuesta.agregarUsuarioFavorito("chino", "Pilsen Rock");
+		cPropuesta.agregarUsuarioFavorito("tonyp", "Pilsen Rock");
+		cPropuesta.agregarUsuarioFavorito("tonyp", "Un día de Julio");
+		cPropuesta.agregarUsuarioFavorito("nicoJ", "Cine en el Bot�nico");
+		cPropuesta.agregarUsuarioFavorito("juanP", "Pilsen Rock");
+		cPropuesta.agregarUsuarioFavorito("Mengano", "Religiosamente");
+		cPropuesta.agregarUsuarioFavorito("Mengano", "Un día de Julio");
+		cPropuesta.agregarUsuarioFavorito("Perengano", "Pilsen Rock");
+		cPropuesta.agregarUsuarioFavorito("Perengano", "Un día de Julio");
+		cPropuesta.agregarUsuarioFavorito("Tiajaci", "Religiosamente");
+		cPropuesta.agregarUsuarioFavorito("Tiajaci", "El Lazarillo de Tormes");
 
 		System.out.println("Datos cargados. \n"
 						+ "Cantidad de Proponentes: " + cUsuario.listarProponentes().size() +"\n"

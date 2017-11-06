@@ -26,6 +26,8 @@ public interface ICtrlUsuario {
 	
 	void seguir();
 	
+	List<String> listarPropuestasFavoritas(String nickname);
+	
 	boolean esProponente(String nickname);
 	
 	boolean checkPassword(String nickname, String password);
@@ -44,8 +46,6 @@ public interface ICtrlUsuario {
 	List<DtUsuario> listarSeguidos(String nickName);
 	
 	boolean existeUsuario(String nickName, String email);
-	
-	void agregarFavorita(String nickname, Propuesta propFavorita);
 	
 	void registrarAcceso(String ip, String url, String browser, String so);
 

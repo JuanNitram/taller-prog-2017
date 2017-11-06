@@ -1,6 +1,7 @@
 package dataTypes;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -22,14 +23,16 @@ public class DtPropuesta {
 	private String rutaImg;
 	private float precioEntrada;
 	private TEstado estado;
+	private List<String> favoritos;
 	
 	public DtPropuesta() {
 		super();
 	}
 		
 	public DtPropuesta(String nick, String titulo, String descripcion, DtCategoria categoria, String lugar, Date fechaRealizacion,
-			Date fechaPublicacion, Date fechaExtension, float montoRequerido, float montoReunido, TRetorno tipoRetorno,float precioEntrada, String rutaImg, TEstado estado) {
+			Date fechaPublicacion, Date fechaExtension, float montoRequerido, float montoReunido, TRetorno tipoRetorno,float precioEntrada, String rutaImg, TEstado estado, List<String>favoritos) {
 		this.nickProponente = nick;
+		this.favoritos = favoritos;
 		this.titulo = titulo;
 		this.descripcion = descripcion;
 		this.categoria = categoria;
@@ -51,6 +54,10 @@ public class DtPropuesta {
 	
 	public String getTitulo() {
 		return titulo;
+	}
+	
+	public List<String> listarFavoritos(){
+		return favoritos;
 	}
 	
 	public String getDescripcion() {

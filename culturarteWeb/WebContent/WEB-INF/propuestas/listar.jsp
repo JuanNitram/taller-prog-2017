@@ -2,6 +2,8 @@
     Document   : listar
     Author     : Igui
 --%>
+<%@page import="com.culturarte.controllers.Home"%>
+<%@page import="com.culturarte.model.EstadoSesion"%>
 <%@page import="logica.clases.Propuesta"%>
 <%@page import="javax.swing.tree.TreeNode"%>
 <%@page import="dataTypes.DtPropuesta"%>
@@ -165,6 +167,30 @@
 							+ propuesta.getEstado().toString().toLowerCase().substring(1).replace("_", " ")%>
 
 								</p>
+							</div>
+							<div class="card-footer">
+							<%
+							 	if(Home.getEstado(request).equals(EstadoSesion.LOGIN_CORRECTO)){
+							 	  if(Fabrica.getInstance().getICtrlPropuesta().listarFavoritos(propuesta.getTitulo()).contains(Login.getUsuarioLogueado(request).getNickName())){
+							 		  if(Fabrica.getInstance().getICtrlPropuesta().listarFavoritos(propuesta.getTitulo()).size()>1){
+							 			  out.print("Tu y "+ Fabrica.getInstance().getICtrlPropuesta().listarFavoritos(propuesta.getTitulo()).size()+ " mas han marcado esta propuesta como favorito.");
+							 		  }else
+							 			  out.print("Has marcado esta propuesta como favorito");
+							 	  }else{
+							 		 if(Fabrica.getInstance().getICtrlPropuesta().listarFavoritos(propuesta.getTitulo()).size()>0){
+							 			  out.print(Fabrica.getInstance().getICtrlPropuesta().listarFavoritos(propuesta.getTitulo()).size()+ " personas han marcado esta propuesta como favorito.");
+							 		 }else
+							 			  out.print("Nadie ha marcado esta propuesta como favorito");
+							 	  }
+							 		  
+							 	}else{
+							 		 if(Fabrica.getInstance().getICtrlPropuesta().listarFavoritos(propuesta.getTitulo()).size()>0){
+							 			  out.print(Fabrica.getInstance().getICtrlPropuesta().listarFavoritos(propuesta.getTitulo()).size()+ " personas han marcado esta propuesta como favorito.");
+							 		 }else{
+							 			  out.print("Nadie ha marcado esta propuesta como favorito");
+							 	   }
+							 	   }
+							 	   %>
 							</div>
 						</div>
 

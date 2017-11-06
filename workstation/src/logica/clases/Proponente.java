@@ -61,7 +61,7 @@ public class Proponente extends Usuario {
 		for (Propuesta prop : this.propuestas.values()) 
 			propuestas.add(prop.getInfoPropuesta());
 		return new DtProponente(super.getNickName(), getNombre(), super.getApellido(), super.getEmail(), super.getFechaNacimiento(),
-				super.getRutaImg(), direccion, biografia, linkSitio, propuestas);
+				super.getRutaImg(), direccion, biografia, linkSitio, propuestas, super.listarFavoritas());
 	}
 	
 	public List<DtPropuesta> getPropuestas() {

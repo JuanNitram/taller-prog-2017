@@ -10,6 +10,7 @@ import java.util.Map;
 import dataTypes.DtColaborador;
 import dataTypes.DtProponente;
 import dataTypes.DtUsuario;
+import logica.Fabrica;
 import logica.ICtrlUsuario;
 import logica.clases.Acceso;
 import logica.clases.Colaborador;
@@ -127,7 +128,7 @@ public class CtrlUsuario implements ICtrlUsuario {
 				Proponente proponente = (Proponente) user;
 				dtproponente = new DtProponente(proponente.getNickName(), proponente.getNombre(), proponente.getApellido(), proponente.getEmail(), 
 								proponente.getFechaNacimiento(), proponente.getRutaImg(), proponente.getDireccion(), 
-								proponente.getBiografia(), proponente.getLinkSitio(), proponente.getPropuestas());	
+								proponente.getBiografia(), proponente.getLinkSitio(), proponente.getPropuestas(), proponente.listarFavoritas());	
 			}
 		return dtproponente;
 	}
@@ -150,7 +151,7 @@ public class CtrlUsuario implements ICtrlUsuario {
 			if (user.getNickName().equals(nickOrName) || user.getEmail().equals(nickOrName)) {
 				Colaborador colaborador = (Colaborador) user;
 				dtcolaborador = new DtColaborador(colaborador.getNickName(), colaborador.getNombre(), colaborador.getApellido(), colaborador.getEmail(), 
-						colaborador.getFechaNacimiento(), colaborador.getRutaImg(), colaborador.getColaboraciones());
+						colaborador.getFechaNacimiento(), colaborador.getRutaImg(), colaborador.getColaboraciones(), colaborador.listarFavoritas());
 			}
 		return dtcolaborador;
 	}
@@ -195,10 +196,18 @@ public class CtrlUsuario implements ICtrlUsuario {
 		return res;
 	}
 	
-	public void agregarFavorita(String nickname, Propuesta propuesta) {
+	public void agregarPropuestaFavorita(String nickname, String propuesta) {
+		
 		usuarios.get(nickname).marcarFavorita(propuesta);
 	}
 	
+	public void eliminarPropuestaFavorita(String nickname, String propuesta){
+		usuarios.get(nickname).eliminarFavorita(propuesta);
+	}
+	
+	public List<String> listarPropuestasFavoritas(String nickname){
+		return usuarios.get(nickname).listarFavoritas();
+	}
 	public void registrarAcceso(String ip, String url, String browser, String so) {
 		
 		Acceso acceso = new Acceso(ip, url, browser, so, new Date());
@@ -213,4 +222,5 @@ public class CtrlUsuario implements ICtrlUsuario {
 	public ArrayList<Acceso> listarAccesos() {
 		return accesos;
 	}
+
 }

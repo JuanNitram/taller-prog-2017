@@ -17,7 +17,7 @@ public abstract class Usuario {
 	private String rutaImg;
 	private Map<String, Usuario> seguidores;
 	private Map<String, Usuario> seguidos;
-	private List<Propuesta> favoritas;
+	private List<String> favoritas;
 
 	public Usuario(){}
 	 
@@ -32,7 +32,8 @@ public abstract class Usuario {
 		this.rutaImg = rutaImg;
 		this.seguidores = new HashMap<String, Usuario>();
 		this.seguidos = new HashMap<String, Usuario>();
-		this.favoritas = new ArrayList<>();
+		this.favoritas = new ArrayList<String>();
+		
 	}
 
 	public String getNickName() {
@@ -87,7 +88,17 @@ public abstract class Usuario {
 		return res;
 	}
 	
-	public void marcarFavorita(Propuesta favorita) {
-		favoritas.add(favorita);
+	public void marcarFavorita(String favorita) {
+		if (!favoritas.contains(favorita))
+			favoritas.add(favorita);
+	}
+	
+	public void eliminarFavorita(String favorita){
+		if (favoritas.contains(favorita))
+			favoritas.remove(favorita);
+	}
+	
+	public List<String> listarFavoritas(){
+		return favoritas;
 	}
 }

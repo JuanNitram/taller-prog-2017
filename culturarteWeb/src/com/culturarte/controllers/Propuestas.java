@@ -59,9 +59,11 @@ public class Propuestas extends HttpServlet {
 			
 			if (filtro == "" || filtro == null) {
 				ArrayList<DtPropuesta> props = (ArrayList<DtPropuesta>) Fabrica.getInstance().getICtrlPropuesta().listarPropuestas();
+				
 				if (props.size() > 0) {
 					request.setAttribute("propuestas", props);
 					request.getRequestDispatcher("/WEB-INF/propuestas/listar.jsp").forward(request, response);
+					
 				} else {
 					request.setAttribute("excepcion", true);
 					request.setAttribute("excepcionTitulo", "Propuestas");

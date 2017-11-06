@@ -126,10 +126,6 @@ public class Publicador {
 		return Fabrica.getInstance().getICtrlUsuario().existeUsuario(nickName, email);
 	}
 	
-    @WebMethod
-	public void agregarFavorita(String nickname, Propuesta propFavorita) {
-		Fabrica.getInstance().getICtrlUsuario().agregarFavorita(nickname, propFavorita);
-	}
 	
     @WebMethod
 	public void registrarAcceso(String ip, String url, String browser, String so) {

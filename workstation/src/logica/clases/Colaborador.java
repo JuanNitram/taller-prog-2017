@@ -33,7 +33,7 @@ public class Colaborador extends Usuario {
 		List<DtColaboracion> colaboraciones = new ArrayList();
 		for (Colaboracion colab : this.colaboraciones.values()) 
 			colaboraciones.add(colab.getInfoColaboracion());
-		return new DtColaborador(super.getNickName(), getNombre(), super.getApellido(), super.getEmail(), super.getFechaNacimiento(), super.getRutaImg(), colaboraciones);
+		return new DtColaborador(super.getNickName(), getNombre(), super.getApellido(), super.getEmail(), super.getFechaNacimiento(), super.getRutaImg(), colaboraciones, super.listarFavoritas());
 	}
 
 	public List<DtColaboracion> getColaboraciones() {

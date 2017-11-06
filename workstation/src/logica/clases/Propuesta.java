@@ -24,6 +24,7 @@ public class Propuesta {
 	private String nickProponente;
 	private List<Comentario> comentarios;
 	private Date fechaExtension;
+	private List<String> usuariosFavoritos;
 	
 	
 	public Propuesta(String titulo, String descripcion, DtCategoria categoria, String lugar, Date fechaRealizacion,
@@ -43,8 +44,23 @@ public class Propuesta {
 		this.estados = new ArrayList<Estado>();
 		this.nickProponente = nick;
 		this.comentarios = new ArrayList<Comentario>();
+		this.usuariosFavoritos = new ArrayList<String>();
 	}
 
+	public void agregarUsuarioFavorito(String nickname){
+		if (!usuariosFavoritos.contains(nickname))
+			usuariosFavoritos.add(nickname);
+	}
+	
+	public void eliminarUsuarioFavorito(String nickname){
+		if (usuariosFavoritos.contains(nickname))
+			usuariosFavoritos.remove(nickname);
+	}
+	
+	public List<String> listarUsuariosFavorito(){
+		return usuariosFavoritos;
+	}
+	
 	public String getTitulo() {
 		return this.titulo;
 	}
@@ -132,7 +148,7 @@ public class Propuesta {
 	
 	public DtPropuesta getInfoPropuesta() {
 		return new DtPropuesta(nickProponente, titulo, descripcion, categoria, lugar,
-				fechaRealizacion, fechaPublicacion, fechaExtension, montoRequerido, montoReunido, tipoRetorno, precioEntrada, rutaImg, estados.get(0).getEstado());
+				fechaRealizacion, fechaPublicacion, fechaExtension, montoRequerido, montoReunido, tipoRetorno, precioEntrada, rutaImg, estados.get(0).getEstado(), usuariosFavoritos);
 	}
 	
 	public void setEstado(Estado est){

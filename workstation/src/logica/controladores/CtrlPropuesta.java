@@ -12,6 +12,7 @@ import java.util.Map;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.TreePath;
 
+import logica.Fabrica;
 import logica.ICtrlPropuesta;
 import logica.clases.Categoria;
 import logica.clases.Colaboracion;
@@ -275,12 +276,6 @@ public class CtrlPropuesta implements ICtrlPropuesta {
 		return res;
 	}
 	
-	public void agregarFavorita(String nickname, String titulo) {
-		CtrlUsuario.getInstance().agregarFavorita(
-				nickname,
-				propuestas.get(titulo)
-		);
-	}
 
 	//Herramientas utiles para cargar los datos de prueba.
 	//No estn definidas en la Interface, por lo tanto son invisibles para la Presentacin
@@ -322,6 +317,23 @@ public class CtrlPropuesta implements ICtrlPropuesta {
 					prop.setEstado(new Estado(TEstado.NO_FINANCIADA, Clock2.getFecha()));
 			
 		}
+	}
+
+	@Override
+	public List<String> listarFavoritos(String titulo) {
+		// TODO Auto-generated method stub
+		return propuestas.get(titulo).listarUsuariosFavorito();
+
+	}
+	
+	public void agregarUsuarioFavorito(String nickname, String propuesta){
+		CtrlUsuario.getInstance().agregarPropuestaFavorita(nickname, propuesta);
+		propuestas.get(propuesta).agregarUsuarioFavorito(nickname);
+	}
+	
+	public void eliminarUsuarioFavorito(String nickname, String propuesta){
+		CtrlUsuario.getInstance().eliminarPropuestaFavorita(nickname, propuesta);
+		propuestas.get(propuesta).eliminarUsuarioFavorito(nickname);
 	}
 
 }

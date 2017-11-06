@@ -32,6 +32,12 @@ public interface ICtrlPropuesta {
 
 	List<DtColaboracion> listarColaboraciones();
 	
+	List<String> listarFavoritos(String titulo);
+	
+	void agregarUsuarioFavorito(String nickname, String propuesta);
+	
+	void eliminarUsuarioFavorito(String nickname, String propuesta);
+	
 	DtPropuesta infoPropuesta(String titulo) throws NullPointerException;
 	
 	DtColaboracion infoColaboracion(int idColaboracion) throws NullPointerException;
