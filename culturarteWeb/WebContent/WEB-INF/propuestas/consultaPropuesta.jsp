@@ -22,9 +22,12 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <jsp:include page="/WEB-INF/template/head.jsp" />
 <link href="/media/styles/favorito.css" rel="stylesheet">
+
 <title><%=propuesta.getTitulo()%> | Culturarte</title>
 </head>
+
 <body>
+	
 	<jsp:include page="/WEB-INF/template/header.jsp" />
 
 	<div class="main" align="center">
@@ -35,14 +38,30 @@
 					<div class="span8 offset1">
 						<div class="panel panel-primary">
 							<div class="panel-heading">
-								<h3 class="panel-title text-color"><%=propuesta.getTitulo()%>
+								<h3 id="titulo" class="panel-title text-color"  data-titulo="<%=propuesta.getTitulo()%>" ><%=propuesta.getTitulo()%>
 									(<%=propuesta.getCategoria().getNombre()%>)
 								</h3>
-								<span class="fa fa-star-o"></span>
-									<div class="ring"></div>
-									<div class="ring2"></div>
-									<p class="info">Agregado a favorito</p>
 								
+								<% if(!request.getAttribute("user").equals("null")){
+									 if(request.getAttribute("esFavorita").equals("NO")){ %>
+										<div class="click">
+											<span id="span" class="fa fa-star-o"></span>
+											<div class="ring"></div>
+											<div class="ring2"></div>
+											<p class="info">Agregado a favorito</p>
+										</div>
+									<%}else{ %>
+									<div class="click active active-2 active-3">
+										<span id="span" class="fa fa-star"></span>
+										<div class="ring"></div>
+										<div class="ring2"></div>
+										<p class="info">Agregado a favorito</p>
+									</div>
+									<%} %>
+								<%}%>
+										
+										
+									
 							</div>
 							<div class="panel-body">
 								<div class="row-fluid">
@@ -369,34 +388,52 @@ img {
 			});
 		});
 	</script>
+	
+<% if(!request.getAttribute("user").equals("null")){ %>
 <script>
-$('.click').click(function() {
-	if ($('span').hasClass("fa-star")) {
-			$('.click').removeClass('active')
-		setTimeout(function() {
-			$('.click').removeClass('active-2')
-		}, 30)
-			$('.click').removeClass('active-3')
-		setTimeout(function() {
-			$('span').removeClass('fa-star')
-			$('span').addClass('fa-star-o')
-		}, 15)
-	} else {
-		$('.click').addClass('active')
-		$('.click').addClass('active-2')
-		setTimeout(function() {
-			$('span').addClass('fa-star')
-			$('span').removeClass('fa-star-o')
-		}, 150)
-		setTimeout(function() {
-			$('.click').addClass('active-3')
-		}, 150)
-		$('.info').addClass('info-tog')
-		setTimeout(function(){
-			$('.info').removeClass('info-tog')
-		},1000)
-	}
-})
+$(document).ready(function(){
+	$('.click').click(function() {
+		$.ajax({
+			type: 'GET',
+			data: {
+				tituloProp : $('#titulo').data("tituloProp"),
+				
+				accion: "agregar",
+			},
+			url : 'Favorito',
+			success : function(){
+				if ($('#span').hasClass("fa-star")) {
+					$('.click').removeClass('active')
+				setTimeout(function() {
+					$('.click').removeClass('active-2')
+				}, 30)
+					$('.click').removeClass('active-3')
+				setTimeout(function() {
+					$('#span').removeClass('fa-star')
+					$('#span').addClass('fa-star-o')
+				}, 15)
+			} else {
+				$('.click').addClass('active')
+				$('.click').addClass('active-2')
+				setTimeout(function() {
+					$('#span').addClass('fa-star')
+					$('#span').removeClass('fa-star-o')
+				}, 150)
+				setTimeout(function() {
+					$('.click').addClass('active-3')
+				}, 150)
+				$('.info').addClass('info-tog')
+				setTimeout(function(){
+					$('.info').removeClass('info-tog')
+				},1000)
+			}
+			}
+		});
+		
+	});
+	
+});
 </script>
+<% } %>
 
 </html>

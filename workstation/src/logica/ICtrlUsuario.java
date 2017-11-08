@@ -26,6 +26,8 @@ public interface ICtrlUsuario {
 	
 	void seguir();
 	
+	boolean esFavorita(String nickname, String propuesta);
+	
 	List<String> listarPropuestasFavoritas(String nickname);
 	
 	boolean esProponente(String nickname);

@@ -16,7 +16,7 @@
     <servlet-name>Servlet Iniciar Sesion</servlet-name>
     <servlet-class>com.culturarte.controllers.Login</servlet-class>
   </servlet>
-    <servlet>
+  <servlet>
     <servlet-name>OperacionesPropuesta</servlet-name>
     <servlet-class>com.culturarte.controllers.OperacionesPropuesta</servlet-class>
   </servlet>
@@ -99,7 +99,7 @@
     <servlet-name>Servlet Cargar Datos</servlet-name>
     <url-pattern>/cargarDatos</url-pattern>
   </servlet-mapping>
-    <servlet-mapping>
+  <servlet-mapping>
     <servlet-name>OperacionesPropuesta</servlet-name>
     <url-pattern>/operacionesPropuesta</url-pattern>
   </servlet-mapping>

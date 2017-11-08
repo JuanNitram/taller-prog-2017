@@ -173,7 +173,7 @@
 							 	if(Home.getEstado(request).equals(EstadoSesion.LOGIN_CORRECTO)){
 							 	  if(Fabrica.getInstance().getICtrlPropuesta().listarFavoritos(propuesta.getTitulo()).contains(Login.getUsuarioLogueado(request).getNickName())){
 							 		  if(Fabrica.getInstance().getICtrlPropuesta().listarFavoritos(propuesta.getTitulo()).size()>1){
-							 			  out.print("Tu y "+ Fabrica.getInstance().getICtrlPropuesta().listarFavoritos(propuesta.getTitulo()).size()+ " mas han marcado esta propuesta como favorito.");
+							 			  out.print("Tu y "+ Fabrica.getInstance().getICtrlPropuesta().listarFavoritos(propuesta.getTitulo()).size()+ " personas mas han marcado esta propuesta como favorito.");
 							 		  }else
 							 			  out.print("Has marcado esta propuesta como favorito");
 							 	  }else{

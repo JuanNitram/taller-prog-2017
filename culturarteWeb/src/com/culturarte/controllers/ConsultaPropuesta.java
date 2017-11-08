@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.culturarte.model.EstadoSesion;
+
 import logica.Fabrica;
 import dataTypes.DtPropuesta;
 import dataTypes.TEstado;
@@ -36,6 +38,18 @@ public class ConsultaPropuesta extends HttpServlet {
 		try {
 			DtPropuesta propuesta = Fabrica.getInstance().getICtrlPropuesta().infoPropuesta(tituloProp);
 			request.setAttribute("dtProp", propuesta);
+			System.out.println(Fabrica.getInstance().getICtrlUsuario().esFavorita(Login.getUsuarioLogueado(request).getNickName(), propuesta.getTitulo()));
+
+			if (Home.getEstado(request).equals(EstadoSesion.LOGIN_CORRECTO)){
+				request.setAttribute("user", Login.getUsuarioLogueado(request).getNickName());
+				
+			}else
+				request.setAttribute("user", "null");
+			if(Fabrica.getInstance().getICtrlUsuario().esFavorita(Login.getUsuarioLogueado(request).getNickName(), propuesta.getTitulo())){
+				request.setAttribute("esFavorita", "SI");
+			}else {request.setAttribute("esFavorita", "NO");
+			
+			}
 			request.getRequestDispatcher("/WEB-INF/propuestas/consultaPropuesta.jsp").forward(request, response);
 			
 		} catch (Exception exception) {

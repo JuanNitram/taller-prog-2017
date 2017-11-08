@@ -31,6 +31,15 @@ public class CtrlUsuario implements ICtrlUsuario {
 		this.accesos = new ArrayList<Acceso>();
 	}
 	
+	public boolean esFavorita(String usuario, String propuesta){
+		boolean esfa = false;
+		for(String s : usuarios.get(usuario).listarFavoritas()){
+			if (s.equals(propuesta))
+				esfa= true;
+		}
+		return esfa;
+	}
+	
 	public List<DtUsuario> listarUsuarios(){
 		ArrayList<DtUsuario> res = new ArrayList<DtUsuario>();
 		if (!this.usuarios.isEmpty()) {
