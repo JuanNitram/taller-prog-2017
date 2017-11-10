@@ -75,8 +75,11 @@
 	<jsp:include page="/WEB-INF/template/header.jsp" />
 
 	<%
-		if (request.getAttribute("usr") instanceof DtProponente) {
-			DtProponente dtP = (DtProponente) (request.getAttribute("usr"));
+		servidor.PublicadorService service =  new servidor.PublicadorService();
+		servidor.Publicador port = service.getPublicadorPort();
+		servidor.DtProponente dtP = (servidor.DtProponente) (request.getAttribute("usr"));
+		if (request.getAttribute("usr") instanceof servidor.DtProponente) {
+
 	%>
 	<div class="well span8 offset2">
 		<div class="panel">
@@ -116,7 +119,7 @@
 									</tr>
 									<tr>
 										<td>Fecha de nacimiento:</td>
-										<td><%=new SimpleDateFormat("dd/MM/yyyy").format(dtP.getFechaNacimiento().getTime())%></td>
+										<td><%out.println();//new SimpleDateFormat("dd/MM/yyyy").format(dtP.getFechaNacimiento().getTime())%></td>
 									</tr>
 									<tr>
 										<td>Direccion:</td>
@@ -127,15 +130,18 @@
 										<td>
 											<div>
 												<%
-													ArrayList<DtPropuesta> propuestas = (ArrayList<DtPropuesta>) dtP.getPropuestas();
+													servidor.DtPropuestas dtPs = port.listarPropuestas();
+													ArrayList<servidor.DtPropuesta> propuestas = (ArrayList<servidor.DtPropuesta>) dtPs.getPropuestas();
+													
+													//ArrayList<DtPropuesta> propuestas = (ArrayList<DtPropuesta>) dtP.getPropuestas();
 														if (propuestas != null) {
 															for (int i = 0; i < propuestas.size(); i++) {
 																String titulo = propuestas.get(i).getTitulo();
 												%>
 												<a href="consultaPropuesta?propuesta=<%=titulo%>"><%=titulo%></a>
 												<%
-													if (propuestas.get(i).getEstado() == TEstado.PUBLICADA
-																		|| propuestas.get(i).getEstado() == TEstado.EN_FINANCIACION) {
+													if (propuestas.get(i).getEstado() == servidor.TEstado.PUBLICADA
+																		|| propuestas.get(i).getEstado() == servidor.TEstado.EN_FINANCIACION) {
 														if (propuestas.get(i).getFechaExtension() != null) {
 												%>
 												<button id="extenderFinanciacion" style="margin-left: 10px"
@@ -156,7 +162,7 @@
 
 												<%
 														}
-													} else if(propuestas.get(i).getEstado() == TEstado.FINANCIADA) {
+													} else if(propuestas.get(i).getEstado() == servidor.TEstado.FINANCIADA) {
 												%>
 													<button id="cancelarPropuesta" style="margin-left: 10px"
 														type=button class="btn btn-danger"
@@ -189,17 +195,20 @@
 					<div class="span left">
 						<span style="text-align: center"><h3>Seguidores</h3></span>
 						<%
-							ArrayList<DtUsuario> listaSeguidores = (ArrayList<DtUsuario>) Fabrica.getInstance().getICtrlUsuario()
-										.listarSeguidores(dtP.getNickName());
+							servidor.DtUsuarios dtSeguidores = port.listarSeguidores(dtP.getNickName());
+							ArrayList<servidor.DtUsuario> listaSeguidores = (ArrayList<servidor.DtUsuario>) dtSeguidores.getUsers();
+							
+							//ArrayList<DtUsuario> listaSeguidores = (ArrayList<DtUsuario>) Fabrica.getInstance().getICtrlUsuario()
+										//.listarSeguidores(dtP.getNickName());
 								if (listaSeguidores.size() > 0) {
 									for (int i = 0; i < listaSeguidores.size(); i++) {
-										DtUsuario seguidor = listaSeguidores.get(i);
+										servidor.DtUsuario seguidor = listaSeguidores.get(i);
 						%>
 						<a href="consultaUsuario?usuario=<%=seguidor.getNickName()%>">
 							<%=seguidor.getNombre() + " " + seguidor.getApellido() + " (" + seguidor.getNickName()
 								+ ")"%>
 						</a>
-						<%=(seguidor instanceof DtProponente) ? " - Proponente" : " - Colaborador"%>
+						<%=(seguidor instanceof servidor.DtProponente) ? " - Proponente" : " - Colaborador"%>
 						<br>
 						<%
 							}
@@ -209,17 +218,20 @@
 					<div class="span right">
 						<span style="text-align: center"><h3>Seguidos</h3></span>
 						<%
-							ArrayList<DtUsuario> listaSeguidos = (ArrayList<DtUsuario>) Fabrica.getInstance().getICtrlUsuario()
-										.listarSeguidos(dtP.getNickName());
+							servidor.DtUsuarios dtSeguidos = port.listarSeguidos(dtP.getNickName());
+							ArrayList<servidor.DtUsuario> listaSeguidos = (ArrayList<servidor.DtUsuario>) dtSeguidos.getUsers();
+							
+							//ArrayList<DtUsuario> listaSeguidos = (ArrayList<DtUsuario>) Fabrica.getInstance().getICtrlUsuario()
+										//.listarSeguidos(dtP.getNickName());
 								if (listaSeguidos.size() > 0) {
 									for (int i = 0; i < listaSeguidos.size(); i++) {
-										DtUsuario seguido = listaSeguidos.get(i);
+										servidor.DtUsuario seguido = listaSeguidos.get(i);
 						%>
 
 						<a href="consultaUsuario?usuario=<%=seguido.getNickName()%>">
 							<%=seguido.getNombre() + " " + seguido.getApellido() + " (" + seguido.getNickName() + ")"%>
 						</a>
-						<%=(seguido instanceof DtProponente) ? " - Proponente" : " - Colaborador"%>
+						<%=(seguido instanceof servidor.DtProponente) ? " - Proponente" : " - Colaborador"%>
 						<br>
 						<%
 							}
@@ -242,8 +254,8 @@
 	</div>
 
 	<%
-		} else if (request.getAttribute("usr") instanceof DtColaborador) {
-			DtColaborador dtC = (DtColaborador) (request.getAttribute("usr"));
+		} else if (request.getAttribute("usr") instanceof servidor.DtColaborador) {
+			servidor.DtColaborador dtC = (servidor.DtColaborador) (request.getAttribute("usr"));
 	%>
 
 
@@ -285,7 +297,7 @@
 									</tr>
 									<tr>
 										<td>Fecha de nacimiento:</td>
-										<td><%=new SimpleDateFormat("dd/MM/yyyy").format(dtC.getFechaNacimiento().getTime())%></td>
+										<td><%out.println();//new SimpleDateFormat("dd/MM/yyyy").format(dtC.getFechaNacimiento().getTime())%></td>
 									</tr>
 									<tr>
 										<td></td>
@@ -304,16 +316,16 @@
 								<span style="text-align: center"><h3>Colaboraciones</h3></span>
 							</tr>
 							<%
-								ArrayList<DtColaboracion> colaboraciones = (ArrayList<DtColaboracion>) dtC.getColaboraciones();
+								ArrayList<servidor.DtColaboracion> colaboraciones = (ArrayList<servidor.DtColaboracion>) dtC.getColaboraciones();
 									for (int i = 0; i < colaboraciones.size(); i++) {
-										DtColaboracion dtColab = colaboraciones.get(i);
+										servidor.DtColaboracion dtColab = colaboraciones.get(i);
 							%>
 							<tr>
 								<td><a
 									href="consultaPropuesta?propuesta=<%=dtColab.getTitulo()%>"><%=dtColab.getTitulo()%></td>
 								<td>$ <%=dtColab.getMontoAporte()%>
 								</td>
-								<td><%=new SimpleDateFormat("dd/MM/yyyy").format(dtColab.getFechaRealizacion().getTime())%>
+								<td><%out.println();//new SimpleDateFormat("dd/MM/yyyy").format(dtColab.getFechaRealizacion().getTime())%>
 								</td>
 							</tr>
 							<%
@@ -326,17 +338,20 @@
 					<div class="span left">
 						<span style="text-align: center"><h3>Seguidores</h3></span>
 						<%
-							ArrayList<DtUsuario> listaSeguidores = (ArrayList<DtUsuario>) Fabrica.getInstance().getICtrlUsuario()
-										.listarSeguidores(dtC.getNickName());
+							servidor.DtUsuarios dtSeguidores = port.listarSeguidores(dtP.getNickName());
+							ArrayList<servidor.DtUsuario> listaSeguidores = (ArrayList<servidor.DtUsuario>) dtSeguidores.getUsers();
+							
+							//ArrayList<DtUsuario> listaSeguidores = (ArrayList<DtUsuario>) Fabrica.getInstance().getICtrlUsuario()
+										//.listarSeguidores(dtC.getNickName());
 								if (listaSeguidores.size() > 0) {
 									for (int i = 0; i < listaSeguidores.size(); i++) {
-										DtUsuario seguidor = listaSeguidores.get(i);
+										servidor.DtUsuario seguidor = listaSeguidores.get(i);
 						%>
 						<a href="consultaUsuario?usuario=<%=seguidor.getNickName()%>">
 							<%=seguidor.getNombre() + " " + seguidor.getApellido() + " (" + seguidor.getNickName()
 								+ ")"%>
 						</a>
-						<%=(seguidor instanceof DtProponente) ? " - Proponente" : " - Colaborador"%>
+						<%=(seguidor instanceof servidor.DtProponente) ? " - Proponente" : " - Colaborador"%>
 						<br>
 						<%
 							}
@@ -346,16 +361,19 @@
 					<div class="span right">
 						<span style="text-align: center"><h3>Seguidos</h3></span>
 						<%
-							ArrayList<DtUsuario> listaSeguidos = (ArrayList<DtUsuario>) Fabrica.getInstance().getICtrlUsuario()
-										.listarSeguidos(dtC.getNickName());
+							servidor.DtUsuarios dtSeguidos = port.listarSeguidos(dtP.getNickName());
+							ArrayList<servidor.DtUsuario> listaSeguidos = (ArrayList<servidor.DtUsuario>) dtSeguidos.getUsers();
+							
+							//ArrayList<DtUsuario> listaSeguidos = (ArrayList<DtUsuario>) Fabrica.getInstance().getICtrlUsuario()
+										//.listarSeguidos(dtC.getNickName());
 								if (listaSeguidos.size() > 0) {
 									for (int i = 0; i < listaSeguidos.size(); i++) {
-										DtUsuario seguido = listaSeguidos.get(i);
+										servidor.DtUsuario seguido = listaSeguidos.get(i);
 						%>
 						<a href="consultaUsuario?usuario=<%=seguido.getNickName()%>">
 							<%=seguido.getNombre() + " " + seguido.getApellido() + " (" + seguido.getNickName() + ")"%>
 						</a>
-						<%=(seguido instanceof DtProponente) ? " - Proponente" : " - Colaborador"%>
+						<%=(seguido instanceof servidor.DtProponente) ? " - Proponente" : " - Colaborador"%>
 						<br>
 						<%
 							}

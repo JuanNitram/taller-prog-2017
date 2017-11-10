@@ -70,6 +70,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link DtCategorias }
+     * 
+     */
+    public DtCategorias createDtCategorias() {
+        return new DtCategorias();
+    }
+
+    /**
      * Create an instance of {@link ArrayList }
      * 
      */
@@ -91,6 +99,14 @@ public class ObjectFactory {
      */
     public DtProponente createDtProponente() {
         return new DtProponente();
+    }
+
+    /**
+     * Create an instance of {@link DtFavoritos }
+     * 
+     */
+    public DtFavoritos createDtFavoritos() {
+        return new DtFavoritos();
     }
 
     /**

@@ -55,10 +55,16 @@ public class Propuestas extends HttpServlet {
     
 	protected void processRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+			
+			servidor.PublicadorService service =  new servidor.PublicadorService();
+			servidor.Publicador port = service.getPublicadorPort();
+			
 			filtro = request.getParameter("filtro");
 			
 			if (filtro == "" || filtro == null) {
-				ArrayList<DtPropuesta> props = (ArrayList<DtPropuesta>) Fabrica.getInstance().getICtrlPropuesta().listarPropuestas();
+				
+				servidor.DtPropuestas dtPs = port.listarPropuestas();
+				ArrayList<servidor.DtPropuesta> props = (ArrayList<servidor.DtPropuesta>) dtPs.getPropuestas();
 				
 				if (props.size() > 0) {
 					request.setAttribute("propuestas", props);
@@ -71,10 +77,13 @@ public class Propuestas extends HttpServlet {
 					request.getRequestDispatcher("/home").forward(request, response);
 				}
 			} else {
-				ArrayList<DtPropuesta> propsfilter = new ArrayList<DtPropuesta>();
-				ArrayList<DtPropuesta> propsfil = (ArrayList<DtPropuesta>) Fabrica.getInstance().getICtrlPropuesta().listarPropuestaPorCategoria(filtro);
+				ArrayList<servidor.DtPropuesta> propsfilter = new ArrayList<servidor.DtPropuesta>();
+				
+				servidor.DtPropuestas dtPs = port.listarPropuestaPorCategoria(filtro);
+				ArrayList<servidor.DtPropuesta> propsfil = (ArrayList<servidor.DtPropuesta>) dtPs.getPropuestas();
+				
 				for(int i = 0; i< propsfil.size(); i++)
-					if(propsfil.get(i).getEstado() != TEstado.INGRESADA)
+					if(propsfil.get(i).getEstado() != servidor.TEstado.INGRESADA)
 						propsfilter.add(propsfil.get(i));
 
 				if (propsfilter.size() > 0) {
@@ -88,7 +97,6 @@ public class Propuestas extends HttpServlet {
 				}
 				
 			}
-			
 	}
     
 	/**

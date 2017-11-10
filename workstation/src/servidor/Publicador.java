@@ -14,9 +14,11 @@ import javax.swing.tree.TreePath;
 import javax.xml.ws.Endpoint;
 
 import dataTypes.DtCategoria;
+import dataTypes.DtCategorias;
 import dataTypes.DtColaboracion;
 import dataTypes.DtColaborador;
 import dataTypes.DtComentario;
+import dataTypes.DtFavoritos;
 import dataTypes.DtProponente;
 import dataTypes.DtPropuesta;
 import dataTypes.DtPropuestas;
@@ -45,6 +47,19 @@ public class Publicador {
     @WebMethod(exclude = true)
     public Endpoint getEndpoint() {
             return endpoint;
+    }
+    
+    @WebMethod
+    public DtFavoritos listarFavoritos(String titulo){
+    	DtFavoritos favoritos = new DtFavoritos();
+    	favoritos.setFavoritos((ArrayList<String>)Fabrica.getInstance().getICtrlPropuesta().listarFavoritos(titulo));
+    	return favoritos;
+    }
+    
+    public DtPropuestas listarPropuestaPorCategoria(String filtro){
+    	DtPropuestas dtP = new DtPropuestas();
+    	dtP.setPropuestas((ArrayList<DtPropuesta>)Fabrica.getInstance().getICtrlPropuesta().listarPropuestaPorCategoria(filtro));
+    	return dtP;
     }
     
     @WebMethod
@@ -204,8 +219,10 @@ public class Publicador {
 	}
 
 	@WebMethod
-	public DefaultMutableTreeNode listarCategorias() {
-		return Fabrica.getInstance().getICtrlPropuesta().listarCategorias();
+	public DtCategorias listarCategorias() {
+		DtCategorias dtC = new DtCategorias();
+		dtC.setRaiz(Fabrica.getInstance().getICtrlPropuesta().listarCategorias());
+		return dtC;
 	}
 
 	@WebMethod

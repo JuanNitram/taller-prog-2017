@@ -59,8 +59,11 @@
 	<jsp:include page="/WEB-INF/template/header.jsp" />
 
 	<!-- Contenido -->
-	<% String actual = request.getParameter("filtro");
-	String todos = "Todos";%>
+	<% 	String actual = request.getParameter("filtro");
+		String todos = "Todos";
+		servidor.PublicadorService service =  new servidor.PublicadorService();
+		servidor.Publicador port = service.getPublicadorPort();
+	%>
 
 
 
@@ -94,6 +97,10 @@
 							%>
 							<ul class="dropdown-menu scrollable-menu" role="menu">
 								<%
+									/*
+									servidor.DtCategorias dtC = port.listarCategorias();
+									DefaultMutableTreeNode raiz = dtC.getRaiz();
+									*/
 									DefaultMutableTreeNode raiz = Fabrica.getInstance().getICtrlPropuesta().listarCategorias();
 									Propuestas.vaciarCategoriasList();
 									Propuestas.recursivoTree(raiz);
@@ -121,10 +128,13 @@
 
 				<div class="row">
 					<%
-						ArrayList<DtPropuesta> propuestas = (ArrayList<DtPropuesta>) request.getAttribute("propuestas");
+						servidor.DtPropuestas dtPs = port.listarPropuestas();
+						ArrayList<servidor.DtPropuesta> propuestas = (ArrayList<servidor.DtPropuesta>) dtPs.getPropuestas();
+						System.out.println(propuestas.size());
+						//ArrayList<DtPropuesta> propuestas = (ArrayList<DtPropuesta>) request.getAttribute("propuestas");
 
-						for (DtPropuesta propuesta : propuestas) {
-							if (propuesta.getEstado() != TEstado.INGRESADA) {
+						for (servidor.DtPropuesta propuesta : propuestas) {
+							if (propuesta.getEstado() != servidor.TEstado.INGRESADA) {
 					%>
 					<div class="col-lg-4 col-md-6 mb-4">
 						<div class="card h-100">
@@ -153,8 +163,8 @@
 								</p>
 								<p class="card-text" Style="border-bottom: 1px solid #DDDDDD;">
 									Proponente:
-									<%=Fabrica.getInstance().getICtrlUsuario().infoProponente(propuesta.getNickProponente())
-							.getNombre() + " " + Fabrica.getInstance().getICtrlUsuario().infoProponente(propuesta.getNickProponente())
+									<%=port.infoProponente(propuesta.getNickProponente())
+							.getNombre() + " " + port.infoProponente(propuesta.getNickProponente())
 							.getApellido()%>
 								</p>
 								<p class="card-text" Style="border-bottom: 1px solid #DDDDDD;">
@@ -170,22 +180,26 @@
 							</div>
 							<div class="card-footer">
 							<%
+								servidor.DtFavoritos dtF = port.listarFavoritos(propuesta.getTitulo());
+								ArrayList<String> favoritas = (ArrayList<String>) dtF.getFavoritos();
+								
 							 	if(Home.getEstado(request).equals(EstadoSesion.LOGIN_CORRECTO)){
-							 	  if(Fabrica.getInstance().getICtrlPropuesta().listarFavoritos(propuesta.getTitulo()).contains(Login.getUsuarioLogueado(request).getNickName())){
-							 		  if(Fabrica.getInstance().getICtrlPropuesta().listarFavoritos(propuesta.getTitulo()).size()>1){
-							 			  out.print("Tu y "+ Fabrica.getInstance().getICtrlPropuesta().listarFavoritos(propuesta.getTitulo()).size()+ " personas mas han marcado esta propuesta como favorito.");
+									
+							 	  if(favoritas.contains(Login.getUsuarioLogueado(request).getNickName())){
+							 		  if(favoritas.size()>1){
+							 			  out.print("Tu y "+ favoritas.size()+ " personas mas han marcado esta propuesta como favorito.");
 							 		  }else
 							 			  out.print("Has marcado esta propuesta como favorito");
 							 	  }else{
-							 		 if(Fabrica.getInstance().getICtrlPropuesta().listarFavoritos(propuesta.getTitulo()).size()>0){
-							 			  out.print(Fabrica.getInstance().getICtrlPropuesta().listarFavoritos(propuesta.getTitulo()).size()+ " personas han marcado esta propuesta como favorito.");
+							 		 if(favoritas.size()>0){
+							 			  out.print(favoritas.size()+ " personas han marcado esta propuesta como favorito.");
 							 		 }else
 							 			  out.print("Nadie ha marcado esta propuesta como favorito");
 							 	  }
 							 		  
 							 	}else{
-							 		 if(Fabrica.getInstance().getICtrlPropuesta().listarFavoritos(propuesta.getTitulo()).size()>0){
-							 			  out.print(Fabrica.getInstance().getICtrlPropuesta().listarFavoritos(propuesta.getTitulo()).size()+ " personas han marcado esta propuesta como favorito.");
+							 		 if(favoritas.size()>0){
+							 			  out.print(favoritas.size()+ " personas han marcado esta propuesta como favorito.");
 							 		 }else{
 							 			  out.print("Nadie ha marcado esta propuesta como favorito");
 							 	   }
