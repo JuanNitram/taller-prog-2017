@@ -2,6 +2,7 @@ package com.culturarte.controllers;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -37,13 +38,14 @@ public class Usuarios extends HttpServlet {
 			
 		if (usuario == null) {
 			
-			//Date d = new Date();
-			//Fabrica.getInstance().getICtrlUsuario().altaColaborador("Juan", "Juan", "Juan", "Juan", "Juan", "", d);
+			servidor.PublicadorService service =  new servidor.PublicadorService();
+			servidor.Publicador port = service.getPublicadorPort();
 			
-			// no se seteó el usuario (lista todos los usuarios)
-			ArrayList<DtUsuario> usrs = (ArrayList<DtUsuario>) Fabrica.getInstance().getICtrlUsuario().listarUsuarios();
-			if (usrs.size() > 0){
-				request.setAttribute("usuarios", usrs);
+			servidor.DtUsuarios dtUs = port.listarUsuarios();
+			ArrayList<servidor.DtUsuario> usuarios = (ArrayList<servidor.DtUsuario>) dtUs.getUsers();
+
+			if (usuarios.size() > 0){
+				request.setAttribute("usuarios", usuarios);
 			
 				request.getRequestDispatcher("/WEB-INF/usuarios/listar.jsp").forward(request, response);
 			}
@@ -55,6 +57,9 @@ public class Usuarios extends HttpServlet {
 			}	
 		}
 	}
+	//primero que nada hacemos el runnable no? o sea el runnable del workstation
+	//ok
+	//entonces mandale play con el wsimport
 	
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)

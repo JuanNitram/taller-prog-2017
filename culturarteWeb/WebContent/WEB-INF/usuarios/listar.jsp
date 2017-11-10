@@ -17,15 +17,17 @@
 	<jsp:include page="/WEB-INF/template/header.jsp" />
 
 	<div id="listar" class="main">
-		<% 	boolean bandera = false;
-				ArrayList<DtUsuario> usuarios = (ArrayList<DtUsuario>)request.getAttribute("usuarios");
+		<% 		boolean bandera = false;
+				servidor.PublicadorService service =  new servidor.PublicadorService();
+				servidor.Publicador port = service.getPublicadorPort();
+				ArrayList<servidor.DtUsuario> usuarios = (ArrayList<servidor.DtUsuario>)request.getAttribute("usuarios");
 
-				for(DtUsuario usuario: usuarios){
+				for(servidor.DtUsuario usuario: usuarios){
 			%>
 		<div class="usuario">
 			<% if (usuario.getRutaImg() == ""){ %>
 				<img src="\media\images\defecto.png" />
-			<%}else if (Fabrica.getInstance().getICtrlUsuario().esProponente(usuario.getNickName())){ %>
+			<%}else if (port.esProponente(usuario.getNickName())){ %>
 						<img src="/media/images/imagenes/usuarios/proponentes/<%=usuario.getRutaImg() %>.jpg" />
 					<%}else { %>
 						<img src="/media/images/imagenes/usuarios/colaboradores/<%=usuario.getRutaImg() %>.jpg" />
@@ -41,7 +43,7 @@
 						(<%=usuario.getNickName() %>)
 					</a> <br> <span class="email text-color"> <%=usuario.getEmail() %>
 					</span> <br>
-					<% if (Fabrica.getInstance().getICtrlUsuario().esProponente(usuario.getNickName())) {
+					<% if (port.esProponente(usuario.getNickName())) {
 						bandera = true;
 						%>
 					<span class="email text-color">Nivel: Proponente </span>

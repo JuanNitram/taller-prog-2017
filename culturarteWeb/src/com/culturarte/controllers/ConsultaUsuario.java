@@ -30,10 +30,18 @@ public class ConsultaUsuario extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		String usuario = request.getParameter("usuario");
 		request.setAttribute("nombre", usuario);
-		DtUsuario dtUsuario = null;
-		for (DtUsuario dtU: Fabrica.getInstance().getICtrlUsuario().listarUsuarios())
+		servidor.DtUsuario dtUsuario = null;
+
+		servidor.PublicadorService service =  new servidor.PublicadorService();
+		servidor.Publicador port = service.getPublicadorPort();
+		
+		servidor.DtUsuarios dtUs = port.listarUsuarios();
+		ArrayList<servidor.DtUsuario> usuarios = (ArrayList<servidor.DtUsuario>) dtUs.getUsers();
+		
+		for (servidor.DtUsuario dtU: usuarios)
 			if (dtU.getNickName().equals(usuario)) dtUsuario = dtU;
 		if(dtUsuario != null) {
 			if(request.getSession().getAttribute("usuario_logueado") != null && !request.getSession().getAttribute("usuario_logueado").equals(usuario)) {

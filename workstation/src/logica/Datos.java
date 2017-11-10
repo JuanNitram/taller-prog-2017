@@ -7,6 +7,7 @@ import javax.swing.tree.TreePath;
 import logica.clases.Estado;
 import logica.controladores.CtrlPropuesta;
 import logica.controladores.CtrlUsuario;
+import servidor.Publicador;
 import dataTypes.DtCategoria;
 import dataTypes.TEstado;
 import dataTypes.TRetorno;
@@ -14,6 +15,9 @@ import dataTypes.TRetorno;
 public class Datos {
 
 	public Datos() {
+		
+        Publicador p = new Publicador();
+        p.publicar();
 		
 		CtrlUsuario cUsuario = CtrlUsuario.getInstance();
 		CtrlPropuesta cPropuesta = CtrlPropuesta.getInstance();

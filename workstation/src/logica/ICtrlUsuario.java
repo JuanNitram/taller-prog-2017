@@ -52,4 +52,5 @@ public interface ICtrlUsuario {
 	void registrarAcceso(String ip, String url, String browser, String so);
 
 	ArrayList<Acceso> listarAccesos();
+	
 }

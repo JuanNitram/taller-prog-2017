@@ -69,4 +69,5 @@ public interface ICtrlPropuesta {
 	void agregarComentario(String nickname, String titulo, String comentario);
 	
 	List<DtComentario> listarComentarios(String titulo);
+	
 }

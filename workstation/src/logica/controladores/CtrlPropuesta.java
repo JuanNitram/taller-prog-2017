@@ -59,6 +59,7 @@ public class CtrlPropuesta implements ICtrlPropuesta {
 		return res;
 	}
 	
+	
 	public void altaPropuesta(String nickName, String titulo, DtCategoria categoria, String descripcion, String lugar, Date fechaRealizacion,
 			float montoReunir, TRetorno tipoRetorno, float precioEntrada, String rutaImg){
 		

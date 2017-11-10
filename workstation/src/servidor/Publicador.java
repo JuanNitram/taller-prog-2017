@@ -19,7 +19,9 @@ import dataTypes.DtColaborador;
 import dataTypes.DtComentario;
 import dataTypes.DtProponente;
 import dataTypes.DtPropuesta;
+import dataTypes.DtPropuestas;
 import dataTypes.DtUsuario;
+import dataTypes.DtUsuarios;
 import dataTypes.TEstado;
 import dataTypes.TRetorno;
 import logica.Fabrica;
@@ -37,7 +39,7 @@ public class Publicador {
 
     @WebMethod(exclude = true)
     public void publicar() {
-         endpoint = Endpoint.publish("http://localhost:11105/publicador", this);
+         endpoint = Endpoint.publish("http://localhost:11115/publicador", this);
     }
 
     @WebMethod(exclude = true)
@@ -46,8 +48,10 @@ public class Publicador {
     }
     
     @WebMethod
-    public ArrayList<DtUsuario> listarUsuarios() {
-    	return (ArrayList<DtUsuario>) Fabrica.getInstance().getICtrlUsuario().listarUsuarios();
+    public DtUsuarios listarUsuarios() {
+    	DtUsuarios users = new DtUsuarios();
+    	users.setUsers((ArrayList<DtUsuario>)Fabrica.getInstance().getICtrlUsuario().listarUsuarios());
+    	return users;
     }
 	
     @WebMethod
@@ -112,13 +116,17 @@ public class Publicador {
 	}
 	
     @WebMethod
-	public ArrayList<DtUsuario> listarSeguidores(String nickName) {
-		return (ArrayList<DtUsuario>) Fabrica.getInstance().getICtrlUsuario().listarSeguidores(nickName);
+	public DtUsuarios listarSeguidores(String nickName) {
+    	DtUsuarios users = new DtUsuarios();
+    	users.setUsers((ArrayList<DtUsuario>)Fabrica.getInstance().getICtrlUsuario().listarSeguidores(nickName));
+    	return users;
 	}
 	
     @WebMethod
-	public ArrayList<DtUsuario> listarSeguidos(String nickName) {
-		return (ArrayList<DtUsuario>) Fabrica.getInstance().getICtrlUsuario().listarSeguidos(nickName);
+	public DtUsuarios listarSeguidos(String nickName) {
+    	DtUsuarios users = new DtUsuarios();
+    	users.setUsers((ArrayList<DtUsuario>)Fabrica.getInstance().getICtrlUsuario().listarSeguidos(nickName));
+    	return users;
 	}
 	
     @WebMethod
@@ -149,8 +157,10 @@ public class Publicador {
 	}
 
 	@WebMethod
-	public ArrayList<DtPropuesta> listarPropuestas() {
-		return (ArrayList<DtPropuesta>) Fabrica.getInstance().getICtrlPropuesta().listarPropuestas();
+	public DtPropuestas listarPropuestas() {
+		DtPropuestas dtPs = new DtPropuestas();
+		dtPs.setPropuestas((ArrayList<DtPropuesta>) Fabrica.getInstance().getICtrlPropuesta().listarPropuestas());
+		return dtPs;
 	} 
 
 	@WebMethod

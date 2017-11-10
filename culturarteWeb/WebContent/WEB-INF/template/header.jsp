@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<%@page import="com.culturarte.controllers.CargarDatos"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="com.culturarte.controllers.Login"%>
 <%@page import="dataTypes.DtUsuario"%>
@@ -126,8 +125,6 @@
 					<li id="space" class="nav-item active"><a class="nav-link"
 						href="/">Inicio <span class="sr-only">(current)</span>
 					</a></li>
-					<li class="nav-item"><a class="nav-link" href="/cargarDatos">Cargar
-							datos</a></li>
 					<li class="nav-item"><a class="nav-link" href="/usuarios">Usuarios</a></li>
 					<li class="nav-item"><a class="nav-link" href="/propuestas">Propuestas</a></li>
 					<li class="nav-item"><a href="#registro" data-toggle="modal"
