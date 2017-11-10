@@ -34,7 +34,7 @@
     max-height: 300px;
     overflow-x: hidden;
 }
-</style>
+</style> 
 <title>Propuestas :: Culturarte</title>
 <!-- <script type="text/javascript">
 	$(document).ready(function(){

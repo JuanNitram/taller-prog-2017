@@ -9,7 +9,7 @@ import javax.xml.bind.annotation.XmlAccessorType;
 public class DtFavoritos {
 	private ArrayList<String> favoritos = new ArrayList<String>();
 	
-	public DtFavoritos(){
+	public DtFavoritos(){ 
 	}
 
 	public ArrayList<String> getFavoritos() {

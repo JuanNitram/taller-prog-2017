@@ -207,7 +207,7 @@ public class Publicador {
 	public void finalizarRegistrarColaboracionPropuesta() {
 		Fabrica.getInstance().getICtrlPropuesta().finalizarRegistrarColaboracionPropuesta();
 	}
-
+ 
 	@WebMethod
 	public void finalizarCancelarColaboracionPropuesta() {
 		Fabrica.getInstance().getICtrlPropuesta().finalizarCancelarColaboracionPropuesta();

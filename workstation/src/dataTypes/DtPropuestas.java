@@ -10,7 +10,7 @@ public class DtPropuestas {
 
 	public ArrayList<DtPropuesta> getPropuestas() {
 		return propuestas;
-	}
+	} 
 
 	public void setPropuestas(ArrayList<DtPropuesta> propuestas) {
 		this.propuestas = propuestas;

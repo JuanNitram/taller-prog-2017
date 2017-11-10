@@ -42,7 +42,7 @@ public class Propuestas extends HttpServlet {
 	public static void vaciarCategoriasList() {
 		categoriasList.clear();
 	}
-	
+	 
 	public static void recursivoTree(DefaultMutableTreeNode raiz) {
 		if (raiz.getChildCount() != 0) {
 			DefaultMutableTreeNode nodo = null;

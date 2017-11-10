@@ -18,5 +18,5 @@ public class DtCategorias {
 	public void setRaiz(DefaultMutableTreeNode raiz) {
 		this.raiz = raiz;
 	}
-	
+	 
 }
