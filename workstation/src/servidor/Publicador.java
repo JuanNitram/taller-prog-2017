@@ -49,6 +49,13 @@ public class Publicador {
     }
     
     @WebMethod
+    public boolean esFavorita(String nickName, String propuesta){
+    	boolean res = false;
+    	res = Fabrica.getInstance().getICtrlUsuario().esFavorita(nickName, propuesta);
+    	return res;
+    }
+    
+    @WebMethod
     public DataList listarFavoritos(String titulo){
     	DataList favoritos = new DataList();
     	favoritos.setDatos((ArrayList<String>)Fabrica.getInstance().getICtrlPropuesta().listarFavoritos(titulo));

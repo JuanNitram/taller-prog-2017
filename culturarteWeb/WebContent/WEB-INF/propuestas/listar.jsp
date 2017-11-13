@@ -59,7 +59,9 @@
 	<jsp:include page="/WEB-INF/template/header.jsp" />
 
 	<!-- Contenido -->
-	<% 	String actual = request.getParameter("filtro");
+	
+	<% 	
+		String actual = request.getParameter("filtro");
 		String todos = "Todos";
 		servidor.PublicadorService service =  new servidor.PublicadorService();
 		servidor.Publicador port = service.getPublicadorPort();
@@ -130,7 +132,6 @@
 					<%
 						servidor.DataList dtPs = port.listarPropuestas();
 						List<servidor.DtPropuesta> propuestas = (ArrayList) dtPs.getDatos();
-						System.out.println(propuestas.size());
 						//ArrayList<DtPropuesta> propuestas = (ArrayList<DtPropuesta>) request.getAttribute("propuestas");
 
 						for (servidor.DtPropuesta propuesta : propuestas) {
