@@ -51,11 +51,15 @@
 <div id="header sinflecha">
 	<div class="subtitulo"></div>
 
-	<% boolean esProponente = false;
-		DtUsuario usr;
+	<% 
+		servidor.PublicadorService service =  new servidor.PublicadorService();
+		servidor.Publicador port = service.getPublicadorPort();
+   
+		boolean esProponente = false;
+		servidor.DtUsuario usr;
 		try {
 			usr = Login.getUsuarioLogueado(request);
-			esProponente = Fabrica.getInstance().getICtrlUsuario().esProponente(usr.getNickName());
+			esProponente = port.esProponente(usr.getNickName());
 		} catch(Exception ex){
 			usr = null;
 		}

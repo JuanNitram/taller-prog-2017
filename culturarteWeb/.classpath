@@ -19,7 +19,7 @@
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/JuanMartín/Desktop/Culturarte.jar">
+	<classpathentry kind="lib" path="C:/Users/Casa/Desktop/Culturarte.jar">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>

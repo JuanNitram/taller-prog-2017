@@ -38,26 +38,32 @@ public class Login extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request,
             HttpServletResponse response) throws ServletException, IOException {
-        HttpSession objSesion = request.getSession();
+        
+    	HttpSession objSesion = request.getSession();
        
         String login = request.getParameter("login");
         String password = request.getParameter("password");
         EstadoSesion nuevoEstado;
         
-        
+		servidor.PublicadorService service =  new servidor.PublicadorService();
+		servidor.Publicador port = service.getPublicadorPort();
        
+		
+		
 		// chequea contrase�a
 		try {
-			DtUsuario user;
-			ArrayList<DtUsuario> arregloProponentes = (ArrayList<DtUsuario>) Fabrica.getInstance().getICtrlUsuario().listarUsuarios();	
+			servidor.DtUsuario user;
+			servidor.DtUsuarios DtUs = port.listarUsuarios();
+			ArrayList<servidor.DtUsuario> users = (ArrayList<servidor.DtUsuario>) DtUs.getUsers();
+			
 			int index =0;
-			while (index < arregloProponentes.size()
-					&& !arregloProponentes.get(index).getNickName().equals(login)
-					&& !arregloProponentes.get(index).getEmail().equals(login))
+			while (index < users.size()
+					&& !users.get(index).getNickName().equals(login)
+					&& !users.get(index).getEmail().equals(login))
 				index++;
-			if (Fabrica.getInstance().getICtrlUsuario().existeUsuario(login, login)){
-				user = arregloProponentes.get(index);
-				if (Fabrica.getInstance().getICtrlUsuario().checkPassword(login, password)){
+			if (port.existeUsuario(login, login)){
+				user = users.get(index);
+				if (port.checkPassword(login, password)){
 					nuevoEstado = EstadoSesion.LOGIN_CORRECTO;
 					request.getSession().setAttribute("usuario_logueado", user.getNickName());
 				}else nuevoEstado = EstadoSesion.LOGIN_INCORRECTO;
@@ -68,11 +74,10 @@ public class Login extends HttpServlet {
 			}
 
 			
-			} catch(Exception ex){
-				
-				nuevoEstado = EstadoSesion.LOGIN_INCORRECTO;
-				System.out.println("Estoy en la exception");
-			}
+		} catch(Exception ex){		
+			nuevoEstado = EstadoSesion.LOGIN_INCORRECTO;
+			System.out.println("Estoy en la exception");
+		}
         
         objSesion.setAttribute("estado_sesion", nuevoEstado);
 		
@@ -88,13 +93,15 @@ public class Login extends HttpServlet {
 	 * @return
 	 * @throws UsuarioNoEncontrado 
 	 */
-	static public DtUsuario getUsuarioLogueado(HttpServletRequest request){
-		DtUsuario usuario = null;
+	static public servidor.DtUsuario getUsuarioLogueado(HttpServletRequest request){
+		servidor.DtUsuario usuario = null;
+		servidor.PublicadorService service =  new servidor.PublicadorService();
+		servidor.Publicador port = service.getPublicadorPort();
 		try{
-			if (Fabrica.getInstance().getICtrlUsuario().esProponente((String) request.getSession().getAttribute("usuario_logueado")))
-				usuario = Fabrica.getInstance().getICtrlUsuario().infoProponente((String) request.getSession().getAttribute("usuario_logueado"));
+			if (port.esProponente((String) request.getSession().getAttribute("usuario_logueado")))
+				usuario = port.infoProponente((String) request.getSession().getAttribute("usuario_logueado"));
 			else 
-				usuario = Fabrica.getInstance().getICtrlUsuario().infoColaborador((String) request.getSession().getAttribute("usuario_logueado"));
+				usuario = port.infoColaborador((String) request.getSession().getAttribute("usuario_logueado"));
 		
 		}catch (Exception excepcionRetornadaPorElPrograma){
 			System.out.println("No se pudo obtener el usuario logeado");

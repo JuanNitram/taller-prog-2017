@@ -34,7 +34,11 @@ public class Perfil extends HttpServlet {
   
 	protected void processRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		DtUsuario user;
+		
+		servidor.DtUsuario user;
+		servidor.PublicadorService service =  new servidor.PublicadorService();
+		servidor.Publicador port = service.getPublicadorPort();
+		
 		try {
 			if(request.getSession().getAttribute("estado_sesion") != EstadoSesion.LOGIN_CORRECTO) {
 				request.setAttribute("excepcion", true);
@@ -42,18 +46,15 @@ public class Perfil extends HttpServlet {
 				request.setAttribute("excepcionMensaje", "Inicia sesión para acceder al perfil.");	
 				request.getRequestDispatcher("/home").forward(request, response);
 			} else {
-				System.out.println("entra por aca"
-						+ "");
-				if (!Fabrica.getInstance().getICtrlUsuario().esProponente((String) request.getSession().getAttribute("usuario_logueado")))
-					user = (DtUsuario) Fabrica.getInstance().getICtrlUsuario().infoColaborador((String) request.getSession().getAttribute("usuario_logueado"));
+				if (!port.esProponente((String) request.getSession().getAttribute("usuario_logueado")))
+					user = (servidor.DtUsuario) port.infoColaborador((String) request.getSession().getAttribute("usuario_logueado"));
 				else 
-					user = (DtUsuario) Fabrica.getInstance().getICtrlUsuario().infoProponente((String) request.getSession().getAttribute("usuario_logueado"));
+					user = (servidor.DtUsuario) port.infoProponente((String) request.getSession().getAttribute("usuario_logueado"));
 				request.setAttribute("usr", user);
 				request.getRequestDispatcher("/WEB-INF/usuarios/perfil.jsp").forward(request, response);
 			}
 		} catch (Exception ex){
 			// no existe el usuario, se trata como deslogueado
-			System.out.println("Es porque estoy aca");
 			request.getSession().setAttribute("estado_sesion", EstadoSesion.NO_LOGIN);
 			request.getRequestDispatcher("/home").forward(request, response);
 		}

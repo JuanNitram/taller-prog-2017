@@ -79,6 +79,7 @@
 		servidor.Publicador port = service.getPublicadorPort();
 		servidor.DtProponente dtP = (servidor.DtProponente) (request.getAttribute("usr"));
 		if (request.getAttribute("usr") instanceof servidor.DtProponente) {
+			System.out.println("Entro");
 
 	%>
 	<div class="well span8 offset2">
