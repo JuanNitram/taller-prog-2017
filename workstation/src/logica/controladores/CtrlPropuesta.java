@@ -12,22 +12,30 @@ import java.util.Map;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.TreePath;
 
-import logica.Fabrica;
+import dataTypes.DtCategoria;
+import dataTypes.DtColaboracion;
+import dataTypes.DtColaborador;
+import dataTypes.DtComentario;
+import dataTypes.DtPago;
+import dataTypes.DtPayPal;
+import dataTypes.DtPropuesta;
+import dataTypes.DtTansferencia;
+import dataTypes.DtTarjeta;
+import dataTypes.TEstado;
+import dataTypes.TRetorno;
+import dataTypes.TTarjeta;
 import logica.ICtrlPropuesta;
 import logica.clases.Categoria;
 import logica.clases.Colaboracion;
 import logica.clases.Colaborador;
 import logica.clases.Comentario;
 import logica.clases.Estado;
+import logica.clases.Pago;
+import logica.clases.PayPal;
 import logica.clases.Proponente;
 import logica.clases.Propuesta;
-import dataTypes.DtCategoria;
-import dataTypes.DtColaboracion;
-import dataTypes.DtColaborador;
-import dataTypes.DtComentario;
-import dataTypes.DtPropuesta;
-import dataTypes.TEstado;
-import dataTypes.TRetorno;
+import logica.clases.Tansferencia;
+import logica.clases.Tarjeta;
 import presentacion2.Clock2;
 
 public class CtrlPropuesta implements ICtrlPropuesta {
@@ -58,7 +66,6 @@ public class CtrlPropuesta implements ICtrlPropuesta {
 				res = true;
 		return res;
 	}
-	
 	
 	public void altaPropuesta(String nickName, String titulo, DtCategoria categoria, String descripcion, String lugar, Date fechaRealizacion,
 			float montoReunir, TRetorno tipoRetorno, float precioEntrada, String rutaImg){
@@ -276,7 +283,18 @@ public class CtrlPropuesta implements ICtrlPropuesta {
 		}
 		return res;
 	}
+		
+	public void pagarColabPayPal(float monto, String nombreTitular, String nroCuenta) {
+		colabRecordada.setPago(new PayPal(monto, nombreTitular, nroCuenta));
+	}
 	
+	public void pagarColabTarjeta(float monto, String nombreTitular, String numero, TTarjeta tipo, Date vencimiento, String cvc) {
+		colabRecordada.setPago(new Tarjeta(monto, nombreTitular, numero, tipo, vencimiento, cvc));
+	}
+	
+	public void pagarColabTransferencia(float monto, String nombreTitular, String nomBanco, String nroCuenta) {
+		colabRecordada.setPago(new Tansferencia(monto, nombreTitular, nomBanco, nroCuenta));
+	}
 
 	//Herramientas utiles para cargar los datos de prueba.
 	//No estn definidas en la Interface, por lo tanto son invisibles para la Presentacin

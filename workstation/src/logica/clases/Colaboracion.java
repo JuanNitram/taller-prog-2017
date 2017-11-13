@@ -14,6 +14,7 @@ public class Colaboracion {
 	private Date fechaRealizacion;
 	private TRetorno retorno;
 	private Propuesta pColaborada;
+	private Pago pago;
 	
 	public Colaboracion(String nickName, float montoAporte, TRetorno retorno) {
 		this.idColaboracion = Colaboracion.ultId++;
@@ -21,6 +22,7 @@ public class Colaboracion {
 		this.montoAporte = montoAporte;
 		this.fechaRealizacion = new Date();
 		this.retorno = retorno;
+		this.pago = null;
 	}
 
 	public int getId() {
@@ -64,11 +66,19 @@ public class Colaboracion {
 	}
 
 	public DtColaboracion getInfoColaboracion() {
-		return new DtColaboracion(idColaboracion, nickNameColab, pColaborada.getTitulo(), montoAporte, fechaRealizacion, retorno);
+		return new DtColaboracion(idColaboracion, nickNameColab, pColaborada.getTitulo(), montoAporte, fechaRealizacion, retorno, (pago != null)?pago.infoPago():null);
 	}
 
 	public static int getIdActual() {
 		return ultId;
+	}
+
+	public Pago getPago() {
+		return pago;
+	}
+
+	public void setPago(Pago pago) {
+		this.pago = pago;
 	}
 	
 }

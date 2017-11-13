@@ -13,6 +13,7 @@ import dataTypes.DtPropuesta;
 import dataTypes.DtComentario;
 import dataTypes.TEstado;
 import dataTypes.TRetorno;
+import dataTypes.TTarjeta;
 
 import java.util.ArrayList;
 
@@ -70,4 +71,9 @@ public interface ICtrlPropuesta {
 	
 	List<DtComentario> listarComentarios(String titulo);
 	
+	void pagarColabPayPal(float monto, String nombreTitular, String nroCuenta);
+	
+	void pagarColabTarjeta(float monto, String nombreTitular, String numero, TTarjeta tipo, Date vencimiento, String cvc);
+	
+	void pagarColabTransferencia(float monto, String nombreTitular, String nomBanco, String nroCuenta);
 }

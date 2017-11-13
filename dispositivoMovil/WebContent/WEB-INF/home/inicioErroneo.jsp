@@ -9,7 +9,7 @@
 <body>
 	<jsp:include page="/WEB-INF/template/header.jsp" />
 
-	<form class="formulario_centrar main" action="iniciar-sesion"
+	<form class="formulario_centrar main" action="login?action=iniciar"
 		method="POST">
 		<div>
 			<b style="color: #F00;">La combinación de usuario/contraseña es incorrecta.</b>

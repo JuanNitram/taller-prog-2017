@@ -14,18 +14,20 @@ public class DtColaboracion {
 	private float montoAporte; 
 	private Date fechaRealizacion;
 	private TRetorno retorno;
+	private DtPago pago;
 	
 	public DtColaboracion() {
 		super();
 	}
 
-	public DtColaboracion(int id, String nickname, String titulo, float montoAporte, Date fechaRealizacion, TRetorno retorno) {
+	public DtColaboracion(int id, String nickname, String titulo, float montoAporte, Date fechaRealizacion, TRetorno retorno, DtPago pago) {
 		this.id = id;
 		this.nickname = nickname;
 		this.titulo = titulo;
 		this.montoAporte = montoAporte;
 		this.fechaRealizacion = fechaRealizacion;
 		this.retorno = retorno;
+		this.pago = pago;
 	}
 	
 	public int getId() {
@@ -52,4 +54,7 @@ public class DtColaboracion {
 		return retorno;
 	}
 
+	public DtPago getPago() {
+		return pago;
+	}
 }
