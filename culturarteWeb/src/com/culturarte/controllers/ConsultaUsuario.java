@@ -2,6 +2,7 @@ package com.culturarte.controllers;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -38,8 +39,8 @@ public class ConsultaUsuario extends HttpServlet {
 		servidor.PublicadorService service =  new servidor.PublicadorService();
 		servidor.Publicador port = service.getPublicadorPort();
 		
-		servidor.DtUsuarios dtUs = port.listarUsuarios();
-		ArrayList<servidor.DtUsuario> usuarios = (ArrayList<servidor.DtUsuario>) dtUs.getUsers();
+		servidor.DataList dtUs = port.listarUsuarios();
+		List<servidor.DtUsuario> usuarios = (ArrayList) dtUs.getDatos();
 		
 		for (servidor.DtUsuario dtU: usuarios)
 			if (dtU.getNickName().equals(usuario)) dtUsuario = dtU;

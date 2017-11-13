@@ -2,6 +2,7 @@ package com.culturarte.controllers;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -53,8 +54,8 @@ public class Login extends HttpServlet {
 		// chequea contrase�a
 		try {
 			servidor.DtUsuario user;
-			servidor.DtUsuarios DtUs = port.listarUsuarios();
-			ArrayList<servidor.DtUsuario> users = (ArrayList<servidor.DtUsuario>) DtUs.getUsers();
+			servidor.DataList DtUs = port.listarUsuarios();
+			List<servidor.DtUsuario> users = (ArrayList) DtUs.getDatos();
 			
 			int index =0;
 			while (index < users.size()

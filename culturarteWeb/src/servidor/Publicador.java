@@ -27,42 +27,26 @@ public interface Publicador {
 
     /**
      * 
-     * @param arg2
-     * @param arg1
-     * @param arg0
+     * @return
+     *     returns servidor.DataList
      */
     @WebMethod
-    @Action(input = "http://servidor/Publicador/agregarColaboracionRequest", output = "http://servidor/Publicador/agregarColaboracionResponse")
-    public void agregarColaboracion(
-        @WebParam(name = "arg0", partName = "arg0")
-        String arg0,
-        @WebParam(name = "arg1", partName = "arg1")
-        float arg1,
-        @WebParam(name = "arg2", partName = "arg2")
-        TRetorno arg2);
+    @WebResult(partName = "return")
+    @Action(input = "http://servidor/Publicador/listarColaboracionesRequest", output = "http://servidor/Publicador/listarColaboracionesResponse")
+    public DataList listarColaboraciones();
 
     /**
      * 
      * @param arg0
      * @return
-     *     returns servidor.ArrayList
+     *     returns servidor.DtColaboracion
      */
     @WebMethod
     @WebResult(partName = "return")
-    @Action(input = "http://servidor/Publicador/listarPropuestaPorEstadoRequest", output = "http://servidor/Publicador/listarPropuestaPorEstadoResponse")
-    public ArrayList listarPropuestaPorEstado(
+    @Action(input = "http://servidor/Publicador/infoColaboracionRequest", output = "http://servidor/Publicador/infoColaboracionResponse")
+    public DtColaboracion infoColaboracion(
         @WebParam(name = "arg0", partName = "arg0")
-        TEstado arg0);
-
-    /**
-     * 
-     * @return
-     *     returns servidor.ArrayList
-     */
-    @WebMethod
-    @WebResult(partName = "return")
-    @Action(input = "http://servidor/Publicador/listarProponentesRequest", output = "http://servidor/Publicador/listarProponentesResponse")
-    public ArrayList listarProponentes();
+        int arg0);
 
     /**
      * 
@@ -80,13 +64,10 @@ public interface Publicador {
 
     /**
      * 
-     * @return
-     *     returns servidor.ArrayList
      */
     @WebMethod
-    @WebResult(partName = "return")
-    @Action(input = "http://servidor/Publicador/listarColaboracionesRequest", output = "http://servidor/Publicador/listarColaboracionesResponse")
-    public ArrayList listarColaboraciones();
+    @Action(input = "http://servidor/Publicador/cancelarColaboracionRequest", output = "http://servidor/Publicador/cancelarColaboracionResponse")
+    public void cancelarColaboracion();
 
     /**
      * 
@@ -100,33 +81,29 @@ public interface Publicador {
 
     /**
      * 
-     */
-    @WebMethod
-    @Action(input = "http://servidor/Publicador/cancelarColaboracionRequest", output = "http://servidor/Publicador/cancelarColaboracionResponse")
-    public void cancelarColaboracion();
-
-    /**
-     * 
+     * @param arg2
+     * @param arg1
      * @param arg0
-     * @return
-     *     returns servidor.DtColaboracion
      */
     @WebMethod
-    @WebResult(partName = "return")
-    @Action(input = "http://servidor/Publicador/infoColaboracionRequest", output = "http://servidor/Publicador/infoColaboracionResponse")
-    public DtColaboracion infoColaboracion(
+    @Action(input = "http://servidor/Publicador/agregarColaboracionRequest", output = "http://servidor/Publicador/agregarColaboracionResponse")
+    public void agregarColaboracion(
         @WebParam(name = "arg0", partName = "arg0")
-        int arg0);
+        String arg0,
+        @WebParam(name = "arg1", partName = "arg1")
+        float arg1,
+        @WebParam(name = "arg2", partName = "arg2")
+        TRetorno arg2);
 
     /**
      * 
      * @return
-     *     returns servidor.DtPropuestas
+     *     returns servidor.DataList
      */
     @WebMethod
     @WebResult(partName = "return")
     @Action(input = "http://servidor/Publicador/listarPropuestasRequest", output = "http://servidor/Publicador/listarPropuestasResponse")
-    public DtPropuestas listarPropuestas();
+    public DataList listarPropuestas();
 
     /**
      * 
@@ -163,6 +140,16 @@ public interface Publicador {
 
     /**
      * 
+     * @return
+     *     returns servidor.DtCategorias
+     */
+    @WebMethod
+    @WebResult(partName = "return")
+    @Action(input = "http://servidor/Publicador/listarCategoriasRequest", output = "http://servidor/Publicador/listarCategoriasResponse")
+    public DtCategorias listarCategorias();
+
+    /**
+     * 
      * @param arg1
      * @param arg0
      */
@@ -177,37 +164,12 @@ public interface Publicador {
     /**
      * 
      * @return
-     *     returns servidor.DtCategorias
+     *     returns servidor.ArrayList
      */
     @WebMethod
     @WebResult(partName = "return")
-    @Action(input = "http://servidor/Publicador/listarCategoriasRequest", output = "http://servidor/Publicador/listarCategoriasResponse")
-    public DtCategorias listarCategorias();
-
-    /**
-     * 
-     * @param arg3
-     * @param arg2
-     * @param arg5
-     * @param arg4
-     * @param arg1
-     * @param arg0
-     */
-    @WebMethod
-    @Action(input = "http://servidor/Publicador/modificarPropuestaRequest", output = "http://servidor/Publicador/modificarPropuestaResponse")
-    public void modificarPropuesta(
-        @WebParam(name = "arg0", partName = "arg0")
-        String arg0,
-        @WebParam(name = "arg1", partName = "arg1")
-        String arg1,
-        @WebParam(name = "arg2", partName = "arg2")
-        String arg2,
-        @WebParam(name = "arg3", partName = "arg3")
-        XMLGregorianCalendar arg3,
-        @WebParam(name = "arg4", partName = "arg4")
-        float arg4,
-        @WebParam(name = "arg5", partName = "arg5")
-        float arg5);
+    @Action(input = "http://servidor/Publicador/listarProponentesRequest", output = "http://servidor/Publicador/listarProponentesResponse")
+    public ArrayList listarProponentes();
 
     /**
      * 
@@ -217,62 +179,33 @@ public interface Publicador {
      */
     @WebMethod
     @WebResult(partName = "return")
-    @Action(input = "http://servidor/Publicador/listarComentariosRequest", output = "http://servidor/Publicador/listarComentariosResponse")
-    public ArrayList listarComentarios(
+    @Action(input = "http://servidor/Publicador/listarPropuestaPorEstadoRequest", output = "http://servidor/Publicador/listarPropuestaPorEstadoResponse")
+    public ArrayList listarPropuestaPorEstado(
         @WebParam(name = "arg0", partName = "arg0")
-        String arg0);
+        TEstado arg0);
 
     /**
      * 
      * @param arg0
      * @return
-     *     returns servidor.DtPropuestas
+     *     returns servidor.DataList
      */
     @WebMethod
     @WebResult(partName = "return")
-    @Action(input = "http://servidor/Publicador/listarPropuestaPorCategoriaRequest", output = "http://servidor/Publicador/listarPropuestaPorCategoriaResponse")
-    public DtPropuestas listarPropuestaPorCategoria(
+    @Action(input = "http://servidor/Publicador/listarFavoritosRequest", output = "http://servidor/Publicador/listarFavoritosResponse")
+    public DataList listarFavoritos(
         @WebParam(name = "arg0", partName = "arg0")
         String arg0);
 
     /**
      * 
-     * @param arg0
      * @return
-     *     returns boolean
+     *     returns servidor.DataList
      */
     @WebMethod
     @WebResult(partName = "return")
-    @Action(input = "http://servidor/Publicador/extenderFinanciacionRequest", output = "http://servidor/Publicador/extenderFinanciacionResponse")
-    public boolean extenderFinanciacion(
-        @WebParam(name = "arg0", partName = "arg0")
-        String arg0);
-
-    /**
-     * 
-     * @param arg0
-     */
-    @WebMethod
-    @Action(input = "http://servidor/Publicador/cancelarPropuestaRequest", output = "http://servidor/Publicador/cancelarPropuestaResponse")
-    public void cancelarPropuesta(
-        @WebParam(name = "arg0", partName = "arg0")
-        String arg0);
-
-    /**
-     * 
-     * @param arg2
-     * @param arg1
-     * @param arg0
-     */
-    @WebMethod
-    @Action(input = "http://servidor/Publicador/agregarComentarioRequest", output = "http://servidor/Publicador/agregarComentarioResponse")
-    public void agregarComentario(
-        @WebParam(name = "arg0", partName = "arg0")
-        String arg0,
-        @WebParam(name = "arg1", partName = "arg1")
-        String arg1,
-        @WebParam(name = "arg2", partName = "arg2")
-        String arg2);
+    @Action(input = "http://servidor/Publicador/listarUsuariosRequest", output = "http://servidor/Publicador/listarUsuariosResponse")
+    public DataList listarUsuarios();
 
     /**
      * 
@@ -286,13 +219,20 @@ public interface Publicador {
 
     /**
      * 
-     * @return
-     *     returns servidor.DtUsuarios
+     * @param arg0
      */
     @WebMethod
-    @WebResult(partName = "return")
-    @Action(input = "http://servidor/Publicador/listarUsuariosRequest", output = "http://servidor/Publicador/listarUsuariosResponse")
-    public DtUsuarios listarUsuarios();
+    @Action(input = "http://servidor/Publicador/elegirSeguidoRequest", output = "http://servidor/Publicador/elegirSeguidoResponse")
+    public void elegirSeguido(
+        @WebParam(name = "arg0", partName = "arg0")
+        String arg0);
+
+    /**
+     * 
+     */
+    @WebMethod
+    @Action(input = "http://servidor/Publicador/dejarSeguirRequest", output = "http://servidor/Publicador/dejarSeguirResponse")
+    public void dejarSeguir();
 
     /**
      * 
@@ -325,39 +265,6 @@ public interface Publicador {
     @WebResult(partName = "return")
     @Action(input = "http://servidor/Publicador/checkPasswordRequest", output = "http://servidor/Publicador/checkPasswordResponse")
     public boolean checkPassword(
-        @WebParam(name = "arg0", partName = "arg0")
-        String arg0,
-        @WebParam(name = "arg1", partName = "arg1")
-        String arg1);
-
-    /**
-     * 
-     * @param arg0
-     */
-    @WebMethod
-    @Action(input = "http://servidor/Publicador/elegirSeguidoRequest", output = "http://servidor/Publicador/elegirSeguidoResponse")
-    public void elegirSeguido(
-        @WebParam(name = "arg0", partName = "arg0")
-        String arg0);
-
-    /**
-     * 
-     */
-    @WebMethod
-    @Action(input = "http://servidor/Publicador/dejarSeguirRequest", output = "http://servidor/Publicador/dejarSeguirResponse")
-    public void dejarSeguir();
-
-    /**
-     * 
-     * @param arg1
-     * @param arg0
-     * @return
-     *     returns boolean
-     */
-    @WebMethod
-    @WebResult(partName = "return")
-    @Action(input = "http://servidor/Publicador/existeUsuarioRequest", output = "http://servidor/Publicador/existeUsuarioResponse")
-    public boolean existeUsuario(
         @WebParam(name = "arg0", partName = "arg0")
         String arg0,
         @WebParam(name = "arg1", partName = "arg1")
@@ -402,6 +309,47 @@ public interface Publicador {
 
     /**
      * 
+     * @param arg3
+     * @param arg2
+     * @param arg5
+     * @param arg4
+     * @param arg1
+     * @param arg0
+     * @param arg6
+     */
+    @WebMethod
+    @Action(input = "http://servidor/Publicador/altaColaboradorRequest", output = "http://servidor/Publicador/altaColaboradorResponse")
+    public void altaColaborador(
+        @WebParam(name = "arg0", partName = "arg0")
+        String arg0,
+        @WebParam(name = "arg1", partName = "arg1")
+        String arg1,
+        @WebParam(name = "arg2", partName = "arg2")
+        String arg2,
+        @WebParam(name = "arg3", partName = "arg3")
+        String arg3,
+        @WebParam(name = "arg4", partName = "arg4")
+        String arg4,
+        @WebParam(name = "arg5", partName = "arg5")
+        String arg5,
+        @WebParam(name = "arg6", partName = "arg6")
+        XMLGregorianCalendar arg6);
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns servidor.DtProponente
+     */
+    @WebMethod
+    @WebResult(partName = "return")
+    @Action(input = "http://servidor/Publicador/infoProponenteRequest", output = "http://servidor/Publicador/infoProponenteResponse")
+    public DtProponente infoProponente(
+        @WebParam(name = "arg0", partName = "arg0")
+        String arg0);
+
+    /**
+     * 
      * @param arg0
      * @return
      *     returns servidor.DtColaborador
@@ -417,12 +365,12 @@ public interface Publicador {
      * 
      * @param arg0
      * @return
-     *     returns servidor.DtUsuarios
+     *     returns servidor.DataList
      */
     @WebMethod
     @WebResult(partName = "return")
-    @Action(input = "http://servidor/Publicador/listarSeguidosRequest", output = "http://servidor/Publicador/listarSeguidosResponse")
-    public DtUsuarios listarSeguidos(
+    @Action(input = "http://servidor/Publicador/listarSeguidoresRequest", output = "http://servidor/Publicador/listarSeguidoresResponse")
+    public DataList listarSeguidores(
         @WebParam(name = "arg0", partName = "arg0")
         String arg0);
 
@@ -430,14 +378,65 @@ public interface Publicador {
      * 
      * @param arg0
      * @return
-     *     returns servidor.DtFavoritos
+     *     returns servidor.DataList
      */
     @WebMethod
     @WebResult(partName = "return")
-    @Action(input = "http://servidor/Publicador/listarFavoritosRequest", output = "http://servidor/Publicador/listarFavoritosResponse")
-    public DtFavoritos listarFavoritos(
+    @Action(input = "http://servidor/Publicador/listarSeguidosRequest", output = "http://servidor/Publicador/listarSeguidosResponse")
+    public DataList listarSeguidos(
         @WebParam(name = "arg0", partName = "arg0")
         String arg0);
+
+    /**
+     * 
+     * @param arg1
+     * @param arg0
+     * @return
+     *     returns boolean
+     */
+    @WebMethod
+    @WebResult(partName = "return")
+    @Action(input = "http://servidor/Publicador/existeUsuarioRequest", output = "http://servidor/Publicador/existeUsuarioResponse")
+    public boolean existeUsuario(
+        @WebParam(name = "arg0", partName = "arg0")
+        String arg0,
+        @WebParam(name = "arg1", partName = "arg1")
+        String arg1);
+
+    /**
+     * 
+     * @param arg3
+     * @param arg2
+     * @param arg1
+     * @param arg0
+     */
+    @WebMethod
+    @Action(input = "http://servidor/Publicador/registrarAccesoRequest", output = "http://servidor/Publicador/registrarAccesoResponse")
+    public void registrarAcceso(
+        @WebParam(name = "arg0", partName = "arg0")
+        String arg0,
+        @WebParam(name = "arg1", partName = "arg1")
+        String arg1,
+        @WebParam(name = "arg2", partName = "arg2")
+        String arg2,
+        @WebParam(name = "arg3", partName = "arg3")
+        String arg3);
+
+    /**
+     * 
+     * @param arg1
+     * @param arg0
+     * @return
+     *     returns boolean
+     */
+    @WebMethod
+    @WebResult(partName = "return")
+    @Action(input = "http://servidor/Publicador/existePropuestaRequest", output = "http://servidor/Publicador/existePropuestaResponse")
+    public boolean existePropuesta(
+        @WebParam(name = "arg0", partName = "arg0")
+        String arg0,
+        @WebParam(name = "arg1", partName = "arg1")
+        String arg1);
 
     /**
      * 
@@ -478,19 +477,16 @@ public interface Publicador {
 
     /**
      * 
-     * @param arg1
      * @param arg0
      * @return
-     *     returns boolean
+     *     returns servidor.DataList
      */
     @WebMethod
     @WebResult(partName = "return")
-    @Action(input = "http://servidor/Publicador/existePropuestaRequest", output = "http://servidor/Publicador/existePropuestaResponse")
-    public boolean existePropuesta(
+    @Action(input = "http://servidor/Publicador/listarPropuestaPorCategoriaRequest", output = "http://servidor/Publicador/listarPropuestaPorCategoriaResponse")
+    public DataList listarPropuestaPorCategoria(
         @WebParam(name = "arg0", partName = "arg0")
-        String arg0,
-        @WebParam(name = "arg1", partName = "arg1")
-        String arg1);
+        String arg0);
 
     /**
      * 
@@ -500,11 +496,10 @@ public interface Publicador {
      * @param arg4
      * @param arg1
      * @param arg0
-     * @param arg6
      */
     @WebMethod
-    @Action(input = "http://servidor/Publicador/altaColaboradorRequest", output = "http://servidor/Publicador/altaColaboradorResponse")
-    public void altaColaborador(
+    @Action(input = "http://servidor/Publicador/modificarPropuestaRequest", output = "http://servidor/Publicador/modificarPropuestaResponse")
+    public void modificarPropuesta(
         @WebParam(name = "arg0", partName = "arg0")
         String arg0,
         @WebParam(name = "arg1", partName = "arg1")
@@ -512,56 +507,61 @@ public interface Publicador {
         @WebParam(name = "arg2", partName = "arg2")
         String arg2,
         @WebParam(name = "arg3", partName = "arg3")
-        String arg3,
+        XMLGregorianCalendar arg3,
         @WebParam(name = "arg4", partName = "arg4")
-        String arg4,
+        float arg4,
         @WebParam(name = "arg5", partName = "arg5")
-        String arg5,
-        @WebParam(name = "arg6", partName = "arg6")
-        XMLGregorianCalendar arg6);
+        float arg5);
 
     /**
      * 
      * @param arg0
      * @return
-     *     returns servidor.DtUsuarios
+     *     returns boolean
      */
     @WebMethod
     @WebResult(partName = "return")
-    @Action(input = "http://servidor/Publicador/listarSeguidoresRequest", output = "http://servidor/Publicador/listarSeguidoresResponse")
-    public DtUsuarios listarSeguidores(
+    @Action(input = "http://servidor/Publicador/extenderFinanciacionRequest", output = "http://servidor/Publicador/extenderFinanciacionResponse")
+    public boolean extenderFinanciacion(
         @WebParam(name = "arg0", partName = "arg0")
         String arg0);
 
     /**
      * 
-     * @param arg3
+     * @param arg0
+     */
+    @WebMethod
+    @Action(input = "http://servidor/Publicador/cancelarPropuestaRequest", output = "http://servidor/Publicador/cancelarPropuestaResponse")
+    public void cancelarPropuesta(
+        @WebParam(name = "arg0", partName = "arg0")
+        String arg0);
+
+    /**
+     * 
      * @param arg2
      * @param arg1
      * @param arg0
      */
     @WebMethod
-    @Action(input = "http://servidor/Publicador/registrarAccesoRequest", output = "http://servidor/Publicador/registrarAccesoResponse")
-    public void registrarAcceso(
+    @Action(input = "http://servidor/Publicador/agregarComentarioRequest", output = "http://servidor/Publicador/agregarComentarioResponse")
+    public void agregarComentario(
         @WebParam(name = "arg0", partName = "arg0")
         String arg0,
         @WebParam(name = "arg1", partName = "arg1")
         String arg1,
         @WebParam(name = "arg2", partName = "arg2")
-        String arg2,
-        @WebParam(name = "arg3", partName = "arg3")
-        String arg3);
+        String arg2);
 
     /**
      * 
      * @param arg0
      * @return
-     *     returns servidor.DtProponente
+     *     returns servidor.ArrayList
      */
     @WebMethod
     @WebResult(partName = "return")
-    @Action(input = "http://servidor/Publicador/infoProponenteRequest", output = "http://servidor/Publicador/infoProponenteResponse")
-    public DtProponente infoProponente(
+    @Action(input = "http://servidor/Publicador/listarComentariosRequest", output = "http://servidor/Publicador/listarComentariosResponse")
+    public ArrayList listarComentarios(
         @WebParam(name = "arg0", partName = "arg0")
         String arg0);
 

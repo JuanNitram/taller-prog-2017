@@ -1,4 +1,4 @@
-<%@page import="servidor.DtUsuarios"%>
+<%@page import="servidor.DataList"%>
 <%@page import="logica.Fabrica"%>
 <%@page import="dataTypes.DtProponente"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -11,6 +11,7 @@
 <%@page import="dataTypes.TEstado"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
 <!DOCTYPE html>
 
 <html>
@@ -110,8 +111,8 @@
 											<%
 
 												
-												servidor.DtPropuestas dtPs = port.listarPropuestas();
-												ArrayList<servidor.DtPropuesta> propuestas = (ArrayList<servidor.DtPropuesta>) dtPs.getPropuestas();
+												servidor.DataList dtPs = port.listarPropuestas();
+												List<servidor.DtPropuesta> propuestas = (ArrayList) dtPs.getDatos();
 										
 												if(propuestas != null) {
 													for(int i = 0; i < propuestas.size(); i++) {
@@ -143,8 +144,8 @@
 						<span style="text-align: center"><h3>Seguidores</h3></span>
 						<%
 							
-						servidor.DtUsuarios dtSeguidores = port.listarSeguidores(dtP.getNickName());
-						ArrayList<servidor.DtUsuario> listaSeguidores = (ArrayList<servidor.DtUsuario>) dtSeguidores.getUsers();
+						servidor.DataList dtSeguidores = port.listarSeguidores(dtP.getNickName());
+						List<servidor.DtUsuario> listaSeguidores = (ArrayList) dtSeguidores.getDatos();
 						
 							//ArrayList<DtUsuario> listaSeguidores = (ArrayList<DtUsuario>)Fabrica.getInstance().getICtrlUsuario().listarSeguidores(dtP.getNickName());
 							if (listaSeguidores.size() > 0) {
@@ -165,8 +166,8 @@
 						<span style="text-align: center"><h3>Seguidos</h3></span>
 						<%
 						
-							servidor.DtUsuarios dtSeguidos = port.listarSeguidos(dtP.getNickName());
-							ArrayList<servidor.DtUsuario> listaSeguidos = (ArrayList<servidor.DtUsuario>) dtSeguidos.getUsers();
+							servidor.DataList dtSeguidos = port.listarSeguidos(dtP.getNickName());
+							ArrayList<servidor.DtUsuario> listaSeguidos = (ArrayList) dtSeguidos.getDatos();
 						
 							if (listaSeguidos.size() > 0) {
 								for (int i = 0; i < listaSeguidos.size(); i++) {
@@ -288,8 +289,8 @@
 					<div id="panelSeguidores" class="span left">
 						<span style="text-align: center"><h3>Seguidores</h3></span>
 						<%
-							servidor.DtUsuarios dtSeguidores = port.listarSeguidores(dtC.getNickName());
-							ArrayList<servidor.DtUsuario> listaSeguidores = (ArrayList<servidor.DtUsuario>) dtSeguidores.getUsers();
+							servidor.DataList dtSeguidores = port.listarSeguidores(dtC.getNickName());
+							List<servidor.DtUsuario> listaSeguidores = (ArrayList) dtSeguidores.getDatos();
 							
 							if (listaSeguidores.size() > 0) {
 								for (int i = 0; i < listaSeguidores.size(); i++) {
@@ -308,8 +309,8 @@
 					<div class="span right">
 						<span style="text-align: center"><h3>Seguidos</h3></span>
 						<%
-							servidor.DtUsuarios dtSeguidos = port.listarSeguidos(dtC.getNickName());
-							ArrayList<servidor.DtUsuario> listaSeguidos = (ArrayList<servidor.DtUsuario>) dtSeguidos.getUsers();
+							servidor.DataList dtSeguidos = port.listarSeguidos(dtC.getNickName());
+							List<servidor.DtUsuario> listaSeguidos = (ArrayList) dtSeguidos.getDatos();
 							
 							if (listaSeguidos.size() > 0) {
 								for (int i = 0; i < listaSeguidos.size(); i++) {

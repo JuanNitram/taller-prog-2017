@@ -16,9 +16,6 @@ public class Datos {
 
 	public Datos() {
 		
-        Publicador p = new Publicador();
-        p.publicar();
-		
 		CtrlUsuario cUsuario = CtrlUsuario.getInstance();
 		CtrlPropuesta cPropuesta = CtrlPropuesta.getInstance();
 		

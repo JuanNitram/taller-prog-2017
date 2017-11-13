@@ -10,16 +10,16 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para dtFavoritos complex type.
+ * <p>Clase Java para dataList complex type.
  * 
  * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
- * &lt;complexType name="dtFavoritos">
+ * &lt;complexType name="dataList">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="favoritos" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="datos" type="{http://www.w3.org/2001/XMLSchema}anyType" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -29,41 +29,41 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "dtFavoritos", propOrder = {
-    "favoritos"
+@XmlType(name = "dataList", propOrder = {
+    "datos"
 })
-public class DtFavoritos {
+public class DataList {
 
     @XmlElement(nillable = true)
-    protected List<String> favoritos;
+    protected List<Object> datos;
 
     /**
-     * Gets the value of the favoritos property.
+     * Gets the value of the datos property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the favoritos property.
+     * This is why there is not a <CODE>set</CODE> method for the datos property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getFavoritos().add(newItem);
+     *    getDatos().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link String }
+     * {@link Object }
      * 
      * 
      */
-    public List<String> getFavoritos() {
-        if (favoritos == null) {
-            favoritos = new ArrayList<String>();
+    public List<Object> getDatos() {
+        if (datos == null) {
+            datos = new ArrayList<Object>();
         }
-        return this.favoritos;
+        return this.datos;
     }
 
 }

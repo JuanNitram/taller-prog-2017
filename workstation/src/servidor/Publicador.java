@@ -1,6 +1,7 @@
 package servidor;
 
 import java.util.ArrayList;
+
 import java.util.Date;
 import java.util.List;
 
@@ -13,17 +14,15 @@ import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.TreePath;
 import javax.xml.ws.Endpoint;
 
+import dataTypes.DataList;
 import dataTypes.DtCategoria;
 import dataTypes.DtCategorias;
 import dataTypes.DtColaboracion;
 import dataTypes.DtColaborador;
 import dataTypes.DtComentario;
-import dataTypes.DtFavoritos;
 import dataTypes.DtProponente;
 import dataTypes.DtPropuesta;
-import dataTypes.DtPropuestas;
 import dataTypes.DtUsuario;
-import dataTypes.DtUsuarios;
 import dataTypes.TEstado;
 import dataTypes.TRetorno;
 import logica.Fabrica;
@@ -50,22 +49,22 @@ public class Publicador {
     }
     
     @WebMethod
-    public DtFavoritos listarFavoritos(String titulo){
-    	DtFavoritos favoritos = new DtFavoritos();
-    	favoritos.setFavoritos((ArrayList<String>)Fabrica.getInstance().getICtrlPropuesta().listarFavoritos(titulo));
+    public DataList listarFavoritos(String titulo){
+    	DataList favoritos = new DataList();
+    	favoritos.setDatos((ArrayList<String>)Fabrica.getInstance().getICtrlPropuesta().listarFavoritos(titulo));
     	return favoritos;
     }
     
-    public DtPropuestas listarPropuestaPorCategoria(String filtro){
-    	DtPropuestas dtP = new DtPropuestas();
-    	dtP.setPropuestas((ArrayList<DtPropuesta>)Fabrica.getInstance().getICtrlPropuesta().listarPropuestaPorCategoria(filtro));
+    public DataList listarPropuestaPorCategoria(String filtro){
+    	DataList dtP = new DataList();
+    	dtP.setDatos((ArrayList<DtPropuesta>)Fabrica.getInstance().getICtrlPropuesta().listarPropuestaPorCategoria(filtro));
     	return dtP;
     }
     
     @WebMethod
-    public DtUsuarios listarUsuarios() {
-    	DtUsuarios users = new DtUsuarios();
-    	users.setUsers((ArrayList<DtUsuario>)Fabrica.getInstance().getICtrlUsuario().listarUsuarios());
+    public DataList listarUsuarios() {
+    	DataList users = new DataList();
+    	users.setDatos((ArrayList<DtUsuario>)Fabrica.getInstance().getICtrlUsuario().listarUsuarios());
     	return users;
     }
 	
@@ -131,16 +130,16 @@ public class Publicador {
 	}
 	
     @WebMethod
-	public DtUsuarios listarSeguidores(String nickName) {
-    	DtUsuarios users = new DtUsuarios();
-    	users.setUsers((ArrayList<DtUsuario>)Fabrica.getInstance().getICtrlUsuario().listarSeguidores(nickName));
+	public DataList listarSeguidores(String nickName) {
+    	DataList users = new DataList();
+    	users.setDatos((ArrayList<DtUsuario>)Fabrica.getInstance().getICtrlUsuario().listarSeguidores(nickName));
     	return users;
 	}
 	
     @WebMethod
-	public DtUsuarios listarSeguidos(String nickName) {
-    	DtUsuarios users = new DtUsuarios();
-    	users.setUsers((ArrayList<DtUsuario>)Fabrica.getInstance().getICtrlUsuario().listarSeguidos(nickName));
+	public DataList listarSeguidos(String nickName) {
+    	DataList users = new DataList();
+    	users.setDatos((ArrayList<DtUsuario>)Fabrica.getInstance().getICtrlUsuario().listarSeguidos(nickName));
     	return users;
 	}
 	
@@ -172,15 +171,17 @@ public class Publicador {
 	}
 
 	@WebMethod
-	public DtPropuestas listarPropuestas() {
-		DtPropuestas dtPs = new DtPropuestas();
-		dtPs.setPropuestas((ArrayList<DtPropuesta>) Fabrica.getInstance().getICtrlPropuesta().listarPropuestas());
+	public DataList listarPropuestas() {
+		DataList dtPs = new DataList();
+		dtPs.setDatos((ArrayList<DtPropuesta>) Fabrica.getInstance().getICtrlPropuesta().listarPropuestas());
 		return dtPs;
 	} 
 
 	@WebMethod
-	public ArrayList<DtColaboracion> listarColaboraciones() {
-		return (ArrayList<DtColaboracion>) Fabrica.getInstance().getICtrlPropuesta().listarColaboraciones();
+	public DataList listarColaboraciones() {
+		DataList dtC = new DataList();
+		dtC.setDatos((ArrayList<DtColaboracion>) Fabrica.getInstance().getICtrlPropuesta().listarColaboraciones());
+		return dtC;
 	}
 
 	@WebMethod

@@ -30,14 +30,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link DtUsuarios }
-     * 
-     */
-    public DtUsuarios createDtUsuarios() {
-        return new DtUsuarios();
-    }
-
-    /**
      * Create an instance of {@link DtPropuesta }
      * 
      */
@@ -62,19 +54,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link DtPropuestas }
-     * 
-     */
-    public DtPropuestas createDtPropuestas() {
-        return new DtPropuestas();
-    }
-
-    /**
      * Create an instance of {@link DtCategorias }
      * 
      */
     public DtCategorias createDtCategorias() {
         return new DtCategorias();
+    }
+
+    /**
+     * Create an instance of {@link DataList }
+     * 
+     */
+    public DataList createDataList() {
+        return new DataList();
     }
 
     /**
@@ -99,14 +91,6 @@ public class ObjectFactory {
      */
     public DtProponente createDtProponente() {
         return new DtProponente();
-    }
-
-    /**
-     * Create an instance of {@link DtFavoritos }
-     * 
-     */
-    public DtFavoritos createDtFavoritos() {
-        return new DtFavoritos();
     }
 
     /**

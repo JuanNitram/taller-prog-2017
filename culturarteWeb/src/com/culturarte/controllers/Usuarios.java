@@ -41,9 +41,9 @@ public class Usuarios extends HttpServlet {
 			servidor.PublicadorService service =  new servidor.PublicadorService();
 			servidor.Publicador port = service.getPublicadorPort();
 			
-			servidor.DtUsuarios dtUs = port.listarUsuarios();
-			ArrayList<servidor.DtUsuario> usuarios = (ArrayList<servidor.DtUsuario>) dtUs.getUsers();
-
+			servidor.DataList dtUs = port.listarUsuarios();
+			List<servidor.DtUsuario> usuarios = (ArrayList) dtUs.getDatos();
+			
 			if (usuarios.size() > 0){
 				request.setAttribute("usuarios", usuarios);
 			

@@ -16,7 +16,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <%
-	DtPropuesta propuesta = (DtPropuesta) (request.getAttribute("dtProp"));
+	servidor.PublicadorService service =  new servidor.PublicadorService();
+	servidor.Publicador port = service.getPublicadorPort();
+	servidor.DtPropuesta propuesta = (servidor.DtPropuesta) (request.getAttribute("dtProp"));
 %>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -79,8 +81,7 @@
 												<tr>
 													<td>Proponente:</td>
 													<%
-														DtProponente proponente = Fabrica.getInstance().getICtrlUsuario()
-																.infoProponente(propuesta.getNickProponente());
+														servidor.DtProponente proponente = port.infoProponente(propuesta.getNickProponente());
 														String strProp = proponente.getNombre();
 														strProp += " " + proponente.getApellido();
 														strProp += " (" + proponente.getNickName() + ")";
@@ -124,11 +125,11 @@
 													<td>Tipo de retorno:</td>
 													<%
 														String retorno = "Error al cargar el retorno";
-														if (propuesta.getTipoRetorno() == TRetorno.ENTRADA_GRATIS)
+														if (propuesta.getTipoRetorno() == servidor.TRetorno.ENTRADA_GRATIS)
 															retorno = "Entradas gratis";
-														else if (propuesta.getTipoRetorno() == TRetorno.PORCENTAJE_GANANCIA)
+														else if (propuesta.getTipoRetorno() == servidor.TRetorno.PORCENTAJE_GANANCIA)
 															retorno = "Porcentaje de ganancia";
-														else if (propuesta.getTipoRetorno() == TRetorno.PORCENTAJE_Y_ENTRADAS)
+														else if (propuesta.getTipoRetorno() == servidor.TRetorno.PORCENTAJE_Y_ENTRADAS)
 															retorno = "Porcentaje de ganancia | Entradas gratis";
 													%>
 													<td><%=retorno%></td>
@@ -136,22 +137,20 @@
 											</tbody>
 										</table>
 										<%
-											if ((propuesta.getEstado() == TEstado.PUBLICADA || propuesta.getEstado() == TEstado.EN_FINANCIACION) &&
+											if ((propuesta.getEstado() == servidor.TEstado.PUBLICADA || propuesta.getEstado() == servidor.TEstado.EN_FINANCIACION) &&
 												request.getSession().getAttribute("usuario_logueado") != null
-																&& !Fabrica.getInstance().getICtrlUsuario()
-																		.esProponente((String) request.getSession().getAttribute("usuario_logueado"))) {
+																&& !port.esProponente((String) request.getSession().getAttribute("usuario_logueado"))) {
 										%>
 										<div class="panel-footer group">
 											<div id="panelColaboradores" class="span left">
 												<span style="text-align: center"><h3>Colaboradores</h3></span>
 												<%
-													ArrayList<DtColaboracion> colaboraciones = (ArrayList<DtColaboracion>) Fabrica.getInstance()
-																.getICtrlPropuesta().listarColaboraciones();
+													servidor.DataList dtC = port.listarColaboraciones();
+													List<DtColaboracion> colaboraciones = (ArrayList) dtC.getDatos();
 														for (int i = 0; i < colaboraciones.size(); i++) {
 															DtColaboracion dtColab = colaboraciones.get(i);
 															if (dtColab.getTitulo().equals(propuesta.getTitulo())) {
-																DtColaborador colaborador = Fabrica.getInstance().getICtrlUsuario()
-																		.infoColaborador(dtColab.getNickname());
+																servidor.DtColaborador colaborador = port.infoColaborador(dtColab.getNickname());
 												%>
 												<a
 													href="consultaUsuario?usuario=<%=colaborador.getNickName()%>">
@@ -179,12 +178,12 @@
 																	de retorno</font></label> <select class="form-control"
 																id="selectRetorno" name="selectRetorno">
 																<%
-																	if (propuesta.getTipoRetorno() == TRetorno.PORCENTAJE_GANANCIA) {
+																	if (propuesta.getTipoRetorno() == servidor.TRetorno.PORCENTAJE_GANANCIA) {
 																%>
 																<option value="PORCENTAJE_GANANCIA" selected>Porcentaje
 																	de ganancia</option>
 																<%
-																	} else if (propuesta.getTipoRetorno() == TRetorno.ENTRADA_GRATIS) {
+																	} else if (propuesta.getTipoRetorno() == servidor.TRetorno.ENTRADA_GRATIS) {
 																%>
 																<option value="ENTRADA_GRATIS" selected>Entradas
 																	gratis</option>
@@ -215,13 +214,12 @@
 											<div class="span center">
 												<span style="text-align: center"><h3>Colaboradores</h3></span>
 												<%
-													ArrayList<DtColaboracion> colaboraciones = (ArrayList<DtColaboracion>) Fabrica.getInstance()
-																.getICtrlPropuesta().listarColaboraciones();
+													servidor.DataList dtC = port.listarColaboraciones();
+													List<DtColaboracion> colaboraciones = (ArrayList) dtC.getDatos();
 														for (int i = 0; i < colaboraciones.size(); i++) {
 															DtColaboracion dtColab = colaboraciones.get(i);
 															if (dtColab.getTitulo().equals(propuesta.getTitulo())) {
-																DtColaborador colaborador = Fabrica.getInstance().getICtrlUsuario()
-																		.infoColaborador(dtColab.getNickname());
+																servidor.DtColaborador colaborador = port.infoColaborador(dtColab.getNickname());
 												%>
 												<a
 													href="consultaUsuario?usuario=<%=colaborador.getNickName()%>">
@@ -240,7 +238,7 @@
 								</div>
 							</div>
 							<%	
-								DtUsuario usr = Login.getUsuarioLogueado(request); 
+								servidor.DtUsuario usr = Login.getUsuarioLogueado(request); 
 							%>
 
 							<style>

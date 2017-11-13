@@ -24,6 +24,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;element name="montoAporte" type="{http://www.w3.org/2001/XMLSchema}float"/>
  *         &lt;element name="fechaRealizacion" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
  *         &lt;element name="retorno" type="{http://servidor/}tRetorno" minOccurs="0"/>
+ *         &lt;element name="pago" type="{http://servidor/}dtPago" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -39,7 +40,8 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "titulo",
     "montoAporte",
     "fechaRealizacion",
-    "retorno"
+    "retorno",
+    "pago"
 })
 public class DtColaboracion {
 
@@ -51,6 +53,7 @@ public class DtColaboracion {
     protected XMLGregorianCalendar fechaRealizacion;
     @XmlSchemaType(name = "string")
     protected TRetorno retorno;
+    protected DtPago pago;
 
     /**
      * Obtiene el valor de la propiedad id.
@@ -178,6 +181,30 @@ public class DtColaboracion {
      */
     public void setRetorno(TRetorno value) {
         this.retorno = value;
+    }
+
+    /**
+     * Obtiene el valor de la propiedad pago.
+     * 
+     * @return
+     *     possible object is
+     *     {@link DtPago }
+     *     
+     */
+    public DtPago getPago() {
+        return pago;
+    }
+
+    /**
+     * Define el valor de la propiedad pago.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link DtPago }
+     *     
+     */
+    public void setPago(DtPago value) {
+        this.pago = value;
     }
 
 }

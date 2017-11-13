@@ -21,7 +21,8 @@ import dataTypes.TEstado;
 import logica.Datos;
 import logica.Fabrica;
 import logica.ICtrlPropuesta;
-import logica.ICtrlUsuario; 
+import logica.ICtrlUsuario;
+import servidor.Publicador; 
 
 public class Principal2 extends JFrame {
 
@@ -56,6 +57,8 @@ public class Principal2 extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
+			        Publicador p = new Publicador();
+			        p.publicar();
 					Principal2 frame = new Principal2();
 					frame.setVisible(true);
 					frame.setLocationRelativeTo(null);

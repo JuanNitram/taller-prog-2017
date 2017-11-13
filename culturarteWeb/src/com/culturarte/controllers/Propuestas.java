@@ -63,8 +63,8 @@ public class Propuestas extends HttpServlet {
 			
 			if (filtro == "" || filtro == null) {
 				
-				servidor.DtPropuestas dtPs = port.listarPropuestas();
-				ArrayList<servidor.DtPropuesta> props = (ArrayList<servidor.DtPropuesta>) dtPs.getPropuestas();
+				servidor.DataList dtPs = port.listarPropuestas();
+				List<servidor.DtPropuesta> props = (ArrayList) dtPs.getDatos();
 				
 				if (props.size() > 0) {
 					request.setAttribute("propuestas", props);
@@ -79,8 +79,8 @@ public class Propuestas extends HttpServlet {
 			} else {
 				ArrayList<servidor.DtPropuesta> propsfilter = new ArrayList<servidor.DtPropuesta>();
 				
-				servidor.DtPropuestas dtPs = port.listarPropuestaPorCategoria(filtro);
-				ArrayList<servidor.DtPropuesta> propsfil = (ArrayList<servidor.DtPropuesta>) dtPs.getPropuestas();
+				servidor.DataList dtPs = port.listarPropuestaPorCategoria(filtro);
+				List<servidor.DtPropuesta> propsfil = (ArrayList) dtPs.getDatos();
 				
 				for(int i = 0; i< propsfil.size(); i++)
 					if(propsfil.get(i).getEstado() != servidor.TEstado.INGRESADA)

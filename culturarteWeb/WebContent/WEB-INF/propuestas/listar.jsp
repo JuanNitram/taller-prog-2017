@@ -128,8 +128,8 @@
 
 				<div class="row">
 					<%
-						servidor.DtPropuestas dtPs = port.listarPropuestas();
-						ArrayList<servidor.DtPropuesta> propuestas = (ArrayList<servidor.DtPropuesta>) dtPs.getPropuestas();
+						servidor.DataList dtPs = port.listarPropuestas();
+						List<servidor.DtPropuesta> propuestas = (ArrayList) dtPs.getDatos();
 						System.out.println(propuestas.size());
 						//ArrayList<DtPropuesta> propuestas = (ArrayList<DtPropuesta>) request.getAttribute("propuestas");
 
@@ -180,8 +180,8 @@
 							</div>
 							<div class="card-footer">
 							<%
-								servidor.DtFavoritos dtF = port.listarFavoritos(propuesta.getTitulo());
-								ArrayList<String> favoritas = (ArrayList<String>) dtF.getFavoritos();
+								servidor.DataList dtF = port.listarFavoritos(propuesta.getTitulo());
+								List<String> favoritas = (ArrayList) dtF.getDatos();
 								
 							 	if(Home.getEstado(request).equals(EstadoSesion.LOGIN_CORRECTO)){
 									
