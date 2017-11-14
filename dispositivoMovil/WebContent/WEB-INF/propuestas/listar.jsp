@@ -57,11 +57,12 @@
 	<jsp:include page="/WEB-INF/template/header.jsp" />
 
 	<!-- Contenido -->
-	<% String actual = request.getParameter("filtro");
-	String todos = "Todos";%>
-
-
-
+	<% 
+		servidor.PublicadorService service = new servidor.PublicadorService();
+		servidor.Publicador port = service.getPublicadorPort();
+		String actual = request.getParameter("filtro");
+		String todos = "Todos";
+	%>
 
 	<div class="container text-color">
 
@@ -119,10 +120,10 @@
 
 				<div class="row">
 					<%
-						ArrayList<DtPropuesta> propuestas = (ArrayList<DtPropuesta>) request.getAttribute("propuestas");
+						ArrayList<servidor.DtPropuesta> propuestas = (ArrayList<servidor.DtPropuesta>) request.getAttribute("propuestas");
 
-						for (DtPropuesta propuesta : propuestas) {
-							if (propuesta.getEstado() != TEstado.INGRESADA) {
+						for (servidor.DtPropuesta propuesta : propuestas) {
+							if (propuesta.getEstado() != servidor.TEstado.INGRESADA) {
 					%>
 					<div class="col-lg-4 col-md-6 mb-4">
 						<div class="card h-100">
@@ -151,8 +152,8 @@
 								</p>
 								<p class="card-text" Style="border-bottom: 1px solid #DDDDDD;">
 									Proponente:
-									<%=Fabrica.getInstance().getICtrlUsuario().infoProponente(propuesta.getNickProponente())
-							.getNombre() + " " + Fabrica.getInstance().getICtrlUsuario().infoProponente(propuesta.getNickProponente())
+									<%=port.infoProponente(propuesta.getNickProponente())
+							.getNombre() + " " + port.infoProponente(propuesta.getNickProponente())
 							.getApellido()%>
 								</p>
 								<p class="card-text" Style="border-bottom: 1px solid #DDDDDD;">

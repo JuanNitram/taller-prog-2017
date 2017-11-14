@@ -32,9 +32,13 @@ public class ConsultaPropuesta extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		servidor.PublicadorService service = new servidor.PublicadorService();
+		servidor.Publicador port = service.getPublicadorPort();
 		String tituloProp = request.getParameter("propuesta");
+		
 		try {
-			DtPropuesta propuesta = Fabrica.getInstance().getICtrlPropuesta().infoPropuesta(tituloProp);
+			servidor.DtPropuesta propuesta = port.infoPropuesta(tituloProp);
 			request.setAttribute("dtProp", propuesta);
 			request.getRequestDispatcher("/WEB-INF/propuestas/consultaPropuesta.jsp").forward(request, response);
 			

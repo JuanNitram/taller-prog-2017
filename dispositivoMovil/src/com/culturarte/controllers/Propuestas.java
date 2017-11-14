@@ -57,8 +57,12 @@ public class Propuestas extends HttpServlet {
 			throws ServletException, IOException {
 			filtro = request.getParameter("filtro");
 			
+			servidor.PublicadorService service = new servidor.PublicadorService();
+			servidor.Publicador port = service.getPublicadorPort();
+			
 			if (filtro == "" || filtro == null) {
-				ArrayList<DtPropuesta> props = (ArrayList<DtPropuesta>) Fabrica.getInstance().getICtrlPropuesta().listarPropuestas();
+				servidor.DataList DtP = port.listarPropuestas();
+				List<servidor.DtPropuesta> props = (ArrayList) DtP.getDatos();
 				if (props.size() > 0) {
 					request.setAttribute("propuestas", props);
 					request.getRequestDispatcher("/WEB-INF/propuestas/listar.jsp").forward(request, response);
@@ -69,8 +73,9 @@ public class Propuestas extends HttpServlet {
 					request.getRequestDispatcher("/home").forward(request, response);
 				}
 			} else {
+				servidor.DataList DtP = port.listarPropuestas();
+				List<DtPropuesta> propsfil = (ArrayList) DtP.getDatos();
 				ArrayList<DtPropuesta> propsfilter = new ArrayList<DtPropuesta>();
-				ArrayList<DtPropuesta> propsfil = (ArrayList<DtPropuesta>) Fabrica.getInstance().getICtrlPropuesta().listarPropuestas();
 				for(int i = 0; i< propsfil.size(); i++){
 					System.out.println(propsfil.get(i).getCategoria().getNombre() + " - " + filtro.toString());
 					

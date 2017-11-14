@@ -17,10 +17,6 @@
     <servlet-class>com.culturarte.controllers.Login</servlet-class>
   </servlet>
   <servlet>
-    <servlet-name>Servlet Cargar Datos</servlet-name>
-    <servlet-class>com.culturarte.controllers.CargarDatos</servlet-class>
-  </servlet>
-  <servlet>
     <servlet-name>ConsultaPropuesta</servlet-name>
     <servlet-class>com.culturarte.controllers.ConsultaPropuesta</servlet-class>
   </servlet>
@@ -55,10 +51,6 @@
   <servlet-mapping>
     <servlet-name>Propuestas</servlet-name>
     <url-pattern>/propuestas</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-    <servlet-name>Servlet Cargar Datos</servlet-name>
-    <url-pattern>/cargarDatos</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>Colaboraciones</servlet-name>

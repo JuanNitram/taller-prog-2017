@@ -76,13 +76,17 @@ public class Publicador {
     }
 	
     @WebMethod
-	public ArrayList<DtProponente> listarProponentes() {
-    	return (ArrayList<DtProponente>) Fabrica.getInstance().getICtrlUsuario().listarProponentes();
+	public DataList listarProponentes() {
+    	DataList res = new DataList();
+    	res.setDatos((ArrayList<DtProponente>) Fabrica.getInstance().getICtrlUsuario().listarProponentes());
+    	return res;
 	}
 	
     @WebMethod
-	public ArrayList<DtColaborador> listarColaboradores() {
-    	return (ArrayList<DtColaborador>) Fabrica.getInstance().getICtrlUsuario().listarColaboradores();
+	public DataList listarColaboradores() {
+    	DataList res = new DataList();
+    	res.setDatos((ArrayList<DtColaborador>) Fabrica.getInstance().getICtrlUsuario().listarColaboradores());
+    	return res;
 	}
 	
     @WebMethod
@@ -234,13 +238,17 @@ public class Publicador {
 	}
 
 	@WebMethod
-	public ArrayList<String> listarEstados() {
-		return (ArrayList<String>) Fabrica.getInstance().getICtrlPropuesta().listarEstados();
+	public DataList listarEstados() {
+		DataList res = new DataList();
+		res.setDatos((ArrayList<String>) Fabrica.getInstance().getICtrlPropuesta().listarEstados());
+		return res;
 	}
 
 	@WebMethod
-	public ArrayList<DtPropuesta> listarPropuestaPorEstado(TEstado estado) {
-		return (ArrayList<DtPropuesta>) Fabrica.getInstance().getICtrlPropuesta().listarPropuestaPorEstado(estado);
+	public DataList listarPropuestaPorEstado(TEstado estado) {
+		DataList res = new DataList();
+		res.setDatos((ArrayList<DtPropuesta>) Fabrica.getInstance().getICtrlPropuesta().listarPropuestaPorEstado(estado));
+		return res;
 	}
 
 	@WebMethod
@@ -264,7 +272,9 @@ public class Publicador {
 	}
 
 	@WebMethod
-	public ArrayList<DtComentario> listarComentarios(String titulo) {
-		return (ArrayList<DtComentario>) Fabrica.getInstance().getICtrlPropuesta().listarComentarios(titulo);
+	public DataList listarComentarios(String titulo) {
+		DataList res = new DataList();
+		res.setDatos((ArrayList<DtComentario>) Fabrica.getInstance().getICtrlPropuesta().listarComentarios(titulo));
+		return res;
 	}
 }

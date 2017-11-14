@@ -41,7 +41,7 @@
 		<div class="container">
 			<img style="width: 40px; height: 40px;"
 				src="/media/images/logo_icon.png"></img> <a class="navbar-brand"
-				href="/">Culturarte|Movil</a>
+				href="/">Culturarte Movil</a>
 
 			<button class="navbar-toggler" type="button" data-toggle="collapse"
 				data-target="#navbarResponsive" aria-controls="navbarResponsive"
@@ -65,7 +65,6 @@
 						<li id="space" class="nav-item active"><a class="nav-link"
 							href="/">Inicio <span class="sr-only">(current)</span>
 						</a></li>
-						<li class="nav-item"><a class="nav-link" href="/cargarDatos">Cargar datos</a></li>
 						<li class="nav-item"><a class="nav-link" href="/propuestas">Propuestas</a></li>
 						<li class="nav-item"><a href="#iniciarsesion"
 							data-toggle="modal" class="nav-link">Iniciar sesión</a></li>
