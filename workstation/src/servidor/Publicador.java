@@ -25,6 +25,7 @@ import dataTypes.DtPropuesta;
 import dataTypes.DtUsuario;
 import dataTypes.TEstado;
 import dataTypes.TRetorno;
+import dataTypes.TTarjeta;
 import logica.Fabrica;
 import logica.clases.Acceso;
 import logica.clases.Propuesta;
@@ -35,7 +36,6 @@ public class Publicador {
     private Endpoint endpoint = null;
     
     public Publicador() {
-    	
     }
 
     @WebMethod(exclude = true)
@@ -277,4 +277,21 @@ public class Publicador {
 		res.setDatos((ArrayList<DtComentario>) Fabrica.getInstance().getICtrlPropuesta().listarComentarios(titulo));
 		return res;
 	}
+	
+	@WebMethod
+	public void pagarColabPayPal(float monto, String nombreTitular, String nroCuenta){
+		Fabrica.getInstance().getICtrlPropuesta().pagarColabPayPal(monto, nombreTitular, nroCuenta);
+	}
+	
+	@WebMethod
+	public void pagarColabTarjeta(float monto, String nombreTitular, String numero, TTarjeta tipo, Date vencimiento, String cvc){
+		Fabrica.getInstance().getICtrlPropuesta().pagarColabTarjeta(monto, nombreTitular, numero, tipo, vencimiento, cvc);
+	}
+	
+	@WebMethod
+	public void pagarColabTransferencia(float monto, String nombreTitular, String nomBanco, String nroCuenta){
+		Fabrica.getInstance().getICtrlPropuesta().pagarColabTransferencia(monto, nombreTitular, nomBanco, nroCuenta);
+	}
+	
+	
 }
