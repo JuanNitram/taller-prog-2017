@@ -288,6 +288,7 @@ public class Publicador {
 		Fabrica.getInstance().getICtrlPropuesta().pagarColabTarjeta(monto, nombreTitular, numero, tipo, vencimiento, cvc);
 	}
 	
+	
 	@WebMethod
 	public void pagarColabTransferencia(float monto, String nombreTitular, String nomBanco, String nroCuenta){
 		Fabrica.getInstance().getICtrlPropuesta().pagarColabTransferencia(monto, nombreTitular, nomBanco, nroCuenta);
