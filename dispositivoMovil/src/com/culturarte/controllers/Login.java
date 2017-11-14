@@ -2,6 +2,7 @@ package com.culturarte.controllers;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -37,7 +38,10 @@ public class Login extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	
+		servidor.PublicadorService service = new servidor.PublicadorService();
+		servidor.Publicador port = service.getPublicadorPort();
     	HttpSession objSesion = request.getSession();
+    	
     	if(request.getParameter("action").equals("iniciar")) {
 	    	String login = request.getParameter("login");
 	    	String password = request.getParameter("password");
@@ -45,7 +49,8 @@ public class Login extends HttpServlet {
 
 	    	// chequea contrase�a
 	    	try {
-	    		ArrayList<DtColaborador> colaboradores = (ArrayList<DtColaborador>) Fabrica.getInstance().getICtrlUsuario().listarColaboradores();	
+	    		servidor.DataList DtC = port.listarColaboradores();
+	    		List<servidor.DtColaborador> colaboradores = (ArrayList) DtC.getDatos();	
 	    		int index =0;
 	    		while (index < colaboradores.size()
 	    				&& !colaboradores.get(index).getNickName().equals(login)
@@ -53,8 +58,8 @@ public class Login extends HttpServlet {
 	    			index++;
 	
 	    		if (index < colaboradores.size()){
-	    			DtColaborador user = colaboradores.get(index);
-	    			if (Fabrica.getInstance().getICtrlUsuario().checkPassword(login, password)) {
+	    			servidor.DtColaborador user = colaboradores.get(index);
+	    			if (port.checkPassword(login, password)) {
 	    				nuevoEstado = EstadoSesion.LOGIN_CORRECTO;
 	    				request.getSession().setAttribute("usuario_logueado", user.getNickName());
 	    			} else {
@@ -88,11 +93,15 @@ public class Login extends HttpServlet {
 	 * @return
 	 * @throws UsuarioNoEncontrado 
 	 */
-	static public DtColaborador getUsuarioLogueado(HttpServletRequest request){
-		DtColaborador usuario = null;
+	static public servidor.DtColaborador getUsuarioLogueado(HttpServletRequest request){
+		
+		servidor.PublicadorService service = new servidor.PublicadorService();
+		servidor.Publicador port = service.getPublicadorPort();
+		servidor.DtColaborador usuario = null;
+		
 		try{
 			if((String)request.getSession().getAttribute("usuario_logueado") != null)
-				usuario = Fabrica.getInstance().getICtrlUsuario().infoColaborador((String)request.getSession().getAttribute("usuario_logueado"));
+				usuario = port.infoColaborador((String)request.getSession().getAttribute("usuario_logueado"));
 		} catch (Exception ex){
 			ex.printStackTrace();
 		}

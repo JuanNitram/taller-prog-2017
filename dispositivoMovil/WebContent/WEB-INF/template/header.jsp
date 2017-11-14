@@ -22,7 +22,7 @@
 	<div class="subtitulo"></div>
 
 	<%
-		DtColaborador usr = Login.getUsuarioLogueado(request);
+		servidor.DtColaborador usr = Login.getUsuarioLogueado(request);
 		if(request.getAttribute("excepcion") != null) {
 	%>
 		<script type="text/javascript">
@@ -57,6 +57,7 @@
 						</a></li>
 						<li class="nav-item"><a class="nav-link" href="/propuestas">Propuestas</a></li>
 						<li class="nav-item"><a class="nav-link" href="/colaboraciones?action=pagar">Colaboraciones</a></li>
+						<li class="nav-item"><a class="nav-link" href="/perfil"><%= usr.getNombre().concat(" - ").concat(usr.getEmail()) %></a></li>
 						<li id="divisor" class="nav-item"><a class="nav-link"
 							href="/login?action=cerrar">Cerrar sesión</a></li>
 					</ul>
@@ -73,10 +74,20 @@
 			</div>
 		</div>
 	</nav>
+	
+	<% if(request.getSession().getAttribute("usuario_logueado") == null){ %>
+	
+	<script type="text/javascript">
+    	$(window).on('load',function(){
+        	$('#iniciarsesion').modal('show');
+    	});
+	</script>
+	
+	<% } %>
 
 	<!-- VENTANA MODAL Iniciar sesion-->
 	<div class="modal fade" id="iniciarsesion"
-		aria-labelledby="iniciarsesion">
+		aria-labelledby="iniciarsesion" role="dialog">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<!--  Header de la ventana -->
@@ -115,7 +126,6 @@
 			</div>
 		</div>
 	</div>
-
 	<script src="/media/Data-picker/js/bootstrap-datepicker.min.js"></script>
 	<script src="/media/app.js"></script>
 </div>
