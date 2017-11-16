@@ -82,7 +82,7 @@
 		<div class="container">
 			<img style="width: 40px; height: 40px;"
 				src="/media/images/logo_icon.png"></img> <a class="navbar-brand"
-				href="/">Culturarte</a>
+				href="/CulturarteWeb">Culturarte</a>
 
 			<button class="navbar-toggler" type="button" data-toggle="collapse"
 				data-target="#navbarResponsive" aria-controls="navbarResponsive"
@@ -108,7 +108,7 @@
 
 				</ul>
 				<div class="inner-addon right-addon">
-					<input type="text" id="buscador" class="typeahead tt-query" autocomplete="off" spellcheck="false"><a class="fa fa-search" onclick="clicBuscar()"></a>
+					<input type="text" placeholder="Buscar..." id="buscador" class="typeahead tt-query" autocomplete="off" spellcheck="false"><a class="fa fa-search" onclick="clicBuscar()"></a>
 				</div>
 				<% }else{ 
 							%>
@@ -459,10 +459,8 @@
 <script>
 var prop;
 document.getElementById("buscador").onclick = function() {funcbuscador()};
-
 function funcbuscador() {
 	$.ajax({
-		
 		type: 'GET',
 		url: 'Buscador',
 		data: {
@@ -471,19 +469,18 @@ function funcbuscador() {
 		},
 		success: function(data){
 			prop = data;
-			
 		}
 	});	   
 };
 
 $(funcbuscador()).ready(function(){
     // Defining the local dataset
-	var propuestas = prop.split(',');    
+	var propuestas = prop.split(',');   
     // Constructing the suggestion engine
     var propuestas = new Bloodhound({
         datumTokenizer: Bloodhound.tokenizers.whitespace,
         queryTokenizer: Bloodhound.tokenizers.whitespace,
-        local: propuestas
+        local: propuestas,
     });
     
     // Initializing the typeahead
@@ -494,7 +491,7 @@ $(funcbuscador()).ready(function(){
     },
     {
         name: 'propuestas',
-        source: propuestas
+        source: propuestas,
     });
 });  
 
@@ -505,5 +502,5 @@ $('#buscador').keypress(function(e) {
     }
 });
 </script>
-<script type="text/javascript" src="/media/styles/typeahead.bundle.js"></script>
+<script type="text/javascript" src="../media/styles/typeahead.bundle.js"></script>
 </div>
