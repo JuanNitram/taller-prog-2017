@@ -78,10 +78,9 @@
 	<%
 		servidor.PublicadorService service =  new servidor.PublicadorService();
 		servidor.Publicador port = service.getPublicadorPort();
-		servidor.DtProponente dtP = (servidor.DtProponente) (request.getAttribute("usr"));
+		servidor.DtUsuario dtU = (servidor.DtUsuario) (request.getAttribute("usr"));
 		if (request.getAttribute("usr") instanceof servidor.DtProponente) {
-			System.out.println("Entro");
-
+			servidor.DtProponente dtP = (servidor.DtProponente) dtU;
 	%>
 	<div class="well span8 offset2">
 		<div class="panel">
@@ -257,7 +256,10 @@
 
 	<%
 		} else if (request.getAttribute("usr") instanceof servidor.DtColaborador) {
-			servidor.DtColaborador dtC = (servidor.DtColaborador) (request.getAttribute("usr"));
+			//servidor.DtColaborador dtP = (servidor.DtColaborador) dtU;
+			System.out.println("Entro");
+			servidor.DtColaborador dtC = (servidor.DtColaborador) dtU;
+			System.out.println("Casteo");
 	%>
 
 
@@ -340,7 +342,7 @@
 					<div class="span left">
 						<span style="text-align: center"><h3>Seguidores</h3></span>
 						<%
-							servidor.DataList dtSeguidores = port.listarSeguidores(dtP.getNickName());
+							servidor.DataList dtSeguidores = port.listarSeguidores(dtC.getNickName());
 							List<servidor.DtUsuario> listaSeguidores = (ArrayList) dtSeguidores.getDatos();
 							
 							//ArrayList<DtUsuario> listaSeguidores = (ArrayList<DtUsuario>) Fabrica.getInstance().getICtrlUsuario()
@@ -363,7 +365,7 @@
 					<div class="span right">
 						<span style="text-align: center"><h3>Seguidos</h3></span>
 						<%
-							servidor.DataList dtSeguidos = port.listarSeguidos(dtP.getNickName());
+							servidor.DataList dtSeguidos = port.listarSeguidos(dtC.getNickName());
 							List<servidor.DtUsuario> listaSeguidos = (ArrayList) dtSeguidos.getDatos();
 							
 							//ArrayList<DtUsuario> listaSeguidos = (ArrayList<DtUsuario>) Fabrica.getInstance().getICtrlUsuario()

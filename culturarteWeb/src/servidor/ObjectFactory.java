@@ -54,27 +54,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link DtCategorias }
-     * 
-     */
-    public DtCategorias createDtCategorias() {
-        return new DtCategorias();
-    }
-
-    /**
      * Create an instance of {@link DataList }
      * 
      */
     public DataList createDataList() {
         return new DataList();
-    }
-
-    /**
-     * Create an instance of {@link ArrayList }
-     * 
-     */
-    public ArrayList createArrayList() {
-        return new ArrayList();
     }
 
     /**
