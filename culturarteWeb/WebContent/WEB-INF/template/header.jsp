@@ -94,16 +94,18 @@
 				<% if(usr != null){
 						if (esProponente){ %>
 				<ul class="navbar-nav ml-auto">
-					<li class="nav-item active"><a class="nav-link" href="/">Inicio
+					<li class="nav-item active"><a class="nav-link" href="/CulturarteWeb">Inicio
 							<span class="sr-only">(current)</span>
 					</a></li>
-					<li class="nav-item"><a class="nav-link" href="/usuarios">Usuarios</a></li>
-					<li class="nav-item"><a class="nav-link" href="/propuestas">Propuestas</a></li>
+					<li class="nav-item"><a class="nav-link" href="usuarios">Usuarios</a></li>
+					<li class="nav-item"><a class="nav-link" href="propuestas">Propuestas</a></li>
 					<li class="nav-item"><a class="nav-link" data-toggle="modal" href="#altaPropuesta">Registrar
 							propuesta</a></li>
-					<li class="nav-item"><a class="nav-link" href="/perfil"><%= usr.getNombre().concat(" - ").concat(usr.getEmail()) %></a></li>
+					<li class="nav-item"><a class="nav-link" href="perfil"><%= usr.getNombre().concat(" - ").concat(usr.getEmail()) %></a></li>
+
 					<li id="divisor" class="nav-item"><a class="nav-link"
-						href="/cerrar">Cerrar sesión</a></li>
+						href="cerrar">Cerrar sesión</a></li>
+
 				</ul>
 				<div class="inner-addon right-addon">
 					<input type="text" id="buscador" class="typeahead tt-query" autocomplete="off" spellcheck="false"><a class="fa fa-search" onclick="clicBuscar()"></a>
@@ -111,13 +113,13 @@
 				<% }else{ 
 							%>
 				<ul class="navbar-nav ml-auto">
-					<li class="nav-item active"><a class="nav-link" href="/">Inicio
+					<li class="nav-item active"><a class="nav-link" href="/CulturarteWeb">Inicio
 							<span class="sr-only">(current)</span>
 					</a></li>
-					<li class="nav-item"><a class="nav-link" href="/usuarios">Usuarios</a></li>
-					<li class="nav-item"><a class="nav-link" href="/propuestas">Propuestas</a></li>
-					<li class="nav-item"><a class="nav-link" href="/perfil"><%= usr.getNombre().concat(" - ").concat(usr.getEmail()) %></a></li>
-					<li class="nav-item"><a class="nav-link" href="/cerrar">Cerrar
+					<li class="nav-item"><a class="nav-link" href="usuarios">Usuarios</a></li>
+					<li class="nav-item"><a class="nav-link" href="propuestas">Propuestas</a></li>
+					<li class="nav-item"><a class="nav-link" href="perfil"><%= usr.getNombre().concat(" - ").concat(usr.getEmail()) %></a></li>
+					<li class="nav-item"><a class="nav-link" href="cerrar">Cerrar
 							sesión</a></li>
 				</ul>
 				<div class="inner-addon right-addon">
@@ -127,10 +129,11 @@
 				<% }else{ %>
 				<ul class="navbar-nav ml-auto">
 					<li id="space" class="nav-item active"><a class="nav-link"
-						href="/">Inicio <span class="sr-only">(current)</span>
+						href="/CulturarteWeb">Inicio <span class="sr-only">(current)</span>
 					</a></li>
-					<li class="nav-item"><a class="nav-link" href="/usuarios">Usuarios</a></li>
-					<li class="nav-item"><a class="nav-link" href="/propuestas">Propuestas</a></li>
+					<li class="nav-item"><a class="nav-link" href="usuarios">Usuarios</a></li>
+					<li class="nav-item"><a class="nav-link" href="propuestas">Propuestas</a></li>
+
 					<li class="nav-item"><a href="#registro" data-toggle="modal"
 						class="nav-link">Registrarse</a></li>
 					<li class="nav-item"><a href="#iniciarsesion"

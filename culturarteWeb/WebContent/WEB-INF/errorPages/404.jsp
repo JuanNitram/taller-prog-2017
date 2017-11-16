@@ -11,7 +11,8 @@
 	<p>
 	Ha ocurrido un error, no hemos encontrado la página que buscas.
 	Lamentamos los inconvenientes. CulturarteWeb!
-	</p><p>Presiona <a href="/">aqui</a> para volver al inicio.
+	</p></p><p>Presiona <a href="/CulturarteWeb">aqui</a> para volver al inicio.
+
 	</p>
 	</div>
 </BODY>

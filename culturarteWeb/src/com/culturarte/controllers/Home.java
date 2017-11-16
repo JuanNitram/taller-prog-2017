@@ -70,7 +70,7 @@ public class Home extends HttpServlet {
 				break;
 			case LOGIN_CORRECTO:
 				// manda una redirecci�n a otra URL (cambia la URL)
-				resp.sendRedirect("/perfil");
+				resp.sendRedirect("/CulturarteWeb/perfil");
 				System.out.println("Estoy en login_correcto en home");
 				break;
 		}
