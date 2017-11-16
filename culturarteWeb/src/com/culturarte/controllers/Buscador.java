@@ -1,6 +1,9 @@
 package com.culturarte.controllers;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -30,12 +33,19 @@ public class Buscador extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 
+				servidor.PublicadorService service =  new servidor.PublicadorService();
+				servidor.Publicador port = service.getPublicadorPort();
+		
 	        	response.setContentType("text/html;charset=UTF-8");
 	        	String propstr = "";
-	        	if (Fabrica.getInstance().getICtrlPropuesta().listarPropuestas().size() > 0){
-	        	    String[] propuestasString = new String[Fabrica.getInstance().getICtrlPropuesta().listarPropuestas().size()];
-	        	  for(int iter = 0; iter < Fabrica.getInstance().getICtrlPropuesta().listarPropuestas().size(); iter++){
-	        	    propuestasString[iter]=(Fabrica.getInstance().getICtrlPropuesta().listarPropuestas().get(iter).getTitulo());
+	        	
+	        	servidor.DataList Dt = port.listarPropuestas();
+				List<servidor.DtPropuesta> props = (ArrayList) Dt.getDatos();
+				
+	        	if (props.size() > 0){
+	        	    String[] propuestasString = new String[props.size()];
+	        	  for(int iter = 0; iter < props.size(); iter++){
+	        	    propuestasString[iter]=(props.get(iter).getTitulo());
 	        	  }
 	        	    StringBuffer sb = new StringBuffer();
 	        	     for(int i=0; i<propuestasString.length; i++){
@@ -49,8 +59,6 @@ public class Buscador extends HttpServlet {
 	            /* TODO output your response here.*/
 	            response.getWriter().write(propstr);
 	           System.out.println(propstr);
-	           
-	       
 	    	
 		}
 	

@@ -77,7 +77,6 @@ public class Login extends HttpServlet {
 			
 		} catch(Exception ex){		
 			nuevoEstado = EstadoSesion.LOGIN_INCORRECTO;
-			System.out.println("Estoy en la exception");
 		}
         
         objSesion.setAttribute("estado_sesion", nuevoEstado);
