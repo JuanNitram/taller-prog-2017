@@ -47,10 +47,12 @@ public class ControlAccesoFiltro implements Filter {
 		HttpServletRequest request = (HttpServletRequest) req; 
 		//System.out.println(request.getRequestURL().toString());
 
+		servidor.PublicadorService service =  new servidor.PublicadorService();
+		servidor.Publicador port = service.getPublicadorPort();
 		
 		String userAgent = request.getHeader("User-Agent");
 		
-		Fabrica.getInstance().getICtrlUsuario().registrarAcceso(request.getRemoteHost(),
+		port.registrarAcceso(request.getRemoteHost(),
 				request.getRequestURL().toString(),
 				userAgent.substring(0, userAgent.indexOf("/")),
 				userAgent.substring(userAgent.indexOf("(")+1, userAgent.indexOf(";"))

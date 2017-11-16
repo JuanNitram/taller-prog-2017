@@ -11,8 +11,12 @@
 	<p>
 	Ha ocurrido un error, no hemos encontrado la página que buscas.
 	Lamentamos los inconvenientes. CulturarteWeb!
+<<<<<<< HEAD
 	</p></p><p>Presiona <a href="/CulturarteWeb">aqui</a> para volver al inicio.
 
+=======
+	</p><p>Presiona <a href="/CulturarteWeb">aqui</a> para volver al inicio.
+>>>>>>> branch 'master' of https://gitlab.fing.edu.uy/tprog/tpgr05.git
 	</p>
 	</div>
 </BODY>

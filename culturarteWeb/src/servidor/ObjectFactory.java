@@ -33,9 +33,6 @@ public class ObjectFactory {
      * Create an instance of {@link DataList }
      * 
      */
-    public DataList createDataList() {
-        return new DataList();
-    }
 
     /**
      * Create an instance of {@link DtCategoria }
@@ -54,13 +51,11 @@ public class ObjectFactory {
     }
 
     /**
+<<<<<<< HEAD
      * Create an instance of {@link DtColaboracion }
      * 
      */
-    public DtColaboracion createDtColaboracion() {
-        return new DtColaboracion();
-    }
-
+ 
     /**
      * Create an instance of {@link DtCategorias }
      * 
@@ -71,10 +66,25 @@ public class ObjectFactory {
 
     /**
      * Create an instance of {@link DefaultMutableTreeNode }
+=======
+     * Create an instance of {@link DataList }
+>>>>>>> branch 'master' of https://gitlab.fing.edu.uy/tprog/tpgr05.git
      * 
      */
+
     public DefaultMutableTreeNode createDefaultMutableTreeNode() {
         return new DefaultMutableTreeNode();
+    }
+    public DataList createDataList() {
+        return new DataList();
+    }
+
+    /**
+     * Create an instance of {@link DtColaboracion }
+     * 
+     */
+    public DtColaboracion createDtColaboracion() {
+        return new DtColaboracion();
     }
 
     /**

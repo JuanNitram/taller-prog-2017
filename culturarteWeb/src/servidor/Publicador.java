@@ -37,10 +37,35 @@ public interface Publicador {
      * @return
      *     returns servidor.DataList
      */
+   
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns servidor.DtPropuesta
+     */
+
+
+    /**
+     * 
+     * @return
+     *     returns servidor.DataList
+     */
+    
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns servidor.DtColaboracion
+     */
+   
+
+    /**
+     * 
+     */
     @WebMethod
-    @WebResult(partName = "return")
-    @Action(input = "http://servidor/Publicador/listarColaboracionesRequest", output = "http://servidor/Publicador/listarColaboracionesResponse")
-    public DataList listarColaboraciones();
+    @Action(input = "http://servidor/Publicador/listarPropuestasRequest", output = "http://servidor/Publicador/listarPropuestasResponse")
+    public DataList listarPropuestas();
 
     /**
      * 
@@ -60,30 +85,27 @@ public interface Publicador {
      * @return
      *     returns servidor.DataList
      */
-    @WebMethod
-    @WebResult(partName = "return")
-    @Action(input = "http://servidor/Publicador/listarPropuestasRequest", output = "http://servidor/Publicador/listarPropuestasResponse")
-    public DataList listarPropuestas();
+
 
     /**
      * 
      * @param arg0
-     * @return
-     *     returns servidor.DtColaboracion
      */
-    @WebMethod
-    @WebResult(partName = "return")
-    @Action(input = "http://servidor/Publicador/infoColaboracionRequest", output = "http://servidor/Publicador/infoColaboracionResponse")
-    public DtColaboracion infoColaboracion(
-        @WebParam(name = "arg0", partName = "arg0")
-        int arg0);
+   
 
     /**
      * 
+     * @return
+     *     returns servidor.DefaultMutableTreeNode
      */
-    @WebMethod
-    @Action(input = "http://servidor/Publicador/finalizarCancelarColaboracionPropuestaRequest", output = "http://servidor/Publicador/finalizarCancelarColaboracionPropuestaResponse")
-    public void finalizarCancelarColaboracionPropuesta();
+ 
+
+    /**
+     * 
+     * @param arg1
+     * @param arg0
+     */
+   
 
     /**
      * 
@@ -97,10 +119,6 @@ public interface Publicador {
      * @return
      *     returns servidor.DataList
      */
-    @WebMethod
-    @WebResult(partName = "return")
-    @Action(input = "http://servidor/Publicador/listarProponentesRequest", output = "http://servidor/Publicador/listarProponentesResponse")
-    public DataList listarProponentes();
 
     /**
      * 
@@ -130,8 +148,54 @@ public interface Publicador {
 
     /**
      * 
+<<<<<<< HEAD
+=======
+     */
+    @WebMethod
+    @Action(input = "http://servidor/Publicador/finalizarCancelarColaboracionPropuestaRequest", output = "http://servidor/Publicador/finalizarCancelarColaboracionPropuestaResponse")
+    public void finalizarCancelarColaboracionPropuesta();
+
+    /**
+     * 
+     * @return
+     *     returns servidor.DataList
+     */
+    @WebMethod
+    @WebResult(partName = "return")
+    @Action(input = "http://servidor/Publicador/listarColaboracionesRequest", output = "http://servidor/Publicador/listarColaboracionesResponse")
+    public DataList listarColaboraciones();
+
+    /**
+     * 
+>>>>>>> branch 'master' of https://gitlab.fing.edu.uy/tprog/tpgr05.git
      * @param arg0
      * @return
+<<<<<<< HEAD
+=======
+     *     returns servidor.DtColaboracion
+     */
+    @WebMethod
+    @WebResult(partName = "return")
+    @Action(input = "http://servidor/Publicador/infoColaboracionRequest", output = "http://servidor/Publicador/infoColaboracionResponse")
+    public DtColaboracion infoColaboracion(
+        @WebParam(name = "arg0", partName = "arg0")
+        int arg0);
+
+    /**
+     * 
+     * @return
+     *     returns servidor.DataList
+     */
+    @WebMethod
+    @WebResult(partName = "return")
+    @Action(input = "http://servidor/Publicador/listarProponentesRequest", output = "http://servidor/Publicador/listarProponentesResponse")
+    public DataList listarProponentes();
+
+    /**
+     * 
+     * @param arg0
+     * @return
+>>>>>>> branch 'master' of https://gitlab.fing.edu.uy/tprog/tpgr05.git
      *     returns servidor.DataList
      */
     @WebMethod
@@ -183,6 +247,14 @@ public interface Publicador {
     @WebResult(partName = "return")
     @Action(input = "http://servidor/Publicador/listarCategoriasRequest", output = "http://servidor/Publicador/listarCategoriasResponse")
     public DtCategorias listarCategorias();
+
+    /**
+     * 
+     * @param arg2
+     * @param arg1
+     * @param arg0
+     */
+   
 
     /**
      * 
@@ -304,20 +376,11 @@ public interface Publicador {
      * 
      * @param arg3
      * @param arg2
+<<<<<<< HEAD
      * @param arg1
      * @param arg0
      */
-    @WebMethod
-    @Action(input = "http://servidor/Publicador/pagarColabTransferenciaRequest", output = "http://servidor/Publicador/pagarColabTransferenciaResponse")
-    public void pagarColabTransferencia(
-        @WebParam(name = "arg0", partName = "arg0")
-        float arg0,
-        @WebParam(name = "arg1", partName = "arg1")
-        String arg1,
-        @WebParam(name = "arg2", partName = "arg2")
-        String arg2,
-        @WebParam(name = "arg3", partName = "arg3")
-        String arg3);
+   
 
     /**
      * 
@@ -328,21 +391,7 @@ public interface Publicador {
      * @param arg1
      * @param arg0
      */
-    @WebMethod
-    @Action(input = "http://servidor/Publicador/pagarColabTarjetaRequest", output = "http://servidor/Publicador/pagarColabTarjetaResponse")
-    public void pagarColabTarjeta(
-        @WebParam(name = "arg0", partName = "arg0")
-        float arg0,
-        @WebParam(name = "arg1", partName = "arg1")
-        String arg1,
-        @WebParam(name = "arg2", partName = "arg2")
-        String arg2,
-        @WebParam(name = "arg3", partName = "arg3")
-        TTarjeta arg3,
-        @WebParam(name = "arg4", partName = "arg4")
-        XMLGregorianCalendar arg4,
-        @WebParam(name = "arg5", partName = "arg5")
-        String arg5);
+
 
     /**
      * 
@@ -666,5 +715,46 @@ public interface Publicador {
         float arg8,
         @WebParam(name = "arg9", partName = "arg9")
         String arg9);
+    /**
+     * @param arg5
+     * @param arg4
+     * @param arg1
+     * @param arg0
+     */
+    @WebMethod
+    @Action(input = "http://servidor/Publicador/pagarColabTarjetaRequest", output = "http://servidor/Publicador/pagarColabTarjetaResponse")
+    public void pagarColabTarjeta(
+        @WebParam(name = "arg0", partName = "arg0")
+        float arg0,
+        @WebParam(name = "arg1", partName = "arg1")
+        String arg1,
+        @WebParam(name = "arg2", partName = "arg2")
+        String arg2,
+        @WebParam(name = "arg3", partName = "arg3")
+        TTarjeta arg3,
+        @WebParam(name = "arg4", partName = "arg4")
+        XMLGregorianCalendar arg4,
+        @WebParam(name = "arg5", partName = "arg5")
+        String arg5);
+
+    /**
+     * 
+     * @param arg3
+     * @param arg2
+     * @param arg1
+     * @param arg0
+     */
+    @WebMethod
+    @Action(input = "http://servidor/Publicador/pagarColabTransferenciaRequest", output = "http://servidor/Publicador/pagarColabTransferenciaResponse")
+    public void pagarColabTransferencia(
+        @WebParam(name = "arg0", partName = "arg0")
+        float arg0,
+        @WebParam(name = "arg1", partName = "arg1")
+        String arg1,
+        @WebParam(name = "arg2", partName = "arg2")
+        String arg2,
+        @WebParam(name = "arg3", partName = "arg3")
+        String arg3);
+
 
 }
