@@ -13,20 +13,74 @@
 <%@page import="dataTypes.DtColaborador"%>
 <%@page import="dataTypes.DtColaboracion"%>
 <%@page import="com.culturarte.controllers.Login"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
+
 <%
 	servidor.PublicadorService service =  new servidor.PublicadorService();
 	servidor.Publicador port = service.getPublicadorPort();
 	servidor.DtPropuesta propuesta = (servidor.DtPropuesta) (request.getAttribute("dtProp"));
 %>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<jsp:include page="/WEB-INF/template/head.jsp" />
-<link href="/media/styles/favorito.css" rel="stylesheet">
-
+	<jsp:include page="/WEB-INF/template/head.jsp" />
+	<link rel="stylesheet" type="text/css" href="media/styles/favorito.css">
 <title><%=propuesta.getTitulo()%> | Culturarte</title>
 </head>
+<script type="text/javascript">
+$(document).ready(function(){
+	$('#fav').click(function(){
+		if ($('#span').hasClass("fa-star-o")) {
+			$.ajax({
+		        type: 'GET',
+		        url: 'Favorito',
+		        data: {
+		        	action: 'agregar',
+		        	tituloPropu : $('#favorito').data('titulop'),
+		        },
+		        success: function() {
+		        	$('.click').addClass('active')
+		    		$('.click').addClass('active-2')
+		    		setTimeout(function() {
+		    			$('#span').addClass('fa-star')
+		    			$('#span').removeClass('fa-star-o')
+		    		}, 150)
+		    		setTimeout(function() {
+		    			$('.click').addClass('active-3')
+		    		}, 150)
+		    		$('.info').addClass('info-tog')
+		    		setTimeout(function(){
+		    			$('.info').removeClass('info-tog')
+		    		},1000)
+		        }
+		
+		    });
+		}else{
+			$.ajax({
+		        type: 'GET',
+		        url: 'Favorito',
+		        data: {
+		        	action: 'eliminar',
+		        	tituloPropu : $('#favorito').data('titulop'),
+		        },
+		        success: function() {
+		        	$('.click').removeClass('active')
+		    		setTimeout(function() {
+		    			$('.click').removeClass('active-2')
+		    		}, 30)
+		    			$('.click').removeClass('active-3')
+		    		setTimeout(function() {
+		    			$('#span').removeClass('fa-star')
+		    			$('#span').addClass('fa-star-o')
+		    		}, 15)
+		        }
+		
+		    });	
+		}
+	});
+
+});
+</script>
+
 
 <body>
 	
@@ -40,29 +94,21 @@
 					<div class="span8 offset1">
 						<div class="panel panel-primary">
 							<div class="panel-heading">
-								<h3 id="titulo" class="panel-title text-color"  data-titulo="<%=propuesta.getTitulo()%>" ><%=propuesta.getTitulo()%>
+								<h3 id="titulo" class="panel-title text-color"   ><%=propuesta.getTitulo()%>
 									(<%=propuesta.getCategoria().getNombre()%>)
 								</h3>
+								<div id="favorito" data-titulop="<%=propuesta.getTitulo()%>">
+								<% 
+								if (port.esFavorita((String)request.getAttribute("user"), propuesta.getTitulo())){ %> 
+								<div id="fav" class="click active active-2 active-3"><span id="span" class="fa fa-star">
+			 						</span><div class="ring"></div><div class="ring2"></div></div>
 								
-								<% if(!request.getAttribute("user").equals("null")){
-									 if(request.getAttribute("esFavorita").equals("NO")){ %>
-										<div class="click">
-											<span id="span" class="fa fa-star-o"></span>
-											<div class="ring"></div>
-											<div class="ring2"></div>
-											<p class="info">Agregado a favorito</p>
-										</div>
-									<%}else{ %>
-									<div class="click active active-2 active-3">
-										<span id="span" class="fa fa-star"></span>
-										<div class="ring"></div>
-										<div class="ring2"></div>
-										<p class="info">Agregado a favorito</p>
-									</div>
-									<%} %>
-								<%}%>
-										
-										
+								<%}else{ %>	
+			 						<div id="fav" class="click"><span id="span" class="fa fa-star-o"></span>
+											<div class="ring"></div><div class="ring2"></div></div>
+								<% }%>
+								
+								</div>
 									
 							</div>
 							<div class="panel-body">
@@ -99,7 +145,7 @@
 												<tr>
 													<td>Fecha de publicación:</td>
 													<td><%	if(propuesta.getFechaPublicacion()!=null) { %>
-															<%= new SimpleDateFormat("dd/MM/yyyy").format(propuesta.getFechaPublicacion()) %>
+															<!--  %= //new SimpleDateFormat("dd/MM/yyyy").format(propuesta.getFechaPublicacion()) %-->
 														<%	} else { %>
 																<blackquote><cite>No se ha publicado</cite></blackquote>
 														<%	} %>
@@ -107,7 +153,7 @@
 												</tr>
 												<tr>
 													<td>Fecha prevista:</td>
-													<td><%=new SimpleDateFormat("dd/MM/yyyy").format(propuesta.getFechaRealizacion())%></td>
+												<!--	<td>  >%=new SimpleDateFormat("dd/MM/yyyy").format(propuesta.getFechaRealizacion())%></td>-->
 												</tr>
 												<tr>
 													<td>Precio entrada:</td>
@@ -312,13 +358,15 @@
 			</div>
 		</div>
 	</div>
+	</div>
 
 	<script src="/media/styles/userProfile.css"></script>
 	<div class="footer">
 		<jsp:include page="/WEB-INF/template/footer.jsp" />
 	</div>
-	
+
 </body>
+
 <style>
 .left {
 	float: left;
@@ -348,14 +396,16 @@ img {
 	}
 }
 </style>
+
 <script>
 		function goBack() {
 			window.history.back();
 		};
 		$('document').ready(function(){
+			
 			$('#btn_comentar').click(function(){
 				$.ajax({
-					type : 'POST',
+					type : 'GET',
 					url : 'OperacionesPropuesta',
 					data : {
 						action : 'agregarComentario',
@@ -370,7 +420,7 @@ img {
 			});
 			$('#btn_colaborar').click(function(){
 				$.ajax({
-					type : 'POST',
+					type : 'GET',
 					url : 'OperacionesPropuesta',
 					data : {
 						action : 'registrarColaboracion',
@@ -384,54 +434,11 @@ img {
 					}
 				});
 			});
+		    
 		});
 	</script>
 	
-<% if(!request.getAttribute("user").equals("null")){ %>
-<script>
-$(document).ready(function(){
-	$('.click').click(function() {
-		$.ajax({
-			type: 'GET',
-			data: {
-				tituloProp : $('#titulo').data("tituloProp"),
-				
-				accion: "agregar",
-			},
-			url : 'Favorito',
-			success : function(){
-				if ($('#span').hasClass("fa-star")) {
-					$('.click').removeClass('active')
-				setTimeout(function() {
-					$('.click').removeClass('active-2')
-				}, 30)
-					$('.click').removeClass('active-3')
-				setTimeout(function() {
-					$('#span').removeClass('fa-star')
-					$('#span').addClass('fa-star-o')
-				}, 15)
-			} else {
-				$('.click').addClass('active')
-				$('.click').addClass('active-2')
-				setTimeout(function() {
-					$('#span').addClass('fa-star')
-					$('#span').removeClass('fa-star-o')
-				}, 150)
-				setTimeout(function() {
-					$('.click').addClass('active-3')
-				}, 150)
-				$('.info').addClass('info-tog')
-				setTimeout(function(){
-					$('.info').removeClass('info-tog')
-				},1000)
-			}
-			}
-		});
-		
-	});
-	
-});
-</script>
-<% } %>
+
+
 
 </html>

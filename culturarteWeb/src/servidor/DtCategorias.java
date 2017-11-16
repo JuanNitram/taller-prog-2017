@@ -7,20 +7,20 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para dtCategorias complex type.
+ * <p>Java class for dtCategorias complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected         content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="dtCategorias">
- *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;sequence>
- *         &lt;element name="raiz" type="{http://servidor/}defaultMutableTreeNode" minOccurs="0"/>
- *       &lt;/sequence>
- *     &lt;/restriction>
- *   &lt;/complexContent>
- * &lt;/complexType>
+ * &lt;complexType name="dtCategorias"&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *       &lt;sequence&gt;
+ *         &lt;element name="raiz" type="{http://servidor/}defaultMutableTreeNode" minOccurs="0"/&gt;
+ *       &lt;/sequence&gt;
+ *     &lt;/restriction&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
  * </pre>
  * 
  * 
@@ -34,7 +34,7 @@ public class DtCategorias {
     protected DefaultMutableTreeNode raiz;
 
     /**
-     * Obtiene el valor de la propiedad raiz.
+     * Gets the value of the raiz property.
      * 
      * @return
      *     possible object is
@@ -46,7 +46,7 @@ public class DtCategorias {
     }
 
     /**
-     * Define el valor de la propiedad raiz.
+     * Sets the value of the raiz property.
      * 
      * @param value
      *     allowed object is

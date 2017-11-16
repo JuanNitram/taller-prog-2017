@@ -12,34 +12,34 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 
 /**
- * <p>Clase Java para dtPropuesta complex type.
+ * <p>Java class for dtPropuesta complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected         content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="dtPropuesta">
- *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;sequence>
- *         &lt;element name="nickProponente" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="titulo" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="descripcion" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="categoria" type="{http://servidor/}dtCategoria" minOccurs="0"/>
- *         &lt;element name="lugar" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="fechaRealizacion" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
- *         &lt;element name="fechaPublicacion" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
- *         &lt;element name="fechaExtension" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
- *         &lt;element name="montoRequerido" type="{http://www.w3.org/2001/XMLSchema}float"/>
- *         &lt;element name="montoReunido" type="{http://www.w3.org/2001/XMLSchema}float"/>
- *         &lt;element name="tipoRetorno" type="{http://servidor/}tRetorno" minOccurs="0"/>
- *         &lt;element name="rutaImg" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="precioEntrada" type="{http://www.w3.org/2001/XMLSchema}float"/>
- *         &lt;element name="estado" type="{http://servidor/}tEstado" minOccurs="0"/>
- *         &lt;element name="favoritos" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded" minOccurs="0"/>
- *       &lt;/sequence>
- *     &lt;/restriction>
- *   &lt;/complexContent>
- * &lt;/complexType>
+ * &lt;complexType name="dtPropuesta"&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *       &lt;sequence&gt;
+ *         &lt;element name="nickProponente" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;element name="titulo" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;element name="descripcion" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;element name="categoria" type="{http://servidor/}dtCategoria" minOccurs="0"/&gt;
+ *         &lt;element name="lugar" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;element name="fechaRealizacion" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/&gt;
+ *         &lt;element name="fechaPublicacion" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/&gt;
+ *         &lt;element name="fechaExtension" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/&gt;
+ *         &lt;element name="montoRequerido" type="{http://www.w3.org/2001/XMLSchema}float"/&gt;
+ *         &lt;element name="montoReunido" type="{http://www.w3.org/2001/XMLSchema}float"/&gt;
+ *         &lt;element name="tipoRetorno" type="{http://servidor/}tRetorno" minOccurs="0"/&gt;
+ *         &lt;element name="rutaImg" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;element name="precioEntrada" type="{http://www.w3.org/2001/XMLSchema}float"/&gt;
+ *         &lt;element name="estado" type="{http://servidor/}tEstado" minOccurs="0"/&gt;
+ *         &lt;element name="favoritos" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded" minOccurs="0"/&gt;
+ *       &lt;/sequence&gt;
+ *     &lt;/restriction&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
  * </pre>
  * 
  * 
@@ -87,7 +87,7 @@ public class DtPropuesta {
     protected List<String> favoritos;
 
     /**
-     * Obtiene el valor de la propiedad nickProponente.
+     * Gets the value of the nickProponente property.
      * 
      * @return
      *     possible object is
@@ -99,7 +99,7 @@ public class DtPropuesta {
     }
 
     /**
-     * Define el valor de la propiedad nickProponente.
+     * Sets the value of the nickProponente property.
      * 
      * @param value
      *     allowed object is
@@ -111,7 +111,7 @@ public class DtPropuesta {
     }
 
     /**
-     * Obtiene el valor de la propiedad titulo.
+     * Gets the value of the titulo property.
      * 
      * @return
      *     possible object is
@@ -123,7 +123,7 @@ public class DtPropuesta {
     }
 
     /**
-     * Define el valor de la propiedad titulo.
+     * Sets the value of the titulo property.
      * 
      * @param value
      *     allowed object is
@@ -135,7 +135,7 @@ public class DtPropuesta {
     }
 
     /**
-     * Obtiene el valor de la propiedad descripcion.
+     * Gets the value of the descripcion property.
      * 
      * @return
      *     possible object is
@@ -147,7 +147,7 @@ public class DtPropuesta {
     }
 
     /**
-     * Define el valor de la propiedad descripcion.
+     * Sets the value of the descripcion property.
      * 
      * @param value
      *     allowed object is
@@ -159,7 +159,7 @@ public class DtPropuesta {
     }
 
     /**
-     * Obtiene el valor de la propiedad categoria.
+     * Gets the value of the categoria property.
      * 
      * @return
      *     possible object is
@@ -171,7 +171,7 @@ public class DtPropuesta {
     }
 
     /**
-     * Define el valor de la propiedad categoria.
+     * Sets the value of the categoria property.
      * 
      * @param value
      *     allowed object is
@@ -183,7 +183,7 @@ public class DtPropuesta {
     }
 
     /**
-     * Obtiene el valor de la propiedad lugar.
+     * Gets the value of the lugar property.
      * 
      * @return
      *     possible object is
@@ -195,7 +195,7 @@ public class DtPropuesta {
     }
 
     /**
-     * Define el valor de la propiedad lugar.
+     * Sets the value of the lugar property.
      * 
      * @param value
      *     allowed object is
@@ -207,7 +207,7 @@ public class DtPropuesta {
     }
 
     /**
-     * Obtiene el valor de la propiedad fechaRealizacion.
+     * Gets the value of the fechaRealizacion property.
      * 
      * @return
      *     possible object is
@@ -219,7 +219,7 @@ public class DtPropuesta {
     }
 
     /**
-     * Define el valor de la propiedad fechaRealizacion.
+     * Sets the value of the fechaRealizacion property.
      * 
      * @param value
      *     allowed object is
@@ -231,7 +231,7 @@ public class DtPropuesta {
     }
 
     /**
-     * Obtiene el valor de la propiedad fechaPublicacion.
+     * Gets the value of the fechaPublicacion property.
      * 
      * @return
      *     possible object is
@@ -243,7 +243,7 @@ public class DtPropuesta {
     }
 
     /**
-     * Define el valor de la propiedad fechaPublicacion.
+     * Sets the value of the fechaPublicacion property.
      * 
      * @param value
      *     allowed object is
@@ -255,7 +255,7 @@ public class DtPropuesta {
     }
 
     /**
-     * Obtiene el valor de la propiedad fechaExtension.
+     * Gets the value of the fechaExtension property.
      * 
      * @return
      *     possible object is
@@ -267,7 +267,7 @@ public class DtPropuesta {
     }
 
     /**
-     * Define el valor de la propiedad fechaExtension.
+     * Sets the value of the fechaExtension property.
      * 
      * @param value
      *     allowed object is
@@ -279,7 +279,7 @@ public class DtPropuesta {
     }
 
     /**
-     * Obtiene el valor de la propiedad montoRequerido.
+     * Gets the value of the montoRequerido property.
      * 
      */
     public float getMontoRequerido() {
@@ -287,7 +287,7 @@ public class DtPropuesta {
     }
 
     /**
-     * Define el valor de la propiedad montoRequerido.
+     * Sets the value of the montoRequerido property.
      * 
      */
     public void setMontoRequerido(float value) {
@@ -295,7 +295,7 @@ public class DtPropuesta {
     }
 
     /**
-     * Obtiene el valor de la propiedad montoReunido.
+     * Gets the value of the montoReunido property.
      * 
      */
     public float getMontoReunido() {
@@ -303,7 +303,7 @@ public class DtPropuesta {
     }
 
     /**
-     * Define el valor de la propiedad montoReunido.
+     * Sets the value of the montoReunido property.
      * 
      */
     public void setMontoReunido(float value) {
@@ -311,7 +311,7 @@ public class DtPropuesta {
     }
 
     /**
-     * Obtiene el valor de la propiedad tipoRetorno.
+     * Gets the value of the tipoRetorno property.
      * 
      * @return
      *     possible object is
@@ -323,7 +323,7 @@ public class DtPropuesta {
     }
 
     /**
-     * Define el valor de la propiedad tipoRetorno.
+     * Sets the value of the tipoRetorno property.
      * 
      * @param value
      *     allowed object is
@@ -335,7 +335,7 @@ public class DtPropuesta {
     }
 
     /**
-     * Obtiene el valor de la propiedad rutaImg.
+     * Gets the value of the rutaImg property.
      * 
      * @return
      *     possible object is
@@ -347,7 +347,7 @@ public class DtPropuesta {
     }
 
     /**
-     * Define el valor de la propiedad rutaImg.
+     * Sets the value of the rutaImg property.
      * 
      * @param value
      *     allowed object is
@@ -359,7 +359,7 @@ public class DtPropuesta {
     }
 
     /**
-     * Obtiene el valor de la propiedad precioEntrada.
+     * Gets the value of the precioEntrada property.
      * 
      */
     public float getPrecioEntrada() {
@@ -367,7 +367,7 @@ public class DtPropuesta {
     }
 
     /**
-     * Define el valor de la propiedad precioEntrada.
+     * Sets the value of the precioEntrada property.
      * 
      */
     public void setPrecioEntrada(float value) {
@@ -375,7 +375,7 @@ public class DtPropuesta {
     }
 
     /**
-     * Obtiene el valor de la propiedad estado.
+     * Gets the value of the estado property.
      * 
      * @return
      *     possible object is
@@ -387,7 +387,7 @@ public class DtPropuesta {
     }
 
     /**
-     * Define el valor de la propiedad estado.
+     * Sets the value of the estado property.
      * 
      * @param value
      *     allowed object is

@@ -7,21 +7,21 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para dtPago complex type.
+ * <p>Java class for dtPago complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected         content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="dtPago">
- *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;sequence>
- *         &lt;element name="monto" type="{http://www.w3.org/2001/XMLSchema}float"/>
- *         &lt;element name="nombreTitular" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *       &lt;/sequence>
- *     &lt;/restriction>
- *   &lt;/complexContent>
- * &lt;/complexType>
+ * &lt;complexType name="dtPago"&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *       &lt;sequence&gt;
+ *         &lt;element name="monto" type="{http://www.w3.org/2001/XMLSchema}float"/&gt;
+ *         &lt;element name="nombreTitular" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *       &lt;/sequence&gt;
+ *     &lt;/restriction&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
  * </pre>
  * 
  * 
@@ -37,7 +37,7 @@ public abstract class DtPago {
     protected String nombreTitular;
 
     /**
-     * Obtiene el valor de la propiedad monto.
+     * Gets the value of the monto property.
      * 
      */
     public float getMonto() {
@@ -45,7 +45,7 @@ public abstract class DtPago {
     }
 
     /**
-     * Define el valor de la propiedad monto.
+     * Sets the value of the monto property.
      * 
      */
     public void setMonto(float value) {
@@ -53,7 +53,7 @@ public abstract class DtPago {
     }
 
     /**
-     * Obtiene el valor de la propiedad nombreTitular.
+     * Gets the value of the nombreTitular property.
      * 
      * @return
      *     possible object is
@@ -65,7 +65,7 @@ public abstract class DtPago {
     }
 
     /**
-     * Define el valor de la propiedad nombreTitular.
+     * Sets the value of the nombreTitular property.
      * 
      * @param value
      *     allowed object is

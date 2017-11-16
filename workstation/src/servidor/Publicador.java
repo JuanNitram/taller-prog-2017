@@ -270,6 +270,16 @@ public class Publicador {
 	public void agregarComentario(String nickname, String titulo, String comentario) {
 		Fabrica.getInstance().getICtrlPropuesta().agregarComentario(nickname, titulo, comentario);
 	}
+	
+	@WebMethod
+	public void agregarPropuestaFavorita(String nickname, String propuesta) {
+		Fabrica.getInstance().getICtrlPropuesta().agregarUsuarioFavorito(nickname, propuesta);
+	}
+	
+	@WebMethod
+	public void eliminarUsuarioFavorito(String nickname, String propuesta){
+		Fabrica.getInstance().getICtrlPropuesta().eliminarUsuarioFavorito(nickname, propuesta);
+	}
 
 	@WebMethod
 	public DataList listarComentarios(String titulo) {

@@ -188,7 +188,7 @@
 									
 							 	  if(favoritas.contains(Login.getUsuarioLogueado(request).getNickName())){
 							 		  if(favoritas.size()>1){
-							 			  out.print("Tu y "+ favoritas.size()+ " personas mas han marcado esta propuesta como favorito.");
+							 			  out.print("Tu y "+ (favoritas.size() -1) + " personas mas han marcado esta propuesta como favorito.");
 							 		  }else
 							 			  out.print("Has marcado esta propuesta como favorito");
 							 	  }else{

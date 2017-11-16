@@ -10,23 +10,23 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para dtProponente complex type.
+ * <p>Java class for dtProponente complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected         content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="dtProponente">
- *   &lt;complexContent>
- *     &lt;extension base="{http://servidor/}dtUsuario">
- *       &lt;sequence>
- *         &lt;element name="direccion" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="biografia" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="linkSitio" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="propuestas" type="{http://servidor/}dtPropuesta" maxOccurs="unbounded" minOccurs="0"/>
- *       &lt;/sequence>
- *     &lt;/extension>
- *   &lt;/complexContent>
- * &lt;/complexType>
+ * &lt;complexType name="dtProponente"&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;extension base="{http://servidor/}dtUsuario"&gt;
+ *       &lt;sequence&gt;
+ *         &lt;element name="direccion" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;element name="biografia" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;element name="linkSitio" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
+ *         &lt;element name="propuestas" type="{http://servidor/}dtPropuesta" maxOccurs="unbounded" minOccurs="0"/&gt;
+ *       &lt;/sequence&gt;
+ *     &lt;/extension&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
  * </pre>
  * 
  * 
@@ -49,7 +49,7 @@ public class DtProponente
     protected List<DtPropuesta> propuestas;
 
     /**
-     * Obtiene el valor de la propiedad direccion.
+     * Gets the value of the direccion property.
      * 
      * @return
      *     possible object is
@@ -61,7 +61,7 @@ public class DtProponente
     }
 
     /**
-     * Define el valor de la propiedad direccion.
+     * Sets the value of the direccion property.
      * 
      * @param value
      *     allowed object is
@@ -73,7 +73,7 @@ public class DtProponente
     }
 
     /**
-     * Obtiene el valor de la propiedad biografia.
+     * Gets the value of the biografia property.
      * 
      * @return
      *     possible object is
@@ -85,7 +85,7 @@ public class DtProponente
     }
 
     /**
-     * Define el valor de la propiedad biografia.
+     * Sets the value of the biografia property.
      * 
      * @param value
      *     allowed object is
@@ -97,7 +97,7 @@ public class DtProponente
     }
 
     /**
-     * Obtiene el valor de la propiedad linkSitio.
+     * Gets the value of the linkSitio property.
      * 
      * @return
      *     possible object is
@@ -109,7 +109,7 @@ public class DtProponente
     }
 
     /**
-     * Define el valor de la propiedad linkSitio.
+     * Sets the value of the linkSitio property.
      * 
      * @param value
      *     allowed object is

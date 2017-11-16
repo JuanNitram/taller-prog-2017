@@ -1,11 +1,16 @@
 package com.culturarte.controllers;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.culturarte.model.EstadoSesion;
 
@@ -31,16 +36,27 @@ public class Favorito extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		String usuario = Login.getUsuarioLogueado(request).getNickName();
+			
+		servidor.PublicadorService service =  new servidor.PublicadorService();
+		servidor.Publicador port = service.getPublicadorPort();
+		String propuesta = (String)request.getParameter("tituloPropu");
+		System.out.println("AGREGAR FAVORITO CABEZA" + ((String)request.getParameter("action")));
 	
-			if (request.getSession().getAttribute("estado_sesion") == EstadoSesion.LOGIN_CORRECTO){
-				String propuesta =request.getParameter("tituloProp");
-				if (request.getParameter("esFavorita").equals("NO"))
-					Fabrica.getInstance().getICtrlPropuesta().agregarUsuarioFavorito(Login.getUsuarioLogueado(request).getNickName(), propuesta);
-				else if (request.getParameter("esFavorita").equals("SI"))
-					Fabrica.getInstance().getICtrlPropuesta().eliminarUsuarioFavorito(Login.getUsuarioLogueado(request).getNickName(), propuesta);	
+			
+			if(((String)request.getParameter("action")).equals("agregar")){
+				port.agregarPropuestaFavorita(usuario, propuesta);
+				System.out.println("Voy a agregar a favorito");
+			}else{
+				port.eliminarUsuarioFavorito(usuario, propuesta);
+				System.out.println("Voy a quitar a favorito");
 			}
+		}
 		
-	}
+	
+		
+		
+	
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

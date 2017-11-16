@@ -30,11 +30,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link DtPropuesta }
+     * Create an instance of {@link DataList }
      * 
      */
-    public DtPropuesta createDtPropuesta() {
-        return new DtPropuesta();
+    public DataList createDataList() {
+        return new DataList();
     }
 
     /**
@@ -54,6 +54,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link DtColaboracion }
+     * 
+     */
+    public DtColaboracion createDtColaboracion() {
+        return new DtColaboracion();
+    }
+
+    /**
      * Create an instance of {@link DtCategorias }
      * 
      */
@@ -62,27 +70,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link DataList }
+     * Create an instance of {@link DefaultMutableTreeNode }
      * 
      */
-    public DataList createDataList() {
-        return new DataList();
-    }
-
-    /**
-     * Create an instance of {@link ArrayList }
-     * 
-     */
-    public ArrayList createArrayList() {
-        return new ArrayList();
-    }
-
-    /**
-     * Create an instance of {@link DtColaboracion }
-     * 
-     */
-    public DtColaboracion createDtColaboracion() {
-        return new DtColaboracion();
+    public DefaultMutableTreeNode createDefaultMutableTreeNode() {
+        return new DefaultMutableTreeNode();
     }
 
     /**
@@ -94,11 +86,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link DefaultMutableTreeNode }
+     * Create an instance of {@link DtPropuesta }
      * 
      */
-    public DefaultMutableTreeNode createDefaultMutableTreeNode() {
-        return new DefaultMutableTreeNode();
+    public DtPropuesta createDtPropuesta() {
+        return new DtPropuesta();
     }
 
     /**

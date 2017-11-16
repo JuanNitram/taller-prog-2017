@@ -55,9 +55,11 @@ public class ConsultaPropuesta extends HttpServlet {
 			
 			if(Login.getUsuarioLogueado(request) != null && port.esFavorita(Login.getUsuarioLogueado(request).getNickName(), propuesta.getTitulo())){
 				request.setAttribute("esFavorita", "SI");
+				System.out.println("Es favorita si");
 			}
 			else{
 				request.setAttribute("esFavorita", "NO");
+				System.out.println("Es favorita No");
 			}
 
 			request.getRequestDispatcher("/WEB-INF/propuestas/consultaPropuesta.jsp").forward(request, response);

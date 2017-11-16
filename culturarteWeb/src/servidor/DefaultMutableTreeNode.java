@@ -7,21 +7,21 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para defaultMutableTreeNode complex type.
+ * <p>Java class for defaultMutableTreeNode complex type.
  * 
- * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
+ * <p>The following schema fragment specifies the expected         content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="defaultMutableTreeNode">
- *   &lt;complexContent>
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;sequence>
- *         &lt;element name="allowsChildren" type="{http://www.w3.org/2001/XMLSchema}boolean"/>
- *         &lt;element name="userObject" type="{http://www.w3.org/2001/XMLSchema}anyType" minOccurs="0"/>
- *       &lt;/sequence>
- *     &lt;/restriction>
- *   &lt;/complexContent>
- * &lt;/complexType>
+ * &lt;complexType name="defaultMutableTreeNode"&gt;
+ *   &lt;complexContent&gt;
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
+ *       &lt;sequence&gt;
+ *         &lt;element name="allowsChildren" type="{http://www.w3.org/2001/XMLSchema}boolean"/&gt;
+ *         &lt;element name="userObject" type="{http://www.w3.org/2001/XMLSchema}anyType" minOccurs="0"/&gt;
+ *       &lt;/sequence&gt;
+ *     &lt;/restriction&gt;
+ *   &lt;/complexContent&gt;
+ * &lt;/complexType&gt;
  * </pre>
  * 
  * 
@@ -37,7 +37,7 @@ public class DefaultMutableTreeNode {
     protected Object userObject;
 
     /**
-     * Obtiene el valor de la propiedad allowsChildren.
+     * Gets the value of the allowsChildren property.
      * 
      */
     public boolean isAllowsChildren() {
@@ -45,7 +45,7 @@ public class DefaultMutableTreeNode {
     }
 
     /**
-     * Define el valor de la propiedad allowsChildren.
+     * Sets the value of the allowsChildren property.
      * 
      */
     public void setAllowsChildren(boolean value) {
@@ -53,7 +53,7 @@ public class DefaultMutableTreeNode {
     }
 
     /**
-     * Obtiene el valor de la propiedad userObject.
+     * Gets the value of the userObject property.
      * 
      * @return
      *     possible object is
@@ -65,7 +65,7 @@ public class DefaultMutableTreeNode {
     }
 
     /**
-     * Define el valor de la propiedad userObject.
+     * Sets the value of the userObject property.
      * 
      * @param value
      *     allowed object is
