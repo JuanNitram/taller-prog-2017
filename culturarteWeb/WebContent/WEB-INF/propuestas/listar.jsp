@@ -24,10 +24,10 @@
 <!doctype html>
 <html>
 <head>
-<link href="/media/styles/shop-homepage.css" rel="stylesheet">
-<script src="/recursos/jquery/jquery.js"></script>
-<script src="/recursos/bootstrap/css/bootstrap.css"></script>
-<link href="recursos/bootstrap/css/bootstrap.css" rel="stylesheet">
+<link href="/CulturarteWeb/media/styles/shop-homepage.css" rel="stylesheet">
+<script src="/CulturarteWeb/recursos/jquery/jquery.js"></script>
+<script src="/CulturarteWeb/recursos/bootstrap/css/bootstrap.css"></script>
+<link href="/CulturarteWeb/recursos/bootstrap/css/bootstrap.css" rel="stylesheet">
 <style>
 .scrollable-menu {
     height: auto;
@@ -107,12 +107,12 @@
 									Propuestas.vaciarCategoriasList();
 									Propuestas.recursivoTree(raiz);
 								%>
-								<li><a href="propuestas">Todos</a></li>
+								<li><a href="/CulturarteWeb/propuestas">Todos</a></li>
 								<%
 									for (TreeNode s : Propuestas.getCategoriasList()) {
 								%>
 
-								<li><a href="propuestas?filtro=<%=s.toString()%>"><%=s.toString()%></a></li>
+								<li><a href="/CulturarteWeb/propuestas?filtro=<%=s.toString()%>"><%=s.toString()%></a></li>
 								<%
 									}
 								%>
@@ -142,12 +142,12 @@
 							<%
 								if (propuesta.getRutaImg() == "") {
 							%>
-							<img class="card-img-top" src="\media\images\no-image.png" />
+							<img class="card-img-top" src="/CulturarteWeb\media\images\no-image.png" />
 							<%
 								} else {
 							%>
 							<img class="card-img-top"
-								src="/media/images/imagenes/propuestas/<%=propuesta.getRutaImg()%>.jpg" />
+								src="/CulturarteWeb/media/images/imagenes/propuestas/<%=propuesta.getRutaImg()%>.jpg" />
 							<%
 								}
 							%>
@@ -155,7 +155,7 @@
 							<div class="card-body">
 								<h4 class="card-title">
 									<a class="titulo"
-										href="consultaPropuesta?propuesta=<%=propuesta.getTitulo()%>">
+										href="/CulturarteWeb/consultaPropuesta?propuesta=<%=propuesta.getTitulo()%>">
 										<h3><%=propuesta.getTitulo()%></h3>
 									</a>
 								</h4>

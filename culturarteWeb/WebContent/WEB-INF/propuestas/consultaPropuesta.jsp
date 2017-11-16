@@ -97,16 +97,19 @@ $(document).ready(function(){
 								<h3 id="titulo" class="panel-title text-color"   ><%=propuesta.getTitulo()%>
 									(<%=propuesta.getCategoria().getNombre()%>)
 								</h3>
+								<% if (!request.getAttribute("user").equals("null")){ %>
 								<div id="favorito" data-titulop="<%=propuesta.getTitulo()%>">
-								<% 
-								if (port.esFavorita((String)request.getAttribute("user"), propuesta.getTitulo())){ %> 
-								<div id="fav" class="click active active-2 active-3"><span id="span" class="fa fa-star">
-			 						</span><div class="ring"></div><div class="ring2"></div></div>
 								
-								<%}else{ %>	
-			 						<div id="fav" class="click"><span id="span" class="fa fa-star-o"></span>
-											<div class="ring"></div><div class="ring2"></div></div>
-								<% }%>
+									<%if (port.esFavorita((String)request.getAttribute("user"), propuesta.getTitulo())){ %> 
+									<div id="fav" class="click active active-2 active-3"><span id="span" class="fa fa-star">
+				 						</span><div class="ring"></div><div class="ring2"></div></div>
+									
+									<%}else{ %>	
+				 						<div id="fav" class="click"><span id="span" class="fa fa-star-o"></span>
+												<div class="ring"></div><div class="ring2"></div></div>
+									<% }
+									
+									}%>
 								
 								</div>
 									
@@ -360,7 +363,7 @@ $(document).ready(function(){
 	</div>
 	</div>
 
-	<script src="/media/styles/userProfile.css"></script>
+	<script src="/CulturarteWeb/media/styles/userProfile.css"></script>
 	<div class="footer">
 		<jsp:include page="/WEB-INF/template/footer.jsp" />
 	</div>

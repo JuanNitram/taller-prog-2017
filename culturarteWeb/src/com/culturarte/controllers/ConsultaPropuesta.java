@@ -50,18 +50,10 @@ public class ConsultaPropuesta extends HttpServlet {
 			
 			if (Home.getEstado(request).equals(EstadoSesion.LOGIN_CORRECTO)){
 				request.setAttribute("user", Login.getUsuarioLogueado(request).getNickName());
-			}else
+			}else{
 				request.setAttribute("user", "null");
+			}
 			
-			if(Login.getUsuarioLogueado(request) != null && port.esFavorita(Login.getUsuarioLogueado(request).getNickName(), propuesta.getTitulo())){
-				request.setAttribute("esFavorita", "SI");
-				System.out.println("Es favorita si");
-			}
-			else{
-				request.setAttribute("esFavorita", "NO");
-				System.out.println("Es favorita No");
-			}
-
 			request.getRequestDispatcher("/WEB-INF/propuestas/consultaPropuesta.jsp").forward(request, response);
 			
 		} catch (Exception exception) {

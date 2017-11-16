@@ -15,7 +15,7 @@
 <link rel="stylesheet" href="/media/Data-picker/css/bootstrap-datepicker.css" />
 <link rel="stylesheet" type="text/css" href="/media/styles/buscador.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link href="recursos/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="/CulturarteWeb/recursos/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
 	
 
@@ -81,7 +81,7 @@
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
 		<div class="container">
 			<img style="width: 40px; height: 40px;"
-				src="/media/images/logo_icon.png"></img> <a class="navbar-brand"
+				src="/CulturarteWeb/media/images/logo_icon.png"></img> <a class="navbar-brand"
 				href="/CulturarteWeb">Culturarte</a>
 
 			<button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -97,14 +97,14 @@
 					<li class="nav-item active"><a class="nav-link" href="/CulturarteWeb">Inicio
 							<span class="sr-only">(current)</span>
 					</a></li>
-					<li class="nav-item"><a class="nav-link" href="usuarios">Usuarios</a></li>
-					<li class="nav-item"><a class="nav-link" href="propuestas">Propuestas</a></li>
+					<li class="nav-item"><a class="nav-link" href="/CulturarteWeb/usuarios">Usuarios</a></li>
+					<li class="nav-item"><a class="nav-link" href="/CulturarteWeb/propuestas">Propuestas</a></li>
 					<li class="nav-item"><a class="nav-link" data-toggle="modal" href="#altaPropuesta">Registrar
 							propuesta</a></li>
-					<li class="nav-item"><a class="nav-link" href="perfil"><%= usr.getNombre().concat(" - ").concat(usr.getEmail()) %></a></li>
+					<li class="nav-item"><a class="nav-link" href="/CulturarteWeb/perfil"><%= usr.getNombre().concat(" - ").concat(usr.getEmail()) %></a></li>
 
 					<li id="divisor" class="nav-item"><a class="nav-link"
-						href="cerrar">Cerrar sesión</a></li>
+						href="/CulturarteWeb/cerrar">Cerrar sesión</a></li>
 
 				</ul>
 				<div class="inner-addon right-addon">
@@ -116,10 +116,10 @@
 					<li class="nav-item active"><a class="nav-link" href="/CulturarteWeb">Inicio
 							<span class="sr-only">(current)</span>
 					</a></li>
-					<li class="nav-item"><a class="nav-link" href="usuarios">Usuarios</a></li>
-					<li class="nav-item"><a class="nav-link" href="propuestas">Propuestas</a></li>
-					<li class="nav-item"><a class="nav-link" href="perfil"><%= usr.getNombre().concat(" - ").concat(usr.getEmail()) %></a></li>
-					<li class="nav-item"><a class="nav-link" href="cerrar">Cerrar
+					<li class="nav-item"><a class="nav-link" href="/CulturarteWeb/usuarios">Usuarios</a></li>
+					<li class="nav-item"><a class="nav-link" href="/CulturarteWeb/propuestas">Propuestas</a></li>
+					<li class="nav-item"><a class="nav-link" href="/CulturarteWeb/perfil"><%= usr.getNombre().concat(" - ").concat(usr.getEmail()) %></a></li>
+					<li class="nav-item"><a class="nav-link" href="/CulturarteWeb/cerrar">Cerrar
 							sesión</a></li>
 				</ul>
 				<div class="inner-addon right-addon">
@@ -131,8 +131,8 @@
 					<li id="space" class="nav-item active"><a class="nav-link"
 						href="/CulturarteWeb">Inicio <span class="sr-only">(current)</span>
 					</a></li>
-					<li class="nav-item"><a class="nav-link" href="usuarios">Usuarios</a></li>
-					<li class="nav-item"><a class="nav-link" href="propuestas">Propuestas</a></li>
+					<li class="nav-item"><a class="nav-link" href="/CulturarteWeb/usuarios">Usuarios</a></li>
+					<li class="nav-item"><a class="nav-link" href="/CulturarteWeb/propuestas">Propuestas</a></li>
 
 					<li class="nav-item"><a href="#registro" data-toggle="modal"
 						class="nav-link">Registrarse</a></li>
@@ -421,8 +421,8 @@
 			</div>
 		</div>
 	</div>
-	<script src="/media/Data-picker/js/bootstrap-datepicker.min.js"></script>
-	<script src="/media/app.js"></script>
+	<script src="/CulturarteWeb/media/Data-picker/js/bootstrap-datepicker.min.js"></script>
+	<script src="/CulturarteWeb/media/app.js"></script>
 	<script>
 		function validarProponer() {
 			var checkBox1 = document.getElementById('cbPorcentaje');
@@ -502,5 +502,5 @@ $('#buscador').keypress(function(e) {
     }
 });
 </script>
-<script type="text/javascript" src="../media/styles/typeahead.bundle.js"></script>
+<script type="text/javascript" src="/CulturarteWeb/media/styles/typeahead.bundle.js"></script>
 </div>

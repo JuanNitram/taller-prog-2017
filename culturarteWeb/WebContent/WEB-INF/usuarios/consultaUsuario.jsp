@@ -67,13 +67,13 @@
 							
 							if (dtP.getRutaImg() == "") {
 						%>
-						<img src="/media/images/defecto.png" />
+						<img src="/CulturarteWeb/media/images/defecto.png" />
 						<%
 							} else {
 						%>
 
 						<img
-							src="/media/images/imagenes/usuarios/proponentes/<%=dtP.getRutaImg()%>.jpg" />
+							src="/CulturarteWeb/media/images/imagenes/usuarios/proponentes/<%=dtP.getRutaImg()%>.jpg" />
 						<%	}
 							
 							if(request.getAttribute("siguiendo") != null) {
@@ -119,7 +119,7 @@
 														if(dtP.getNickName().equals(request.getAttribute("usuario_logueado")) 
 															|| propuestas.get(i).getEstado() != servidor.TEstado.INGRESADA) {
 															String titulo = propuestas.get(i).getTitulo();
-											%> <a href="consultaPropuesta?propuesta=<%= titulo %>"><%= titulo %></a>
+											%> <a href="/CulturarteWeb/consultaPropuesta?propuesta=<%= titulo %>"><%= titulo %></a>
 											<br> <%	
 														}
 													}
@@ -152,7 +152,7 @@
 								for (int i = 0; i < listaSeguidores.size(); i++) {
 									servidor.DtUsuario seguidor = listaSeguidores.get(i);
 						%>
-						<a href="consultaUsuario?usuario=<%= seguidor.getNickName() %>">
+						<a href="/CulturarteWeb/consultaUsuario?usuario=<%= seguidor.getNickName() %>">
 							<%= seguidor.getNombre()+ " " + seguidor.getApellido() + " (" + seguidor.getNickName() + ")" %>
 						</a>
 						<%= (seguidor instanceof servidor.DtProponente)?" - Proponente":" - Colaborador" %>
@@ -174,7 +174,7 @@
 											servidor.DtUsuario seguido = listaSeguidos.get(i);
 						%>
 
-						<a href="consultaUsuario?usuario=<%= seguido.getNickName() %>">
+						<a href="/CulturarteWeb/consultaUsuario?usuario=<%= seguido.getNickName() %>">
 							<%= seguido.getNombre()+ " " + seguido.getApellido() + " (" + seguido.getNickName() + ")" %>
 						</a>
 						<%= (seguido instanceof servidor.DtProponente)?" - Proponente":" - Colaborador" %>
@@ -192,7 +192,7 @@
 					%>
 					<a href="<%=link%>" target="_blank">
 						<button class="btn btn-warning" type="button">
-							<img class="emailboton" src="/media/images/link.png">
+							<img class="emailboton" src="/CulturarteWeb/media/images/link.png">
 						</button>
 					</a>
 					<%
@@ -201,7 +201,7 @@
 					<a href="<%="mailto:" + dtP.getEmail()%>"><button
 							class="btn btn-success meilito" type="button"
 							data-original-title="Send message to user">
-							<img class="emailboton" src="/media/images/email.png">
+							<img class="emailboton" src="/CulturarteWeb/media/images/email.png">
 						</button></a>
 				</div>
 			</div>
@@ -225,13 +225,13 @@
 						<%
 							if (dtC.getRutaImg() == "") {
 						%>
-						<img src="/media/images/defecto.png" />
+						<img src="/CulturarteWeb/media/images/defecto.png" />
 						<%
 							} else {
 						%>
 
 						<img
-							src="/media/images/imagenes/usuarios/colaboradores/<%=dtC.getRutaImg()%>.jpg" />
+							src="/CulturarteWeb/media/images/imagenes/usuarios/colaboradores/<%=dtC.getRutaImg()%>.jpg" />
 						<%
 							}
 						
@@ -331,7 +331,7 @@
 					<a href="<%="mailto:" + dtC.getEmail()%>"><button
 							class="btn btn-success meilito" type="button"
 							data-original-title="Send message to user">
-							<img class="emailboton" src="/media/images/email.png">
+							<img class="emailboton" src="/CulturarteWeb/media/images/email.png">
 						</button></a>
 				</div>
 			</div>
@@ -350,9 +350,9 @@
 			})
 		})
 	</script> -->
-	<script src="media/bootstrap-toggle/doc/script.js"></script>
-	<script src="../media/bootstrap-toggle/js/bootstrap-toggle.js"></script>
-	<script src="/media/styles/userProfile.css"></script>
+	<script src="/CulturarteWeb/media/bootstrap-toggle/doc/script.js"></script>
+	<script src="/CulturarteWeb/media/bootstrap-toggle/js/bootstrap-toggle.js"></script>
+	<script src="/CulturarteWeb/media/styles/userProfile.css"></script>
 	<div class="footer">
 		<jsp:include page="/WEB-INF/template/footer.jsp" />
 	</div>

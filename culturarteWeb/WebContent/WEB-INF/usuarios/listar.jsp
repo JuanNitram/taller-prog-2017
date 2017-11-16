@@ -26,11 +26,11 @@
 			%>
 		<div class="usuario">
 			<% if (usuario.getRutaImg() == ""){ %>
-				<img src="\media\images\defecto.png" />
+				<img src="/CulturarteWeb\media\images\defecto.png" />
 			<%}else if (port.esProponente(usuario.getNickName())){ %>
-						<img src="/media/images/imagenes/usuarios/proponentes/<%=usuario.getRutaImg() %>.jpg" />
+						<img src="/CulturarteWeb/media/images/imagenes/usuarios/proponentes/<%=usuario.getRutaImg() %>.jpg" />
 					<%}else { %>
-						<img src="/media/images/imagenes/usuarios/colaboradores/<%=usuario.getRutaImg() %>.jpg" />
+						<img src="/CulturarteWeb/media/images/imagenes/usuarios/colaboradores/<%=usuario.getRutaImg() %>.jpg" />
 					<% } %>	
 			<div class="derecha">
 				<p>

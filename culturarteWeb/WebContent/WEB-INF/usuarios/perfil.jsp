@@ -93,13 +93,13 @@
 						<%
 							if (dtP.getRutaImg() == "") {
 						%>
-						<img src="/media/images/defecto.png" />
+						<img src="/CulturarteWeb/media/images/defecto.png" />
 						<%
 							} else {
 						%>
 
 						<img
-							src="/media/images/imagenes/usuarios/proponentes/<%=dtP.getRutaImg()%>.jpg" />
+							src="/CulturarteWeb/media/images/imagenes/usuarios/proponentes/<%=dtP.getRutaImg()%>.jpg" />
 						<%
 							}
 						%>
@@ -243,11 +243,11 @@
 				<div class="panel-footer">
 					<a onclick="window.location='<%=dtP.getLinkSitio()%>';"><button
 							class="btn btn-warning" type="button">
-							<img class="emailboton" src="/media/images/link.png">
+							<img class="emailboton" src="/CulturarteWeb/media/images/link.png">
 						</button></a> <a href="<%="mailto:" + dtP.getEmail()%>"><button
 							class="btn btn-success meilito" type="button"
 							data-original-title="Send message to user">
-							<img class="emailboton" src="/media/images/email.png">
+							<img class="emailboton" src="/CulturarteWeb/media/images/email.png">
 						</button></a>
 				</div>
 			</div>
@@ -274,13 +274,13 @@
 						<%
 							if (dtC.getRutaImg() == "") {
 						%>
-						<img src="/media/images/defecto.png" />
+						<img src="/CulturarteWeb/media/images/defecto.png" />
 						<%
 							} else {
 						%>
 
 						<img
-							src="/media/images/imagenes/usuarios/colaboradores/<%=dtC.getRutaImg()%>.jpg" />
+							src="/CulturarteWeb/media/images/imagenes/usuarios/colaboradores/<%=dtC.getRutaImg()%>.jpg" />
 						<%
 							}
 						%>
@@ -389,7 +389,7 @@
 					<a href="<%="mailto:" + dtC.getEmail()%>"><button
 							class="btn btn-success meilito" type="button"
 							data-original-title="Send message to user">
-							<img class="emailboton" src="/media/images/email.png">
+							<img class="emailboton" src="/CulturarteWeb/media/images/email.png">
 						</button></a>
 				</div>
 			</div>
@@ -400,7 +400,7 @@
 	<%
 		}
 	%>
-	<script src="/media/styles/userProfile.css"></script>
+	<script src="/CulturarteWeb/media/styles/userProfile.css"></script>
 	<div class="footer">
 		<jsp:include page="/WEB-INF/template/footer.jsp" />
 	</div>
