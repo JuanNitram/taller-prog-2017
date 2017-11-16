@@ -102,16 +102,10 @@
 					<li class="nav-item"><a class="nav-link" data-toggle="modal" href="#altaPropuesta">Registrar
 							propuesta</a></li>
 					<li class="nav-item"><a class="nav-link" href="perfil"><%= usr.getNombre().concat(" - ").concat(usr.getEmail()) %></a></li>
-<<<<<<< HEAD
 
-=======
->>>>>>> branch 'master' of https://gitlab.fing.edu.uy/tprog/tpgr05.git
 					<li id="divisor" class="nav-item"><a class="nav-link"
 						href="cerrar">Cerrar sesión</a></li>
-<<<<<<< HEAD
 
-=======
->>>>>>> branch 'master' of https://gitlab.fing.edu.uy/tprog/tpgr05.git
 				</ul>
 				<div class="inner-addon right-addon">
 					<input type="text" id="buscador" class="typeahead tt-query" autocomplete="off" spellcheck="false"><a class="fa fa-search" onclick="clicBuscar()"></a>
@@ -139,10 +133,7 @@
 					</a></li>
 					<li class="nav-item"><a class="nav-link" href="usuarios">Usuarios</a></li>
 					<li class="nav-item"><a class="nav-link" href="propuestas">Propuestas</a></li>
-<<<<<<< HEAD
 
-=======
->>>>>>> branch 'master' of https://gitlab.fing.edu.uy/tprog/tpgr05.git
 					<li class="nav-item"><a href="#registro" data-toggle="modal"
 						class="nav-link">Registrarse</a></li>
 					<li class="nav-item"><a href="#iniciarsesion"
