@@ -354,7 +354,7 @@ public class RegistrarProponente2 extends JInternalFrame {
 						JOptionPane.WARNING_MESSAGE);
 				else{
 					if(customImg) ruta = txtNick.getText().toString().trim().hashCode() + "";
-					ICU.altaProponente(txtNick.getText().trim(),contr.getPassword().toString(), txtNombre.getText().trim(), txtApellido.getText().trim(), txtDireccion.getText().trim(), txtEmail.getText().trim(), txtBiografia.getText().trim(), txtLinkSitio.getText().trim(), ruta , txtFechaNac.getDate());
+					ICU.altaProponente(txtNick.getText().trim(),contr.getText().toString(), txtNombre.getText().trim(), txtApellido.getText().trim(), txtDireccion.getText().trim(), txtEmail.getText().trim(), txtBiografia.getText().trim(), txtLinkSitio.getText().trim(), ruta , txtFechaNac.getDate());
 					JOptionPane.showMessageDialog(null, "El usuario proponente ha sido registrado exitosamente", "Culturarte",
 							JOptionPane.INFORMATION_MESSAGE);
 					if(customImg)

@@ -199,7 +199,7 @@ public class RegistrarColaborador2 extends JInternalFrame {
 							JOptionPane.WARNING_MESSAGE);
 				else{
 					if(customImg) ruta = txtNick.getText().toString().trim().hashCode() + "";
-					ICU.altaColaborador(txtNick.getText().trim(),contr.getPassword().toString(), txtNombre.getText().trim(), txtApellido.getText().trim(), txtEmail.getText().trim(), ruta, txtFechaNac.getDate());
+					ICU.altaColaborador(txtNick.getText().trim(),contr.getText().toString(), txtNombre.getText().trim(), txtApellido.getText().trim(), txtEmail.getText().trim(), ruta, txtFechaNac.getDate());
 					JOptionPane.showMessageDialog(null, "El usuario colaborador ha sido registrado exitosamente", "Culturarte",
 							JOptionPane.INFORMATION_MESSAGE);
 					if(customImg)
