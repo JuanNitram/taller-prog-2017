@@ -2,21 +2,18 @@ package servidor;
 
 import java.util.ArrayList;
 
-import java.util.Date;
-import java.util.List;
-
 import javax.jws.WebMethod;
 import javax.jws.WebService;
 import javax.jws.soap.SOAPBinding;
 import javax.jws.soap.SOAPBinding.ParameterStyle;
 import javax.jws.soap.SOAPBinding.Style;
-import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.TreePath;
 import javax.xml.ws.Endpoint;
 
+import dataTypes.DataDate;
 import dataTypes.DataList;
+import dataTypes.DataTree;
 import dataTypes.DtCategoria;
-import dataTypes.DtCategorias;
 import dataTypes.DtColaboracion;
 import dataTypes.DtColaborador;
 import dataTypes.DtComentario;
@@ -27,8 +24,6 @@ import dataTypes.TEstado;
 import dataTypes.TRetorno;
 import dataTypes.TTarjeta;
 import logica.Fabrica;
-import logica.clases.Acceso;
-import logica.clases.Propuesta;
 
 @WebService
 @SOAPBinding(style = Style.RPC, parameterStyle = ParameterStyle.WRAPPED)
@@ -121,13 +116,13 @@ public class Publicador {
 	
     @WebMethod
 	public void altaProponente(String nickName, String password, String nombre, String apellido, String direccion, String email, String biografia, String urlSitio,
-			String rutaImg, Date fechaNacimiento) {
-		Fabrica.getInstance().getICtrlUsuario().altaProponente(nickName, password, nombre, apellido, direccion, email, biografia, urlSitio, rutaImg, fechaNacimiento);
+			String rutaImg, DataDate fechaNacimiento) {
+		Fabrica.getInstance().getICtrlUsuario().altaProponente(nickName, password, nombre, apellido, direccion, email, biografia, urlSitio, rutaImg, fechaNacimiento.getDate());
 	}
 	
     @WebMethod
-	public void altaColaborador(String nickName, String password, String nombre, String apellido, String email, String rutaImg, Date fechaNacimiento) {
-		Fabrica.getInstance().getICtrlUsuario().altaColaborador(nickName, password, nombre, apellido, email, rutaImg, fechaNacimiento);
+	public void altaColaborador(String nickName, String password, String nombre, String apellido, String email, String rutaImg, DataDate fechaNacimiento) {
+		Fabrica.getInstance().getICtrlUsuario().altaColaborador(nickName, password, nombre, apellido, email, rutaImg, fechaNacimiento.getDate());
 	}
 	
     @WebMethod
@@ -170,15 +165,15 @@ public class Publicador {
     }
     
 	@WebMethod
-	public void altaPropuesta(String nickName, String titulo, DtCategoria categoria, String descripcion, String lugar, Date fechaRealizacion,
+	public void altaPropuesta(String nickName, String titulo, DtCategoria categoria, String descripcion, String lugar, DataDate fechaRealizacion,
 					float montoReunir, TRetorno tipoRetorno, float precioEntrada, String rutaImg) {
-		Fabrica.getInstance().getICtrlPropuesta().altaPropuesta(nickName, titulo, categoria, descripcion, lugar, fechaRealizacion, montoReunir, tipoRetorno, precioEntrada, rutaImg);
+		Fabrica.getInstance().getICtrlPropuesta().altaPropuesta(nickName, titulo, categoria, descripcion, lugar, fechaRealizacion.getDate(), montoReunir, tipoRetorno, precioEntrada, rutaImg);
 	}
 
 	@WebMethod
-	public void modificarPropuesta(String titulo, String descripcion, String lugar, Date fechaRealizacion,
+	public void modificarPropuesta(String titulo, String descripcion, String lugar, DataDate fechaRealizacion,
 					float montoReunir, float precioEntrada) {
-		Fabrica.getInstance().getICtrlPropuesta().modificarPropuesta(titulo, descripcion, lugar, fechaRealizacion, montoReunir, precioEntrada);
+		Fabrica.getInstance().getICtrlPropuesta().modificarPropuesta(titulo, descripcion, lugar, fechaRealizacion.getDate(), montoReunir, precioEntrada);
 	}
 
 	@WebMethod
@@ -231,10 +226,10 @@ public class Publicador {
 	}
 
 	@WebMethod
-	public DtCategorias listarCategorias() {
-		DtCategorias dtC = new DtCategorias();
-		dtC.setRaiz(Fabrica.getInstance().getICtrlPropuesta().listarCategorias());
-		return dtC;
+	public DataTree listarCategorias() {
+		DataTree dtT = new DataTree();
+		dtT.setTree(Fabrica.getInstance().getICtrlPropuesta().listarCategorias());
+		return dtT;
 	}
 
 	@WebMethod
@@ -294,8 +289,8 @@ public class Publicador {
 	}
 	
 	@WebMethod
-	public void pagarColabTarjeta(float monto, String nombreTitular, String numero, TTarjeta tipo, Date vencimiento, String cvc){
-		Fabrica.getInstance().getICtrlPropuesta().pagarColabTarjeta(monto, nombreTitular, numero, tipo, vencimiento, cvc);
+	public void pagarColabTarjeta(float monto, String nombreTitular, String numero, TTarjeta tipo, DataDate vencimiento, String cvc){
+		Fabrica.getInstance().getICtrlPropuesta().pagarColabTarjeta(monto, nombreTitular, numero, tipo, vencimiento.getDate(), cvc);
 	}
 	
 	
