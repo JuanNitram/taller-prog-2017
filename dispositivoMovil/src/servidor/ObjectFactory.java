@@ -30,6 +30,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link DataDate }
+     * 
+     */
+    public DataDate createDataDate() {
+        return new DataDate();
+    }
+
+    /**
      * Create an instance of {@link DtPropuesta }
      * 
      */
@@ -54,11 +62,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link DtCategorias }
+     * Create an instance of {@link DtComentario }
      * 
      */
-    public DtCategorias createDtCategorias() {
-        return new DtCategorias();
+    public DtComentario createDtComentario() {
+        return new DtComentario();
     }
 
     /**
@@ -83,14 +91,6 @@ public class ObjectFactory {
      */
     public DtProponente createDtProponente() {
         return new DtProponente();
-    }
-
-    /**
-     * Create an instance of {@link DefaultMutableTreeNode }
-     * 
-     */
-    public DefaultMutableTreeNode createDefaultMutableTreeNode() {
-        return new DefaultMutableTreeNode();
     }
 
     /**

@@ -55,9 +55,9 @@
 						<li class="nav-item active"><a class="nav-link" href="/">Inicio
 								<span class="sr-only">(current)</span>
 						</a></li>
-						<li class="nav-item"><a class="nav-link" href="/propuestas">Propuestas</a></li>
-						<li class="nav-item"><a class="nav-link" href="/colaboraciones?action=pagar">Colaboraciones</a></li>
-						<li class="nav-item"><a class="nav-link" href="/perfil"><%= usr.getNombre().concat(" - ").concat(usr.getEmail()) %></a></li>
+						<li class="nav-item"><a class="nav-link" href="propuestas">Propuestas</a></li>
+						<li class="nav-item"><a class="nav-link" href="colaboraciones?action=pagar">Colaboraciones</a></li>
+						<li class="nav-item"><a class="nav-link" href="perfil"><%= usr.getNombre().concat(" - ").concat(usr.getEmail()) %></a></li>
 						<li id="divisor" class="nav-item"><a class="nav-link"
 							href="/login?action=cerrar">Cerrar sesión</a></li>
 					</ul>
@@ -66,7 +66,7 @@
 						<li id="space" class="nav-item active"><a class="nav-link"
 							href="/">Inicio <span class="sr-only">(current)</span>
 						</a></li>
-						<li class="nav-item"><a class="nav-link" href="/propuestas">Propuestas</a></li>
+						<li class="nav-item"><a class="nav-link" href="propuestas">Propuestas</a></li>
 						<li class="nav-item"><a href="#iniciarsesion"
 							data-toggle="modal" class="nav-link">Iniciar sesión</a></li>
 					</ul>
