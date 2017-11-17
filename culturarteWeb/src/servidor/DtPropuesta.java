@@ -12,9 +12,9 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 
 /**
- * <p>Java class for dtPropuesta complex type.
+ * <p>Clase Java para dtPropuesta complex type.
  * 
- * <p>The following schema fragment specifies the expected         content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="dtPropuesta"&gt;
@@ -87,7 +87,7 @@ public class DtPropuesta {
     protected List<String> favoritos;
 
     /**
-     * Gets the value of the nickProponente property.
+     * Obtiene el valor de la propiedad nickProponente.
      * 
      * @return
      *     possible object is
@@ -99,7 +99,7 @@ public class DtPropuesta {
     }
 
     /**
-     * Sets the value of the nickProponente property.
+     * Define el valor de la propiedad nickProponente.
      * 
      * @param value
      *     allowed object is
@@ -111,7 +111,7 @@ public class DtPropuesta {
     }
 
     /**
-     * Gets the value of the titulo property.
+     * Obtiene el valor de la propiedad titulo.
      * 
      * @return
      *     possible object is
@@ -123,7 +123,7 @@ public class DtPropuesta {
     }
 
     /**
-     * Sets the value of the titulo property.
+     * Define el valor de la propiedad titulo.
      * 
      * @param value
      *     allowed object is
@@ -135,7 +135,7 @@ public class DtPropuesta {
     }
 
     /**
-     * Gets the value of the descripcion property.
+     * Obtiene el valor de la propiedad descripcion.
      * 
      * @return
      *     possible object is
@@ -147,7 +147,7 @@ public class DtPropuesta {
     }
 
     /**
-     * Sets the value of the descripcion property.
+     * Define el valor de la propiedad descripcion.
      * 
      * @param value
      *     allowed object is
@@ -159,7 +159,7 @@ public class DtPropuesta {
     }
 
     /**
-     * Gets the value of the categoria property.
+     * Obtiene el valor de la propiedad categoria.
      * 
      * @return
      *     possible object is
@@ -171,7 +171,7 @@ public class DtPropuesta {
     }
 
     /**
-     * Sets the value of the categoria property.
+     * Define el valor de la propiedad categoria.
      * 
      * @param value
      *     allowed object is
@@ -183,7 +183,7 @@ public class DtPropuesta {
     }
 
     /**
-     * Gets the value of the lugar property.
+     * Obtiene el valor de la propiedad lugar.
      * 
      * @return
      *     possible object is
@@ -195,7 +195,7 @@ public class DtPropuesta {
     }
 
     /**
-     * Sets the value of the lugar property.
+     * Define el valor de la propiedad lugar.
      * 
      * @param value
      *     allowed object is
@@ -207,7 +207,7 @@ public class DtPropuesta {
     }
 
     /**
-     * Gets the value of the fechaRealizacion property.
+     * Obtiene el valor de la propiedad fechaRealizacion.
      * 
      * @return
      *     possible object is
@@ -219,7 +219,7 @@ public class DtPropuesta {
     }
 
     /**
-     * Sets the value of the fechaRealizacion property.
+     * Define el valor de la propiedad fechaRealizacion.
      * 
      * @param value
      *     allowed object is
@@ -231,7 +231,7 @@ public class DtPropuesta {
     }
 
     /**
-     * Gets the value of the fechaPublicacion property.
+     * Obtiene el valor de la propiedad fechaPublicacion.
      * 
      * @return
      *     possible object is
@@ -243,7 +243,7 @@ public class DtPropuesta {
     }
 
     /**
-     * Sets the value of the fechaPublicacion property.
+     * Define el valor de la propiedad fechaPublicacion.
      * 
      * @param value
      *     allowed object is
@@ -255,7 +255,7 @@ public class DtPropuesta {
     }
 
     /**
-     * Gets the value of the fechaExtension property.
+     * Obtiene el valor de la propiedad fechaExtension.
      * 
      * @return
      *     possible object is
@@ -267,7 +267,7 @@ public class DtPropuesta {
     }
 
     /**
-     * Sets the value of the fechaExtension property.
+     * Define el valor de la propiedad fechaExtension.
      * 
      * @param value
      *     allowed object is
@@ -279,7 +279,7 @@ public class DtPropuesta {
     }
 
     /**
-     * Gets the value of the montoRequerido property.
+     * Obtiene el valor de la propiedad montoRequerido.
      * 
      */
     public float getMontoRequerido() {
@@ -287,7 +287,7 @@ public class DtPropuesta {
     }
 
     /**
-     * Sets the value of the montoRequerido property.
+     * Define el valor de la propiedad montoRequerido.
      * 
      */
     public void setMontoRequerido(float value) {
@@ -295,7 +295,7 @@ public class DtPropuesta {
     }
 
     /**
-     * Gets the value of the montoReunido property.
+     * Obtiene el valor de la propiedad montoReunido.
      * 
      */
     public float getMontoReunido() {
@@ -303,7 +303,7 @@ public class DtPropuesta {
     }
 
     /**
-     * Sets the value of the montoReunido property.
+     * Define el valor de la propiedad montoReunido.
      * 
      */
     public void setMontoReunido(float value) {
@@ -311,7 +311,7 @@ public class DtPropuesta {
     }
 
     /**
-     * Gets the value of the tipoRetorno property.
+     * Obtiene el valor de la propiedad tipoRetorno.
      * 
      * @return
      *     possible object is
@@ -323,7 +323,7 @@ public class DtPropuesta {
     }
 
     /**
-     * Sets the value of the tipoRetorno property.
+     * Define el valor de la propiedad tipoRetorno.
      * 
      * @param value
      *     allowed object is
@@ -335,7 +335,7 @@ public class DtPropuesta {
     }
 
     /**
-     * Gets the value of the rutaImg property.
+     * Obtiene el valor de la propiedad rutaImg.
      * 
      * @return
      *     possible object is
@@ -347,7 +347,7 @@ public class DtPropuesta {
     }
 
     /**
-     * Sets the value of the rutaImg property.
+     * Define el valor de la propiedad rutaImg.
      * 
      * @param value
      *     allowed object is
@@ -359,7 +359,7 @@ public class DtPropuesta {
     }
 
     /**
-     * Gets the value of the precioEntrada property.
+     * Obtiene el valor de la propiedad precioEntrada.
      * 
      */
     public float getPrecioEntrada() {
@@ -367,7 +367,7 @@ public class DtPropuesta {
     }
 
     /**
-     * Sets the value of the precioEntrada property.
+     * Define el valor de la propiedad precioEntrada.
      * 
      */
     public void setPrecioEntrada(float value) {
@@ -375,7 +375,7 @@ public class DtPropuesta {
     }
 
     /**
-     * Gets the value of the estado property.
+     * Obtiene el valor de la propiedad estado.
      * 
      * @return
      *     possible object is
@@ -387,7 +387,7 @@ public class DtPropuesta {
     }
 
     /**
-     * Sets the value of the estado property.
+     * Define el valor de la propiedad estado.
      * 
      * @param value
      *     allowed object is

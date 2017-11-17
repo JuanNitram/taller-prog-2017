@@ -13,9 +13,6 @@ import javax.servlet.http.HttpSession;
 
 import com.culturarte.model.EstadoSesion;
 
-import logica.Fabrica;
-import dataTypes.DtUsuario;
-
 /**
  * Servlet implementation class Login
  */

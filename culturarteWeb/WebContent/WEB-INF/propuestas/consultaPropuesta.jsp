@@ -1,17 +1,11 @@
-<%@page import="dataTypes.TEstado"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@page import="java.util.Date"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
-<%@page import="logica.Fabrica"%>
-<%@page import="dataTypes.DtPropuesta"%>
-<%@page import="dataTypes.DtComentario"%>
-<%@page import="dataTypes.TRetorno"%>
-<%@page import="dataTypes.DtProponente"%>
-<%@page import="dataTypes.DtUsuario"%>
-<%@page import="dataTypes.DtColaborador"%>
-<%@page import="dataTypes.DtColaboracion"%>
+<%@page import="servidor.DtComentario"%>
+<%@page import="servidor.DataList"%>
+<%@page import="servidor.DtColaboracion"%>
 <%@page import="com.culturarte.controllers.Login"%>
 <!DOCTYPE html>
 <html>
@@ -321,7 +315,7 @@ $(document).ready(function(){
 							<div id="panelComentarios" class="panel-footer group">
 								<br>
 							<% 
-								List<DtComentario> comentarios = Fabrica.getInstance().getICtrlPropuesta().listarComentarios(propuesta.getTitulo()); 
+								List<DtComentario> comentarios = (ArrayList) service.getPublicadorPort().listarComentarios(propuesta.getTitulo()).getDatos();
 								if(comentarios.size() > 0) {
 							%>
 								<h3><font color="white">Comentarios</font></h3>	<br>
@@ -343,7 +337,7 @@ $(document).ready(function(){
 							</div>
 							
 							<% 
-								if(usr != null && !Fabrica.getInstance().getICtrlUsuario().esProponente(usr.getNickName())){
+								if(usr != null && !service.getPublicadorPort().esProponente(usr.getNickName())){
 							%>
 							<form>
 								<div class="form-group" align="center">

@@ -1,11 +1,8 @@
 <!DOCTYPE html>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="com.culturarte.controllers.Login"%>
-<%@page import="dataTypes.DtUsuario"%>
-<%@page import="logica.Fabrica"%>
 <%@page import=" java.util.List"%>
-
-<%@page import="dataTypes.DtUsuario"%>
+<%@page import=" java.util.ArrayList"%>
 <%@ page import="javax.swing.tree.DefaultMutableTreeNode"%>
 <%@ page import="javax.swing.tree.TreeNode"%>
 <%@ page import="javax.swing.tree.TreeModel"%>
@@ -355,12 +352,10 @@
 														<label for="selectCategoria">Categoría: </label>
 														<select class="form-control" id="selectCategoria" name="selectCategoria">
 														<%
-												    		DefaultMutableTreeNode raiz = Fabrica.getInstance().getICtrlPropuesta().listarCategorias();
-															Propuestas.vaciarCategoriasList();
-												     		Propuestas.recursivoTree(raiz);
-												     		for(TreeNode t : Propuestas.getCategoriasList()) {
+												    		List<String> categorias = (ArrayList)service.getPublicadorPort().listarCategorias().getDatos();
+												     		for(String s : categorias) {
 												    	%>
-															<option value="<%=t.toString()%>"><%= t.toString() %></option>
+															<option value="<%=s%>"><%=s%></option>
 														<%  } %>
 														</select>
 													</div>

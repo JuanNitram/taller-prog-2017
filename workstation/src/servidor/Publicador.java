@@ -7,12 +7,12 @@ import javax.jws.WebService;
 import javax.jws.soap.SOAPBinding;
 import javax.jws.soap.SOAPBinding.ParameterStyle;
 import javax.jws.soap.SOAPBinding.Style;
+import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.TreePath;
 import javax.xml.ws.Endpoint;
 
 import dataTypes.DataDate;
 import dataTypes.DataList;
-import dataTypes.DataTree;
 import dataTypes.DtCategoria;
 import dataTypes.DtColaboracion;
 import dataTypes.DtColaborador;
@@ -30,17 +30,24 @@ import logica.Fabrica;
 public class Publicador {
     private Endpoint endpoint = null;
     
+	private void linealizarConNivel(DefaultMutableTreeNode tree, ArrayList<String> list, int k) {
+		list.add(tree.toString());
+		for(int i = 0; i < tree.getChildCount(); i++) {
+			linealizarConNivel((DefaultMutableTreeNode)tree.getChildAt(i),list,k+1);
+		}
+	}
+    
     public Publicador() {
     }
 
     @WebMethod(exclude = true)
     public void publicar() {
-         endpoint = Endpoint.publish("http://localhost:11115/publicador", this);
+         endpoint = Endpoint.publish("http://localhost:10115/publicador", this);
     }
 
     @WebMethod(exclude = true)
     public Endpoint getEndpoint() {
-            return endpoint;
+    	return endpoint;
     }
     
     @WebMethod
@@ -226,10 +233,12 @@ public class Publicador {
 	}
 
 	@WebMethod
-	public DataTree listarCategorias() {
-		DataTree dtT = new DataTree();
-		dtT.setTree(Fabrica.getInstance().getICtrlPropuesta().listarCategorias());
-		return dtT;
+	public DataList listarCategorias() {
+		DataList dtL = new DataList();
+		ArrayList<String> categoriasLista = new ArrayList<String>();
+		linealizarConNivel(Fabrica.getInstance().getICtrlPropuesta().listarCategorias(), categoriasLista, 0);
+		dtL.setDatos(categoriasLista);
+		return dtL;
 	}
 
 	@WebMethod
@@ -299,5 +308,9 @@ public class Publicador {
 		Fabrica.getInstance().getICtrlPropuesta().pagarColabTransferencia(monto, nombreTitular, nomBanco, nroCuenta);
 	}
 	
+	@WebMethod
+	public DtComentario getDtComentario() {
+		return null;
+	}
 	
 }

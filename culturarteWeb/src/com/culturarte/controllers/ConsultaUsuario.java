@@ -10,8 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dataTypes.DtUsuario;
-import logica.Fabrica;
+import servidor.DtUsuario;
 
 /**
  * Servlet implementation class ConsultaUsuario
@@ -19,7 +18,7 @@ import logica.Fabrica;
 @WebServlet("/ConsultaUsuario")
 public class ConsultaUsuario extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+	
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -46,7 +45,7 @@ public class ConsultaUsuario extends HttpServlet {
 			if (dtU.getNickName().equals(usuario)) dtUsuario = dtU;
 		if(dtUsuario != null) {
 			if(request.getSession().getAttribute("usuario_logueado") != null && !request.getSession().getAttribute("usuario_logueado").equals(usuario)) {
-				ArrayList<DtUsuario> seguidores = (ArrayList<DtUsuario>) Fabrica.getInstance().getICtrlUsuario().listarSeguidores(dtUsuario.getNickName());
+				ArrayList<DtUsuario> seguidores = (ArrayList) service.getPublicadorPort().listarSeguidores(dtUsuario.getNickName()).getDatos();
 				request.setAttribute("siguiendo", false);
 				for(int i = 0; i < seguidores.size(); i++)
 					if(seguidores.get(i).getNickName().equals(request.getSession().getAttribute("usuario_logueado"))) {

@@ -3,6 +3,7 @@ package com.culturarte.controllers;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,9 +11,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dataTypes.DtProponente;
-import dataTypes.DtUsuario;
-import logica.Fabrica;
+import servidor.DtProponente;
+import servidor.DtUsuario;
+import servidor.PublicadorService;
 
 /**
  * Servlet implementation class SeguimientoUsuario
@@ -20,6 +21,7 @@ import logica.Fabrica;
 @WebServlet("/SeguimientoUsuario")
 public class SeguimientoUsuario extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private static PublicadorService servicios = new PublicadorService();
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -35,20 +37,20 @@ public class SeguimientoUsuario extends HttpServlet {
 		String nickSeguidor = request.getSession().getAttribute("usuario_logueado").toString();
 		DtUsuario dtU = (DtUsuario)request.getSession().getAttribute("usr");
 		String seguido = dtU.getNickName();
-		Fabrica.getInstance().getICtrlUsuario().elegirSeguidor(nickSeguidor);
-		Fabrica.getInstance().getICtrlUsuario().elegirSeguido(seguido);
+		servicios.getPublicadorPort().elegirSeguidor(nickSeguidor);
+		servicios.getPublicadorPort().elegirSeguido(seguido);
 		
 		if(request.getParameter("valorBoton").equals("Seguir"))
-			Fabrica.getInstance().getICtrlUsuario().seguir();
+			servicios.getPublicadorPort().seguir();
 		else
-			Fabrica.getInstance().getICtrlUsuario().dejarSeguir();
+			servicios.getPublicadorPort().dejarSeguir();
 		
 		response.setContentType("text/plain");
 		PrintWriter out = response.getWriter();
 		
 		out.println("<span style=\"text-align: center\"><h3>Seguidores</h3></span>");
 		
-		ArrayList<DtUsuario> listaSeguidores = (ArrayList<DtUsuario>)Fabrica.getInstance().getICtrlUsuario().listarSeguidores(dtU.getNickName());
+		List<DtUsuario> listaSeguidores = (ArrayList)servicios.getPublicadorPort().listarSeguidores(dtU.getNickName()).getDatos();
 		if (listaSeguidores.size() > 0) {
 			for (int i = 0; i < listaSeguidores.size(); i++) {
 				DtUsuario seguidor = listaSeguidores.get(i);

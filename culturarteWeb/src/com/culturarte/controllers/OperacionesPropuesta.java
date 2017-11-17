@@ -12,11 +12,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import dataTypes.DtColaboracion;
-import dataTypes.DtColaborador;
-import dataTypes.DtComentario;
-import dataTypes.TRetorno;
-import logica.Fabrica;
+import servidor.DtColaboracion;
+import servidor.DtColaborador;
+import servidor.DtComentario;
+import servidor.PublicadorService;
+import servidor.TRetorno;
 
 /**
  * Servlet implementation class OperacionesPropuesta
@@ -24,6 +24,7 @@ import logica.Fabrica;
 @WebServlet("/OperacionesPropuesta")
 public class OperacionesPropuesta extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private static PublicadorService servicios = new PublicadorService();
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -52,9 +53,9 @@ public class OperacionesPropuesta extends HttpServlet {
 			String usr = (String)session.getAttribute("usuario_logueado");
 			String propuesta = (String)request.getParameter("tituloProp");
 			String comentario = (String)request.getParameter("comentario");
-			Fabrica.getInstance().getICtrlPropuesta().agregarComentario(usr, propuesta, comentario);
+			servicios.getPublicadorPort().agregarComentario(usr, propuesta, comentario);
 			PrintWriter out = response.getWriter();
-			List<DtComentario> comentarios = Fabrica.getInstance().getICtrlPropuesta().listarComentarios(propuesta); 
+			List<DtComentario> comentarios = (ArrayList)servicios.getPublicadorPort().listarComentarios(propuesta).getDatos(); 
 			if(comentarios.size() > 0) {
 				out.println("<h3><font color=\"white\">Comentarios</font></h3><br>");
 				for(int i = 0; i < comentarios.size() ; i++) {
@@ -83,16 +84,16 @@ public class OperacionesPropuesta extends HttpServlet {
 			else if (retorno.equals("Entradas gratis"))
 				ret = TRetorno.ENTRADA_GRATIS;
 
-			Fabrica.getInstance().getICtrlPropuesta().infoPropuesta(propuesta);
-			Fabrica.getInstance().getICtrlPropuesta().agregarColaboracion(nickName, Float.parseFloat(monto), ret );
+			servicios.getPublicadorPort().infoPropuesta(propuesta);
+			servicios.getPublicadorPort().agregarColaboracion(nickName, Float.parseFloat(monto), ret );
     		
 			PrintWriter out = response.getWriter();
 			out.println("<span style=\"text-align: center\"><h3>Colaboradores</h3></span>");
-			ArrayList<DtColaboracion> colaboraciones = (ArrayList<DtColaboracion>) Fabrica.getInstance().getICtrlPropuesta().listarColaboraciones();
+			List<DtColaboracion> colaboraciones = (ArrayList) servicios.getPublicadorPort().listarColaboraciones().getDatos();
 			for (int i = 0; i < colaboraciones.size(); i++) {
 				DtColaboracion dtColab = colaboraciones.get(i);
 				if (dtColab.getTitulo().equals(propuesta)) {
-					DtColaborador colaborador = Fabrica.getInstance().getICtrlUsuario().infoColaborador(dtColab.getNickname());
+					DtColaborador colaborador = servicios.getPublicadorPort().infoColaborador(dtColab.getNickname());
 					out.println("<a href=\"consultaUsuario?usuario=<%=colaborador.getNickName()%>\">");
 					out.println(colaborador.getNombre() + " " + colaborador.getApellido() + " (" + colaborador.getNickName() + ")");
 					out.println("</a><br>");

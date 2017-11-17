@@ -14,8 +14,6 @@ import javax.servlet.http.HttpSession;
 
 import com.culturarte.model.EstadoSesion;
 
-import logica.Fabrica;
-
 /**
  * Servlet implementation class Favorito
  */

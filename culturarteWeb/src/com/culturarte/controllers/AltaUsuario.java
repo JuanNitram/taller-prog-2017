@@ -8,9 +8,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.xml.datatype.DatatypeConfigurationException;
 
+import com.culturarte.model.Utils;
 
-import logica.Fabrica;
+import servidor.DataDate;
+import servidor.PublicadorService;
 
 /**
  * Servlet implementation class AltaUsuario
@@ -18,6 +21,7 @@ import logica.Fabrica;
 @WebServlet("/AltaUsuario")
 public class AltaUsuario extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private static PublicadorService servicios = new PublicadorService();
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -51,20 +55,22 @@ public class AltaUsuario extends HttpServlet {
 		Date variableFecha = new Date(Integer.parseInt(fechaSplit[2]) - 1900, Integer.parseInt(fechaSplit[1]), Integer.parseInt(fechaSplit[0]));
 		
 		if (contrasenia.equals(confContrasenia)){
-			if (Tusuario.equals("Proponente")){
-				String direccion = request.getParameter("txDireccion");
-				String biografia = request.getParameter("txBiografia");
-				String linkSitio = request.getParameter("txLinkSitio");
-				System.out.println(direccion);
-				System.out.println(biografia);
-				System.out.println(linkSitio);
-				Fabrica.getInstance().getICtrlUsuario().altaProponente(nickName, contrasenia, nombre, apellido, direccion, email, biografia, linkSitio, "", variableFecha);
+			try {
+				DataDate dataDate = new DataDate();
+				dataDate.setDate(Utils.getXmlGregorianCalendarFromDate(variableFecha));
+				if (Tusuario.equals("Proponente")){
+					String direccion = request.getParameter("txDireccion");
+					String biografia = request.getParameter("txBiografia");
+					String linkSitio = request.getParameter("txLinkSitio");
+					
+					servicios.getPublicadorPort().altaProponente(nickName, contrasenia, nombre, apellido, direccion, email, biografia, linkSitio, "", dataDate);
+				} else {
+					servicios.getPublicadorPort().altaColaborador(nickName, contrasenia, nombre, apellido, email, "", dataDate);
+				}
+				request.getRequestDispatcher("/WEB-INF/home/iniciar.jsp").forward(request, response);
+			} catch(DatatypeConfigurationException e) {
+				e.printStackTrace();
 			}
-			else{
-				Fabrica.getInstance().getICtrlUsuario().altaColaborador(nickName, contrasenia, nombre, apellido, email, "", variableFecha);
-			}
-			
-			request.getRequestDispatcher("/WEB-INF/home/iniciar.jsp").forward(request, response);
 		} else {
 			request.getRequestDispatcher("/WEB-INF/registro/registroErroneo.jsp").include(request, response);
 		}

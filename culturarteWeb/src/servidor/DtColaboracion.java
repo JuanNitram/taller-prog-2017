@@ -9,9 +9,9 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 
 /**
- * <p>Java class for dtColaboracion complex type.
+ * <p>Clase Java para dtColaboracion complex type.
  * 
- * <p>The following schema fragment specifies the expected         content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="dtColaboracion"&gt;
@@ -56,7 +56,7 @@ public class DtColaboracion {
     protected DtPago pago;
 
     /**
-     * Gets the value of the id property.
+     * Obtiene el valor de la propiedad id.
      * 
      */
     public int getId() {
@@ -64,7 +64,7 @@ public class DtColaboracion {
     }
 
     /**
-     * Sets the value of the id property.
+     * Define el valor de la propiedad id.
      * 
      */
     public void setId(int value) {
@@ -72,7 +72,7 @@ public class DtColaboracion {
     }
 
     /**
-     * Gets the value of the nickname property.
+     * Obtiene el valor de la propiedad nickname.
      * 
      * @return
      *     possible object is
@@ -84,7 +84,7 @@ public class DtColaboracion {
     }
 
     /**
-     * Sets the value of the nickname property.
+     * Define el valor de la propiedad nickname.
      * 
      * @param value
      *     allowed object is
@@ -96,7 +96,7 @@ public class DtColaboracion {
     }
 
     /**
-     * Gets the value of the titulo property.
+     * Obtiene el valor de la propiedad titulo.
      * 
      * @return
      *     possible object is
@@ -108,7 +108,7 @@ public class DtColaboracion {
     }
 
     /**
-     * Sets the value of the titulo property.
+     * Define el valor de la propiedad titulo.
      * 
      * @param value
      *     allowed object is
@@ -120,7 +120,7 @@ public class DtColaboracion {
     }
 
     /**
-     * Gets the value of the montoAporte property.
+     * Obtiene el valor de la propiedad montoAporte.
      * 
      */
     public float getMontoAporte() {
@@ -128,7 +128,7 @@ public class DtColaboracion {
     }
 
     /**
-     * Sets the value of the montoAporte property.
+     * Define el valor de la propiedad montoAporte.
      * 
      */
     public void setMontoAporte(float value) {
@@ -136,7 +136,7 @@ public class DtColaboracion {
     }
 
     /**
-     * Gets the value of the fechaRealizacion property.
+     * Obtiene el valor de la propiedad fechaRealizacion.
      * 
      * @return
      *     possible object is
@@ -148,7 +148,7 @@ public class DtColaboracion {
     }
 
     /**
-     * Sets the value of the fechaRealizacion property.
+     * Define el valor de la propiedad fechaRealizacion.
      * 
      * @param value
      *     allowed object is
@@ -160,7 +160,7 @@ public class DtColaboracion {
     }
 
     /**
-     * Gets the value of the retorno property.
+     * Obtiene el valor de la propiedad retorno.
      * 
      * @return
      *     possible object is
@@ -172,7 +172,7 @@ public class DtColaboracion {
     }
 
     /**
-     * Sets the value of the retorno property.
+     * Define el valor de la propiedad retorno.
      * 
      * @param value
      *     allowed object is
@@ -184,7 +184,7 @@ public class DtColaboracion {
     }
 
     /**
-     * Gets the value of the pago property.
+     * Obtiene el valor de la propiedad pago.
      * 
      * @return
      *     possible object is
@@ -196,7 +196,7 @@ public class DtColaboracion {
     }
 
     /**
-     * Sets the value of the pago property.
+     * Define el valor de la propiedad pago.
      * 
      * @param value
      *     allowed object is

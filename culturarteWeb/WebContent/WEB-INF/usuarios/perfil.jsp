@@ -3,13 +3,6 @@
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="dataTypes.DtProponente"%>
-<%@page import="dataTypes.DtColaborador"%>
-<%@page import="dataTypes.DtColaboracion"%>
-<%@page import="dataTypes.DtPropuesta"%>
-<%@page import="dataTypes.DtUsuario"%>
-<%@page import="dataTypes.TEstado"%>
-<%@page import="logica.Fabrica"%>
 <!doctype html>
 <html>
 <head>
@@ -198,12 +191,9 @@
 						<%
 							servidor.DataList dtSeguidores = port.listarSeguidores(dtP.getNickName());
 							List<servidor.DtUsuario> listaSeguidores = (ArrayList) dtSeguidores.getDatos();
-							
-							//ArrayList<DtUsuario> listaSeguidores = (ArrayList<DtUsuario>) Fabrica.getInstance().getICtrlUsuario()
-										//.listarSeguidores(dtP.getNickName());
-								if (listaSeguidores.size() > 0) {
-									for (int i = 0; i < listaSeguidores.size(); i++) {
-										servidor.DtUsuario seguidor = listaSeguidores.get(i);
+							if (listaSeguidores.size() > 0) {
+								for (int i = 0; i < listaSeguidores.size(); i++) {
+									servidor.DtUsuario seguidor = listaSeguidores.get(i);
 						%>
 						<a href="consultaUsuario?usuario=<%=seguidor.getNickName()%>">
 							<%=seguidor.getNombre() + " " + seguidor.getApellido() + " (" + seguidor.getNickName()
@@ -221,12 +211,9 @@
 						<%
 							servidor.DataList dtSeguidos = port.listarSeguidos(dtP.getNickName());
 							List<servidor.DtUsuario> listaSeguidos = (ArrayList) dtSeguidos.getDatos();
-							
-							//ArrayList<DtUsuario> listaSeguidos = (ArrayList<DtUsuario>) Fabrica.getInstance().getICtrlUsuario()
-										//.listarSeguidos(dtP.getNickName());
-								if (listaSeguidos.size() > 0) {
-									for (int i = 0; i < listaSeguidos.size(); i++) {
-										servidor.DtUsuario seguido = listaSeguidos.get(i);
+							if (listaSeguidos.size() > 0) {
+								for (int i = 0; i < listaSeguidos.size(); i++) {
+									servidor.DtUsuario seguido = listaSeguidos.get(i);
 						%>
 
 						<a href="consultaUsuario?usuario=<%=seguido.getNickName()%>">
@@ -344,12 +331,9 @@
 						<%
 							servidor.DataList dtSeguidores = port.listarSeguidores(dtC.getNickName());
 							List<servidor.DtUsuario> listaSeguidores = (ArrayList) dtSeguidores.getDatos();
-							
-							//ArrayList<DtUsuario> listaSeguidores = (ArrayList<DtUsuario>) Fabrica.getInstance().getICtrlUsuario()
-										//.listarSeguidores(dtC.getNickName());
-								if (listaSeguidores.size() > 0) {
-									for (int i = 0; i < listaSeguidores.size(); i++) {
-										servidor.DtUsuario seguidor = listaSeguidores.get(i);
+							if (listaSeguidores.size() > 0) {
+								for (int i = 0; i < listaSeguidores.size(); i++) {
+									servidor.DtUsuario seguidor = listaSeguidores.get(i);
 						%>
 						<a href="consultaUsuario?usuario=<%=seguidor.getNickName()%>">
 							<%=seguidor.getNombre() + " " + seguidor.getApellido() + " (" + seguidor.getNickName()
@@ -367,12 +351,9 @@
 						<%
 							servidor.DataList dtSeguidos = port.listarSeguidos(dtC.getNickName());
 							List<servidor.DtUsuario> listaSeguidos = (ArrayList) dtSeguidos.getDatos();
-							
-							//ArrayList<DtUsuario> listaSeguidos = (ArrayList<DtUsuario>) Fabrica.getInstance().getICtrlUsuario()
-										//.listarSeguidos(dtC.getNickName());
-								if (listaSeguidos.size() > 0) {
-									for (int i = 0; i < listaSeguidos.size(); i++) {
-										servidor.DtUsuario seguido = listaSeguidos.get(i);
+							if (listaSeguidos.size() > 0) {
+								for (int i = 0; i < listaSeguidos.size(); i++) {
+									servidor.DtUsuario seguido = listaSeguidos.get(i);
 						%>
 						<a href="consultaUsuario?usuario=<%=seguido.getNickName()%>">
 							<%=seguido.getNombre() + " " + seguido.getApellido() + " (" + seguido.getNickName() + ")"%>

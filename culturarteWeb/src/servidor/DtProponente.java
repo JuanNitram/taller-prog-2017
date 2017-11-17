@@ -10,9 +10,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for dtProponente complex type.
+ * <p>Clase Java para dtProponente complex type.
  * 
- * <p>The following schema fragment specifies the expected         content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="dtProponente"&gt;
@@ -49,7 +49,7 @@ public class DtProponente
     protected List<DtPropuesta> propuestas;
 
     /**
-     * Gets the value of the direccion property.
+     * Obtiene el valor de la propiedad direccion.
      * 
      * @return
      *     possible object is
@@ -61,7 +61,7 @@ public class DtProponente
     }
 
     /**
-     * Sets the value of the direccion property.
+     * Define el valor de la propiedad direccion.
      * 
      * @param value
      *     allowed object is
@@ -73,7 +73,7 @@ public class DtProponente
     }
 
     /**
-     * Gets the value of the biografia property.
+     * Obtiene el valor de la propiedad biografia.
      * 
      * @return
      *     possible object is
@@ -85,7 +85,7 @@ public class DtProponente
     }
 
     /**
-     * Sets the value of the biografia property.
+     * Define el valor de la propiedad biografia.
      * 
      * @param value
      *     allowed object is
@@ -97,7 +97,7 @@ public class DtProponente
     }
 
     /**
-     * Gets the value of the linkSitio property.
+     * Obtiene el valor de la propiedad linkSitio.
      * 
      * @return
      *     possible object is
@@ -109,7 +109,7 @@ public class DtProponente
     }
 
     /**
-     * Sets the value of the linkSitio property.
+     * Define el valor de la propiedad linkSitio.
      * 
      * @param value
      *     allowed object is

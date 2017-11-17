@@ -8,7 +8,6 @@ import dataTypes.DtColaborador;
 import dataTypes.DtProponente;
 import dataTypes.DtUsuario;
 import logica.clases.Acceso;
-import logica.clases.Propuesta;
 
 public interface ICtrlUsuario {
 	

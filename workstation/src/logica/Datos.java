@@ -7,7 +7,6 @@ import javax.swing.tree.TreePath;
 import logica.clases.Estado;
 import logica.controladores.CtrlPropuesta;
 import logica.controladores.CtrlUsuario;
-import servidor.Publicador;
 import dataTypes.DtCategoria;
 import dataTypes.TEstado;
 import dataTypes.TRetorno;

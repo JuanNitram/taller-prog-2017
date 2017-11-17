@@ -12,12 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.TreeNode;
 
-import logica.Fabrica;
-import dataTypes.DtCategoria;
-import dataTypes.DtPropuesta;
-import dataTypes.DtUsuario;
-import dataTypes.TEstado;
-
 /**
  * Servlet implementation class Propuestas
  */
@@ -33,7 +27,7 @@ public class Propuestas extends HttpServlet {
         super();
     }
     
-    private static List<TreeNode> categoriasList = new ArrayList();
+    /*private static List<TreeNode> categoriasList = new ArrayList();
 	 
 	public static List<TreeNode> getCategoriasList() {
 		return categoriasList;
@@ -51,7 +45,7 @@ public class Propuestas extends HttpServlet {
 				recursivoTree((DefaultMutableTreeNode) raiz.getChildAt(i));
 			}
 		}
-	}
+	}*/
     
 	protected void processRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {

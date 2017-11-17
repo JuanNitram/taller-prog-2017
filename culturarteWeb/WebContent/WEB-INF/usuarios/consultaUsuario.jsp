@@ -1,14 +1,6 @@
-<%@page import="servidor.DataList"%>
-<%@page import="logica.Fabrica"%>
-<%@page import="dataTypes.DtProponente"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<%@page import="dataTypes.DtProponente"%>
-<%@page import="dataTypes.DtUsuario"%>
-<%@page import="dataTypes.DtColaborador"%>
-<%@page import="dataTypes.DtColaboracion"%>
-<%@page import="dataTypes.DtPropuesta"%>
-<%@page import="dataTypes.TEstado"%>
+<%@page import="servidor.DataList"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>

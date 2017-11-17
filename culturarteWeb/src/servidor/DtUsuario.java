@@ -13,9 +13,9 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 
 /**
- * <p>Java class for dtUsuario complex type.
+ * <p>Clase Java para dtUsuario complex type.
  * 
- * <p>The following schema fragment specifies the expected         content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="dtUsuario"&gt;
@@ -64,7 +64,7 @@ public abstract class DtUsuario {
     protected List<String> favoritas;
 
     /**
-     * Gets the value of the nickName property.
+     * Obtiene el valor de la propiedad nickName.
      * 
      * @return
      *     possible object is
@@ -76,7 +76,7 @@ public abstract class DtUsuario {
     }
 
     /**
-     * Sets the value of the nickName property.
+     * Define el valor de la propiedad nickName.
      * 
      * @param value
      *     allowed object is
@@ -88,7 +88,7 @@ public abstract class DtUsuario {
     }
 
     /**
-     * Gets the value of the nombre property.
+     * Obtiene el valor de la propiedad nombre.
      * 
      * @return
      *     possible object is
@@ -100,7 +100,7 @@ public abstract class DtUsuario {
     }
 
     /**
-     * Sets the value of the nombre property.
+     * Define el valor de la propiedad nombre.
      * 
      * @param value
      *     allowed object is
@@ -112,7 +112,7 @@ public abstract class DtUsuario {
     }
 
     /**
-     * Gets the value of the apellido property.
+     * Obtiene el valor de la propiedad apellido.
      * 
      * @return
      *     possible object is
@@ -124,7 +124,7 @@ public abstract class DtUsuario {
     }
 
     /**
-     * Sets the value of the apellido property.
+     * Define el valor de la propiedad apellido.
      * 
      * @param value
      *     allowed object is
@@ -136,7 +136,7 @@ public abstract class DtUsuario {
     }
 
     /**
-     * Gets the value of the email property.
+     * Obtiene el valor de la propiedad email.
      * 
      * @return
      *     possible object is
@@ -148,7 +148,7 @@ public abstract class DtUsuario {
     }
 
     /**
-     * Sets the value of the email property.
+     * Define el valor de la propiedad email.
      * 
      * @param value
      *     allowed object is
@@ -160,7 +160,7 @@ public abstract class DtUsuario {
     }
 
     /**
-     * Gets the value of the fechaNacimiento property.
+     * Obtiene el valor de la propiedad fechaNacimiento.
      * 
      * @return
      *     possible object is
@@ -172,7 +172,7 @@ public abstract class DtUsuario {
     }
 
     /**
-     * Sets the value of the fechaNacimiento property.
+     * Define el valor de la propiedad fechaNacimiento.
      * 
      * @param value
      *     allowed object is
@@ -184,7 +184,7 @@ public abstract class DtUsuario {
     }
 
     /**
-     * Gets the value of the rutaImg property.
+     * Obtiene el valor de la propiedad rutaImg.
      * 
      * @return
      *     possible object is
@@ -196,7 +196,7 @@ public abstract class DtUsuario {
     }
 
     /**
-     * Sets the value of the rutaImg property.
+     * Define el valor de la propiedad rutaImg.
      * 
      * @param value
      *     allowed object is

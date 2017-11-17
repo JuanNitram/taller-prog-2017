@@ -15,8 +15,6 @@ import dataTypes.TEstado;
 import dataTypes.TRetorno;
 import dataTypes.TTarjeta;
 
-import java.util.ArrayList;
-
 public interface ICtrlPropuesta {
 
 	boolean existePropuesta(String nickName, String titulo);

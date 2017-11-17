@@ -14,9 +14,6 @@ import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 
-import logica.Fabrica;
-import logica.clases.Acceso;
-
 
 /**
  * Servlet Filter implementation class ControlAccesoFiltro

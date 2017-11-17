@@ -7,9 +7,9 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for dtPago complex type.
+ * <p>Clase Java para dtPago complex type.
  * 
- * <p>The following schema fragment specifies the expected         content contained within this class.
+ * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
  * &lt;complexType name="dtPago"&gt;
@@ -37,7 +37,7 @@ public abstract class DtPago {
     protected String nombreTitular;
 
     /**
-     * Gets the value of the monto property.
+     * Obtiene el valor de la propiedad monto.
      * 
      */
     public float getMonto() {
@@ -45,7 +45,7 @@ public abstract class DtPago {
     }
 
     /**
-     * Sets the value of the monto property.
+     * Define el valor de la propiedad monto.
      * 
      */
     public void setMonto(float value) {
@@ -53,7 +53,7 @@ public abstract class DtPago {
     }
 
     /**
-     * Gets the value of the nombreTitular property.
+     * Obtiene el valor de la propiedad nombreTitular.
      * 
      * @return
      *     possible object is
@@ -65,7 +65,7 @@ public abstract class DtPago {
     }
 
     /**
-     * Sets the value of the nombreTitular property.
+     * Define el valor de la propiedad nombreTitular.
      * 
      * @param value
      *     allowed object is

@@ -8,9 +8,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.culturarte.model.EstadoSesion;
 
-import logica.Fabrica;
-import dataTypes.DtUsuario;
-
 /**
  * Servlet implementation class Perfil
  */
