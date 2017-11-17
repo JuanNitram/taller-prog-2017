@@ -1,6 +1,7 @@
 package presentacion2;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -33,16 +34,17 @@ public class ControlAcceso extends JInternalFrame {
 		setClosable(true);
 		setResizable(true);
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-		setBounds(100, 100, 449, 321);
+		setBounds(100, 100, 700, 500);
+		setMinimumSize(new Dimension(700,250));
 		
 		JPanel panel = new JPanel();
 		panel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(panel, BorderLayout.CENTER);
 		GridBagLayout gbl_panel = new GridBagLayout();
 		gbl_panel.columnWidths = new int[]{10, 80, 80, 80, 80, 10};
-		gbl_panel.rowHeights = new int[]{30, 149, 26, 37};
-		gbl_panel.columnWeights = new double[]{1.0, 1.0, 1.0, 1.0};
-		gbl_panel.rowWeights = new double[]{1.0, 1.0, 1.0, 0.0};
+		gbl_panel.rowHeights = new int[]{10, 150, 10, 35};
+		gbl_panel.columnWeights = new double[]{0.0, 1.0, 1.0, 1.0, 1.0};
+		gbl_panel.rowWeights = new double[]{0.0, 1.0, 0.0, 0.0};
 		panel.setLayout(gbl_panel);
 		
 		JScrollPane scrollPane = new JScrollPane();
@@ -57,6 +59,19 @@ public class ControlAcceso extends JInternalFrame {
 		table = new JTable();
 		table.setEnabled(false);
 		scrollPane.setViewportView(table);
+		
+		JButton btnActualizar = new JButton("Actualizar");
+		btnActualizar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				cargarTabla();
+			}
+		});
+		GridBagConstraints gbc_btnActualizar = new GridBagConstraints();
+		gbc_btnActualizar.gridwidth = 2;
+		gbc_btnActualizar.insets = new Insets(0, 0, 5, 5);
+		gbc_btnActualizar.gridx = 2;
+		gbc_btnActualizar.gridy = 3;
+		panel.add(btnActualizar, gbc_btnActualizar);
 		
 		JButton btnCancelar = new JButton("Cerrar");
 		btnCancelar.addActionListener(new ActionListener() {
@@ -88,6 +103,8 @@ public class ControlAcceso extends JInternalFrame {
 	    String[] columnNames = {"#", "IP", "URL", "Browser", "SO"};
 	    DefaultTableModel tableModel = new DefaultTableModel(data, columnNames);
 	    table.setModel(tableModel);
+		table.getColumnModel().getColumn(0).setMinWidth(40);
+		table.getColumnModel().getColumn(0).setMaxWidth(40);
 		
 	}
 }

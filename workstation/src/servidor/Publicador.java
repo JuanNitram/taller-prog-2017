@@ -31,7 +31,9 @@ public class Publicador {
     private Endpoint endpoint = null;
     
 	private void linealizarConNivel(DefaultMutableTreeNode tree, ArrayList<String> list, int k) {
-		list.add(tree.toString());
+		String guiones = "";
+		for(int i = 0; i < tree.getLevel()-1; i++) guiones += "- ";
+		list.add(guiones + tree.toString());
 		for(int i = 0; i < tree.getChildCount(); i++) {
 			linealizarConNivel((DefaultMutableTreeNode)tree.getChildAt(i),list,k+1);
 		}
@@ -42,7 +44,7 @@ public class Publicador {
 
     @WebMethod(exclude = true)
     public void publicar() {
-         endpoint = Endpoint.publish("http://localhost:10115/publicador", this);
+         endpoint = Endpoint.publish("http://localhost:11115/publicador", this);
     }
 
     @WebMethod(exclude = true)
@@ -237,6 +239,7 @@ public class Publicador {
 		DataList dtL = new DataList();
 		ArrayList<String> categoriasLista = new ArrayList<String>();
 		linealizarConNivel(Fabrica.getInstance().getICtrlPropuesta().listarCategorias(), categoriasLista, 0);
+		categoriasLista.remove(0);
 		dtL.setDatos(categoriasLista);
 		return dtL;
 	}
