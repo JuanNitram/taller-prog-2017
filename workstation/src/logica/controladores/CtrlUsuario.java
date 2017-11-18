@@ -4,15 +4,18 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
 import dataTypes.DtColaborador;
 import dataTypes.DtProponente;
+import dataTypes.DtPropuesta;
 import dataTypes.DtUsuario;
 import logica.Fabrica;
 import logica.ICtrlUsuario;
 import logica.clases.Acceso;
+import logica.clases.Colaboracion;
 import logica.clases.Colaborador;
 import logica.clases.Proponente;
 import logica.clases.Propuesta;
@@ -29,6 +32,23 @@ public class CtrlUsuario implements ICtrlUsuario {
 	private CtrlUsuario() { 
 		this.usuarios = new HashMap<String, Usuario>();
 		this.accesos = new ArrayList<Acceso>();
+	}
+	
+	public void bajaProponente(String nickName){
+		ArrayList<DtPropuesta> props = (ArrayList) CtrlPropuesta.getInstance().listarPropuestas();
+		for(int i=0; i < props.size();i++){
+			if(props.get(i).getNickProponente().equals(nickName))
+				CtrlPropuesta.getInstance().bajaPropuesta(props.get(i).getTitulo());
+		}
+		
+	    /*for(Iterator<Map.Entry<String, Usuario>> it = usuarios.entrySet().iterator(); it.hasNext(); ) {
+	        Map.Entry<String, Usuario> entry = it.next();
+	        if(entry.getValue().eraseSeguido(usuario);) {
+	        	it.remove();
+	        }
+	    }
+		
+		usuarios.remove(nickName);*/
 	}
 	
 	public boolean esFavorita(String usuario, String propuesta){

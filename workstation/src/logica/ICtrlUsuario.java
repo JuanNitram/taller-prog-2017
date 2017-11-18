@@ -36,6 +36,8 @@ public interface ICtrlUsuario {
 	void altaProponente(String nickName, String password, String nombre, String apellido, String direccion, String email, String biografia, String urlSitio,
 			String rutaImg, Date fechaNacimiento);
 	
+	void bajaProponente(String nickName);
+	
 	void altaColaborador(String nickName, String password, String nombre, String apellido, String email, String rutaImg, Date fechaNacimiento);
 	
 	DtProponente infoProponente(String nickName);

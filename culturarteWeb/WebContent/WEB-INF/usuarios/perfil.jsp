@@ -108,6 +108,19 @@
 										<td><%=dtP.getNickName()%></td>
 									</tr>
 									<tr>
+										<td>¿ Darse baja ?</td>
+										<td>					
+											<div>
+												<form action="/bajaProponente" method="post">
+													<button id="cancelarPropuesta" style="margin-left: 10px"
+															type=button class="btn btn-danger">
+															<i class="fa fa-times-circle"></i>
+													</button>
+												</form>
+											</div>
+										</td>
+									</tr>
+									<tr>
 										<td>Email:</td>
 										<td><%=dtP.getEmail()%></td>
 									</tr>
@@ -366,6 +379,7 @@
 						%>
 					</div>
 				</div>
+
 				<div class="panel-footer">
 					<a href="<%="mailto:" + dtC.getEmail()%>"><button
 							class="btn btn-success meilito" type="button"

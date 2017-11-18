@@ -101,7 +101,6 @@
 
 					<li id="divisor" class="nav-item"><a class="nav-link"
 						href="/CulturarteWeb/cerrar">Cerrar sesión</a></li>
-
 				</ul>
 				<div class="inner-addon right-addon">
 					<input type="text" placeholder="Buscar..." id="buscador" class="typeahead tt-query" autocomplete="off" spellcheck="false"><a class="fa fa-search" onclick="clicBuscar()"></a>
