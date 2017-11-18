@@ -1,22 +1,118 @@
 <%@page import="java.util.ArrayList"%>
+<%@page import="java.util.SortedMap"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page errorPage="/WEB-INF/errorPages/500.jsp"%>
 <!doctype html>
 <html>
+	<% 		boolean bandera = false;
+				servidor.PublicadorService service =  new servidor.PublicadorService();
+				servidor.Publicador port = service.getPublicadorPort();
+				ArrayList<servidor.DtUsuario> usuarios = (ArrayList<servidor.DtUsuario>)request.getAttribute("usuarios"); 
+				SortedMap<Integer, servidor.DtUsuario> seguidores = (SortedMap<Integer, servidor.DtUsuario>)request.getAttribute("seguidores");
+				%>
 <head>
-<jsp:include page="/WEB-INF/template/head.jsp" />
+<jsp:include page="/WEB-INF/template/header.jsp" />
+<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+<link rel="stylesheet" href="/CulturarteWeb/media/styles/slide.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
 <title>Usuarios | Culturarte</title>
 </head>
 <body id="listaimage">
-	<jsp:include page="/WEB-INF/template/header.jsp" />
-
+	
+<script>
+		$(document).ready(function() {
+	  //Set the carousel options
+	  $('#quote-carousel').carousel({
+	    pauseOnHover: true,
+	    interval: 3000,
+	  });
+		});
+</script>
+<div class="container">
+  <div class='row '>
+    <div class='col-md-offset-2 col-md-8 '>
+      <div class="carousel slide main" data-ride="carousel" id="quote-carousel">
+        <!-- Bottom Carousel Indicators -->
+        <ol class="carousel-indicators">
+        <%int i = 0; %>
+        <li data-target="#quote-carousel" data-slide-to="<%=i%>" class="active"></li>
+         <% if(seguidores.size() > 0) for (i = 1; i < seguidores.size(); i++){ %>
+         	<li data-target="#quote-carousel" data-slide-to="<%=i%>"></li>
+         <% }%>
+        </ol>
+        
+        <!-- Carousel Slides / Quotes -->
+        <div class="carousel-inner">
+         <% boolean first = true;
+         	for (SortedMap.Entry<Integer,servidor.DtUsuario> e : seguidores.entrySet()){ 
+         		if (first){%>
+	          <!-- Quote 1 -->
+	          <div class="item active">
+	            <blockquote>
+	              <div class="row">
+	                <div class="col-sm-3 text-center">
+	                <% first= false;
+	                	if (e.getValue().getRutaImg() == ""){ %>
+						<img src="/CulturarteWeb\media\images\defecto.png" />
+						<%}else if (port.esProponente(e.getValue().getNickName())){ %>
+							<img class="img-circle" src="/CulturarteWeb/media/images/imagenes/usuarios/proponentes/<%=e.getValue().getRutaImg() %>.jpg" style="width: 100px;height:100px;">
+						<%}else { %>
+							<img class="img-circle" src="/CulturarteWeb/media/images/imagenes/usuarios/colaboradores/<%=e.getValue().getRutaImg() %>.jpg" style="width: 100px;height:100px;">
+						<% } %>	
+	                  
+	                </div>
+	                
+	                <div class="col-sm-9">
+	                  <h1><a href="consultaUsuario?usuario=<%= e.getValue().getNickName() %>"> <%=e.getValue().getNombre() + " "+ e.getValue().getApellido() %></a></h1>
+	                  <br>
+	                  <small>Seguidores: <%=e.getKey()%></small>
+	                </div>
+	              </div>
+	            </blockquote>
+	          </div>
+          <%} else{ %>
+	          <div class="item">
+	            <blockquote>
+	              <div class="row">
+	                <div class="col-sm-3 text-center">
+	                <% if (e.getValue().getRutaImg() == ""){ %>
+						<img src="/CulturarteWeb\media\images\defecto.png" />
+						<%}else if (port.esProponente(e.getValue().getNickName())){ %>
+							<img class="img-circle" src="/CulturarteWeb/media/images/imagenes/usuarios/proponentes/<%=e.getValue().getRutaImg() %>.jpg" style="width: 100px;height:100px;">
+						<%}else { %>
+							<img class="img-circle" src="/CulturarteWeb/media/images/imagenes/usuarios/colaboradores/<%=e.getValue().getRutaImg() %>.jpg" style="width: 100px;height:100px;">
+						<% } %>	
+	                  
+	                </div>
+	                
+	                <div class="col-sm-9">
+	                  <h1><a href="consultaUsuario?usuario=<%= e.getValue().getNickName() %>"> <%=e.getValue().getNombre() + " "+ e.getValue().getApellido() %></a></h1>
+	                  <br>
+	                  <small>Seguidores: <%=e.getKey()%></small>
+	                </div>
+	              </div>
+	            </blockquote>
+	          </div>
+         		
+         	<%	} 
+         	}%>
+         
+        </div>
+        
+        <!-- Carousel Buttons Next/Prev -->
+        <a data-slide="prev" href="#quote-carousel" class="left carousel-control"><i class="fa fa-chevron-left"></i></a>
+        <a data-slide="next" href="#quote-carousel" class="right carousel-control"><i class="fa fa-chevron-right"></i></a>
+      </div>                          
+    </div>
+  </div>
+</div>
 	<div id="listar" class="main">
-		<% 		boolean bandera = false;
-				servidor.PublicadorService service =  new servidor.PublicadorService();
-				servidor.Publicador port = service.getPublicadorPort();
-				ArrayList<servidor.DtUsuario> usuarios = (ArrayList<servidor.DtUsuario>)request.getAttribute("usuarios");
+	
 
-				for(servidor.DtUsuario usuario: usuarios){
+			<%	for(servidor.DtUsuario usuario: usuarios){
 			%>
 		<div class="usuario">
 			<% if (usuario.getRutaImg() == ""){ %>
@@ -51,8 +147,11 @@
 		<% } %>
 	</div>
 
+	
+    });
 	<div class="footer">
 		<jsp:include page="/WEB-INF/template/footer.jsp" />
 	</div>
+	
 </body>
 </html>

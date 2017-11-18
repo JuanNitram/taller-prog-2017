@@ -44,7 +44,7 @@ public class Publicador {
 
     @WebMethod(exclude = true)
     public void publicar() {
-         endpoint = Endpoint.publish("http://localhost:11115/publicador", this);
+         endpoint = Endpoint.publish("http://localhost:10115/publicador", this);
     }
 
     @WebMethod(exclude = true)

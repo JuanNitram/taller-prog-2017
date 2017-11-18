@@ -3,11 +3,17 @@ package com.culturarte.controllers;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.SortedMap;
+import java.util.TreeMap;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import logica.clases.Usuario;
+import servidor.DtUsuario;
 
 /**
  * Servlet implementation class Usuarios
@@ -32,17 +38,18 @@ public class Usuarios extends HttpServlet {
 	protected void processRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String usuario = request.getParameter("usuario");
-			
+        SortedMap<Integer, servidor.DtUsuario> seguidores = new TreeMap<Integer,servidor.DtUsuario>(java.util.Collections.reverseOrder());
 		if (usuario == null) {
-			
 			servidor.PublicadorService service =  new servidor.PublicadorService();
 			servidor.Publicador port = service.getPublicadorPort();
-			
 			servidor.DataList dtUs = port.listarUsuarios();
 			List<servidor.DtUsuario> usuarios = (ArrayList) dtUs.getDatos();
-			
 			if (usuarios.size() > 0){
+				for(DtUsuario user : usuarios){
+					seguidores.put(port.listarSeguidores(user.getNickName()).getDatos().size(),user);
+				}
 				request.setAttribute("usuarios", usuarios);
+				request.setAttribute("seguidores", seguidores);
 			
 				request.getRequestDispatcher("/WEB-INF/usuarios/listar.jsp").forward(request, response);
 			}

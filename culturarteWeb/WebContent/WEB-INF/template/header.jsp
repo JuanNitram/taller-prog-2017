@@ -9,9 +9,8 @@
 <%@ page import="javax.swing.JTree"%>
 <%@page import="com.culturarte.controllers.Propuestas"%>
 
-<link rel="stylesheet" href="/media/Data-picker/css/bootstrap-datepicker.css" />
-<link rel="stylesheet" type="text/css" href="/media/styles/buscador.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="CulturarteWeb/media/Data-picker/css/bootstrap-datepicker.css" />
+<link rel="stylesheet" type="text/css" href="/CulturarteWeb/media/styles/buscador.css">
 <link href="/CulturarteWeb/recursos/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
 	
