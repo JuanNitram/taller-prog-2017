@@ -25,6 +25,10 @@
     <servlet-name>AltaUsuario</servlet-name>
     <servlet-class>com.culturarte.controllers.AltaUsuario</servlet-class>
   </servlet>
+    <servlet>
+    <servlet-name>BajaUsuario</servlet-name>
+    <servlet-class>com.culturarte.controllers.BajaUsuario</servlet-class>
+  </servlet>
   <servlet>
     <servlet-name>ConsultaUsuario</servlet-name>
     <servlet-class>com.culturarte.controllers.ConsultaUsuario</servlet-class>
@@ -88,6 +92,10 @@
   <servlet-mapping>
     <servlet-name>AltaUsuario</servlet-name>
     <url-pattern>/altaUsuario</url-pattern>
+  </servlet-mapping>
+    <servlet-mapping>
+    <servlet-name>BajaUsuario</servlet-name>
+    <url-pattern>/bajaUsuario</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>Servlet Cargar Datos</servlet-name>

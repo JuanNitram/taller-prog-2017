@@ -111,9 +111,9 @@
 										<td>¿ Darse baja ?</td>
 										<td>					
 											<div>
-												<form action="/bajaProponente" method="post">
-													<button id="cancelarPropuesta" style="margin-left: 10px"
-															type=button class="btn btn-danger">
+												<form action="bajaUsuario?nickName=<%=dtP.getNickName()%>" method="post">
+													<button onclick="submit()" id="baja" style="margin-left: 10px"
+															type="button" class="btn btn-danger">
 															<i class="fa fa-times-circle"></i>
 													</button>
 												</form>
