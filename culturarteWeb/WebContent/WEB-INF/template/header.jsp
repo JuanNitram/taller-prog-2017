@@ -414,7 +414,7 @@
 			</div>
 		</div>
 	</div>
-	<script src="/CulturarteWeb/media/Data-picker/js/bootstrap-datepicker.min.js"></script>
+	<!--  <script src="/CulturarteWeb/media/Data-picker/js/bootstrap-datepicker.min.js"></script> -->
 	<script src="/CulturarteWeb/media/app.js"></script>
 	<script>
 		function validarProponer() {

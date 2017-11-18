@@ -144,6 +144,8 @@
 														if (propuestas != null) {
 															for (int i = 0; i < propuestas.size(); i++) {
 																String titulo = propuestas.get(i).getTitulo();
+																if(propuestas.get(i).getNickProponente().equals(dtP.getNickName())) {
+																
 												%>
 												<a href="consultaPropuesta?propuesta=<%=titulo%>"><%=titulo%></a>
 												<%
@@ -179,7 +181,7 @@
 													</button>
 												<% } %>
 												<br>
-												<%
+												<%		}
 															}
 														}
 												%>

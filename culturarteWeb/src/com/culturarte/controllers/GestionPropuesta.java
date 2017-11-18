@@ -64,7 +64,7 @@ public class GestionPropuesta extends HttpServlet {
 				
 				Calendar calendar = Calendar.getInstance();
 				String [] fechaSplit = fechaStr.split("/");
-				calendar.set(Integer.parseInt(fechaSplit[2]), Integer.parseInt(fechaSplit[1]) - 1, Integer.parseInt(fechaSplit[0]));
+				//calendar.set(Integer.parseInt(fechaSplit[2]), Integer.parseInt(fechaSplit[1]) - 1, Integer.parseInt(fechaSplit[0]));
 				Date dateTime = calendar.getTime();
 				DtCategoria dtCategoria = new DtCategoria();
 				dtCategoria.setNombre(categoria);
@@ -72,10 +72,10 @@ public class GestionPropuesta extends HttpServlet {
 				DataDate dataDate = new DataDate();
 				dataDate.setDate(Utils.getXmlGregorianCalendarFromDate(dateTime));
 				servicios.getPublicadorPort().altaPropuesta((String) (request.getSession().getAttribute("usuario_logueado")), 
-						titulo, dtCategoria, descripcion, lugar, dataDate, montoNecesario , retorno, montoEntrada, null);
+						titulo, dtCategoria, descripcion, lugar, dataDate, montoNecesario , retorno, montoEntrada, "");
 				
 				//Vuelve al inicio de la pagina
-				response.sendRedirect("/perfil");
+				response.sendRedirect("/CulturarteWeb/perfil");
 			} catch (DatatypeConfigurationException e) {
 				e.printStackTrace();
 			}
