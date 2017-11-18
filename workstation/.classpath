@@ -19,7 +19,7 @@
 			<attribute name="owner.project.facets" value="jst.web"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/Casa/git/tpgr05/workstation/src/recursos/jcalendar-1.4.jar">
+	<classpathentry kind="lib" path="C:/Users/GHernandez/git/tpgr05/workstation/src/recursos/jcalendar-1.4.jar">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>

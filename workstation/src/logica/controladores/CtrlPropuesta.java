@@ -261,8 +261,9 @@ public class CtrlPropuesta implements ICtrlPropuesta {
 			propRecordada.setEstado(new Estado(TEstado.PUBLICADA, new Date()));
 			propRecordada.setFechaPublicacion(new Date());
 		}
-		else if (evaluacion.equals("c"))
+		else if (evaluacion.equals("c")) {
 			propRecordada.setEstado(new Estado(TEstado.CANCELADA, new Date()));
+		}	
 	}
 	
 	public boolean extenderFinanciacion(String titulo) {
