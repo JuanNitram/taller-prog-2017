@@ -32,9 +32,14 @@
 		});
 </script>
 <div class="container">
+
   <div class='row '>
     <div class='col-md-offset-2 col-md-8 '>
+    
       <div class="carousel slide main" data-ride="carousel" id="quote-carousel">
+      <div  style="text-align:center;color: white;border-bottom: 2px solid #CCCCCC;">
+      <h1>Ranking</h1>
+      </div>
         <!-- Bottom Carousel Indicators -->
         <ol class="carousel-indicators">
         <%int i = 0; %>
@@ -46,6 +51,7 @@
         
         <!-- Carousel Slides / Quotes -->
         <div class="carousel-inner">
+        
          <% boolean first = true;
          	for (SortedMap.Entry<Integer,servidor.DtUsuario> e : seguidores.entrySet()){ 
          		if (first){%>
@@ -67,7 +73,7 @@
 	                
 	                <div class="col-sm-9">
 	                  <h1><a href="consultaUsuario?usuario=<%= e.getValue().getNickName() %>"> <%=e.getValue().getNombre() + " "+ e.getValue().getApellido() %></a></h1>
-	                  <br>
+	                  
 	                  <small>Seguidores: <%=e.getKey()%></small>
 	                </div>
 	              </div>
@@ -90,7 +96,7 @@
 	                
 	                <div class="col-sm-9">
 	                  <h1><a href="consultaUsuario?usuario=<%= e.getValue().getNickName() %>"> <%=e.getValue().getNombre() + " "+ e.getValue().getApellido() %></a></h1>
-	                  <br>
+	                  
 	                  <small>Seguidores: <%=e.getKey()%></small>
 	                </div>
 	              </div>
@@ -103,8 +109,8 @@
         </div>
         
         <!-- Carousel Buttons Next/Prev -->
-        <a data-slide="prev" href="#quote-carousel" class="left carousel-control"><i class="fa fa-chevron-left"></i></a>
-        <a data-slide="next" href="#quote-carousel" class="right carousel-control"><i class="fa fa-chevron-right"></i></a>
+        <a data-slide="prev" href="#quote-carousel" class="left carousel-control"><i class="fa fa-chevron-left" style="color: white;position: absolute; bottom: 5px;"></i></a>
+        <a data-slide="next" href="#quote-carousel" class="right carousel-control"><i class="fa fa-chevron-right" style="color: white;position: absolute; bottom: 5px;"></i></a>
       </div>                          
     </div>
   </div>
