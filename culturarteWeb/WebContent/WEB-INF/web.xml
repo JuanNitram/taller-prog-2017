@@ -9,6 +9,7 @@
     <filter-name>ControlAccesoFiltro</filter-name>
     <url-pattern>/*</url-pattern>
   </filter-mapping>
+  
   <servlet>
     <servlet-name>Servlet Iniciar Sesion</servlet-name>
     <servlet-class>com.culturarte.controllers.Login</servlet-class>
