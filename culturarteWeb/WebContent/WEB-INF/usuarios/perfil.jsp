@@ -5,6 +5,7 @@
 <%@page import="java.util.ArrayList"%>
 <!doctype html>
 <html>
+
 <head>
 <jsp:include page="/WEB-INF/template/head.jsp" />
 <link rel="stylesheet"
