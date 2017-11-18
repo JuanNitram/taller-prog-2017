@@ -44,12 +44,17 @@ public class Publicador {
 
     @WebMethod(exclude = true)
     public void publicar() {
-         endpoint = Endpoint.publish("http://localhost:10115/publicador", this);
+         endpoint = Endpoint.publish("http://localhost:11115/publicador", this);
     }
 
     @WebMethod(exclude = true)
     public Endpoint getEndpoint() {
     	return endpoint;
+    }
+    
+    @WebMethod
+    public void bajaProponente(String nickName){
+    	Fabrica.getInstance().getICtrlUsuario().bajaProponente(nickName);
     }
     
     @WebMethod
@@ -66,6 +71,7 @@ public class Publicador {
     	return favoritos;
     }
     
+    @WebMethod
     public DataList listarPropuestaPorCategoria(String filtro){
     	DataList dtP = new DataList();
     	dtP.setDatos((ArrayList<DtPropuesta>)Fabrica.getInstance().getICtrlPropuesta().listarPropuestaPorCategoria(filtro));

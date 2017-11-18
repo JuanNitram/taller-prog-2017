@@ -11,13 +11,13 @@ import javax.xml.bind.annotation.XmlType;
  * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * <p>
  * <pre>
- * &lt;simpleType name="tRetorno"&gt;
- *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
- *     &lt;enumeration value="PORCENTAJE_GANANCIA"/&gt;
- *     &lt;enumeration value="ENTRADA_GRATIS"/&gt;
- *     &lt;enumeration value="PORCENTAJE_Y_ENTRADAS"/&gt;
- *   &lt;/restriction&gt;
- * &lt;/simpleType&gt;
+ * &lt;simpleType name="tRetorno">
+ *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
+ *     &lt;enumeration value="PORCENTAJE_GANANCIA"/>
+ *     &lt;enumeration value="ENTRADA_GRATIS"/>
+ *     &lt;enumeration value="PORCENTAJE_Y_ENTRADAS"/>
+ *   &lt;/restriction>
+ * &lt;/simpleType>
  * </pre>
  * 
  */

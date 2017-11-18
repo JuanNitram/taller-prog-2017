@@ -30,19 +30,19 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link DataList }
+     * Create an instance of {@link DataDate }
      * 
      */
-    public DataList createDataList() {
-        return new DataList();
+    public DataDate createDataDate() {
+        return new DataDate();
     }
 
     /**
-     * Create an instance of {@link DtComentario }
+     * Create an instance of {@link DtPropuesta }
      * 
      */
-    public DtComentario createDtComentario() {
-        return new DtComentario();
+    public DtPropuesta createDtPropuesta() {
+        return new DtPropuesta();
     }
 
     /**
@@ -54,19 +54,27 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link DataDate }
-     * 
-     */
-    public DataDate createDataDate() {
-        return new DataDate();
-    }
-
-    /**
      * Create an instance of {@link DtColaborador }
      * 
      */
     public DtColaborador createDtColaborador() {
         return new DtColaborador();
+    }
+
+    /**
+     * Create an instance of {@link DtComentario }
+     * 
+     */
+    public DtComentario createDtComentario() {
+        return new DtComentario();
+    }
+
+    /**
+     * Create an instance of {@link DataList }
+     * 
+     */
+    public DataList createDataList() {
+        return new DataList();
     }
 
     /**
@@ -83,14 +91,6 @@ public class ObjectFactory {
      */
     public DtProponente createDtProponente() {
         return new DtProponente();
-    }
-
-    /**
-     * Create an instance of {@link DtPropuesta }
-     * 
-     */
-    public DtPropuesta createDtPropuesta() {
-        return new DtPropuesta();
     }
 
     /**

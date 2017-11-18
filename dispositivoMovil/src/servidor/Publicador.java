@@ -56,13 +56,6 @@ public interface Publicador {
 
     /**
      * 
-     */
-    @WebMethod
-    @Action(input = "http://servidor/Publicador/finalizarRegistrarColaboracionPropuestaRequest", output = "http://servidor/Publicador/finalizarRegistrarColaboracionPropuestaResponse")
-    public void finalizarRegistrarColaboracionPropuesta();
-
-    /**
-     * 
      * @return
      *     returns servidor.DataList
      */
@@ -126,6 +119,13 @@ public interface Publicador {
         TreePath arg0,
         @WebParam(name = "arg1", partName = "arg1")
         String arg1);
+
+    /**
+     * 
+     */
+    @WebMethod
+    @Action(input = "http://servidor/Publicador/finalizarRegistrarColaboracionPropuestaRequest", output = "http://servidor/Publicador/finalizarRegistrarColaboracionPropuestaResponse")
+    public void finalizarRegistrarColaboracionPropuesta();
 
     /**
      * 

@@ -86,6 +86,15 @@ public class Principal2 extends JFrame {
 		JMenu mnSistema = new JMenu("Sistema");
 		menuBar.add(mnSistema);
 		
+		JMenuItem mntmBaja = new JMenuItem("Baja Proponente");
+		mntmBaja.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				System.out.println("Prueba baja proponente");
+				logica.Fabrica.getInstance().getICtrlUsuario().bajaProponente("hrubino");
+			}
+		});
+		mnSistema.add(mntmBaja);
+		
 		JMenuItem mntmCargarDatosDe = new JMenuItem("Cargar datos de prueba");
 		mntmCargarDatosDe.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {

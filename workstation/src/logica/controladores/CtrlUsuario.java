@@ -41,14 +41,14 @@ public class CtrlUsuario implements ICtrlUsuario {
 				CtrlPropuesta.getInstance().bajaPropuesta(props.get(i).getTitulo());
 		}
 		
-	    /*for(Iterator<Map.Entry<String, Usuario>> it = usuarios.entrySet().iterator(); it.hasNext(); ) {
-	        Map.Entry<String, Usuario> entry = it.next();
-	        if(entry.getValue().eraseSeguido(usuario);) {
-	        	it.remove();
-	        }
-	    }
+		Usuario usr = usuarios.get(nickName);
 		
-		usuarios.remove(nickName);*/
+	    for(Iterator<Map.Entry<String, Usuario>> it = usuarios.entrySet().iterator(); it.hasNext(); ) {
+	        Map.Entry<String, Usuario> entry = it.next();
+	        entry.getValue().eraseSeguido(usr);
+	        }
+	    
+		usuarios.remove(nickName);
 	}
 	
 	public boolean esFavorita(String usuario, String propuesta){

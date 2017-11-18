@@ -17,29 +17,29 @@ import javax.xml.datatype.XMLGregorianCalendar;
  * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
- * &lt;complexType name="dtPropuesta"&gt;
- *   &lt;complexContent&gt;
- *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
- *       &lt;sequence&gt;
- *         &lt;element name="nickProponente" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
- *         &lt;element name="titulo" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
- *         &lt;element name="descripcion" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
- *         &lt;element name="categoria" type="{http://servidor/}dtCategoria" minOccurs="0"/&gt;
- *         &lt;element name="lugar" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
- *         &lt;element name="fechaRealizacion" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/&gt;
- *         &lt;element name="fechaPublicacion" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/&gt;
- *         &lt;element name="fechaExtension" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/&gt;
- *         &lt;element name="montoRequerido" type="{http://www.w3.org/2001/XMLSchema}float"/&gt;
- *         &lt;element name="montoReunido" type="{http://www.w3.org/2001/XMLSchema}float"/&gt;
- *         &lt;element name="tipoRetorno" type="{http://servidor/}tRetorno" minOccurs="0"/&gt;
- *         &lt;element name="rutaImg" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/&gt;
- *         &lt;element name="precioEntrada" type="{http://www.w3.org/2001/XMLSchema}float"/&gt;
- *         &lt;element name="estado" type="{http://servidor/}tEstado" minOccurs="0"/&gt;
- *         &lt;element name="favoritos" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded" minOccurs="0"/&gt;
- *       &lt;/sequence&gt;
- *     &lt;/restriction&gt;
- *   &lt;/complexContent&gt;
- * &lt;/complexType&gt;
+ * &lt;complexType name="dtPropuesta">
+ *   &lt;complexContent>
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *       &lt;sequence>
+ *         &lt;element name="nickProponente" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="titulo" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="descripcion" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="categoria" type="{http://servidor/}dtCategoria" minOccurs="0"/>
+ *         &lt;element name="lugar" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="fechaRealizacion" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
+ *         &lt;element name="fechaPublicacion" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
+ *         &lt;element name="fechaExtension" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
+ *         &lt;element name="montoRequerido" type="{http://www.w3.org/2001/XMLSchema}float"/>
+ *         &lt;element name="montoReunido" type="{http://www.w3.org/2001/XMLSchema}float"/>
+ *         &lt;element name="tipoRetorno" type="{http://servidor/}tRetorno" minOccurs="0"/>
+ *         &lt;element name="rutaImg" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="precioEntrada" type="{http://www.w3.org/2001/XMLSchema}float"/>
+ *         &lt;element name="estado" type="{http://servidor/}tEstado" minOccurs="0"/>
+ *         &lt;element name="favoritos" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded" minOccurs="0"/>
+ *       &lt;/sequence>
+ *     &lt;/restriction>
+ *   &lt;/complexContent>
+ * &lt;/complexType>
  * </pre>
  * 
  * 

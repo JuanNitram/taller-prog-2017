@@ -11,16 +11,16 @@ import javax.xml.bind.annotation.XmlType;
  * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * <p>
  * <pre>
- * &lt;simpleType name="tEstado"&gt;
- *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string"&gt;
- *     &lt;enumeration value="INGRESADA"/&gt;
- *     &lt;enumeration value="PUBLICADA"/&gt;
- *     &lt;enumeration value="EN_FINANCIACION"/&gt;
- *     &lt;enumeration value="FINANCIADA"/&gt;
- *     &lt;enumeration value="NO_FINANCIADA"/&gt;
- *     &lt;enumeration value="CANCELADA"/&gt;
- *   &lt;/restriction&gt;
- * &lt;/simpleType&gt;
+ * &lt;simpleType name="tEstado">
+ *   &lt;restriction base="{http://www.w3.org/2001/XMLSchema}string">
+ *     &lt;enumeration value="INGRESADA"/>
+ *     &lt;enumeration value="PUBLICADA"/>
+ *     &lt;enumeration value="EN_FINANCIACION"/>
+ *     &lt;enumeration value="FINANCIADA"/>
+ *     &lt;enumeration value="NO_FINANCIADA"/>
+ *     &lt;enumeration value="CANCELADA"/>
+ *   &lt;/restriction>
+ * &lt;/simpleType>
  * </pre>
  * 
  */
