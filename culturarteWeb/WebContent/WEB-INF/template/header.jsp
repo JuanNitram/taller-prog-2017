@@ -121,7 +121,7 @@
 					<input type="text" id="buscador" class="typeahead tt-query" autocomplete="off" spellcheck="false"><a class="fa fa-search" onclick="clicBuscar()"></a>
 				</div>
 				<% } %>
-				<% }else{ %>
+				<% } else { %>
 				<ul class="navbar-nav ml-auto">
 					<li id="space" class="nav-item active"><a class="nav-link"
 						href="/CulturarteWeb">Inicio <span class="sr-only">(current)</span>
