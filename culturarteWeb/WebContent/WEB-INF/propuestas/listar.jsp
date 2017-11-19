@@ -638,7 +638,7 @@ function dodajAktywne(elem) {
 					<%
 
 						for (servidor.DtPropuesta propuesta : propuestas) {
-							if (propuesta.getEstado() != servidor.TEstado.INGRESADA && propuesta.getEstado() != servidor.TEstado.CANCELADA) {
+							if (propuesta.getEstado() != servidor.TEstado.INGRESADA && propuesta.getEstado() == servidor.TEstado.CANCELADA) {
 					%>
 					<div class="col-lg-4 col-md-6 mb-4">
 						<div class="card h-100">
