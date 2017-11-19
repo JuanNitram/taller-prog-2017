@@ -20,10 +20,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-<<<<<<< HEAD
 	<classpathentry kind="lib" path="C:/Users/Juancho/git/tpgr05/workstation/src/recursos/jcalendar-1.4.jar"/>
-=======
-	<classpathentry kind="lib" path="C:/Users/Casa/git/tpgr05/workstation/src/recursos/jcalendar-1.4.jar"/>
->>>>>>> branch 'master' of https://gitlab.fing.edu.uy/tprog/tpgr05.git
 	<classpathentry kind="output" path="bin"/>
 </classpath>
