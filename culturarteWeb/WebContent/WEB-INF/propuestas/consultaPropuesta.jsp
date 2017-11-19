@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@page import="java.util.Date"%>
+<%@page import="java.text.DateFormat"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
@@ -141,8 +142,12 @@ $(document).ready(function(){
 												</tr>
 												<tr>
 													<td>Fecha de publicación:</td>
-													<td><%	if(propuesta.getFechaPublicacion()!=null) { %>
-															<!--  %= //new SimpleDateFormat("dd/MM/yyyy").format(propuesta.getFechaPublicacion()) %-->
+													<td><%	if(propuesta.getFechaPublicacion()!=null) {
+															Date date = propuesta.getFechaPublicacion().toGregorianCalendar().getTime();
+															DateFormat  formatter = new SimpleDateFormat("dd/MM/yyyy");
+															String formattedDate  = formatter.format(date);
+														%>
+															<%=formattedDate%>
 														<%	} else { %>
 																<blackquote><cite>No se ha publicado</cite></blackquote>
 														<%	} %>
@@ -150,7 +155,11 @@ $(document).ready(function(){
 												</tr>
 												<tr>
 													<td>Fecha prevista:</td>
-												<!--	<td>  >%=new SimpleDateFormat("dd/MM/yyyy").format(propuesta.getFechaRealizacion())%></td>-->
+														<% 															
+														Date datee = propuesta.getFechaRealizacion().toGregorianCalendar().getTime();
+														DateFormat  formatterr = new SimpleDateFormat("dd/MM/yyyy");
+														String formattedDatee  = formatterr.format(datee); %>
+												<td>  <%= formattedDatee %></td>-->
 												</tr>
 												<tr>
 													<td>Precio entrada:</td>

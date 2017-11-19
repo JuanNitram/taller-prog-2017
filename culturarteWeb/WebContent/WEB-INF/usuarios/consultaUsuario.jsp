@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@page import="servidor.DataList"%>
+<%@page import="java.util.Date"%>
+<%@page import="java.text.DateFormat"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
@@ -91,7 +93,13 @@
 									</tr>
 									<tr>
 										<td>Fecha de nacimiento:</td>
-										<td><%out.println();//new SimpleDateFormat("dd/MM/yyyy").format(dtP.getFechaNacimiento().getTime())%></td>
+										<td>
+											<%															
+												Date date = dtP.getFechaNacimiento().toGregorianCalendar().getTime();
+												DateFormat  formatter = new SimpleDateFormat("dd/MM/yyyy");
+												String formattedDate  = formatter.format(date);
+											%>
+											<%= formattedDate %></td>
 									</tr>
 									<tr>
 										<td>Direccion:</td>
@@ -250,7 +258,13 @@
 									</tr>
 									<tr>
 										<td>Fecha de nacimiento:</td>
-										<td><%out.println();//new SimpleDateFormat("dd/MM/yyyy").format(dtC.getFechaNacimiento().getTime())%></td>
+										<td>
+											<%												
+												Date datee = dtC.getFechaNacimiento().toGregorianCalendar().getTime();
+												DateFormat  formatterr = new SimpleDateFormat("dd/MM/yyyy");
+												String formattedDatee  = formatterr.format(datee);
+											%>
+											<%=formattedDatee%></td>
 									</tr>
 									<tr>
 										<td>Colaboraciones:</td>
