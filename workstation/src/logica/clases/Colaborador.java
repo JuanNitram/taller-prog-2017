@@ -3,6 +3,7 @@ package logica.clases;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -41,6 +42,15 @@ public class Colaborador extends Usuario {
 		for (Colaboracion colab : this.colaboraciones.values()) 
 			colaboraciones.add(colab.getInfoColaboracion());
 		return colaboraciones;
+	}
+	
+	public void bajaColaboracion(String titulo){
+	    for(Iterator<Map.Entry<Integer, Colaboracion>> it = colaboraciones.entrySet().iterator(); it.hasNext(); ) {
+	        Map.Entry<Integer, Colaboracion> entry = it.next();
+		     if (entry.getValue().getPropuesta().getTitulo() == titulo) {
+		          it.remove();
+		     }
+	    }
 	}
 
 	@Override

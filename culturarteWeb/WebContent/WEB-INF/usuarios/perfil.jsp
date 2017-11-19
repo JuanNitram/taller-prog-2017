@@ -1,6 +1,8 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page errorPage="/WEB-INF/errorPages/500.jsp"%>
 <%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.util.Date"%>
+<%@page import="java.text.DateFormat"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.ArrayList"%>
 <!doctype html>
@@ -127,7 +129,14 @@
 									</tr>
 									<tr>
 										<td>Fecha de nacimiento:</td>
-										<td><%out.println();//new SimpleDateFormat("dd/MM/yyyy").format(dtP.getFechaNacimiento().getTime())%></td>
+										<td>
+											<%															
+												Date date = dtP.getFechaNacimiento().toGregorianCalendar().getTime();
+												DateFormat  formatter = new SimpleDateFormat("dd/MM/yyyy");
+												String formattedDate  = formatter.format(date);
+											%>
+											<%= formattedDate %>
+										</td>
 									</tr>
 									<tr>
 										<td>Direccion:</td>
@@ -304,7 +313,14 @@
 									</tr>
 									<tr>
 										<td>Fecha de nacimiento:</td>
-										<td><%out.println();//new SimpleDateFormat("dd/MM/yyyy").format(dtC.getFechaNacimiento().getTime())%></td>
+										<td>
+											<%												
+												Date datee = dtC.getFechaNacimiento().toGregorianCalendar().getTime();
+												DateFormat  formatterr = new SimpleDateFormat("dd/MM/yyyy");
+												String formattedDatee  = formatterr.format(datee);
+											%>
+											<%=formattedDatee%>
+										</td>
 									</tr>
 									<tr>
 										<td></td>

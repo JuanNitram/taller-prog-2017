@@ -1,6 +1,10 @@
 package servidor;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Properties;
 
 import javax.jws.WebMethod;
 import javax.jws.WebService;
@@ -44,7 +48,20 @@ public class Publicador {
 
     @WebMethod(exclude = true)
     public void publicar() {
-         endpoint = Endpoint.publish("http://localhost:11115/publicador", this);
+    	Properties p = new Properties();
+    	try {
+			p.load(new FileReader("properties/config.properties"));
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+
+		}
+    	
+    	System.out.println("uno="+p.getProperty("uno"));
+    	endpoint = Endpoint.publish("http://localhost:11115/publicador", this);
     }
 
     @WebMethod(exclude = true)

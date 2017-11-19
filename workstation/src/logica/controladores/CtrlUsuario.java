@@ -43,10 +43,21 @@ public class CtrlUsuario implements ICtrlUsuario {
 		
 		Usuario usr = usuarios.get(nickName);
 		
+		for(int j=0;j < usuarios.size();j++){
+			if(usuarios.get(j) instanceof Colaborador){
+				Colaborador c = (Colaborador)usuarios.get(j);
+				for(int k = 0; k < props.size(); k++){
+					if(props.get(k).getNickProponente() == nickName){
+						c.bajaColaboracion(props.get(k).getTitulo());
+					}
+				}
+			}
+		}
+		
 	    for(Iterator<Map.Entry<String, Usuario>> it = usuarios.entrySet().iterator(); it.hasNext(); ) {
 	        Map.Entry<String, Usuario> entry = it.next();
 	        entry.getValue().eraseSeguido(usr);
-	        }
+	    }
 	    
 		usuarios.remove(nickName);
 	}
