@@ -12,6 +12,7 @@
 <link rel="stylesheet" href="CulturarteWeb/media/Data-picker/css/bootstrap-datepicker.css" />
 <link rel="stylesheet" type="text/css" href="/CulturarteWeb/media/styles/buscador.css">
 <link href="/CulturarteWeb/recursos/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="/CulturarteWeb/media/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
 
 	
 
@@ -103,7 +104,7 @@
 						href="/CulturarteWeb/cerrar">Cerrar sesión</a></li>
 				</ul>
 				<div class="inner-addon right-addon">
-					<input type="text" placeholder="Buscar..." id="buscador" class="typeahead tt-query" autocomplete="off" spellcheck="false"><a class="fa fa-search" onclick="clicBuscar()"></a>
+					<input type="text" placeholder="Buscar..." id="buscador" class="typeahead tt-query" autocomplete="off" spellcheck="false"><i class="fa fa-search"></i>
 				</div>
 				<% }else{ 
 							%>
@@ -118,7 +119,7 @@
 							sesión</a></li>
 				</ul>
 				<div class="inner-addon right-addon">
-					<input type="text" id="buscador" class="typeahead tt-query" autocomplete="off" spellcheck="false"><a class="fa fa-search" onclick="clicBuscar()"></a>
+					<input type="text" id="buscador" class="typeahead tt-query" autocomplete="off" spellcheck="false"><i class="fa fa-search"></i>
 				</div>
 				<% } %>
 				<% } else { %>
@@ -135,7 +136,7 @@
 						data-toggle="modal" class="nav-link">Iniciar sesión</a></li>
 				</ul>
 				<div class="inner-addon right-addon">
-					<input type="text" id="buscador" class="typeahead tt-query" autocomplete="off" spellcheck="false"><a class="fa fa-search" onclick="clicBuscar()"></a>
+					<input type="text" id="buscador" class="typeahead tt-query" autocomplete="off" spellcheck="false"><i class="fa fa-search"></i>
 				</div>
 				<% } %>
 			</div>
@@ -159,13 +160,13 @@
 					<form action="iniciar-sesion" method="POST">
 						<div class="form-group">
 							<div class="input-group">
-								<div class="input-group-addon">Nickname:</div>
+								<div class="input-group-addon"><i class="fa fa-user"></i></div>
 								<input class="form-control" type="text" name="login" />
 							</div>
 							<br />
 							<div class="form-group">
 								<div class="input-group">
-									<div class="input-group-addon">Contraseña:</div>
+									<div class="input-group-addon"><i class="fa fa-lock"></i></div>
 									<input class="form-control" type="password" name="password" />
 								</div>
 							</div>
