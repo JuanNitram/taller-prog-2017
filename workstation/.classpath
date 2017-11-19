@@ -20,6 +20,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="C:/Users/Juancho/git/tpgr05/workstation/src/recursos/jcalendar-1.4.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Casa/Desktop/src/recursos/jcalendar-1.4.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

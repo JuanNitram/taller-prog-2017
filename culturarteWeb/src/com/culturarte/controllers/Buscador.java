@@ -57,7 +57,6 @@ public class Buscador extends HttpServlet {
 	        	  }
 	            /* TODO output your response here.*/
 	            response.getWriter().write(propstr);
-	           System.out.println(propstr);
 	    	
 		}
 	

@@ -68,7 +68,6 @@ public class Login extends HttpServlet {
 
 			}else {
 					nuevoEstado = EstadoSesion.LOGIN_INCORRECTO;
-					System.out.println("error en la contrasenia del proponente");
 			}
 
 			
@@ -101,7 +100,6 @@ public class Login extends HttpServlet {
 				usuario = port.infoColaborador((String) request.getSession().getAttribute("usuario_logueado"));
 		
 		}catch (Exception excepcionRetornadaPorElPrograma){
-			System.out.println("No se pudo obtener el usuario logeado");
 		}
 		return usuario;
 	}

@@ -59,19 +59,16 @@ public class Home extends HttpServlet {
 				// hace que se ejecute el jsp sin cambiar la url
 				req.getRequestDispatcher("/WEB-INF/home/iniciar.jsp").
 						forward(req, resp);
-				System.out.println("Estoy en no_login en home");
 				break;
 			case LOGIN_INCORRECTO:
 				// hace que se ejecute el jsp sin cambiar la url
 				req.getRequestDispatcher("/WEB-INF/home/inicioErroneo.jsp").
 						forward(req, resp);
 				req.getSession().setAttribute("estado_sesion", EstadoSesion.NO_LOGIN);
-				System.out.println("Estoy en login_incorrecto en home");
 				break;
 			case LOGIN_CORRECTO:
 				// manda una redirecci�n a otra URL (cambia la URL)
 				resp.sendRedirect("/CulturarteWeb/perfil");
-				System.out.println("Estoy en login_correcto en home");
 				break;
 		}
 	}

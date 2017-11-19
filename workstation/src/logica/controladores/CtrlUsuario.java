@@ -8,6 +8,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import dataTypes.DtColaboracion;
 import dataTypes.DtColaborador;
 import dataTypes.DtProponente;
 import dataTypes.DtPropuesta;
@@ -36,27 +37,27 @@ public class CtrlUsuario implements ICtrlUsuario {
 	
 	public void bajaProponente(String nickName){
 		ArrayList<DtPropuesta> props = (ArrayList) CtrlPropuesta.getInstance().listarPropuestas();
-		for(int i=0; i < props.size();i++){
-			if(props.get(i).getNickProponente().equals(nickName))
-				CtrlPropuesta.getInstance().bajaPropuesta(props.get(i).getTitulo());
-		}
-		
 		Usuario usr = usuarios.get(nickName);
-		
-		for(int j=0;j < usuarios.size();j++){
-			if(usuarios.get(j) instanceof Colaborador){
-				Colaborador c = (Colaborador)usuarios.get(j);
-				for(int k = 0; k < props.size(); k++){
-					if(props.get(k).getNickProponente() == nickName){
-						c.bajaColaboracion(props.get(k).getTitulo());
-					}
-				}
-			}
-		}
-		
 	    for(Iterator<Map.Entry<String, Usuario>> it = usuarios.entrySet().iterator(); it.hasNext(); ) {
 	        Map.Entry<String, Usuario> entry = it.next();
-	        entry.getValue().eraseSeguido(usr);
+	        if(entry.getValue() instanceof Colaborador){
+	        	Colaborador usrC = (Colaborador) entry.getValue();
+				for(int k = 0; k < props.size(); k++){
+					if(usrC != null && props.get(k).getNickProponente().trim().equals(nickName.trim())){
+						usrC.bajaColaboracion(props.get(k).getTitulo());
+					}
+				}
+	        }
+	    }
+		
+		for(int j=0; j < props.size();j++){
+			if(props.get(j).getNickProponente().equals(nickName))
+				CtrlPropuesta.getInstance().bajaPropuesta(props.get(j).getTitulo());
+		}
+		
+	    for(Iterator<Map.Entry<String, Usuario>> it2 = usuarios.entrySet().iterator(); it2.hasNext(); ) {
+	        Map.Entry<String, Usuario> entry2 = it2.next();
+	        entry2.getValue().eraseSeguido(usr);
 	    }
 	    
 		usuarios.remove(nickName);

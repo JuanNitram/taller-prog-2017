@@ -61,7 +61,6 @@ public class CtrlPropuesta implements ICtrlPropuesta {
 		for(Iterator<Map.Entry<Integer,Colaboracion>>it=colaboraciones.entrySet().iterator();it.hasNext();){
 		     Map.Entry<Integer, Colaboracion> entry = it.next();
 		     if (entry.getValue().getPropuesta().getTitulo() == titulo) {
-		    	  System.out.println("HAY Colaboracion");
 		          it.remove();
 		     }
 		 }
