@@ -18,13 +18,17 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.xml.datatype.DatatypeConfigurationException;
 
-import dataTypes.DtColaboracion;
-import dataTypes.DtColaborador;
-import dataTypes.DtProponente;
-import dataTypes.DtPropuesta;
-import dataTypes.TTarjeta;
-import logica.Fabrica;
+import com.culturarte.model.Utils;
+
+import servidor.DataDate;
+import servidor.DtColaboracion;
+import servidor.DtColaborador;
+import servidor.DtProponente;
+import servidor.DtPropuesta;
+import servidor.PublicadorService;
+import servidor.TTarjeta;
 
 /**
  * Servlet implementation class Colaboraciones
@@ -33,6 +37,7 @@ import logica.Fabrica;
 public class Colaboraciones extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static DtColaboracion colaboracion;
+	private static PublicadorService servicios = new PublicadorService();
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -45,45 +50,51 @@ public class Colaboraciones extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		request.getRequestDispatcher("/WEB-INF/colaboracion/pagarColaboracion.jsp").forward(request, response);
 	}
 	
 	private static void pagarColaboracion(HttpServletRequest request) {
-		Fabrica.getInstance().getICtrlPropuesta().infoColaboracion(Integer.parseInt(request.getParameter("idColab")));
+		servicios.getPublicadorPort().infoColaboracion(Integer.parseInt(request.getParameter("idColab")));
 		if(request.getParameter("tipoPago").equals("tarjeta")) {
-			TTarjeta tipoTarjeta = null;
-			if(request.getParameter("tipoTarjeta").equals("Master")) tipoTarjeta = TTarjeta.MASTER;
-			else if(request.getParameter("tipoTarjeta").equals("Visa")) tipoTarjeta = TTarjeta.VISA;
-			else if(request.getParameter("tipoTarjeta").equals("Oca")) tipoTarjeta = TTarjeta.OCA;
-			
-			String vencimiento = request.getParameter("vencimiento");
-			Calendar calendar = Calendar.getInstance();
-			calendar.set(Integer.parseInt(vencimiento.substring(vencimiento.indexOf("/")+1,vencimiento.indexOf("/")+2)), Integer.parseInt(vencimiento.substring(0,1)), 1);
-			
-			Fabrica.getInstance().getICtrlPropuesta().pagarColabTarjeta(
-					Float.parseFloat(request.getParameter("monto")),
-					request.getParameter("titular"),
-					request.getParameter("nroTarjeta"),
-					tipoTarjeta,
-					calendar.getTime(),
-					request.getParameter("cvc")
-				);
+			try {
+				TTarjeta tipoTarjeta = null;
+				if(request.getParameter("tipoTarjeta").equals("Master")) tipoTarjeta = TTarjeta.MASTER;
+				else if(request.getParameter("tipoTarjeta").equals("Visa")) tipoTarjeta = TTarjeta.VISA;
+				else if(request.getParameter("tipoTarjeta").equals("Oca")) tipoTarjeta = TTarjeta.OCA;
+				
+				String vencimiento = request.getParameter("vencimiento");
+				Calendar calendar = Calendar.getInstance();
+				calendar.set(Integer.parseInt(vencimiento.substring(vencimiento.indexOf("/")+1,vencimiento.indexOf("/")+2)), Integer.parseInt(vencimiento.substring(0,1)), 1);
+				
+				DataDate dataDate = new DataDate();
+				dataDate.setDate(Utils.getXmlGregorianCalendarFromDate(calendar.getTime()));
+				
+				servicios.getPublicadorPort().pagarColabTarjeta(
+						Float.parseFloat(request.getParameter("monto")),
+						request.getParameter("titular"),
+						request.getParameter("nroTarjeta"),
+						tipoTarjeta,
+						dataDate,
+						request.getParameter("cvc")
+					);
+			} catch(DatatypeConfigurationException configurationException) {
+				configurationException.printStackTrace();
+			}
 		} else if(request.getParameter("tipoPago").equals("paypal")) {
-			Fabrica.getInstance().getICtrlPropuesta().pagarColabPayPal(
+			servicios.getPublicadorPort().pagarColabPayPal(
 					Float.parseFloat(request.getParameter("monto")),
 					request.getParameter("titularPayPal"),
 					request.getParameter("nroPayPal")
 				);
 		} else if(request.getParameter("tipoPago").equals("transferencia")) {
-			Fabrica.getInstance().getICtrlPropuesta().pagarColabTransferencia(
+			servicios.getPublicadorPort().pagarColabTransferencia(
 					Float.parseFloat(request.getParameter("monto")),
 					request.getParameter("titularTransferencia"),
 					request.getParameter("bancoTransferencia"),
 					request.getParameter("nroTransferencia")
 				);
 		}
-		colaboracion = Fabrica.getInstance().getICtrlPropuesta().infoColaboracion(Integer.parseInt(request.getParameter("idColab")));
+		servicios.getPublicadorPort().infoColaboracion(Integer.parseInt(request.getParameter("idColab")));
 		System.out.println("Colaboración paga.");
 	}
 	
@@ -136,7 +147,7 @@ public class Colaboraciones extends HttpServlet {
 			Colaboraciones.pagarColaboracion(request);
 		else if(request.getParameter("action").equals("notificacionEmail")) {
 			String ahora = (new SimpleDateFormat("dd-MM-yyyy hh:mm")).format(new Date());
-			DtPropuesta dtP = Fabrica.getInstance().getICtrlPropuesta().infoPropuesta(colaboracion.getTitulo());
+			DtPropuesta dtP = servicios.getPublicadorPort().infoPropuesta(colaboracion.getTitulo());
 			String cuerpoProponente = "Estimado Proponente. El pago correspondiente a la colaboración de la propuesta "
 					+ colaboracion.getTitulo() + " realizada por " + colaboracion.getNickname() + " ha sido registrado en forma exitosa.<br><br>";
 			cuerpoProponente += "-Propuesta:<br>";
@@ -158,8 +169,8 @@ public class Colaboraciones extends HttpServlet {
 			
 			String asunto = "[Culturarte] [" + ahora + "] Pago de colaboración registrado";
 			
-			DtColaborador colaborador = Fabrica.getInstance().getICtrlUsuario().infoColaborador(colaboracion.getNickname());
-			DtProponente proponente = Fabrica.getInstance().getICtrlUsuario().infoProponente(dtP.getNickProponente());
+			DtColaborador colaborador = servicios.getPublicadorPort().infoColaborador(colaboracion.getNickname());
+			DtProponente proponente = servicios.getPublicadorPort().infoProponente(dtP.getNickProponente());
 			System.out.println(colaboracion.getPago());
 			System.out.println("Pago" + colaboracion.getPago().getMonto() + colaboracion.getPago().getNombreTitular());
 			

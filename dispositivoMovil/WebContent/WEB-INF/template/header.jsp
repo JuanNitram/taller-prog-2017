@@ -1,7 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="com.culturarte.controllers.Login"%>
-<%@page import="dataTypes.DtColaborador"%>
-<%@page import="logica.Fabrica"%>
 <%@ page import="javax.swing.tree.DefaultMutableTreeNode"%>
 <%@ page import="javax.swing.tree.TreeNode"%>
 <%@ page import="javax.swing.tree.TreeModel"%>

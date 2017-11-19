@@ -1,9 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<%@page import="dataTypes.DtPropuesta"%>
-<%@page import="dataTypes.DtColaborador"%>
-<%@page import="dataTypes.DtColaboracion"%>
-<%@page import="logica.Fabrica"%>
+<%@page import="servidor.PublicadorService"%>
+<%@page import="servidor.Publicador"%>
+<%@page import="servidor.DtPropuesta"%>
+<%@page import="servidor.DtColaborador"%>
+<%@page import="servidor.DtColaboracion"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <!DOCTYPE html>
@@ -17,8 +18,10 @@
 	<div class="container">
 		<br>
 		<div class="panel-group" id="accordion">
-			<%
-			DtColaborador dtC = Fabrica.getInstance().getICtrlUsuario().infoColaborador((String)session.getAttribute("usuario_logueado"));
+		<%
+			PublicadorService servicios = new PublicadorService();
+			Publicador port = servicios.getPublicadorPort();
+			DtColaborador dtC = port.infoColaborador((String)session.getAttribute("usuario_logueado"));
 			ArrayList<DtColaboracion> colaboraciones = (ArrayList<DtColaboracion>) dtC.getColaboraciones();
 			for (int i = 0; i < colaboraciones.size(); i++) {
 				DtColaboracion dtColab = colaboraciones.get(i);
@@ -33,7 +36,7 @@
 				<div id="collapse<%=i+1%>" class="panel-collapse panel-primary collapse panelDark">
 					<div class="panel-body" style="background-color: #f5f5f5;">
 						<%
-							DtPropuesta dtProp = Fabrica.getInstance().getICtrlPropuesta().infoPropuesta(dtColab.getTitulo());
+							DtPropuesta dtProp = port.infoPropuesta(dtColab.getTitulo());
 							if(dtProp.getRutaImg() != "") {
 						%>
 						<img style="width: 100%;"
@@ -43,7 +46,7 @@
 						%>
 						<br>
 						<br> Fecha:
-						<%=new SimpleDateFormat("dd/MM/yyyy").format(dtColab.getFechaRealizacion().getTime())%>
+						<%=new SimpleDateFormat("dd/MM/yyyy").format(dtColab.getFechaRealizacion())%>
 						<br> Monto: $<%= dtColab.getMontoAporte() %>
 						<br> <button type="button" class="btn btn-dark btn_pagar_colaboracion"
 									style="margin-top:10px;" data-idColab="<%= dtColab.getId() %>" data-id="<%=i+1%>"

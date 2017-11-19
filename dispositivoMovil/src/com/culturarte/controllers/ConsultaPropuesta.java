@@ -9,11 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import logica.Fabrica;
-import dataTypes.DtPropuesta;
-import dataTypes.TEstado;
-import dataTypes.TRetorno;
-
 /**
  * Servlet implementation class ConsultaPropuesta
  */

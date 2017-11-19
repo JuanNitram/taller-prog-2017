@@ -12,11 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.TreeNode;
 
-import logica.Fabrica;
-import dataTypes.DtCategoria;
-import dataTypes.DtPropuesta;
-import dataTypes.DtUsuario;
-import dataTypes.TEstado;
+import servidor.DtPropuesta;
+import servidor.TEstado;
 
 /**
  * Servlet implementation class Propuestas

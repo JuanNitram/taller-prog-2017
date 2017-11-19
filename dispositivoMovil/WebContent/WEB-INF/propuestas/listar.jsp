@@ -1,18 +1,9 @@
-<%-- 
-    Document   : listar
-    Author     : Igui
---%>
-<%@page import="logica.clases.Propuesta"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
 <%@page import="javax.swing.tree.TreeNode"%>
-<%@page import="dataTypes.DtPropuesta"%>
-<%@page import="dataTypes.DtUsuario"%>
-<%@page import="dataTypes.DtCategoria"%>
 <%@page import="java.util.List"%>
 <%@page import="javax.swing.tree.TreeNode"%>
-<%@page import="logica.clases.Categoria"%>
 <%@page import="com.culturarte.controllers.Propuestas"%>
-<%@page import="dataTypes.TEstado"%>
-<%@page import="logica.Fabrica"%>
 <%@page import="javax.swing.tree.DefaultMutableTreeNode"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.culturarte.controllers.Login"%>
@@ -93,13 +84,11 @@
 							%>
 							<ul class="dropdown-menu scrollable-menu" role="menu">
 								<%
-									DefaultMutableTreeNode raiz = Fabrica.getInstance().getICtrlPropuesta().listarCategorias();
-									Propuestas.vaciarCategoriasList();
-									Propuestas.recursivoTree(raiz);
+									List<String> categorias = (ArrayList) port.listarCategorias().getDatos();
 								%>
 								<li><a href="propuestas">Todos</a></li>
 								<%
-									for (TreeNode s : Propuestas.getCategoriasList()) {
+									for (String s : categorias) {
 								%>
 
 								<li><a href="propuestas?filtro=<%=s.toString()%>"><%=s.toString()%></a></li>

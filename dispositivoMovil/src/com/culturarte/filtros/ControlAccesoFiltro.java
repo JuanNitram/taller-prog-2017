@@ -1,8 +1,6 @@
 package com.culturarte.filtros;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Date;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -14,8 +12,7 @@ import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 
-import logica.Fabrica;
-import logica.clases.Acceso;
+import servidor.PublicadorService;
 
 
 /**
@@ -51,7 +48,7 @@ public class ControlAccesoFiltro implements Filter {
 		
 		String userAgent = request.getHeader("User-Agent");
 		
-		Fabrica.getInstance().getICtrlUsuario().registrarAcceso(
+		new PublicadorService().getPublicadorPort().registrarAcceso(
 				request.getRemoteHost(),
 				request.getRequestURL().toString(),
 				userAgent.substring(0, userAgent.indexOf("/")),

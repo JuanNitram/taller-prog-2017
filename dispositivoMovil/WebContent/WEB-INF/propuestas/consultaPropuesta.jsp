@@ -1,16 +1,9 @@
-<%@page import="dataTypes.TEstado"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@page import="java.util.Date"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
-<%@page import="logica.Fabrica"%>
-<%@page import="dataTypes.DtPropuesta"%>
-<%@page import="dataTypes.TRetorno"%>
-<%@page import="dataTypes.DtProponente"%>
-<%@page import="dataTypes.DtColaborador"%>
-<%@page import="dataTypes.DtColaboracion"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <%
@@ -72,7 +65,7 @@
 													<td>Fecha de publicación:</td>
 													<td>
 														<%	if(propuesta.getFechaPublicacion()!=null) { %>
-															<% //new SimpleDateFormat("dd/MM/yyyy").format(propuesta.getFechaPublicacion()) %>
+															<%= new SimpleDateFormat("dd/MM/yyyy").format(propuesta.getFechaPublicacion()) %>
 														<%	} else { %>
 																<blackquote><cite>No se ha publicado</cite></blackquote>
 														<%	} %>
