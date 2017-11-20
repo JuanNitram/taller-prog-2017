@@ -72,8 +72,8 @@ public class Propuestas extends HttpServlet {
 				}
 			} else {
 				ArrayList<servidor.DtPropuesta> propsfilter = new ArrayList<servidor.DtPropuesta>();
-				
-				servidor.DataList dtPs = port.listarPropuestaPorCategoria(filtro);
+				String remplazado=filtro.replace("- ", "");
+				servidor.DataList dtPs = port.listarPropuestaPorCategoria(remplazado);
 				List<servidor.DtPropuesta> propsfil = (ArrayList) dtPs.getDatos();
 				
 				for(int i = 0; i< propsfil.size(); i++)

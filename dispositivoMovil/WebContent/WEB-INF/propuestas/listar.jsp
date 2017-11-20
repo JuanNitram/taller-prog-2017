@@ -1,5 +1,3 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
 <%@page import="javax.swing.tree.TreeNode"%>
 <%@page import="java.util.List"%>
 <%@page import="javax.swing.tree.TreeNode"%>
@@ -13,10 +11,10 @@
 <!doctype html>
 <html>
 <head>
-<link href="/media/styles/shop-homepage.css" rel="stylesheet">
-<script src="/recursos/jquery/jquery.js"></script>
-<script src="/recursos/bootstrap/css/bootstrap.css"></script>
-<link href="recursos/bootstrap/css/bootstrap.css" rel="stylesheet">
+<link href="/MobileDevice/media/styles/shop-homepage.css" rel="stylesheet">
+<script src="/MobileDevice/recursos/jquery/jquery.js"></script>
+<script src="/MobileDevice/recursos/bootstrap/css/bootstrap.css"></script>
+<link href="/MobileDevice/recursos/bootstrap/css/bootstrap.css" rel="stylesheet">
 <style>
 .scrollable-menu {
     height: auto;
@@ -119,12 +117,12 @@
 							<%
 								if (propuesta.getRutaImg() == "") {
 							%>
-							<img class="card-img-top" src="\media\images\no-image.png" />
+							<img class="card-img-top" src="/MobileDevice/media/images/no-image.png" />
 							<%
 								} else {
 							%>
 							<img class="card-img-top"
-								src="/media/images/imagenes/propuestas/<%=propuesta.getRutaImg()%>.jpg" />
+								src="/MobileDevice/media/images/imagenes/propuestas/<%=propuesta.getRutaImg()%>.jpg" />
 							<%
 								}
 							%>

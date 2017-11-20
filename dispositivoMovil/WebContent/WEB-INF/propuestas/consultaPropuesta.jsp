@@ -65,7 +65,7 @@
 													<td>Fecha de publicación:</td>
 													<td>
 														<%	if(propuesta.getFechaPublicacion()!=null) { %>
-															<%= new SimpleDateFormat("dd/MM/yyyy").format(propuesta.getFechaPublicacion()) %>
+															<%= new SimpleDateFormat("dd/MM/yyyy").format(propuesta.getFechaPublicacion().toGregorianCalendar().getTime()) %>
 														<%	} else { %>
 																<blackquote><cite>No se ha publicado</cite></blackquote>
 														<%	} %>
@@ -73,7 +73,7 @@
 												</tr>
 												<tr>
 													<td>Fecha prevista:</td>
-													<td><% //new SimpleDateFormat("dd/MM/yyyy").format(propuesta.getFechaRealizacion())%></td>
+													<td><%= new SimpleDateFormat("dd/MM/yyyy").format(propuesta.getFechaRealizacion().toGregorianCalendar().getTime())%></td>
 												</tr>
 												<tr>
 													<td>Precio entrada:</td>
@@ -108,7 +108,7 @@
 																&& !port.esProponente((String) request.getSession().getAttribute("usuario_logueado"))) {
 										%>
 										<div class="panel-footer group">
-											<div class="span left">
+											<div class="span left" id="panelColaboradores">
 												<span style="text-align: center"><h3>Colaboradores</h3></span>
 												<%
 													servidor.DataList DtC = port.listarColaboraciones();
@@ -132,13 +132,10 @@
 														<font color="white">Registra una colaboración</font>
 													</h3></span>
 												<div class="container">
-													<form
-														action="RegistrarColaboracion?tPropuesta=<%=propuesta.getTitulo()%>"
-														method="post">
-													
+													<form>
 														<div class="form-group" align="left">
 															<label for="titulo"><font color="white">Monto</font></label><input
-																name="txtMonto" type="number" id="txtMonto"
+																name="txtMonto" type="text" pattern="[1-9][0-9]*" id="txtMonto"
 																class="form-control" required>
 														</div>
 
@@ -169,10 +166,8 @@
 														</div>
 
 														<div class="form-group" align="center">
-															<button type="submit" name="submit" id="submit"
-																class="btn btn-default">Registrar colaboracion</button>
-															<button type="reset" class="btn btn-default"
-																onClick="goBack()">Volver</button>
+															<button type="button" name="submit" id="btn_colaborar"
+																class="btn btn-default" data-titulo="<%=propuesta.getTitulo()%>">Aceptar</button>
 														</div>
 													</form>
 												</div>
@@ -215,14 +210,35 @@
 		</div>
 	</div>
 
-	<script src="/media/styles/userProfile.css"></script>
+	<script src="/MobileDevice/media/styles/userProfile.css"></script>
 	<div class="footer">
 		<jsp:include page="/WEB-INF/template/footer.jsp" />
 	</div>
 	<script>
 		function goBack() {
 			window.history.back();
-		}
+		};
+		$('document').ready(function(){
+			$('#btn_colaborar').click(function(){
+				console.log("click btn colaborar");
+				console.log($('#txtMonto').val());				
+				$.ajax({
+					type : 'POST',
+					url : 'Colaboraciones',
+					data : {
+						action : 'registrarColaboracion',
+						tituloProp : $('#btn_colaborar').data("titulo"),
+						selectRetorno : $('#selectRetorno').val(),
+						txtMonto : $('#txtMonto').val()
+					},
+					success : function(res) {
+						$('#txtMonto').val('');
+						$('#panelColaboradores').html(res);
+					}
+				});
+			});
+		    
+		});
 	</script>
 </body>
 <style>
@@ -253,6 +269,5 @@ img {
 		width: auto;
 	}
 }
-</
-html
->
+</style>
+</html>

@@ -154,7 +154,7 @@ function dodajAktywne(elem) {
 	
 	
     <!--Panel 1-->
-   <div class="tab-pane active" id="panel2" role="tabpanel">
+   <div class="tab-pane active" id="panel1" role="tabpanel">
         <br>
        <div class="col-lg-9 main" id="proponentes">
 

@@ -48,16 +48,19 @@
 			</button>
 			<div class="collapse navbar-collapse" id="navbarResponsive">
 
-				<% if(usr != null) { %>
+				<% if(usr != null) { 
+					String bienvenido= "Bienvenido ";
+					%>
 					<ul class="navbar-nav ml-auto">
 						<li class="nav-item active"><a class="nav-link" href="/">Inicio
 								<span class="sr-only">(current)</span>
 						</a></li>
 						<li class="nav-item"><a class="nav-link" href="propuestas">Propuestas</a></li>
 						<li class="nav-item"><a class="nav-link" href="colaboraciones?action=pagar">Colaboraciones</a></li>
-						<li class="nav-item"><a class="nav-link" href="perfil"><%= usr.getNombre().concat(" - ").concat(usr.getEmail()) %></a></li>
+						
 						<li id="divisor" class="nav-item"><a class="nav-link"
 							href="/login?action=cerrar">Cerrar sesión</a></li>
+						<li class="nav-item"><a class="nav-link"><%= bienvenido.concat(usr.getNombre()) %></a></li>
 					</ul>
 				<% } else { %>
 					<ul class="navbar-nav ml-auto">
@@ -66,7 +69,7 @@
 						</a></li>
 						<li class="nav-item"><a class="nav-link" href="propuestas">Propuestas</a></li>
 						<li class="nav-item"><a href="#iniciarsesion"
-							data-toggle="modal" class="nav-link">Iniciar sesión</a></li>
+							class="nav-link">Iniciar sesión</a></li>
 					</ul>
 				<% } %>
 			</div>
@@ -83,47 +86,6 @@
 	
 	<% } %>
 
-	<!-- VENTANA MODAL Iniciar sesion-->
-	<div class="modal fade" id="iniciarsesion"
-		aria-labelledby="iniciarsesion" role="dialog">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<!--  Header de la ventana -->
-				<div class="modal-header">
-					<h4 class="modal-title">Iniciar Sesion</h4>
-					<button type="button" class="close" data-dismiss="modal"
-						arial-hidden="true">&times;</button>
-
-				</div>
-				<!--  Contenido de la ventana-->
-				<div class="modal-body">
-					<form action="login?action=iniciar" method="POST">
-						<div class="form-group">
-							<div class="input-group">
-								<div class="input-group-addon">Nickname:</div>
-								<input class="form-control" type="text" name="login" />
-							</div>
-							<br />
-							<div class="form-group">
-								<div class="input-group">
-									<div class="input-group-addon">Contraseña:</div>
-									<input class="form-control" type="password" name="password"/>
-								</div>
-							</div>
-
-						</div>
-
-						<!--  Fotter de la ventana-->
-						<div class="modal-footer">
-							<button type="button" class="btn btn-success"
-								data-dismiss="modal">Cerrar</button>
-							<button type="button" class="btn btn-primary" onclick="submit()">Iniciar</button>
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
-	</div>
 	<script src="/media/Data-picker/js/bootstrap-datepicker.min.js"></script>
 	<script src="/media/app.js"></script>
 </div>

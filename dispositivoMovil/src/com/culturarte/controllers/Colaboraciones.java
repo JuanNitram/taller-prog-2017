@@ -1,9 +1,12 @@
 package com.culturarte.controllers;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.Properties;
 
 import javax.mail.Message;
@@ -28,6 +31,7 @@ import servidor.DtColaborador;
 import servidor.DtProponente;
 import servidor.DtPropuesta;
 import servidor.PublicadorService;
+import servidor.TRetorno;
 import servidor.TTarjeta;
 
 /**
@@ -95,7 +99,7 @@ public class Colaboraciones extends HttpServlet {
 				);
 		}
 		servicios.getPublicadorPort().infoColaboracion(Integer.parseInt(request.getParameter("idColab")));
-		System.out.println("Colaboración paga.");
+		System.out.println("Colaboraciï¿½n paga.");
 	}
 	
 	private static void enviarMail(String destinatario, String asunto, String cuerpo) {
@@ -104,7 +108,7 @@ public class Colaboraciones extends HttpServlet {
 		// Nombre del host de correo, es smtp.gmail.com
 		props.setProperty("mail.smtp.host", "smtp.gmail.com");
 
-		// TLS si está disponible
+		// TLS si estï¿½ disponible
 		props.setProperty("mail.smtp.starttls.enable", "true");
 
 		// Puerto de gmail para envio de correos
@@ -148,7 +152,7 @@ public class Colaboraciones extends HttpServlet {
 		else if(request.getParameter("action").equals("notificacionEmail")) {
 			String ahora = (new SimpleDateFormat("dd-MM-yyyy hh:mm")).format(new Date());
 			DtPropuesta dtP = servicios.getPublicadorPort().infoPropuesta(colaboracion.getTitulo());
-			String cuerpoProponente = "Estimado Proponente. El pago correspondiente a la colaboración de la propuesta "
+			String cuerpoProponente = "Estimado Proponente. El pago correspondiente a la colaboraciï¿½n de la propuesta "
 					+ colaboracion.getTitulo() + " realizada por " + colaboracion.getNickname() + " ha sido registrado en forma exitosa.<br><br>";
 			cuerpoProponente += "-Propuesta:<br>";
 			cuerpoProponente += "- " + colaboracion.getTitulo() + "<br>";
@@ -167,7 +171,7 @@ public class Colaboraciones extends HttpServlet {
 			cuerpoColaborador = cuerpoColaborador.replace(" Proponente.", " Colaborador.");
 			cuerpoColaborador = cuerpoColaborador.replace("<br><br>Gracias", "<br><br><i>link de solicitud de constancia de pago</i><br><br>Gracias");
 			
-			String asunto = "[Culturarte] [" + ahora + "] Pago de colaboración registrado";
+			String asunto = "[Culturarte] [" + ahora + "] Pago de colaboraciï¿½n registrado";
 			
 			DtColaborador colaborador = servicios.getPublicadorPort().infoColaborador(colaboracion.getNickname());
 			DtProponente proponente = servicios.getPublicadorPort().infoProponente(dtP.getNickProponente());
@@ -177,7 +181,35 @@ public class Colaboraciones extends HttpServlet {
 			Colaboraciones.enviarMail(colaborador.getEmail(), asunto, cuerpoColaborador);
 			Colaboraciones.enviarMail(proponente.getEmail(), asunto, cuerpoProponente);
 
-		}
+		} else if(request.getParameter("action").equals("registrarColaboracion")) {
+    		
+    		String propuesta = (String) (request.getParameter("tituloProp"));
+			String retorno = request.getParameter("selectRetorno");
+			String monto = request.getParameter("txtMonto");
+			String nickName = (String) request.getSession().getAttribute("usuario_logueado");
+	    	
+			TRetorno ret = null;
+			if (retorno.equals("PORCENTAJE_GANANCIA"))
+				ret = TRetorno.PORCENTAJE_GANANCIA;
+			else if (retorno.equals("ENTRADA_GRATIS"))
+				ret = TRetorno.ENTRADA_GRATIS;
+
+			servicios.getPublicadorPort().infoPropuesta(propuesta);
+			servicios.getPublicadorPort().agregarColaboracion(nickName, Float.parseFloat(monto), ret );
+    		
+			PrintWriter out = response.getWriter();
+			out.println("<span style=\"text-align: center\"><h3>Colaboradores</h3></span>");
+			List<DtColaboracion> colaboraciones = (ArrayList) servicios.getPublicadorPort().listarColaboraciones().getDatos();
+			for (int i = 0; i < colaboraciones.size(); i++) {
+				DtColaboracion dtColab = colaboraciones.get(i);
+				if (dtColab.getTitulo().equals(propuesta)) {
+					DtColaborador colaborador = servicios.getPublicadorPort().infoColaborador(dtColab.getNickname());
+					out.println("<a href=\"consultaUsuario?usuario=<%=colaborador.getNickName()%>\">");
+					out.println(colaborador.getNombre() + " " + colaborador.getApellido() + " (" + colaborador.getNickName() + ")");
+					out.println("</a><br>");
+				}
+			}
+    	}
 	}
 
 }

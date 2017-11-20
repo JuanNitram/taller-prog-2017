@@ -1,3 +1,4 @@
+<%@page import="java.util.GregorianCalendar"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@page import="servidor.PublicadorService"%>
@@ -40,13 +41,13 @@
 							if(dtProp.getRutaImg() != "") {
 						%>
 						<img style="width: 100%;"
-							src="/media/images/imagenes/propuestas/<%=dtProp.getRutaImg()%>.jpg" />
+							src="/MobileDevice/media/images/imagenes/propuestas/<%=dtProp.getRutaImg()%>.jpg" />
 						<%
 							}
 						%>
 						<br>
 						<br> Fecha:
-						<%=new SimpleDateFormat("dd/MM/yyyy").format(dtColab.getFechaRealizacion())%>
+						<%=new SimpleDateFormat("dd/MM/yyyy").format(dtColab.getFechaRealizacion().toGregorianCalendar().getTime())%>
 						<br> Monto: $<%= dtColab.getMontoAporte() %>
 						<br> <button type="button" class="btn btn-dark btn_pagar_colaboracion"
 									style="margin-top:10px;" data-idColab="<%= dtColab.getId() %>" data-id="<%=i+1%>"

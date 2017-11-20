@@ -4,7 +4,7 @@
 <html>
    <head>
 	   <jsp:include page="/WEB-INF/template/head.jsp"/>
-	<title>Iniciar sesión :: gamebook</title>
+	<title>Iniciar sesión | Culturarte</title>
     </head>
     <body>
         <jsp:include page="/WEB-INF/template/header.jsp"/>

@@ -79,9 +79,9 @@ public class OperacionesPropuesta extends HttpServlet {
 			String nickName = (String) request.getSession().getAttribute("usuario_logueado");
 	    	
 			TRetorno ret = null;
-			if (retorno.equals("Porcentaje de ganancia"))
+			if (retorno.equals("PORCENTAJE_GANANCIA"))
 				ret = TRetorno.PORCENTAJE_GANANCIA;
-			else if (retorno.equals("Entradas gratis"))
+			else if (retorno.equals("ENTRADA_GRATIS"))
 				ret = TRetorno.ENTRADA_GRATIS;
 
 			servicios.getPublicadorPort().infoPropuesta(propuesta);
