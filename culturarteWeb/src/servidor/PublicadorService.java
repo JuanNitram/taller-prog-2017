@@ -1,8 +1,13 @@
 
 package servidor;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Properties;
+
 import javax.xml.namespace.QName;
 import javax.xml.ws.Service;
 import javax.xml.ws.WebEndpoint;
@@ -29,11 +34,20 @@ public class PublicadorService
     static {
         URL url = null;
         WebServiceException e = null;
+        Properties p = new Properties();
         try {
-            url = new URL("http://localhost:11115/publicador?wsdl");
+        	String usr = System.getProperty("user.home");
+        	p.load (new FileReader(usr+"/.culturarte/culturarte.properties"));
+            url = new URL("http://"+p.getProperty("ip")+":"+p.getProperty("port")+"/publicador");
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
-        }
+        } catch (FileNotFoundException ex){
+        	ex.printStackTrace();
+        	
+        } catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
         PUBLICADORSERVICE_WSDL_LOCATION = url;
         PUBLICADORSERVICE_EXCEPTION = e;
     }

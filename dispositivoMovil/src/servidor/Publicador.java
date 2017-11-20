@@ -655,16 +655,6 @@ public interface Publicador {
 
     /**
      * 
-     * @param arg0
-     */
-    @WebMethod
-    @Action(input = "http://servidor/Publicador/evaluarRequest", output = "http://servidor/Publicador/evaluarResponse")
-    public void evaluar(
-        @WebParam(name = "arg0", partName = "arg0")
-        String arg0);
-
-    /**
-     * 
      * @return
      *     returns servidor.DataList
      */
@@ -685,5 +675,15 @@ public interface Publicador {
         TreePath arg0,
         @WebParam(name = "arg1", partName = "arg1")
         String arg1);
+
+    /**
+     * 
+     * @param arg0
+     */
+    @WebMethod
+    @Action(input = "http://servidor/Publicador/evaluarRequest", output = "http://servidor/Publicador/evaluarResponse")
+    public void evaluar(
+        @WebParam(name = "arg0", partName = "arg0")
+        String arg0);
 
 }

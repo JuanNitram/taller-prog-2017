@@ -59,9 +59,11 @@ public class Publicador {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-    	
+    	System.out.println("http://"+p.getProperty("ip")+":"+p.getProperty("port")+"/publicador");
     	endpoint = Endpoint.publish("http://"+p.getProperty("ip")+":"+p.getProperty("port")+"/publicador", this); 
     }
+    
+    
 
     @WebMethod(exclude = true)
     public Endpoint getEndpoint() {
