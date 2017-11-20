@@ -98,7 +98,7 @@
 					<li class="nav-item"><a class="nav-link" href="/CulturarteWeb/propuestas">Propuestas</a></li>
 					<li class="nav-item"><a class="nav-link" data-toggle="modal" href="#altaPropuesta">Registrar
 							propuesta</a></li>
-					<li class="nav-item"><a class="nav-link" href="/CulturarteWeb/perfil"><%= usr.getNombre().concat(" - ").concat(usr.getEmail()) %></a></li>
+					<li class="nav-item"><a class="nav-link" href="/CulturarteWeb/perfil"><%= usr.getNombre()%></a></li>
 
 					<li id="divisor" class="nav-item"><a class="nav-link"
 						href="/CulturarteWeb/cerrar">Cerrar sesión</a></li>

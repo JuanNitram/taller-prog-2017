@@ -6,6 +6,7 @@
 <html>
 <head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<link rel="stylesheet" href="/CulturarteWeb/media/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
 
 <title>Culturarte</title>
 </head>
@@ -19,13 +20,13 @@
 					<form action="login?action=iniciar" method="POST">
 						<div class="form-group">
 							<div class="input-group">
-								<div class="input-group-addon">Nickname:     </div>
+								<div class="input-group-addon"><i class="fa fa-user"></i></div>
 								<input class="form-control" type="text" name="login" />
 							</div>
 							<br/>
 							<div class="form-group">
 								<div class="input-group">
-									<div class="input-group-addon">Contraseña:</div>
+									<div class="input-group-addon"><i class="fa fa-lock"></i></div>
 									<input class="form-control" type="password" name="password"/>
 								</div>
 							</div>
