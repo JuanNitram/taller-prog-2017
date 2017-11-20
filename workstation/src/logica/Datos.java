@@ -20,7 +20,7 @@ public class Datos {
 		
 		Calendar fecha = Calendar.getInstance();
 		
-		//HR
+		//HR 
 		fecha.set(1962,  01,  25);
 		cUsuario.altaProponente("hrubino", "K6keGZEx",  "Horacio",  "Rubino",  "18 de Julio 1234",  "horacio.rubino@guambia.com.uy",  
 		"Horacio Rubino Torres nace el 25 de febrero de 1962,  es conductor,  actor y libretista. Debuta en 1982 en carnaval "
