@@ -50,18 +50,17 @@ public class Publicador {
     public void publicar() {
     	Properties p = new Properties();
     	try {
-			p.load(new FileReader("properties/config.properties"));
+    		String usr = System.getProperty("user.home");
+			p.load(new FileReader(usr+"/.culturarte/culturarte.properties"));
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-
 		}
     	
-    	System.out.println("uno="+p.getProperty("uno"));
-    	endpoint = Endpoint.publish("http://localhost:11115/publicador", this);
+    	endpoint = Endpoint.publish("http://"+p.getProperty("ip")+":"+p.getProperty("port")+"/publicador", this);
     }
 
     @WebMethod(exclude = true)
