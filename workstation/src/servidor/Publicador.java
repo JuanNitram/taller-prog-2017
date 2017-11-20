@@ -60,7 +60,7 @@ public class Publicador {
 			e.printStackTrace();
 		}
     	
-    	endpoint = Endpoint.publish("http://localhost:11115/publicador", this);
+    	endpoint = Endpoint.publish("http://"+p.getProperty("ip")+":"+p.getProperty("port")+"/publicador", this);
     }
 
     @WebMethod(exclude = true)
